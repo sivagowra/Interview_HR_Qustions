@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Qustions</title>
+</head>
+<body>
+    <h2>Q1. What is DevOps, and how is it different from Agile?</h2>
+
+<p>DevOps is about joining development and operations teams.</p>
+<p>Goal is faster software delivery.</p>
+
+<p>Uses automation tools like Jenkins, Docker, Terraform.</p>
+
+<p>Agile is about software development method (Scrum, Kanban).</p>
+
+<p>Agile = focus on coding and testing.</p>
+
+<p>DevOps = focus on delivery and running software.</p>
+
+<p>Agile is about team collaboration.</p>
+
+<p>DevOps is about automation and monitoring.</p>
+
+<p>Agile = small sprints.</p>
+
+<p>DevOps = continuous delivery.</p>
+
+
+
+<h2>Q2. Explain your role and responsibilities in your last project.</h2>
+
+<p>Created CI/CD pipelines in Jenkins.</p>
+
+<p>Automated build, test, and deploy steps.</p>
+
+<p>Managed AWS services (EC2, S3, VPC, IAM).</p>
+
+<p>Used Terraform for infrastructure setup.</p>
+
+<p> Wrote Ansible playbooks for automation.</p>
+
+<p>Containerized apps using Docker.</p>
+
+<p>Deployed apps on Kubernetes clusters.</p>
+
+<p>Monitored with Prometheus + Grafana.</p>
+
+<p>Used Git branching (GitFlow, Feature branch).</p>
+
+<p>Did blue-green deployments.</p>
+
+<p>Added security scans in pipeline.</p>
+
+<p>Worked closely with developers & testers.</p>
+
+<h2>Q3. What challenges did you face in implementing CI/CD pipelines?</h2>
+
+<p>Jenkins build failures.</p>
+
+<p>Wrong dependency versions.</p>
+
+<p>Merge conflicts in Git.</p>
+
+<p>Secrets management.</p>
+
+<p>Slow builds.</p>
+<p>Environment mismatch (dev/prod).</p>
+
+<p>Docker image too big.</p>
+
+<p>Kubernetes pods crash.</p>
+
+<p>Rollback setup issues.</p>
+
+<p>Network latency in AWS.</p>
+
+<p>Security scans delayed builds.</p>
+
+<p>Team coordination problems.</p>
+
+<h2>Q4. How do you ensure zero downtime during deployments?</h2>
+
+<p>Use blue-green deployment.</p>
+
+<p>Or canary deployment.</p>
+
+<p>Keep old version active.</p>
+
+<p>Deploy new version separately.</p>
+
+<p>Use load balancer to switch traffic.</p>
+
+<p>Do health checks.</p>
+
+<p>Use Kubernetes rolling updates.</p>
+
+<p>Automate rollback.</p>
+
+<p>Keep database backward-compatible.</p>
+
+<p>Monitor logs & alerts.</p>
+
+<p>Use IaC for repeatable setup.</p>
+
+<p>Inform team about changes.</p>
+
+<h2>Q5. Can you explain blue-green and canary deployment strategies?</h2>
+
+<p>Blue-Green → 2 environments: Blue (old), Green (new).</p>
+
+<p>Blue runs old version.</p>
+
+<p>Green runs new version.</p>
+
+<p>Test Green fully.</p>
+
+<p>Switch load balancer to Green.</p>
+
+<p>Rollback to Blue if problem.</p>
+
+<p>Canary → release to small users.</p>
+
+<p>Monitor user feedback.</p>
+
+<p>Increase traffic step by step.</p>
+
+<p>If stable → send 100%.</p>
+
+<p>If issue → rollback quickly.</p>
+
+<p>Both reduce downtime.</p>
+
+<h2>Q6. What is the difference between git merge and git rebase?</h2>
+
+<p>Both combine code changes.</p>
+
+<p>git merge keeps history as is.</p>
+
+<p>Creates a new merge commit.</p>
+
+<p>History becomes a little complex.</p>
+
+<p>git rebase rewrites history.</p>
+
+<p>Moves commits on top of latest branch.</p>
+
+<p>History looks clean and linear.</p>
+
+<p>Merge = good for big teams.</p>
+
+<p>Rebase = good for small changes.</p>
+
+<p>Merge safe for history.</p>
+
+<p>Rebase risky if already pushed.</p>
+
+<p>Both useful, depends on workflow.</p>
+
+<h2 >How do you resolve merge conflicts in Git?</h2>
+
+<p>First pull latest changes.</p>
+
+<p>Git shows conflict files.</p>
+
+<p>Open file and check conflict markers.</p>
+
+<p>Decide which code to keep.</p>
+
+<p>Edit file manually.</p>
+
+<p>Remove conflict markers.</p>
+
+<p>Test code locally.</p>
+
+<p>Use git add to stage fixed file.</p>
+
+<p>Use git commit to save changes.</p>  
+
+<p>Push to remote branch.</p>
+
+<p>Inform team about resolution.</p>
+
+<p>Avoid conflicts using branching rules.</p>
+
+<h2>Q8. What branching strategy did you use (GitFlow, Feature Branching, etc.)?</h2>
+
+<p>Used GitFlow mostly.</p>
+
+<p>Main branch = master/main.</p>
+
+<p>Development branch = develop.</p>
+
+<p>Feature branches for new code.</p>
+
+<p>Hotfix branches for urgent fixes.</p>
+
+<p>Release branches for final testing.</p>
+
+<p>After testing → merge into master.</p>
+
+<p>Feature branch merged after code review.</p>
+
+<p>GitFlow helps multiple teams.</p>
+
+<p>Feature branching for small tasks.</p>
+
+<p>Improves code quality.</p>
+
+<p>Reduces merge conflicts.</p>
+
+<h2>Q9. Explain how you set up a Jenkins pipeline.</h2>
+
+<p>Install Jenkins on server.</p>
+
+<p>Install needed plugins.</p>
+
+<p>Connect Jenkins with Git repo.</p>               
+
+<p>Create a pipeline job.</p>
+
+<p>Write Jenkinsfile.</p>
+
+<p>Add build steps (Maven, npm, etc.).</p>
+
+<p>Add test steps (JUnit, pytest).</p>
+
+<p>Add Docker build step.</p>
+
+<p>Push Docker image to registry.</p>
+
+<p>Deploy to Kubernetes or server.</p>
+
+<p>Add post-build notifications.</p>
+
+<p>Run pipeline automatically on code push.</p>
+
+<h2>Q10. What are Jenkins declarative and scripted pipelines?</h2>
+
+<p>Two types of Jenkins pipelines.</p>
+
+<p>Declarative = simple and structured.</p>
+
+<p>Uses pipeline { } block.</p>
+
+<p>Easy to read and write.</p>
+
+<p>Good for beginners.</p>
+
+<p>Scripted = more flexible.</p>
+
+<p>Uses Groovy scripting.</p>
+
+<p>Can handle complex workflows.</p>
+    
+<p>More powerful but harder.</p>
+
+<p>More powerful but harder.</p>
+
+<p>Declarative = clean syntax.</p>
+
+<p>Scripted = advanced logic.</p>
+
+<p>Teams use declarative mostly.</p>
+
+<h2>Q11. How do you integrate Maven with Jenkins?</h2>
+
+<p>Install Maven on Jenkins server.</p>
+
+<p>Install Maven plugin in Jenkins.</p>
+
+<p>Add Maven path in Jenkins settings.</p>
+
+<p>Create Jenkins pipeline.</p>
+
+<p>In build step → select Maven.</p>
+
+<p>Add command like mvn clean install.</p>
+
+<p>Run unit tests with Maven.</p>   
+
+<p>Generate reports (Surefire, JaCoCo).</p>
+
+<p>Archive build artifacts.</p>
+
+<p>Trigger next stage if build passes.</p>
+
+<p>Deploy built app to server/Kubernetes.</p>
+
+<p>Automate complete CI/CD with Maven.</p>
+
+
+<h2>Q12. How do you secure credentials in Jenkins?</h2>
+
+<p>Use Jenkins Credentials Plugin.</p>
+
+<p>Store passwords, tokens, keys in Jenkins.</p>
+
+<p>Never hardcode secrets in Jenkinsfile.</p>
+
+<p>Use environment variables.</p>
+
+<p>Integrate with secret managers (AWS Secrets Manager, Vault).</p>
+
+<p>Use Jenkins “withCredentials” block.</p>
+
+<p>Limit access with role-based permissions.</p>
+
+<p>Encrypt credentials in Jenkins.</p>
+
+<p>Rotate credentials regularly.</p>
+
+<p>Keep audit logs of credential usage.</p>
+
+<p>Share secrets only with required jobs.</p>
+
+<p>Follow least privilege principle.</p>        
+
+<h2>Q13. Which AWS services have you worked with?</h2>
+
+<p>EC2 – virtual servers.</p>
+
+<p>S3 – storage buckets.</p>
+
+<p>VPC – private network.</p>
+
+<p>IAM – user and role management.</p>
+
+<p>RDS – managed MySQL database.</p>
+
+<p>CloudWatch – monitoring & alerts.</p>
+
+<p>ELB – load balancing traffic.</p>
+
+<p>Auto Scaling – scaling servers automatically.</p>
+
+<p>SNS – notifications.</p>
+
+<p>EKS – Kubernetes on AWS.</p>
+
+<p>CodePipeline – CI/CD.</p>
+
+<p>CloudFormation/Terraform – IaC.</p>
+
+<h2>Q14. Difference between EC2, Lambda, and ECS?</h2>
+
+<p>EC2 = virtual machine.</p>
+
+<p>You manage OS, patches, scaling.</p>
+
+<p>Runs 24/7 or on demand.</p>
+
+<p>Lambda = serverless function.</p>
+
+<p>Runs code without server management.</p>
+
+<p>Pay only for execution time.</p>
+
+<p>Good for small, event-driven tasks.</p>
+
+<p>ECS = container service.</p>
+
+Run Docker containers at scale.
+
+<p>You define cluster, tasks, services.</p>
+
+<p>Good for microservices.</p>
+
+<p>Choice depends on use case.</p>
+
+<h2>Q15. How do you secure an S3 bucket?</h2>  
+
+<p>Enable block public access.</p>
+
+<p>Use IAM policies for access.</p>
+
+<p>Encrypt data at rest (SSE).</p>
+
+<p>Encrypt data in transit (HTTPS).</p>
+
+<p>Enable bucket versioning.</p>
+
+<p>Enable MFA delete.</p>
+
+<p>Use CloudTrail for logging access.</p>
+
+<p>Apply least privilege principle.</p>
+
+<p>Monitor with AWS Config rules.</p>
+
+<p>Use VPC endpoints for private access.</p>
+
+<p>Rotate keys regularly.</p>
+
+<p>Run security scans on buckets.</p>
+
+<h2>Q16. What is the difference between security groups and NACLs?</h2>
+
+<p>Both control network traffic in AWS.</p>
+
+<p>Security Group = instance-level firewall.</p>
+
+<p>Works at EC2 instance level.</p>
+
+<p>NACL = subnet-level firewall.</p>
+
+<p>Works at VPC subnet level.</p>
+
+<p>Security Groups are stateful.</p>
+
+<p>NACLs are stateless.</p>
+
+<p>Security Groups allow rules only.</p>
+
+<p>NACLs allow and deny rules.</p>
+
+<p>Security Group checks only inbound/outbound.</p>         
+
+<p>NACL checks both ways every time.</p>
+
+<p>Both used together for network security.</p>
+
+<h2>Q17. How do you monitor AWS resources (CloudWatch, Grafana, Datadog)?</h2>
+
+<p>Use CloudWatch for logs and metrics.</p>
+
+<p>Set custom alarms in CloudWatch.</p>
+
+<p>Collect CPU, memory, disk metrics.</p>
+
+<p>Enable CloudWatch dashboards.</p>
+
+<p>Push logs to CloudWatch from apps.</p>
+
+<p>Integrate CloudWatch with Grafana.</p>
+
+<p>Create Grafana dashboards for visualization.</p>
+
+<p>Use Prometheus exporters with Grafana.</p>
+
+<p>Use Datadog agents for monitoring.</p>
+
+<p>Set alerts for critical errors.</p>
+
+<p>Use alerting channels (Slack, Email).</p>
+
+<p>Monitor cost with AWS Billing alerts.</p>
+
+<h2>Q18. Explain Terraform vs. Ansible.</h2>
+
+<p>Terraform = Infrastructure provisioning tool.</p>
+
+<p>Ansible = Configuration management tool.</p>
+
+<p>Terraform = create servers, networks, DBs.</p>
+
+<p>Ansible = install software, configure servers.</p>
+
+<p>Terraform = declarative IaC.</p>
+
+<p>Ansible = procedural + declarative.</p>
+
+<p>Terraform tracks state file.</p>
+
+<p>Ansible runs playbooks.</p>
+
+<p>Terraform better for cloud infra.</p>
+
+<p>Ansible better for app config.</p>
+
+<p>Both can be used together.</p>
+
+<p>Example: Terraform creates EC2 → Ansible configures it.</p>
+
+<h2>Q19. What is the difference between Terraform modules and resources?</h2>
+
+<p>Resource = single AWS item (EC2, S3).</p>
+
+<p>Each resource defines one infra element.</p>
+
+<p>Module = group of resources.</p>
+
+<p>Module is reusable and organized.</p>
+
+<p>Example: VPC module includes VPC, subnets, route tables.</p>
+
+<p>Resources = building blocks.</p>
+
+<p>Modules = packages of blocks.</p>
+
+<p>Modules help reduce code repetition.</p>
+
+<p>Modules improve standardization.</p>
+
+<p>Resources used directly in .tf file.</p>
+
+<p>Modules called with module block.</p>
+
+<p>Use modules for scalability.</p>
+
+<h2>Q20. How do you manage Terraform state files?</h2>
+
+<p>Terraform keeps infra state in terraform.tfstate.</p>
+
+<p>Don’t share state file manually.</p>
+
+<p>Store state remotely.</p>
+
+<p>Use S3 bucket with DynamoDB lock.</p>
+
+<p>Use Terraform Cloud for remote state.</p>
+
+<p>Encrypt state file.</p>
+
+<p>Enable state locking.</p>
+
+<p>Use version control for state backups.</p>
+
+<p>Don’t edit state file manually.</p>
+
+<p>Use terraform refresh to sync.</p>
+
+<p>Use terraform import for existing resources.</p>
+
+<p>Rotate access permissions.</p>
+
+<p>Use terraform refresh to sync.</p>
+
+<p>Use terraform import for existing resources.</p>
+
+<p>Rotate access permissions.</p>
+
+<h2>Q21. Can you explain idempotency in Ansible?</h2>
+
+<p>Idempotency = running playbook multiple times gives same result.</p>
+
+<p>If resource already configured, no change.</p>
+
+<p>If resource missing, Ansible creates it.</p>
+
+<p>If config wrong, Ansible fixes it.</p>
+
+<p>Ensures consistent environment.</p>
+
+<p>Prevents duplicate changes.</p>
+
+<p>Safe to rerun playbooks.</p>
+
+<p>Saves time and reduces errors.</p>
+
+<p>Example: install Apache → if already installed, no action.</p>
+
+<p>Example: create user → if user exists, no change.</p>
+
+<p>This makes Ansible reliable.</p>
+
+<p>All tasks follow desired state.</p>
+
+<h2>Q22. How do you manage secrets in Ansible?  </h2>
+
+<p>Use Ansible Vault.</p>
+
+<p>Encrypt sensitive data (passwords, keys).</p>
+
+<p>Store in vault.yml file.</p>
+
+<p>Run ansible-vault encrypt command.</p>
+
+<p>Decrypt with ansible-vault decrypt.</p>
+
+<p>Use ansible-vault view to see values.</p>
+
+<p>Use --ask-vault-pass option.</p>
+
+<p>Or store vault password in Jenkins.</p>
+
+<p>Or store vault password in Jenkins.</p>
+
+<p>Rotate secrets regularly.</p>
+
+<p>Don’t commit secrets in plain text.</p>
+
+<p>Integrate with AWS Secrets Manager.</p>
+
+<p>Keep separate vault files per environment.</p>
+
+<h2>Q23. What is the difference between Docker image and container?</h2>
+
+<p>Image = blueprint/template.</p>
+
+<p>Container = running instance of image.</p>
+
+<p>Image = static, read-only.</p>
+
+<p>Container = dynamic, can run processes.</p>
+
+<p>One image can create many containers.</p>
+
+<p>Images stored in registry (Docker Hub).</p>
+
+<p>Containers run on Docker engine.</p>
+
+<p>Image includes code + dependencies.</p>
+
+<p>Container uses OS resources.</p>
+
+<p>Image built once, used many times.</p>
+
+<p>Containers are temporary.</p>
+
+<p>Images are permanent until deleted.</p>
+
+<h2>Q24. How do you optimize a Dockerfile?</h2>
+
+<p>Use small base image (Alpine).</p>
+
+<p>Minimize number of layers.</p>
+
+<p>Combine commands in one RUN.</p>
+
+<p>Remove unnecessary packages.</p>
+
+<p>Use .dockerignore to skip files.</p>
+
+<p>Copy only needed files.</p>
+
+<p>Use multi-stage builds.</p>
+
+<p>Cache dependencies properly.</p>
+
+<p>Avoid running as root.</p>
+
+<p>Clean up temporary files.</p>
+
+<p>Use healthcheck instruction.</p>
+
+<p>Keep image size small.</p>
+
+<h2>Q25. Explain Kubernetes components (Pod, Deployment, ReplicaSet, Service).</h2>
+
+<p>Pod = smallest unit, runs container(s).</p>
+
+<p>Pod can have 1 or more containers.</p>
+
+<p>ReplicaSet = ensures multiple pods.</p>
+
+<p>Provides scaling and high availability.</p>
+
+<p>Deployment = manages ReplicaSets.</p>
+
+<p>Handles rolling updates.</p>
+
+<p>Service = exposes pods.</p>
+
+<p>Types: ClusterIP, NodePort, LoadBalancer.</p>
+
+<p>ClusterIP = internal access.</p>
+
+<p>NodePort = external fixed port.</p>
+
+<p>LoadBalancer = cloud-based access.</p>
+
+<p>Together they run apps reliably.</p>
+
+<h2>Q26. How do you perform rolling updates in Kubernetes?</h2>
+
+<p>Rolling update = update pods step by step.</p>
+
+<p>Use kubectl set image.</p>
+
+<p>Or update Deployment YAML.</p>
+
+<p>Kubernetes creates new pods.</p>
+
+<p>Slowly replaces old pods.</p>
+
+<p>No downtime during update.</p>
+
+<p>Can set maxUnavailable and maxSurge.</p>
+
+<p>Monitor rollout with kubectl rollout status.</p>
+
+<p>Check logs for errors.</p>
+
+<p>If failure → rollback with kubectl rollout undo.</p>
+
+<p>Ensures smooth transition.</p>
+
+<p>Safer than replacing all at once.</p>
+
+<h2>Q27. What is the difference between ConfigMap and Secret in Kubernetes?</h2>
+
+<p>Both store configuration data.</p>
+
+<p>ConfigMap = non-sensitive data.</p>
+
+<p>Example: URLs, app configs.</p>
+
+<p>Stored in plain text.</p>
+
+<p>Secret = sensitive data.</p>
+
+<p>Example: passwords, API keys.</p>
+
+<p>Stored in base64 encoded format.</p>
+
+<p>Accessed by pods as env variables.</p>
+
+<p>ConfigMap used for general settings.</p>
+
+<p>Secret used for security.</p>
+
+<p>Both can be mounted as volumes.</p>
+
+<p>Best practice: separate configs & secrets.</p>
+
+<h2>Q28. How do you monitor application performance in Kubernetes?</h2>
+
+<p>Use Prometheus for metrics.</p>
+
+<p>Collect pod CPU and memory usage.</p>
+
+<p>Use Grafana dashboards.</p>
+
+<p>Monitor node health.</p>
+
+<p>Set alerts for high usage.</p>
+
+<p>Use Kubernetes metrics server.</p>
+
+<p>Collect logs with Fluentd/ELK.</p>
+
+<p>Monitor network traffic.</p>
+
+<p>Use Datadog for advanced monitoring.</p>
+
+<p>Integrate with Slack/Email alerts.</p>
+
+<p>Track response times.</p>
+
+<p>Monitor failed pods and restarts.</p>
+
+<h2>Q29. Explain how you set alerts in Prometheus and visualize them in Grafana.</h2>
+
+<p>Install Prometheus and Alertmanager.</p>
+
+<p>Define alert rules in Prometheus.</p>
+
+<p>Example: CPU > 80% for 5 mins.</p>
+
+<p>Save rules in .yml file.</p>
+
+<p>Alertmanager sends notifications.</p>
+
+<p>Configure Slack, Email, PagerDuty.</p>
+
+<p>Install Grafana.</p>
+
+<p>Add Prometheus as data source.</p>
+
+<p>Create custom dashboards.</p>
+
+<p>Add CPU, memory, request graphs.</p>
+
+<p>Use Grafana alerts for visualization.</p>
+
+<p>Monitor system health in real-time.</p>
+
+<h2>Q30. How do you integrate security tools like SonarQube, Trivy, or OWASP in CI/CD?</h2>
+
+<p>Install tool on Jenkins server.</p>
+
+<p>Add plugin or script in pipeline.</p>
+
+<p>SonarQube → code quality scan.</p>
+
+<p>Trivy → scan Docker images.</p>
+
+<p>OWASP Dependency Check → scan libraries.</p>
+
+<p>Run scans during build stage.</p>
+
+<p>Fail build if critical issues found.</p>
+
+<p>Generate security reports.</p>
+
+<p>Store reports in Jenkins.</p>
+
+<p>Notify developers on failure.</p>
+
+<p>Fix vulnerabilities quickly.</p>
+
+<p>Re-run pipeline after fixes.</p>
+
+<h2>Q31. Tell me about a time when a deployment failed. How did you handle it?</h2>
+
+<p>Once deployment failed due to config error.</p>
+
+<p>Service was not starting.</p>
+
+<p>Checked logs immediately.</p>
+
+<p>Found wrong environment variable.</p>
+
+<p>Rolled back to previous version.</p>
+
+<p>Notified team about issue.</p>
+
+<p>Fixed config in Git repo.</p>
+
+<p>Rebuilt Docker image.</p>
+
+<p>Tested in staging first.</p>
+
+<p>Deployed again in production.</p>
+
+<p>Deployment successful.</p>
+
+<p>Learned to test configs carefully.</p>
+
+<h2>Q32. How do you collaborate with developers to resolve issues?</h2>
+
+<p>Join daily stand-up meetings.</p>
+
+<p>Listen to developer pain points.</p>
+
+<p>Share CI/CD pipeline status.</p>
+
+<p>Help debug build failures.</p>
+
+<p>Share monitoring dashboards.</p>
+
+<p>Teach developers about logs.</p>
+
+<p>Review Git branches before merge.</p>
+
+<p>Help with environment setup.</p>
+
+<p>Document deployment process.</p>
+
+<p>Provide feedback on infra changes.</p>
+
+<p>Communicate on Slack/Teams.</p>
+
+<p>Work as one team, not separate.</p>
+
+<h2>Q33. How do you handle pressure when multiple services are down?</h2>
+
+<p>Stay calm and focused.</p>
+
+<p>Prioritize critical services first.</p>
+
+<p>Check monitoring dashboards.</p>
+
+<p>Identify root cause quickly.</p>
+
+<p>Rollback if new deployment caused issue.</p>
+
+<p>Restart failed pods/instances.</p>
+
+<p>Inform stakeholders about downtime.</p>
+
+<p>Work with developers for fixes.</p>
+
+<p>Use runbooks and SOPs.</p>
+
+<p>Escalate if needed.</p>
+
+<p>After fix, do root cause analysis.</p>
+
+<p>Improve process to avoid repeat.</p>
+
+</body>
+</html>
