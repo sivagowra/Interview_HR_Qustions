@@ -3,263 +3,290 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CPaaS Messaging Application — Technical Document</title>
+  <title>CPaaS Messaging Application – Technical Document</title>
   <style>
-    :root{--bg:#f7f9fb;--card:#ffffff;--accent:#0b66ff;--muted:#6b7280;--border:#e6eef8}
-    html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:#0f172a;font-size:10px}
-    .container{max-width:1100px;margin:28px auto;padding:20px}
-    header{display:flex;align-items:center;gap:14px}
-    .brand{display:flex;flex-direction:column}
-    h1{margin:0;font-size:20px}
-    p.lead{margin:6px 0 18px;color:var(--muted);font-size:11px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:18px;box-shadow:0 2px 6px rgba(12,24,80,0.04)}
-    nav.toc{padding:12px;margin-bottom:18px}
-    nav.toc ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
-    nav.toc a{display:inline-block;padding:6px 10px;border-radius:8px;background:#f1f5f9;text-decoration:none;color:#0b1724;font-size:10px}
-    table{width:100%;border-collapse:collapse;margin:10px 0}
-    th,td{padding:8px;border:1px solid #eef3fb;text-align:left;font-size:10px}
+    body{font-family: Arial, Helvetica, sans-serif;line-height:1.45;color:#0f172a;margin:20px;background:#f7f9fb}
+    .container{max-width:1000px;margin:0 auto;background:#fff;padding:24px;border-radius:8px;box-shadow:0 6px 24px rgba(11,34,80,0.06)}
+    h1,h2,h3{color:#0b3a66;margin:0 0 10px}
+    p{margin:8px 0}
+    .lead{margin-bottom:16px}
+    ul{margin:8px 0 16px 20px}
+    table{width:100%;border-collapse:collapse;margin:12px 0}
+    th,td{border:1px solid #e6eef8;padding:8px;text-align:left}
     th{background:#fbfdff}
-    pre{background:#0b1724;color:#e6eef8;padding:10px;border-radius:6px;overflow:auto;font-size:10px}
-    code{font-family:monospace;font-size:10px}
-    .two-cols{display:grid;grid-template-columns:1fr 340px;gap:18px}
-    .muted{color:var(--muted)}
-    footer{font-size:9px;color:var(--muted);margin-top:12px}
-    @media(max-width:920px){.two-cols{grid-template-columns:1fr}nav.toc ul{flex-direction:column}}
+    pre{background:#f1f5f9;padding:12px;border-radius:6px;overflow:auto}
+    .section{margin-bottom:20px}
+    .two-col{display:flex;gap:20px}
+    @media(max-width:900px){.two-col{flex-direction:column}}
   </style>
 </head>
 <body>
   <div class="container">
-    <header>
-      <div style="width:56px;height:56px;background:linear-gradient(135deg,var(--accent),#00b4ff);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">CP</div>
-      <div class="brand">
-        <h1>CPaaS Messaging Application — Technical Document</h1>
-        <p class="lead">Complete specification, features and technical architecture for a CPaaS messaging product. Default font-size: 10px (user preference).</p>
-      </div>
-    </header>
+    <h1>Here’s a Comprehensive Technical Document for a CPaaS (Communications Platform as a Service) Messaging Application, covering both basic features and technical architecture — ideal for documentation, proposals, or development planning.</h1>
 
-    <nav class="toc card">
-      <strong>Table of contents</strong>
-      <ul>
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#objectives">Objectives</a></li>
-        <li><a href="#features">Core Features</a></li>
-        <li><a href="#architecture">Technical Architecture</a></li>
-        <li><a href="#security">Security</a></li>
-        <li><a href="#dbschema">Database Schema</a></li>
-        <li><a href="#api">API Endpoints</a></li>
-        <li><a href="#analytics">Analytics & Reporting</a></li>
-        <li><a href="#devops">DevOps & Deployment</a></li>
-        <li><a href="#future">Future Enhancements</a></li>
-      </ul>
-    </nav>
-
-    <div class="two-cols">
-      <main>
-        <section id="overview" class="card">
-          <h2>1. Overview</h2>
-          <p>This CPaaS Messaging Application provides multi-channel messaging (SMS, WhatsApp, Email, Push and Voice) via RESTful APIs, SDKs and a management dashboard. It removes the need to build telecom infrastructure by integrating with gateways and carriers.</p>
-        </section>
-
-        <section id="objectives" class="card">
-          <h2>2. Objectives</h2>
-          <ul>
-            <li>Deliver a scalable, reliable communication platform.</li>
-            <li>Support multi-channel messaging and two-way interactions.</li>
-            <li>Provide developer-friendly APIs and SDKs.</li>
-            <li>Offer analytics, delivery tracking and billing features.</li>
-          </ul>
-        </section>
-
-        <section id="features" class="card">
-          <h2>3. Core Features</h2>
-
-          <h3>3.A Messaging Features</h3>
-          <table>
-            <thead>
-              <tr><th>Feature</th><th>Description</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>SMS API</td><td>Send and receive SMS through RESTful endpoints; supports long messages and segmentation.</td></tr>
-              <tr><td>Two-Way Messaging</td><td>Inbound and outbound message flows with webhook callbacks for inbound messages.</td></tr>
-              <tr><td>Bulk Messaging</td><td>High-throughput campaign sending with batching and rate controls.</td></tr>
-              <tr><td>Delivery Reports (DLR)</td><td>Real-time DLR handling per carrier/gateway with persisted logs.</td></tr>
-              <tr><td>Message Scheduling</td><td>Schedule messages for future delivery with timezone awareness.</td></tr>
-              <tr><td>Unicode Support</td><td>Send messages in any language including emojis and special scripts.</td></tr>
-              <tr><td>Template Management</td><td>Create and manage reusable message templates; template variable substitution.</td></tr>
-              <tr><td>Personalization</td><td>Dynamic variable replacement (e.g., {{name}}, {{code}}) per recipient.</td></tr>
-            </tbody>
-          </table>
-
-          <h3>3.B User & Account Management</h3>
-          <ul>
-            <li>User registration, login, MFA support (optional), OAuth 2.0 / JWT token auth.</li>
-            <li>Role-based access control (Admin, Operator, Billing, Support).</li>
-            <li>Credit / quota tracking, usage meters, charge and recharge workflows.</li>
-          </ul>
-
-          <h3>3.C API & Integration</h3>
-          <ul>
-            <li>RESTful APIs for sending, status checking and contact management.</li>
-            <li>Webhook endpoints for inbound messages and DLR callbacks.</li>
-            <li>SDKs for PHP, Python, JavaScript (examples and CLI tools).</li>
-            <li>Out-of-the-box connectors for CRMs, marketing automation tools and analytics platforms.</li>
-          </ul>
-
-          <h3>3.D Dashboard</h3>
-          <ul>
-            <li>Real-time metrics, visual charts, campaign builders and contact management.</li>
-            <li>CSV/XLSX exports, activity logs, and billing statements.</li>
-          </ul>
-
-          <h3>3.E Additional Channels</h3>
-          <p>Voice (IVR & click-to-call), Email (transactional), WhatsApp Business API, Push Notifications (FCM/APNs).</p>
-        </section>
-
-        <section id="architecture" class="card">
-          <h2>4. Technical Architecture</h2>
-
-          <h3>4.A Components</h3>
-          <ul>
-            <li><strong>Frontend:</strong> Vue.js or React — dashboard, campaign UI and admin console.</li>
-            <li><strong>Backend:</strong> Laravel (PHP) or Node.js or FastAPI — API endpoints, auth, routing, DLR processing.</li>
-            <li><strong>Database:</strong> PostgreSQL or MySQL — persistent data for users, messages, templates, logs.</li>
-            <li><strong>Queue:</strong> RabbitMQ or Redis Queue — for asynchronous processing and retries.</li>
-            <li><strong>Gateway integrations:</strong> SMPP, HTTP REST connectors to carriers and third-party CPaaS providers.</li>
-            <li><strong>Monitoring:</strong> Prometheus + Grafana; logging via ELK stack or hosted alternatives.</li>
-            <li><strong>Infrastructure:</strong> Kubernetes for container orchestration; Nginx/HAProxy for load balancing.</li>
-          </ul>
-
-          <h3>4.B Message Flow (High Level)</h3>
-          <ol>
-            <li>Client calls /api/send (REST) with payload, auth and template variables.</li>
-            <li>Backend validates, stores message record, and enqueues job to queue system.</li>
-            <li>Worker processes job, chooses route/gateway based on rules and balance, and sends to carrier.</li>
-            <li>Carrier returns immediate ack; backend updates message status to SENT/PENDING.</li>
-            <li>Carrier later posts DLR to webhook; backend updates delivery_reports and final status.</li>
-          </ol>
-
-          <h3>4.C Routing & Fallbacks</h3>
-          <p>Implement intelligent routing: primary carrier, secondary fallback, and retry policies with exponential backoff. Store per-country, per-operator rules and dynamic cost-based routing.</p>
-        </section>
-
-        <section id="security" class="card">
-          <h2>5. Security</h2>
-          <ul>
-            <li>HTTPS-only APIs, TLS 1.2+ for all external connections.</li>
-            <li>OAuth2/JWT for API access; API key management for service accounts.</li>
-            <li>Rate limiting, IP allowlisting, and throttling per account.</li>
-            <li>Encryption at rest (disk or DB-level) and encryption in transit.</li>
-            <li>Audit logging and role-based access controls (RBAC).</li>
-          </ul>
-        </section>
-
-        <section id="dbschema" class="card">
-          <h2>6. Database Schema (Simplified)</h2>
-          <p>Suggested tables and brief columns:</p>
-          <table>
-            <thead><tr><th>Table</th><th>Key Columns / Purpose</th></tr></thead>
-            <tbody>
-              <tr><td>users</td><td>id, name, email, password_hash, role, created_at</td></tr>
-              <tr><td>messages</td><td>id, user_id, channel, to, from, body, template_id, status, created_at</td></tr>
-              <tr><td>delivery_reports</td><td>id, message_id, carrier_status, timestamp, raw_payload</td></tr>
-              <tr><td>templates</td><td>id, user_id, name, body, variables, created_at</td></tr>
-              <tr><td>contacts</td><td>id, user_id, msisdn, name, group_id, metadata</td></tr>
-              <tr><td>api_keys</td><td>id, user_id, key_hash, permissions, expires_at</td></tr>
-            </tbody>
-          </table>
-        </section>
-
-        <section id="api" class="card">
-          <h2>7. Example API Endpoints</h2>
-          <table>
-            <thead><tr><th>Method</th><th>Endpoint</th><th>Purpose</th></tr></thead>
-            <tbody>
-              <tr><td>POST</td><td>/api/send-sms</td><td>Send a single SMS</td></tr>
-              <tr><td>POST</td><td>/api/send-bulk</td><td>Send bulk messages (batch upload)</td></tr>
-              <tr><td>GET</td><td>/api/message-status/{id}</td><td>Fetch delivery status</td></tr>
-              <tr><td>POST</td><td>/api/dlr-callback</td><td>Carrier delivery report webhook</td></tr>
-              <tr><td>GET</td><td>/api/user-balance</td><td>Get account credit and usage</td></tr>
-            </tbody>
-          </table>
-
-          <h3>API Request Example</h3>
-          <pre><code>POST /api/send-sms
-Content-Type: application/json
-Authorization: Bearer &lt;token&gt;
-
-{
-  "to": "+919876543210",
-  "from": "MyApp",
-  "body": "Hello {{name}}, your OTP is {{otp}}",
-  "template_id": 12,
-  "schedule_at": null
-}
-</code></pre>
-
-        </section>
-
-        <section id="analytics" class="card">
-          <h2>8. Analytics & Reporting</h2>
-          <ul>
-            <li>Delivery rate, latency, success vs failure counts and per-carrier metrics.</li>
-            <li>Time series charts: messages per hour/day, top destinations, failure reasons.</li>
-            <li>Exportable reports: CSV, XLSX, PDF and scheduled report emails.</li>
-          </ul>
-        </section>
-
-        <section id="devops" class="card">
-          <h2>9. DevOps & Deployment</h2>
-          <ul>
-            <li>Containerize services using Docker. Deploy on Kubernetes for scalability.</li>
-            <li>CI/CD pipelines: GitHub Actions or Jenkins for automated builds and deployments.</li>
-            <li>Observability: Prometheus for metrics, Grafana dashboards, and ELK for logs.</li>
-            <li>Secrets management: Vault or cloud provider secrets manager.</li>
-          </ul>
-        </section>
-
-        <section id="future" class="card">
-          <h2>10. Future Enhancements</h2>
-          <ul>
-            <li>AI-based message content optimization and send-time optimization.</li>
-            <li>Chatbot & conversational AI integration for WhatsApp and chat channels.</li>
-            <li>Support for RCS and richer messaging formats.</li>
-            <li>Predictive routing based on carrier delivery performance and cost.</li>
-          </ul>
-        </section>
-
-      </main>
-
-      <aside>
-        <div class="card">
-          <h3>Quick Reference</h3>
-          <p class="muted">Useful constants and suggestions</p>
-          <ul>
-            <li>Default font-size: 10px (applied across document)</li>
-            <li>Recommended DB: PostgreSQL for reliability and JSON support</li>
-            <li>Queue: RabbitMQ for guaranteed delivery, Redis for speed</li>
-            <li>Use SMPP for high-volume carrier links where available</li>
-            <li>Rate-limit per account: configurable (default 50 msgs/sec)</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Deliverables</h3>
-          <ol>
-            <li>HTML technical spec (this document)</li>
-            <li>Postman collection for APIs</li>
-            <li>DB migration scripts and schema</li>
-            <li>Docker Compose + Kubernetes manifests</li>
-          </ol>
-        </div>
-
-        <div class="card">
-          <h3>Notes</h3>
-          <p class="muted">This HTML is ready to preview and can be exported as PDF or DOCX using external tools. Tell me if you want a downloadable PDF or DOCX — I can convert it for you.</p>
-        </div>
-      </aside>
+    <div class="section">
+      <h2>📘 CPaaS Messaging Application – Technical Document</h2>
     </div>
 
-    <footer>Created for your CPaaS messaging project — edit, extend, and brand as needed.</footer>
+    <div class="section">
+      <h3>🧩 1. Overview</h3>
+      <p>The CPaaS Messaging Application enables developers and businesses to integrate real-time communication features such as SMS, voice, email, WhatsApp, and chat into their applications without building backend telecom infrastructure.</p>
+      <p>It provides APIs, SDKs, and dashboards for easy management of messaging workflows and analytics.</p>
+    </div>
+
+    <div class="section">
+      <h3>🚀 2. Objectives</h3>
+      <ul>
+        <li>Provide a scalable communication platform.</li>
+        <li>Offer multi-channel messaging (SMS, WhatsApp, email, push notifications).</li>
+        <li>Enable API-based integration with third-party systems (CRM, ERP, web apps).</li>
+        <li>Ensure delivery tracking, reporting, and analytics.</li>
+        <li>Maintain high availability, reliability, and data security.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>💡 3. Core Features</h3>
+
+      <h4>A. Messaging Features</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SMS API</td>
+            <td>Send and receive SMS messages through REST APIs.</td>
+          </tr>
+          <tr>
+            <td>Two-Way Messaging</td>
+            <td>Supports inbound and outbound messages.</td>
+          </tr>
+          <tr>
+            <td>Bulk Messaging</td>
+            <td>Send campaigns to multiple users simultaneously.</td>
+          </tr>
+          <tr>
+            <td>Delivery Reports (DLR)</td>
+            <td>Real-time delivery status updates.</td>
+          </tr>
+          <tr>
+            <td>Message Scheduling</td>
+            <td>Schedule messages for future delivery.</td>
+          </tr>
+          <tr>
+            <td>Unicode Support</td>
+            <td>Send messages in any language.</td>
+          </tr>
+          <tr>
+            <td>Template Management</td>
+            <td>Create reusable message templates for automation.</td>
+          </tr>
+          <tr>
+            <td>Personalized Messages</td>
+            <td>Dynamic variable replacement in message content.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>B. User & Account Management</h4>
+      <ul>
+        <li>User registration, login, and authentication (JWT / OAuth 2.0)</li>
+        <li>Role-based access control (Admin, User, Support)</li>
+        <li>Credit management and message usage tracking</li>
+        <li>Account balance recharge and billing module</li>
+      </ul>
+
+      <h4>C. API & Integration</h4>
+      <ul>
+        <li>RESTful API for message sending, receiving, and status checks</li>
+        <li>Webhook support for delivery reports and inbound messages</li>
+        <li>SDKs available in multiple languages (PHP, Python, JavaScript)</li>
+        <li>Integration with third-party CRMs and marketing tools</li>
+      </ul>
+
+      <h4>D. Dashboard Features</h4>
+      <ul>
+        <li>Real-time dashboard for message analytics</li>
+        <li>Campaign management interface</li>
+        <li>Contact group and list management</li>
+        <li>Logs and reports (CSV/Excel export support)</li>
+        <li>Admin console for monitoring routes and traffic</li>
+      </ul>
+
+      <h4>E. Additional Communication Channels</h4>
+      <ul>
+        <li>Voice API (Click-to-call, IVR)</li>
+        <li>Email API (Transactional & promotional emails)</li>
+        <li>WhatsApp API (Templates, notifications, 2-way chat)</li>
+        <li>Push Notifications (Mobile and web apps)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>⚙️ 4. Technical Architecture</h3>
+
+      <h4>A. System Components</h4>
+      <p><strong>Frontend:</strong></p>
+      <ul>
+        <li>Framework: Vue.js / React.js</li>
+        <li>Purpose: Dashboard, campaign management, user interface</li>
+        <li>Authentication: JWT tokens or OAuth 2.0</li>
+      </ul>
+
+      <p><strong>Backend:</strong></p>
+      <ul>
+        <li>Language: PHP (Laravel) / Node.js / Python (FastAPI)</li>
+        <li>Features:</li>
+        <ul>
+          <li>Message routing</li>
+          <li>API endpoints</li>
+          <li>DLR handling</li>
+          <li>User authentication</li>
+          <li>Queue management</li>
+        </ul>
+      </ul>
+
+      <p><strong>Database:</strong></p>
+      <ul>
+        <li>Type: MySQL / PostgreSQL</li>
+        <li>Used for: Storing users, messages, delivery logs, templates</li>
+      </ul>
+
+      <p><strong>Queue System:</strong></p>
+      <ul>
+        <li>RabbitMQ / Redis Queue</li>
+        <li>Purpose: Asynchronous message processing to handle large-scale sends</li>
+      </ul>
+
+      <p><strong>External Gateway Integration:</strong></p>
+      <ul>
+        <li>SMPP for telecom-level connectivity</li>
+        <li>REST APIs for external CPaaS vendors (like Twilio, Infobip, Gupshup)</li>
+      </ul>
+
+      <p><strong>Monitoring & Logging:</strong></p>
+      <ul>
+        <li>Tools: Prometheus, Grafana, ELK Stack (Elasticsearch, Logstash, Kibana)</li>
+        <li>Purpose: Track delivery, system health, and performance metrics</li>
+      </ul>
+
+      <p><strong>Cloud Infrastructure:</strong></p>
+      <ul>
+        <li>Hosting: AWS / Azure / Google Cloud</li>
+        <li>Load Balancing: Nginx / HAProxy</li>
+        <li>Scaling: Kubernetes / Docker</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>🔐 5. Security Features</h3>
+      <ul>
+        <li>API key-based authentication</li>
+        <li>HTTPS encryption</li>
+        <li>Rate limiting & IP whitelisting</li>
+        <li>Role-based access control (RBAC)</li>
+        <li>Data encryption (at rest and in transit)</li>
+        <li>Secure logging and audit trails</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>🧮 6. Database Schema (Simplified Example)</h3>
+      <p>Tables:</p>
+      <ul>
+        <li>users — stores user credentials & roles</li>
+        <li>messages — message content, sender ID, status, and timestamps</li>
+        <li>delivery_reports — delivery status, message_id references</li>
+        <li>templates — message templates</li>
+        <li>contacts — contact list & groups</li>
+        <li>api_keys — token management</li>
+        <li>balance — credit and usage history</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>🧠 7. Example API Endpoints</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Endpoint</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>POST</td>
+            <td>/api/send-sms</td>
+            <td>Send a single SMS</td>
+          </tr>
+          <tr>
+            <td>POST</td>
+            <td>/api/send-bulk</td>
+            <td>Send bulk SMS messages</td>
+          </tr>
+          <tr>
+            <td>GET</td>
+            <td>/api/message-status/{id}</td>
+            <td>Get message delivery status</td>
+          </tr>
+          <tr>
+            <td>POST</td>
+            <td>/api/dlr-callback</td>
+            <td>Receive delivery reports (DLR)</td>
+          </tr>
+          <tr>
+            <td>GET</td>
+            <td>/api/user-balance</td>
+            <td>Get remaining credit</td>
+          </tr>
+          <tr>
+            <td>POST</td>
+            <td>/api/add-template</td>
+            <td>Create message template</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>📊 8. Analytics & Reporting</h3>
+      <ul>
+        <li>Message delivery ratio</li>
+        <li>Failed vs successful deliveries</li>
+        <li>Message latency and throughput</li>
+        <li>Daily, weekly, and monthly message count reports</li>
+        <li>Export in CSV, XLSX, PDF formats</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>🔧 9. DevOps & Deployment</h3>
+      <ul>
+        <li>CI/CD: GitHub Actions / Jenkins</li>
+        <li>Docker for containerization</li>
+        <li>Kubernetes for scaling</li>
+        <li>Nginx reverse proxy</li>
+        <li>SSL certificates via Let’s Encrypt</li>
+        <li>Log rotation and monitoring</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>📞 10. Future Enhancements</h3>
+      <ul>
+        <li>AI-based message optimization</li>
+        <li>Chatbot integration</li>
+        <li>Predictive delivery routing</li>
+        <li>Support for RCS messaging</li>
+        <li>Voice-to-text and text-to-speech APIs</li>
+      </ul>
+    </div>
+
   </div>
 </body>
 </html>
