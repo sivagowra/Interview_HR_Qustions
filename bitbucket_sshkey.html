@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitbucket SSH Key Setup Guide</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #212529;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    h1 {
+      color: #0052cc;
+    }
+    h2 {
+      color: #0d6efd;
+      margin-top: 30px;
+    }
+    code, pre {
+      background-color: #e9ecef;
+      padding: 8px 10px;
+      border-radius: 5px;
+      display: block;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+    a {
+      color: #0d6efd;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    ul {
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧩 Step-by-step: Add SSH Key for Bitbucket</h1>
+
+  <h2>🧠 Step 1: Check if you already have an SSH key</h2>
+  <pre><code>ls -al ~/.ssh</code></pre>
+  <p>If you see files like <strong>id_ed25519</strong> and <strong>id_ed25519.pub</strong>, skip to <strong>Step 4</strong>.  
+  If not — continue.</p>
+
+  <h2>🔑 Step 2: Generate a new SSH key</h2>
+  <pre><code>ssh-keygen -t ed25519 -C "your_email@example.com"</code></pre>
+  <p>Replace <em>your_email@example.com</em> with your Bitbucket email.</p>
+  <p>Press <strong>Enter</strong> for the file location (default is fine):</p>
+  <pre><code>Enter file in which to save the key (/home/yourname/.ssh/id_ed25519):</code></pre>
+  <p>Then optionally enter a <strong>passphrase</strong> or press Enter to skip.</p>
+
+  <h2>⚙️ Step 3: Start the SSH agent and add your key</h2>
+  <pre><code>eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519</code></pre>
+
+  <h2>📋 Step 4: Copy your public key</h2>
+  <pre><code>cat ~/.ssh/id_ed25519.pub</code></pre>
+  <p>Copy the entire output (it starts with <strong>ssh-ed25519</strong> and ends with your email).</p>
+
+  <h2>🌐 Step 5: Add SSH key to Bitbucket</h2>
+  <p>Now open your browser and go to:</p>
+  <p><a href="https://bitbucket.org/account/settings/ssh-keys/" target="_blank">https://bitbucket.org/account/settings/ssh-keys/</a></p>
+  <ul>
+    <li>Click <strong>“Add key”</strong></li>
+    <li>Paste the copied SSH key into the <strong>Key</strong> field</li>
+    <li>Give it a <strong>label</strong> (like “Ubuntu-PC”)</li>
+    <li>Click <strong>Add key</strong></li>
+  </ul>
+
+  <h2>✅ Step 6: Test your SSH connection</h2>
+  <pre><code>ssh -T git@bitbucket.org</code></pre>
+  <p>If everything is set up correctly, you’ll see:</p>
+  <pre><code>authenticated via ssh key.
+You can use git to connect to Bitbucket. Shell access is disabled.</code></pre>
+
+  <h2>🎉 Done!</h2>
+  <p>You’ve successfully added your SSH key to Bitbucket.</p>
+</body>
+</html>
