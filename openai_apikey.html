@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setup OpenAI API Key on Ubuntu</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #f7f9fc;
+      color: #222;
+      line-height: 1.6;
+      padding: 40px;
+    }
+    h1, h2 {
+      color: #0056d2;
+    }
+    pre, code {
+      background: #eef3fa;
+      padding: 10px;
+      border-radius: 6px;
+      display: block;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-family: monospace;
+    }
+    .section {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    a {
+      color: #0078ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .note {
+      background: #e8f4ff;
+      border-left: 4px solid #0078ff;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧩 How to Set Up <code>OPENAI_API_KEY</code> on Ubuntu</h1>
+
+  <div class="section">
+    <h2>1️⃣ Get Your API Key</h2>
+    <p>Go to the OpenAI platform:</p>
+    <p><a href="https://platform.openai.com/account/api-keys" target="_blank">https://platform.openai.com/account/api-keys</a></p>
+    <p>Copy your key — it looks like this:</p>
+    <pre>sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</pre>
+  </div>
+
+  <div class="section">
+    <h2>2️⃣ Set the Key Temporarily</h2>
+    <p>Open your terminal and run:</p>
+    <pre>export OPENAI_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"</pre>
+    <div class="note">
+      ✅ This sets the key only for the current terminal session.
+      <br>If you close the terminal, the key will be lost.
+    </div>
+    <p>To check the key:</p>
+    <pre>echo $OPENAI_API_KEY</pre>
+  </div>
+
+  <div class="section">
+    <h2>3️⃣ Make It Permanent</h2>
+    <p>To make sure it’s always available (even after restart):</p>
+
+    <h3>Option A: Bash (default)</h3>
+    <pre>
+echo 'export OPENAI_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"' >> ~/.bashrc
+source ~/.bashrc
+    </pre>
+
+    <h3>Option B: Zsh</h3>
+    <pre>
+echo 'export OPENAI_API_KEY="sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"' >> ~/.zshrc
+source ~/.zshrc
+    </pre>
+
+    <div class="note">
+      💡 Now every time you open a terminal, your API key will be available automatically.
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>4️⃣ Verify the Key</h2>
+    <p>Run this command to check if it’s set:</p>
+    <pre>echo $OPENAI_API_KEY</pre>
+  </div>
+
+  <div class="section">
+    <h2>5️⃣ Use with Python or CLI</h2>
+    <h3>Example for Python:</h3>
+    <pre>
+import openai
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+response = openai.ChatCompletion.create(
+  model="gpt-4o-mini",
+  messages=[{"role": "user", "content": "Hello!"}]
+)
+
+print(response.choices[0].message.content)
+    </pre>
+
+    <h3>Example for CLI:</h3>
+    <pre>openai api chat_completions.create -m gpt-4o-mini -g user "Hello"</pre>
+  </div>
+
+  <div class="section">
+    <h2>💾 Optional: Store in a .env File</h2>
+    <p>For project use, you can save your key in a <code>.env</code> file:</p>
+    <pre>
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    </pre>
+    <p>Then load it with Python using <code>dotenv</code>:</p>
+    <pre>
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+print(os.getenv("OPENAI_API_KEY"))
+    </pre>
+  </div>
+</body>
+</html>

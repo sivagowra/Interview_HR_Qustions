@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attention Is All You Need — Explained</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #000000;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #000000;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table, th, td {
+      border: 1px solid #000000;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    code, pre {
+      background: #f4f4f4;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: block;
+      color: #000000;
+    }
+    ul {
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📄 Attention Is All You Need — Explained</h1>
+  <p><strong>Paper:</strong> Vaswani et al., 2017</p>
+  <p>This paper introduced the <strong>Transformer architecture</strong>, the foundation of modern AI models like ChatGPT, Gemini, Claude, and GPT-4/5.</p>
+
+  <h2>🧠 1. Background — What Was the Problem?</h2>
+  <p>Before Transformers, NLP models used <strong>RNNs</strong> (Recurrent Neural Networks) and <strong>LSTMs</strong> (Long Short-Term Memory). These were slow and struggled with long-range dependencies.</p>
+
+  <ul>
+    <li>Processed words sequentially → slow training</li>
+    <li>Hard to remember long-distance word relationships</li>
+  </ul>
+  <p>The authors wanted a model that could handle long sentences, train faster, and capture distant relationships.</p>
+
+  <h2>🚀 2. The Key Idea — Self-Attention</h2>
+  <p>The Transformer removed recurrence and convolution — it only uses <strong>attention mechanisms</strong> to understand context.</p>
+
+  <h3>🔍 What is Attention?</h3>
+  <p>Attention helps the model focus on relevant words when interpreting meaning.</p>
+  <p><em>Example:</em> “The animal didn’t cross the street because it was too tired.” → The model learns that “it” refers to “animal.”</p>
+
+  <h3>🔗 Self-Attention</h3>
+  <p>Each word looks at all others and decides their importance, creating a weighted context representation — seeing all words at once, not sequentially.</p>
+
+  <h2>🧩 3. Transformer Architecture Overview</h2>
+  <table>
+    <tr><th>Part</th><th>Purpose</th></tr>
+    <tr><td>Encoder</td><td>Reads and understands input sentence</td></tr>
+    <tr><td>Decoder</td><td>Generates output sentence (e.g., translation)</td></tr>
+  </table>
+
+  <p>Each part has layers with two components:</p>
+  <ul>
+    <li>Multi-Head Self-Attention</li>
+    <li>Feed-Forward Neural Network</li>
+  </ul>
+
+  <h3>🧱 Encoder</h3>
+  <ul>
+    <li>Self-Attention — Each word attends to others.</li>
+    <li>Feed Forward Network — Processes attention output.</li>
+    <li>Add & Normalize — Stabilizes training.</li>
+  </ul>
+  <p>6 identical encoder layers are stacked.</p>
+
+  <h3>🧱 Decoder</h3>
+  <ul>
+    <li>Masked Self-Attention — Prevents looking at future words.</li>
+    <li>Encoder-Decoder Attention — Connects input and output.</li>
+    <li>Feed Forward Network + Add & Normalize</li>
+  </ul>
+  <p>6 decoder layers in total.</p>
+
+  <h2>⚙️ 4. Multi-Head Attention</h2>
+  <p>Instead of one attention operation, Transformers use several in parallel. Each “head” learns different relationships — grammar, context, meaning, etc.</p>
+
+  <h2>🔢 5. Positional Encoding</h2>
+  <p>Since Transformers don’t process sequentially, positional encoding (sine/cosine patterns) helps understand word order.</p>
+  <p><em>Example:</em> “I love AI” → embeddings + positional encoding → model knows order.</p>
+
+  <h2>🧮 6. Training Objective</h2>
+  <p>The model uses <strong>cross-entropy loss</strong> to compare predicted and actual translations. Trained on English→German/French tasks.</p>
+
+  <h2>⚡ 7. Results — Why It Was a Big Deal</h2>
+  <table>
+    <tr><th>Feature</th><th>Transformer</th><th>RNN/LSTM</th></tr>
+    <tr><td>Speed</td><td>⚡ Parallel, much faster</td><td>Sequential, slow</td></tr>
+    <tr><td>Memory</td><td>Understands long relationships</td><td>Struggles with long sentences</td></tr>
+    <tr><td>Accuracy</td><td>Higher</td><td>Lower</td></tr>
+    <tr><td>Scalability</td><td>Scales to huge datasets</td><td>Difficult to scale</td></tr>
+  </table>
+
+  <h2>🌍 8. Impact of the Paper</h2>
+  <table>
+    <tr><th>Model</th><th>Built On</th></tr>
+    <tr><td>BERT (2018)</td><td>Transformer Encoder</td></tr>
+    <tr><td>GPT (2018–2025)</td><td>Transformer Decoder</td></tr>
+    <tr><td>T5, BART</td><td>Encoder-Decoder</td></tr>
+    <tr><td>ChatGPT, Gemini, Claude</td><td>Transformer-based LLMs</td></tr>
+  </table>
+
+  <h2>🧩 9. Summary Diagram (Text Form)</h2>
+  <pre>
+Input Sentence → [Embedding + Positional Encoding]
+         ↓
+      Encoder (×6 layers)
+         ↓
+      Decoder (×6 layers)
+         ↓
+   Linear + Softmax → Output Sentence
+  </pre>
+  <p>Each block: [ Multi-Head Attention → Add & Norm → Feed Forward → Add & Norm ]</p>
+
+  <h2>🧠 10. Key Takeaways</h2>
+  <table>
+    <tr><th>Concept</th><th>Meaning</th></tr>
+    <tr><td>Attention</td><td>Focuses on relevant words</td></tr>
+    <tr><td>Self-Attention</td><td>Each word relates to others</td></tr>
+    <tr><td>Multi-Head Attention</td><td>Learns multiple relationships</td></tr>
+    <tr><td>Positional Encoding</td><td>Adds word order info</td></tr>
+    <tr><td>No RNNs/CNNs</td><td>Fully parallelized and faster</td></tr>
+  </table>
+</body>
+</html>

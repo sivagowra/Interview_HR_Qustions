@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Qustions</title>
+    <style>
+.qa p {
+  margin: 4px 0;  /* reduce vertical gap */
+  line-height: 1.3;
+}
+</style>
+</head>
+
+<body>
+    <div class="qa">
+
+    <h4>Q1. What is DevOps, and how is it different from Agile?</h4>
+
+<p>DevOps is about joining development and operations teams.</p>
+<p>Goal is faster software delivery.</p>
+<p>Uses automation tools like Jenkins, Docker, Terraform.</p>
+<p>Agile is about software development method (Scrum, Kanban).</p>
+
+<p>Agile = focus on coding and testing.</p>
+
+<p>DevOps = focus on delivery and running software.</p>
+
+<p>Agile is about team collaboration.</p>
+
+<p>DevOps is about automation and monitoring.</p>
+
+<p>Agile = small sprints.</p>
+
+<p>DevOps = continuous delivery.</p>
+
+
+<h4>Q2. Explain your role and responsibilities in your last project.</h4>
+
+<p>Created CI/CD pipelines in Jenkins.</p>
+
+<p>Automated build, test, and deploy steps.</p>
+
+<p>Managed AWS services (EC2, S3, VPC, IAM).</p>
+
+<p>Used Terraform for infrastructure setup.</p>
+
+<p> Wrote Ansible playbooks for automation.</p>
+
+<p>Containerized apps using Docker.</p>
+
+<p>Deployed apps on Kubernetes clusters.</p>
+
+<p>Monitored with Prometheus + Grafana.</p>
+
+<p>Used Git branching (GitFlow, Feature branch).</p>
+
+<p>Did blue-green deployments.</p>
+
+<p>Added security scans in pipeline.</p>
+
+<p>Worked closely with developers & testers.</p>
+
+<h4>Q3. What challenges did you face in implementing CI/CD pipelines?</h4>
+
+<p>Jenkins build failures.</p>
+
+<p>Wrong dependency versions.</p>
+
+<p>Merge conflicts in Git.</p>
+
+<p>Secrets management.</p>
+
+<p>Slow builds.</p>
+<p>Environment mismatch (dev/prod).</p>
+
+<p>Docker image too big.</p>
+
+<p>Kubernetes pods crash.</p>
+
+<p>Rollback setup issues.</p>
+
+<p>Network latency in AWS.</p>
+
+<p>Security scans delayed builds.</p>
+
+<p>Team coordination problems.</p>
+
+<h4>Q4. How do you ensure zero downtime during deployments?</h4>
+
+<p>Use blue-green deployment.</p>
+
+<p>Or canary deployment.</p>
+
+<p>Keep old version active.</p>
+
+<p>Deploy new version separately.</p>
+
+<p>Use load balancer to switch traffic.</p>
+
+<p>Do health checks.</p>
+
+<p>Use Kubernetes rolling updates.</p>
+
+<p>Automate rollback.</p>
+
+<p>Keep database backward-compatible.</p>
+
+<p>Monitor logs & alerts.</p>
+
+<p>Use IaC for repeatable setup.</p>
+
+<p>Inform team about changes.</p>
+
+<h4>Q5. Can you explain blue-green and canary deployment strategies?</h4>
+
+<p>Blue-Green → 2 environments: Blue (old), Green (new).</p>
+
+<p>Blue runs old version.</p>
+
+<p>Green runs new version.</p>
+
+<p>Test Green fully.</p>
+
+<p>Switch load balancer to Green.</p>
+
+<p>Rollback to Blue if problem.</p>
+
+<p>Canary → release to small users.</p>
+
+<p>Monitor user feedback.</p>
+
+<p>Increase traffic step by step.</p>
+
+<p>If stable → send 100%.</p>
+
+<p>If issue → rollback quickly.</p>
+
+<p>Both reduce downtime.</p>
+
+<h4>Q6. What is the difference between git merge and git rebase?</h4>
+
+<p>Both combine code changes.</p>
+
+<p>git merge keeps history as is.</p>
+
+<p>Creates a new merge commit.</p>
+
+<p>History becomes a little complex.</p>
+
+<p>git rebase rewrites history.</p>
+
+<p>Moves commits on top of latest branch.</p>
+
+<p>History looks clean and linear.</p>
+
+<p>Merge = good for big teams.</p>
+
+<p>Rebase = good for small changes.</p>
+
+<p>Merge safe for history.</p>
+
+<p>Rebase risky if already pushed.</p>
+
+<p>Both useful, depends on workflow.</p>
+
+<h4>How do you resolve merge conflicts in Git?</h4>
+
+<p>First pull latest changes.</p>
+
+<p>Git shows conflict files.</p>
+
+<p>Open file and check conflict markers.</p>
+
+<p>Decide which code to keep.</p>
+
+<p>Edit file manually.</p>
+
+<p>Remove conflict markers.</p>
+
+<p>Test code locally.</p>
+
+<p>Use git add to stage fixed file.</p>
+
+<p>Use git commit to save changes.</p>  
+
+<p>Push to remote branch.</p>
+
+<p>Inform team about resolution.</p>
+
+<p>Avoid conflicts using branching rules.</p>
+
+<h4>Q8. What branching strategy did you use (GitFlow, Feature Branching, etc.)?</h4>
+
+<p>Used GitFlow mostly.</p>
+
+<p>Main branch = master/main.</p>
+
+<p>Development branch = develop.</p>
+
+<p>Feature branches for new code.</p>
+
+<p>Hotfix branches for urgent fixes.</p>
+
+<p>Release branches for final testing.</p>
+
+<p>After testing → merge into master.</p>
+
+<p>Feature branch merged after code review.</p>
+
+<p>GitFlow helps multiple teams.</p>
+
+<p>Feature branching for small tasks.</p>
+
+<p>Improves code quality.</p>
+
+<p>Reduces merge conflicts.</p>
+
+<h4>Q9. Explain how you set up a Jenkins pipeline.</h4>
+
+<p>Install Jenkins on server.</p>
+
+<p>Install needed plugins.</p>
+
+<p>Connect Jenkins with Git repo.</p>               
+
+<p>Create a pipeline job.</p>
+
+<p>Write Jenkinsfile.</p>
+
+<p>Add build steps (Maven, npm, etc.).</p>
+
+<p>Add test steps (JUnit, pytest).</p>
+
+<p>Add Docker build step.</p>
+
+<p>Push Docker image to registry.</p>
+
+<p>Deploy to Kubernetes or server.</p>
+
+<p>Add post-build notifications.</p>
+
+<p>Run pipeline automatically on code push.</p>
+
+<h4>Q10. What are Jenkins declarative and scripted pipelines?</h4>
+
+<p>Two types of Jenkins pipelines.</p>
+
+<p>Declarative = simple and structured.</p>
+
+<p>Uses pipeline { } block.</p>
+
+<p>Easy to read and write.</p>
+
+<p>Good for beginners.</p>
+
+<p>Scripted = more flexible.</p>
+
+<p>Uses Groovy scripting.</p>
+
+<p>Can handle complex workflows.</p>
+    
+<p>More powerful but harder.</p>
+
+<p>More powerful but harder.</p>
+
+<p>Declarative = clean syntax.</p>
+
+<p>Scripted = advanced logic.</p>
+
+<p>Teams use declarative mostly.</p>
+
+<h4>Q11. How do you integrate Maven with Jenkins?</h4>
+
+<p>Install Maven on Jenkins server.</p>
+
+<p>Install Maven plugin in Jenkins.</p>
+
+<p>Add Maven path in Jenkins settings.</p>
+
+<p>Create Jenkins pipeline.</p>
+
+<p>In build step → select Maven.</p>
+
+<p>Add command like mvn clean install.</p>
+
+<p>Run unit tests with Maven.</p>   
+
+<p>Generate reports (Surefire, JaCoCo).</p>
+
+<p>Archive build artifacts.</p>
+
+<p>Trigger next stage if build passes.</p>
+
+<p>Deploy built app to server/Kubernetes.</p>
+
+<p>Automate complete CI/CD with Maven.</p>
+
+
+<h4>Q12. How do you secure credentials in Jenkins?</h4>
+
+<p>Use Jenkins Credentials Plugin.</p>
+
+<p>Store passwords, tokens, keys in Jenkins.</p>
+
+<p>Never hardcode secrets in Jenkinsfile.</p>
+
+<p>Use environment variables.</p>
+
+<p>Integrate with secret managers (AWS Secrets Manager, Vault).</p>
+
+<p>Use Jenkins “withCredentials” block.</p>
+
+<p>Limit access with role-based permissions.</p>
+
+<p>Encrypt credentials in Jenkins.</p>
+
+<p>Rotate credentials regularly.</p>
+
+<p>Keep audit logs of credential usage.</p>
+
+<p>Share secrets only with required jobs.</p>
+
+<p>Follow least privilege principle.</p>        
+
+<h4>Q13. Which AWS services have you worked with?</h4>
+
+<p>EC2 – virtual servers.</p>
+
+<p>S3 – storage buckets.</p>
+
+<p>VPC – private network.</p>
+
+<p>IAM – user and role management.</p>
+
+<p>RDS – managed MySQL database.</p>
+
+<p>CloudWatch – monitoring & alerts.</p>
+
+<p>ELB – load balancing traffic.</p>
+
+<p>Auto Scaling – scaling servers automatically.</p>
+
+<p>SNS – notifications.</p>
+
+<p>EKS – Kubernetes on AWS.</p>
+
+<p>CodePipeline – CI/CD.</p>
+
+<p>CloudFormation/Terraform – IaC.</p>
+
+<h4>Q14. Difference between EC2, Lambda, and ECS?</h4>
+
+<p>EC2 = virtual machine.</p>
+
+<p>You manage OS, patches, scaling.</p>
+
+<p>Runs 24/7 or on demand.</p>
+
+<p>Lambda = serverless function.</p>
+
+<p>Runs code without server management.</p>
+
+<p>Pay only for execution time.</p>
+
+<p>Good for small, event-driven tasks.</p>
+
+<p>ECS = container service.</p>
+
+Run Docker containers at scale.
+
+<p>You define cluster, tasks, services.</p>
+
+<p>Good for microservices.</p>
+
+<p>Choice depends on use case.</p>
+
+<h4>Q15. How do you secure an S3 bucket?</h4>  
+
+<p>Enable block public access.</p>
+
+<p>Use IAM policies for access.</p>
+
+<p>Encrypt data at rest (SSE).</p>
+
+<p>Encrypt data in transit (HTTPS).</p>
+
+<p>Enable bucket versioning.</p>
+
+<p>Enable MFA delete.</p>
+
+<p>Use CloudTrail for logging access.</p>
+
+<p>Apply least privilege principle.</p>
+
+<p>Monitor with AWS Config rules.</p>
+
+<p>Use VPC endpoints for private access.</p>
+
+<p>Rotate keys regularly.</p>
+
+<p>Run security scans on buckets.</p>
+
+<h4>Q16. What is the difference between security groups and NACLs?</h4>
+
+<p>Both control network traffic in AWS.</p>
+
+<p>Security Group = instance-level firewall.</p>
+
+<p>Works at EC2 instance level.</p>
+
+<p>NACL = subnet-level firewall.</p>
+
+<p>Works at VPC subnet level.</p>
+
+<p>Security Groups are stateful.</p>
+
+<p>NACLs are stateless.</p>
+
+<p>Security Groups allow rules only.</p>
+
+<p>NACLs allow and deny rules.</p>
+
+<p>Security Group checks only inbound/outbound.</p>         
+
+<p>NACL checks both ways every time.</p>
+
+<p>Both used together for network security.</p>
+
+<h4>Q17. How do you monitor AWS resources (CloudWatch, Grafana, Datadog)?</h4>
+
+<p>Use CloudWatch for logs and metrics.</p>
+
+<p>Set custom alarms in CloudWatch.</p>
+
+<p>Collect CPU, memory, disk metrics.</p>
+
+<p>Enable CloudWatch dashboards.</p>
+
+<p>Push logs to CloudWatch from apps.</p>
+
+<p>Integrate CloudWatch with Grafana.</p>
+
+<p>Create Grafana dashboards for visualization.</p>
+
+<p>Use Prometheus exporters with Grafana.</p>
+
+<p>Use Datadog agents for monitoring.</p>
+
+<p>Set alerts for critical errors.</p>
+
+<p>Use alerting channels (Slack, Email).</p>
+
+<p>Monitor cost with AWS Billing alerts.</p>
+
+<h4>Q18. Explain Terraform vs. Ansible.</h4>
+
+<p>Terraform = Infrastructure provisioning tool.</p>
+
+<p>Ansible = Configuration management tool.</p>
+
+<p>Terraform = create servers, networks, DBs.</p>
+
+<p>Ansible = install software, configure servers.</p>
+
+<p>Terraform = declarative IaC.</p>
+
+<p>Ansible = procedural + declarative.</p>
+
+<p>Terraform tracks state file.</p>
+
+<p>Ansible runs playbooks.</p>
+
+<p>Terraform better for cloud infra.</p>
+
+<p>Ansible better for app config.</p>
+
+<p>Both can be used together.</p>
+
+<p>Example: Terraform creates EC2 → Ansible configures it.</p>
+
+<h4>Q19. What is the difference between Terraform modules and resources?</h4>
+
+<p>Resource = single AWS item (EC2, S3).</p>
+
+<p>Each resource defines one infra element.</p>
+
+<p>Module = group of resources.</p>
+
+<p>Module is reusable and organized.</p>
+
+<p>Example: VPC module includes VPC, subnets, route tables.</p>
+
+<p>Resources = building blocks.</p>
+
+<p>Modules = packages of blocks.</p>
+
+<p>Modules help reduce code repetition.</p>
+
+<p>Modules improve standardization.</p>
+
+<p>Resources used directly in .tf file.</p>
+
+<p>Modules called with module block.</p>
+
+<p>Use modules for scalability.</p>
+
+<h4>Q20. How do you manage Terraform state files?</h4>
+
+<p>Terraform keeps infra state in terraform.tfstate.</p>
+
+<p>Don’t share state file manually.</p>
+
+<p>Store state remotely.</p>
+
+<p>Use S3 bucket with DynamoDB lock.</p>
+
+<p>Use Terraform Cloud for remote state.</p>
+
+<p>Encrypt state file.</p>
+
+<p>Enable state locking.</p>
+
+<p>Use version control for state backups.</p>
+
+<p>Don’t edit state file manually.</p>
+
+<p>Use terraform refresh to sync.</p>
+
+<p>Use terraform import for existing resources.</p>
+
+<p>Rotate access permissions.</p>
+
+<p>Use terraform refresh to sync.</p>
+
+<p>Use terraform import for existing resources.</p>
+
+<p>Rotate access permissions.</p>
+
+<h4>Q21. Can you explain idempotency in Ansible?</h4>
+
+<p>Idempotency = running playbook multiple times gives same result.</p>
+
+<p>If resource already configured, no change.</p>
+
+<p>If resource missing, Ansible creates it.</p>
+
+<p>If config wrong, Ansible fixes it.</p>
+
+<p>Ensures consistent environment.</p>
+
+<p>Prevents duplicate changes.</p>
+
+<p>Safe to rerun playbooks.</p>
+
+<p>Saves time and reduces errors.</p>
+
+<p>Example: install Apache → if already installed, no action.</p>
+
+<p>Example: create user → if user exists, no change.</p>
+
+<p>This makes Ansible reliable.</p>
+
+<p>All tasks follow desired state.</p>
+
+<h4>Q22. How do you manage secrets in Ansible?  </h4>
+
+<p>Use Ansible Vault.</p>
+
+<p>Encrypt sensitive data (passwords, keys).</p>
+
+<p>Store in vault.yml file.</p>
+
+<p>Run ansible-vault encrypt command.</p>
+
+<p>Decrypt with ansible-vault decrypt.</p>
+
+<p>Use ansible-vault view to see values.</p>
+
+<p>Use --ask-vault-pass option.</p>
+
+<p>Or store vault password in Jenkins.</p>
+
+<p>Or store vault password in Jenkins.</p>
+
+<p>Rotate secrets regularly.</p>
+
+<p>Don’t commit secrets in plain text.</p>
+
+<p>Integrate with AWS Secrets Manager.</p>
+
+<p>Keep separate vault files per environment.</p>
+
+<h4>Q23. What is the difference between Docker image and container?</h4>
+
+<p>Image = blueprint/template.</p>
+
+<p>Container = running instance of image.</p>
+
+<p>Image = static, read-only.</p>
+
+<p>Container = dynamic, can run processes.</p>
+
+<p>One image can create many containers.</p>
+
+<p>Images stored in registry (Docker Hub).</p>
+
+<p>Containers run on Docker engine.</p>
+
+<p>Image includes code + dependencies.</p>
+
+<p>Container uses OS resources.</p>
+
+<p>Image built once, used many times.</p>
+
+<p>Containers are temporary.</p>
+
+<p>Images are permanent until deleted.</p>
+
+<h4>Q24. How do you optimize a Dockerfile?</h4>
+
+<p>Use small base image (Alpine).</p>
+
+<p>Minimize number of layers.</p>
+
+<p>Combine commands in one RUN.</p>
+
+<p>Remove unnecessary packages.</p>
+
+<p>Use .dockerignore to skip files.</p>
+
+<p>Copy only needed files.</p>
+
+<p>Use multi-stage builds.</p>
+
+<p>Cache dependencies properly.</p>
+
+<p>Avoid running as root.</p>
+
+<p>Clean up temporary files.</p>
+
+<p>Use healthcheck instruction.</p>
+
+<p>Keep image size small.</p>
+
+<h4>Q25. Explain Kubernetes components (Pod, Deployment, ReplicaSet, Service).</h4>
+
+<p>Pod = smallest unit, runs container(s).</p>
+
+<p>Pod can have 1 or more containers.</p>
+
+<p>ReplicaSet = ensures multiple pods.</p>
+
+<p>Provides scaling and high availability.</p>
+
+<p>Deployment = manages ReplicaSets.</p>
+
+<p>Handles rolling updates.</p>
+
+<p>Service = exposes pods.</p>
+
+<p>Types: ClusterIP, NodePort, LoadBalancer.</p>
+
+<p>ClusterIP = internal access.</p>
+
+<p>NodePort = external fixed port.</p>
+
+<p>LoadBalancer = cloud-based access.</p>
+
+<p>Together they run apps reliably.</p>
+
+<h4>Q26. How do you perform rolling updates in Kubernetes?</h4>
+
+<p>Rolling update = update pods step by step.</p>
+
+<p>Use kubectl set image.</p>
+
+<p>Or update Deployment YAML.</p>
+
+<p>Kubernetes creates new pods.</p>
+
+<p>Slowly replaces old pods.</p>
+
+<p>No downtime during update.</p>
+
+<p>Can set maxUnavailable and maxSurge.</p>
+
+<p>Monitor rollout with kubectl rollout status.</p>
+
+<p>Check logs for errors.</p>
+
+<p>If failure → rollback with kubectl rollout undo.</p>
+
+<p>Ensures smooth transition.</p>
+
+<p>Safer than replacing all at once.</p>
+
+<h4>Q27. What is the difference between ConfigMap and Secret in Kubernetes?</h4>
+
+<p>Both store configuration data.</p>
+
+<p>ConfigMap = non-sensitive data.</p>
+
+<p>Example: URLs, app configs.</p>
+
+<p>Stored in plain text.</p>
+
+<p>Secret = sensitive data.</p>
+
+<p>Example: passwords, API keys.</p>
+
+<p>Stored in base64 encoded format.</p>
+
+<p>Accessed by pods as env variables.</p>
+
+<p>ConfigMap used for general settings.</p>
+
+<p>Secret used for security.</p>
+
+<p>Both can be mounted as volumes.</p>
+
+<p>Best practice: separate configs & secrets.</p>
+
+<h4>Q28. How do you monitor application performance in Kubernetes?</h4>
+
+<p>Use Prometheus for metrics.</p>
+
+<p>Collect pod CPU and memory usage.</p>
+
+<p>Use Grafana dashboards.</p>
+
+<p>Monitor node health.</p>
+
+<p>Set alerts for high usage.</p>
+
+<p>Use Kubernetes metrics server.</p>
+
+<p>Collect logs with Fluentd/ELK.</p>
+
+<p>Monitor network traffic.</p>
+
+<p>Use Datadog for advanced monitoring.</p>
+
+<p>Integrate with Slack/Email alerts.</p>
+
+<p>Track response times.</p>
+
+<p>Monitor failed pods and restarts.</p>
+
+<h4>Q29. Explain how you set alerts in Prometheus and visualize them in Grafana.</h4>
+
+<p>Install Prometheus and Alertmanager.</p>
+
+<p>Define alert rules in Prometheus.</p>
+
+<p>Example: CPU > 80% for 5 mins.</p>
+
+<p>Save rules in .yml file.</p>
+
+<p>Alertmanager sends notifications.</p>
+
+<p>Configure Slack, Email, PagerDuty.</p>
+
+<p>Install Grafana.</p>
+
+<p>Add Prometheus as data source.</p>
+
+<p>Create custom dashboards.</p>
+
+<p>Add CPU, memory, request graphs.</p>
+
+<p>Use Grafana alerts for visualization.</p>
+
+<p>Monitor system health in real-time.</p>
+
+<h4>Q30. How do you integrate security tools like SonarQube, Trivy, or OWASP in CI/CD?</h4>
+
+<p>Install tool on Jenkins server.</p>
+
+<p>Add plugin or script in pipeline.</p>
+
+<p>SonarQube → code quality scan.</p>
+
+<p>Trivy → scan Docker images.</p>
+
+<p>OWASP Dependency Check → scan libraries.</p>
+
+<p>Run scans during build stage.</p>
+
+<p>Fail build if critical issues found.</p>
+
+<p>Generate security reports.</p>
+
+<p>Store reports in Jenkins.</p>
+
+<p>Notify developers on failure.</p>
+
+<p>Fix vulnerabilities quickly.</p>
+
+<p>Re-run pipeline after fixes.</p>
+
+<h4>Q31. Tell me about a time when a deployment failed. How did you handle it?</h4>
+
+<p>Once deployment failed due to config error.</p>
+
+<p>Service was not starting.</p>
+
+<p>Checked logs immediately.</p>
+
+<p>Found wrong environment variable.</p>
+
+<p>Rolled back to previous version.</p>
+
+<p>Notified team about issue.</p>
+
+<p>Fixed config in Git repo.</p>
+
+<p>Rebuilt Docker image.</p>
+
+<p>Tested in staging first.</p>
+
+<p>Deployed again in production.</p>
+
+<p>Deployment successful.</p>
+
+<p>Learned to test configs carefully.</p>
+
+<h4>Q32. How do you collaborate with developers to resolve issues?</h4>
+
+<p>Join daily stand-up meetings.</p>
+
+<p>Listen to developer pain points.</p>
+
+<p>Share CI/CD pipeline status.</p>
+
+<p>Help debug build failures.</p>
+
+<p>Share monitoring dashboards.</p>
+
+<p>Teach developers about logs.</p>
+
+<p>Review Git branches before merge.</p>
+
+<p>Help with environment setup.</p>
+
+<p>Document deployment process.</p>
+
+<p>Provide feedback on infra changes.</p>
+
+<p>Communicate on Slack/Teams.</p>
+
+<p>Work as one team, not separate.</p>
+
+<h4>Q33. How do you handle pressure when multiple services are down?</h4>
+
+<p>Stay calm and focused.</p>
+
+<p>Prioritize critical services first.</p>
+
+<p>Check monitoring dashboards.</p>
+
+<p>Identify root cause quickly.</p>
+
+<p>Rollback if new deployment caused issue.</p>
+
+<p>Restart failed pods/instances.</p>
+
+<p>Inform stakeholders about downtime.</p>
+
+<p>Work with developers for fixes.</p>
+
+<p>Use runbooks and SOPs.</p>
+
+<p>Escalate if needed.</p>
+
+<p>After fix, do root cause analysis.</p>
+
+<p>Improve process to avoid repeat.</p>
+<h4>Self </h4>
+<p>First of all, thank you for giving me this opportunity to introduce me . Myself GOWRA SIVANARAYANA, from GUNTUR, ANDHRA PRADESH</p>
+<p>I have 2 years of experience as a DevOps Engineer.</p>
+
+<p>my career, I worked on cloud infrastructure using AWS services like EC2, S3, VPC, RDS, and IAM.</p>
+<p>I have strong skills in automation and CI/CD pipelines using Jenkins, Git, and Maven.</p>
+<p>I also worked with Terraform for Infrastructure as Code, and Ansible for configuration management.</p>
+
+<p>I have hands-on experience with Docker and Kubernetes for containerization and deployments.</p>
+<p>I used Prometheus and Grafana for monitoring and alerting, and also worked on security tools like Sonar, Trivy, and OWASP.</p>
+
+<p>In my previous roles, I helped to reduce deployment time, improve monitoring, and maintain high availability of applications.</p>
+<p>I enjoy working with teams, solving problems, and learning new tools in DevOps.</p>
+
+<p style="text-transform: lowercase;">
+  WE ARE A NUCLEAR FAMILY OF 3 MEMBERS. MY MOTHER IS A HOME MAKER.<br>
+  I HAVE AN ENGER BROTHER, RECENTLY COMPLETE DEGREE BSE COMPUTERS.
+  WE ARE A VERY CLOSE-KNIT FAMILY WHO SHARES A GREAT BOND WITH EACH OTHER.
+</p>
+<p>Thank you.</p>
+</div>
+
+<h4> Elastic Compute Cloud (EC2)</h4>
+
+<p>Amazon EC2 is a virtual server service that allows you to run applications in the cloud. You can choose different operating systems like Linux or Windows and select the size of your server depending on your needs. EC2 gives flexibility to start, stop, or resize instances at any time, and you only pay for what you use. Storage can be attached using EBS, and networking is secured with security groups. It supports Auto Scaling and Load Balancing to handle traffic changes. Custom machine images (AMIs) can be created for faster deployments. EC2 is widely used for hosting applications, websites, and backend services.</p>
+
+<h4>Simple Storage Service (S3)</h4> 
+
+<p>Amazon S3 is an object storage service that allows you to store unlimited amounts of data in buckets. It is highly durable with eleven nines (99.999999999%) of data protection, making it reliable for critical files. S3 supports versioning, so you can keep older versions of files, and lifecycle rules to automatically move or delete data. Files stored in S3 can be accessed via URLs and can also be encrypted for security. It is commonly used for storing backups, logs, images, and videos, and it can even host static websites. S3 integrates well with CloudFront for global content delivery.</p>
+
+<h4>3. Identity and Access Management (IAM)</h4>
+
+<p>AWS IAM helps you manage who can access AWS services and resources. With IAM, you can create users, groups, and roles, and then attach policies to give them specific permissions. Multi-Factor Authentication (MFA) can be added for better security. Instead of using the root account, it is always recommended to create IAM users with least privilege access. IAM is free and works with all AWS services. It also supports federated access, meaning you can integrate external login systems like Active Directory or Google. IAM plays a key role in securing your AWS environment.</p>
+
+<h4>4. Elastic Load Balancer (ELB)</h4>
+
+  <p>Elastic Load Balancer automatically distributes incoming traffic across multiple EC2 instances. This improves both availability and fault tolerance. AWS offers three types of load balancers: Application Load Balancer for Layer 7 traffic (HTTP/HTTPS), Network Load Balancer for high-performance Layer 4 traffic (TCP/UDP), and Classic Load Balancer, which is the older version. ELB performs health checks to ensure traffic only goes to healthy servers. It supports SSL/TLS for secure connections, sticky sessions for user consistency, and integrates with Auto Scaling to handle traffic spikes.</p>
+
+<h4> 5. Elastic Beanstalk</h4>
+
+<p>Elastic Beanstalk is a Platform as a Service (PaaS) that makes it easy to deploy and manage applications without worrying about infrastructure. Developers just upload their code, and Beanstalk automatically handles EC2, load balancers, Auto Scaling, and RDS if required. It supports multiple programming languages such as Java, Python, PHP, and Node.js. Beanstalk provides monitoring via CloudWatch and makes deployments easier with blue/green strategies. It is widely used for quick application hosting where developers want to focus only on code, not on servers.</p>
+
+<h4> 6. Auto Scaling Group (ASG)</h4>
+
+<p>Auto Scaling Groups ensure that the right number of EC2 instances are running at any time. They automatically add instances when demand increases and remove them when demand decreases, saving costs. ASGs improve availability by replacing unhealthy instances and maintaining minimum numbers of servers. You can define scaling policies based on CPU usage, memory, or custom CloudWatch metrics. They work closely with load balancers to distribute traffic and provide a reliable, cost-efficient infrastructure setup.</p>
+
+<h4> 7. Elastic Block Storage (EBS)</h4>
+
+<p>Amazon EBS provides block-level storage volumes that can be attached to EC2 instances. It acts like a hard drive in the cloud and stores data persistently, even if the EC2 instance is stopped. Different volume types are available such as SSDs for performance and HDDs for cost-efficient storage. You can resize volumes, take snapshots for backup, and enable encryption for data security. EBS is commonly used for operating systems, databases, and any workload that requires fast, persistent storage.</p>
+
+<h4> 8. Virtual Private Cloud (VPC)</h4>
+
+<p>Amazon VPC allows you to create a private network within AWS. You can define subnets as public or private, attach Internet Gateways for public access, and use NAT Gateways for controlled internet access from private subnets. Security is managed using Security Groups and Network ACLs. Route tables define how traffic flows inside the VPC. You can also connect your VPC to on-premises networks using VPN or Direct Connect. Each AWS account comes with a default VPC, but you can create custom VPCs for better security and control.</p>
+
+<h4> 9. Amazon Machine Images (AMI)</h4>
+
+<p>An Amazon Machine Image is a template used to create EC2 instances. An AMI contains the operating system, application server, and custom software if needed. AWS provides public AMIs, but you can also create your own for standardizing deployments. AMIs can be copied between regions and shared with other accounts. The main benefit of AMIs is faster and consistent server launches. They are essential when deploying multiple servers with the same configuration.</p>
+
+<h4> 10. Simple Notification Service (SNS)</h4>
+
+<p>Amazon SNS is a messaging service that uses a publish/subscribe model. Applications or users can publish messages to a topic, and subscribers such as email, SMS, SQS, or Lambda functions receive those messages. SNS is scalable, reliable, and cost-effective. It is widely used for sending alerts, notifications, and automated messages. For example, CloudWatch alarms can use SNS to notify admins about system issues. SNS ensures fast and reliable message delivery across applications.</p>
+
+<h4> 11. AWS CodePipeline</h4>
+
+<p>AWS CodePipeline is a continuous integration and continuous delivery (CI/CD) service. It automates the process of building, testing, and deploying applications. A pipeline consists of stages such as source, build, test, and deploy. CodePipeline integrates with AWS services like CodeCommit, CodeBuild, CodeDeploy, and third-party tools like GitHub and Jenkins. It also supports manual approvals for production releases. CodePipeline helps organizations deliver software quickly and reliably, following DevOps practices.</p>
+
+<h4> 12. Relational Database Service (RDS)</h4>
+
+<p>Amazon RDS is a managed database service that supports popular engines like MySQL, PostgreSQL, Oracle, SQL Server, and MariaDB. AWS handles backups, patching, and updates, reducing admin work. RDS provides high availability with Multi-AZ deployments and scaling with read replicas. Databases can be encrypted, monitored with CloudWatch, and integrated with IAM for security. It is commonly used for web and enterprise applications needing relational databases without manual maintenance.</p>
+
+<h4> 13. CloudWatch</h4>
+
+<p>Amazon CloudWatch is a monitoring and observability service for AWS resources and applications. It collects metrics such as CPU usage, memory, and disk I/O, as well as logs from applications. You can create alarms to notify or trigger actions when thresholds are crossed. CloudWatch integrates with SNS for alerts and with Auto Scaling for automated adjustments. It also provides dashboards for visualization. CloudWatch is essential for monitoring system health and performance in AWS.</p>
+
+<h4> 14. Route 53</h4>
+
+<p>Amazon Route 53 is a scalable Domain Name System (DNS) service. It can register domain names, route internet traffic to applications, and check the health of resources. Route 53 supports routing policies like weighted, latency-based, failover, and geolocation routing. It integrates with other AWS services like S3, ELB, and CloudFront. Route 53 is highly available, secure, and widely used for managing website traffic globally.</p>
+
+</body>
+</html>
