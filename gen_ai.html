@@ -313,13 +313,17 @@
             people across languages.</p>
     </div>
     <div class="card">
+    <h1>Types of Prompting</h1>
+    <p>Definition of Prompting<br>
+        Prompting is the process of giving specific instructions, questions, or examples to an AI model (like ChatGPT) to guide its response or behavior.<br>
+        A prompt is the input text or command you give — and prompting is how you design and structure that input to get the desired output.</p>
         <h2>🧠 1. Zero-Shot Prompting</h2>
         <p>Zero-shot prompting means giving the model a question or task without any examples or prior instructions. The model uses its existing knowledge to produce an answer. This method is useful when you want a quick response without training or guiding
             the model. It depends fully on the model’s understanding of the language and context. It works best for straightforward questions like definitions, summaries, or factual answers. However, accuracy may decrease if the task is complex or unfamiliar.
             The advantage is simplicity and speed — you just “ask and get.” It’s widely used in Q&A systems and chatbots.</p>
         <p><strong>Examples:</strong></p>
         <p>“Translate ‘Good morning’ to French.”</p>
-        <p>“What is the capital of Japan?”</p>
+        <p>“What is the capital of Japan?”</p>  
         <p>“Write a short paragraph about global warming.”</p>
 
         <h2>🧩 2. Few-Shot Prompting</h2>
@@ -572,6 +576,84 @@ num_tokens = len(encoding.encode("Hello world"))</pre></div>
         </div>
 
     </div>
+
+    <section>
+  <h2>Vector databases and LLMs</h2>
+  <p>
+    Vector databases are essential for enhancing large language models (LLMs) by providing them with persistent memory,
+    overcoming training data cutoffs, and enabling the integration of proprietary data through Retrieval Augmented Generation (RAG).
+  </p>
+
+  <p>
+    They store data as <strong>vector embeddings</strong>, which are numerical representations that preserve semantic meaning,
+    allowing for efficient similarity searches and context-aware responses.
+    This integration is critical for building production-ready generative AI applications that require real-time data retrieval
+    and accurate, up-to-date information.
+  </p>
+
+  <h3>How they help</h3>
+  <p>
+    Vector databases enable <em>semantic similarity search</em>, allowing LLMs to find contextually relevant information
+    even when exact keywords are absent.
+  </p>
+
+  <h3>Typical integration process</h3>
+  <ol>
+    <li>Convert unstructured data into embeddings.</li>
+    <li>Store the embeddings in the vector database.</li>
+    <li>Use search techniques like Approximate Nearest Neighbour (ANN) to retrieve similar vectors.</li>
+  </ol>
+
+  <p>
+    A common implementation method is RAG, where a user query is converted into a vector, searched against the database,
+    and the retrieved context is used to augment the LLM's response generation.
+  </p>
+
+  <h3>Features & examples</h3>
+  <p>
+    Modern vector databases like <em>Weaviate</em>, <em>Pinecone</em>, and <em>Milvus</em> support hybrid search,
+    combining keyword-based (e.g., BM25) and vector-based search to improve result accuracy.
+    Developers can integrate vector databases with LLMs using frameworks that allow for seamless retrieval-augmented generation,
+    such as Weaviate’s <code>.with_generate()</code> method, which extends a semantic search query to include a summarization prompt.
+  </p>
+
+  <h3>Challenges</h3>
+  <ul>
+    <li>Ensuring data quality.</li>
+    <li>Avoiding biases in training data.</li>
+    <li>Managing engineering complexity, especially when scaling to billions of data objects.</li>
+  </ul>
+</section>
+<section>
+  <h2>Retrieval-Augmented Generation (RAG)</h2>
+
+  <p>
+    Retrieval-Augmented Generation (RAG) is an AI method that improves large language models (LLMs)
+    by connecting them with outside and up-to-date data sources. This helps the models give more
+    accurate, current, and topic-specific answers without needing new training.
+  </p>
+
+  <p>
+    The RAG process has two main steps. First, a retrieval model searches a vector database to find
+    documents or information that are similar in meaning to the user’s question. Second, this found
+    information is added to the user’s prompt and sent to the language model, which creates a final
+    answer using both the external data and its built-in knowledge.
+  </p>
+
+  <p>
+    This method reduces the chance of AI making up wrong information (called hallucinations) by
+    using real and trusted data. It also helps models show where the information came from, which
+    makes the results clearer and builds user trust.
+  </p>
+
+  <p>
+    RAG is especially useful for business and research tools, such as smart chatbots and knowledge
+    systems. It lets companies safely connect their models to private or live data sources while
+    keeping control over who can access the data and lowering the cost of computation.
+  </p>
+</section>
+
+
 
     <script>
         function copyHtml(){
