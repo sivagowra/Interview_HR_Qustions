@@ -245,44 +245,6 @@
     <li><strong>Machine learning</strong>, <strong>IoT</strong>, <strong>security</strong>, and more</li>
   </ul>
   <p>AWS is a subset of cloud computing—one of many providers, alongside Microsoft Azure, Google Cloud Platform, IBM Cloud, etc.</p>
-
-  <h2>🔍 Summary of Differences</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Feature</th>
-        <th>Cloud Computing</th>
-        <th>AWS</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Definition</td>
-        <td>General concept of delivering IT services via the internet</td>
-        <td>Specific cloud service provider by Amazon</td>
-      </tr>
-      <tr>
-        <td>Scope</td>
-        <td>Broad, includes many providers</td>
-        <td>Narrower, only AWS services</td>
-      </tr>
-      <tr>
-        <td>Examples</td>
-        <td>Azure, Google Cloud, IBM Cloud</td>
-        <td>EC2, S3, Lambda, RDS, etc.</td>
-      </tr>
-      <tr>
-        <td>Ownership</td>
-        <td>Not owned by any one company</td>
-        <td>Owned and operated by Amazon</td>
-      </tr>
-      <tr>
-        <td>Use Cases</td>
-        <td>Depends on provider and service type</td>
-        <td>Extensive enterprise and developer use</td>
-      </tr>
-    </tbody>
-  </table>
   </div>
 
   <div class="card">
@@ -326,20 +288,17 @@
     <h2>🌍 Types of Cloud: Public, Private, Hybrid</h2>
     <div>
       <h3>Public Cloud</h3>
-      <p>Owned and operated by cloud providers like AWS, Azure, or GCP. Resources are shared among multiple users through the internet.</p>
-      <p><strong>Use cases:</strong> Web hosting, SaaS applications, and startups seeking scalability with low costs.</p>
+      <p>A Public Cloud is a type of cloud that is owned and managed by companies like Amazon Web Services, Microsoft Azure, or Google Cloud. It is open for anyone to use through the internet. Many people and organizations share the same servers and storage, but their data stays separate. It is easy to start using and you only pay for what you use. Public clouds are cheaper and very good for small companies or startups. They are mostly used for hosting websites, apps, and online services.</p>
     </div>
 
     <div>
       <h3>Private Cloud</h3>
-      <p>Used by a single organization. It can be on-premises or hosted by a provider. Provides higher control and security.</p>
-      <p><strong>Use cases:</strong> Banks, governments, and large enterprises handling sensitive data.</p>
+      <p> A Private Cloud is made for one single company or organization. It can be hosted inside the company’s office or by a trusted cloud provider. This cloud is not shared with others, so it gives more privacy and control. It is very secure and is often used for storing sensitive data. Big companies, banks, and government offices use private clouds to protect important information. It costs more than public cloud but gives full control over data and security.</p>
     </div>
 
     <div>
       <h3>Hybrid Cloud</h3>
-      <p>Combination of public and private clouds. Workloads can move between them depending on business needs.</p>
-      <p><strong>Use cases:</strong> Enterprises using public cloud for scalability and private cloud for secure data handling.</p>
+      <p>A Hybrid Cloud is a mix of public and private clouds working together. It allows data and applications to move between both types of clouds easily. This helps companies use the public cloud for simple tasks and the private cloud for secure work. It provides flexibility, better cost control, and improved performance. Many organizations use hybrid clouds to balance safety and scalability. For example, AWS Outposts or Azure Arc are used for hybrid cloud systems.</p>
     </div>
 
     <table aria-label="Cloud types summary">
@@ -383,13 +342,9 @@
         <!-- VM & Hypervisor -->
         <article class="glass p-6 rounded-2xl">
           <h2 class="text-2xl font-bold">1. Virtual Machine (VM) &amp; Hypervisor</h2>
-          <p class="mt-3 text-slate-300">A <strong>Virtual Machine (VM)</strong> is a virtual computer running inside a physical computer. It has its own operating system, CPU, RAM and storage, but exists as software. The <strong>Hypervisor</strong> is the special software that creates and manages those VMs.</p>
-
-          <div class="mt-4 grid sm:grid-cols-2 gap-4">
-            <div class="term border-sky-500">
-              <h3 class="font-semibold">Simple analogy</h3>
-              <p class="text-slate-300">Think of the physical machine as a <em>building</em>. Each VM is a separate <em>apartment</em>. The hypervisor is the <em>building manager</em> who assigns water, power and resources to each apartment.</p>
-            </div>
+          <p class="mt-3 text-slate-300">
+A Virtual Machine, or VM, is a computer created with software inside a real physical computer. It has its own CPU, memory, and storage but runs virtually instead of physically. The Hypervisor is special software that creates and controls these virtual machines. It shares the real computer’s resources among several VMs so they can run at the same time. There are two kinds of hypervisors — Type 1 runs directly on hardware, and Type 2 runs on an operating system. In AWS, the Nitro hypervisor manages EC2 instances behind the scenes.</p>
+    
 
             <div class="term border-emerald-400">
               <h3 class="font-semibold">Types of hypervisors</h3>
@@ -406,8 +361,8 @@
         <!-- AMI -->
         <article class="glass p-6 rounded-2xl">
           <h2 class="text-2xl font-bold">2. AMI (Amazon Machine Image)</h2>
-          <p class="mt-3 text-slate-300">An <strong>AMI</strong> is a template or blueprint used to launch an EC2 instance. It contains the operating system, application code, and configuration. When you launch an instance from an AMI, your server starts with that exact setup.</p>
-
+          <p class="mt-3 text-slate-300">
+An Amazon Machine Image, or AMI, is a ready-made template used to start a new EC2 instance. It includes an operating system, software, and configuration needed to run a server. When you launch an instance from an AMI, it looks exactly like the saved setup. This helps you create many identical servers quickly without manual setup. You can also make your own AMI from an existing server to use later. AWS Marketplace provides many pre-built AMIs like Ubuntu, WordPress, and Windows Server.</p>
           <div class="mt-4 grid sm:grid-cols-2 gap-4">
             <div class="term border-indigo-500">
               <h3 class="font-semibold">Why AMIs are useful</h3>
@@ -430,8 +385,8 @@
         <!-- EBS -->
         <article class="glass p-6 rounded-2xl">
           <h2 class="text-2xl font-bold">3. AWS EBS (Elastic Block Store)</h2>
-          <p class="mt-3 text-slate-300"><strong>EBS</strong> is a virtual hard drive you attach to your EC2 instance. It stores data persistently — even if the EC2 instance is stopped, the EBS volume keeps your files and OS data.</p>
-
+          <p class="mt-3 text-slate-300">
+AWS Elastic Block Store, or EBS, is like a virtual hard disk for your EC2 instance. It stores your data safely and keeps it even after your server is stopped. You can use EBS to take snapshots, create backups, or attach it to another instance. It comes in different types for general use, high speed, or large data storage. Think of it as your computer’s hard drive but hosted in the cloud. EBS volumes make it easy to manage storage and recover data whenever needed.</p>
           <div class="mt-4 grid sm:grid-cols-2 gap-4">
             <div class="term border-yellow-400">
               <h3 class="font-semibold">Key features</h3>
@@ -454,8 +409,7 @@
         <!-- Public IP -->
         <article class="glass p-6 rounded-2xl">
           <h2 class="text-2xl font-bold">4. Public IP</h2>
-          <p class="mt-3 text-slate-300">A <strong>Public IP</strong> is an internet-facing address assigned to an EC2 instance so that it can be reached from the public internet.</p>
-
+          <p class="mt-3 text-slate-300">A Public IP is an internet-facing address that lets your EC2 instance communicate with the outside world. It allows people to visit your website or connect to your server remotely. You can use it to host web applications, APIs, or connect through SSH and RDP. However, AWS-assigned public IPs are temporary and may change when you restart the instance. To keep a fixed address, you should use an Elastic IP. Public IPs are essential when your instance needs to be accessed from anywhere</p>
           <div class="mt-4 grid sm:grid-cols-2 gap-4">
             <div class="term border-cyan-400">
               <h3 class="font-semibold">When to use</h3>
@@ -476,8 +430,8 @@
         <!-- Private IP -->
         <article class="glass p-6 rounded-2xl">
           <h2 class="text-2xl font-bold">5. Private IP</h2>
-          <p class="mt-3 text-slate-300">A <strong>Private IP</strong> is an internal address used inside your Virtual Private Cloud (VPC). It's not reachable from the internet and is used for secure internal communication between servers.</p>
-
+          <p class="mt-3 text-slate-300">
+A Private IP is used for internal communication inside your AWS Virtual Private Cloud (VPC). It allows EC2 instances to talk securely without using the public internet. This is ideal for backend servers, databases, and internal applications. Private IPs protect your systems by keeping them invisible to the outside world. Every EC2 instance automatically gets one private IP when it starts. It’s like having an internal phone number used only inside your company’s network.</p>
           <div class="mt-4 grid sm:grid-cols-2 gap-4">
             <div class="term border-lime-400">
               <h3 class="font-semibold">Use cases</h3>
@@ -487,12 +441,6 @@
                 <li>Keeping sensitive systems off the public internet.</li>
               </ul>
             </div>
-
-            <div class="term border-amber-400">
-              <h3 class="font-semibold">Analogy</h3>
-              <p class="text-slate-300">Like a room number inside a building — only people inside the building can reach you.</p>
-            </div>
-          </div>
 
           <p class="mt-4 text-slate-300">Every EC2 instance receives at least one private IP. You can also add multiple private IPs for special routing or multi-homed applications.</p>
         </article>
@@ -537,51 +485,6 @@
       <!-- Right column: Summary & Tables -->
       <aside class="space-y-6">
         <div class="glass p-6 rounded-2xl">
-          <h3 class="text-xl font-bold">Summary Table</h3>
-          <table class="w-full mt-3 text-sm table-auto">
-            <thead>
-              <tr class="text-slate-300/70">
-                <th class="text-left py-2">Component</th>
-                <th class="text-left py-2">Role</th>
-                <th class="text-left py-2">Simple Example</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-t border-slate-800">
-                <td class="py-2">VM (EC2)</td>
-                <td class="py-2">Virtual computer that runs your apps</td>
-                <td class="py-2">A PC running in the cloud</td>
-              </tr>
-              <tr class="border-t border-slate-800">
-                <td class="py-2">Hypervisor</td>
-                <td class="py-2">Manages VMs on physical hardware</td>
-                <td class="py-2">Building manager</td>
-              </tr>
-              <tr class="border-t border-slate-800">
-                <td class="py-2">AMI</td>
-                <td class="py-2">Blueprint/template to create VMs</td>
-                <td class="py-2">Phone backup image</td>
-              </tr>
-              <tr class="border-t border-slate-800">
-                <td class="py-2">EBS</td>
-                <td class="py-2">Persistent block storage</td>
-                <td class="py-2">Hard drive</td>
-              </tr>
-              <tr class="border-t border-slate-800">
-                <td class="py-2">Public IP</td>
-                <td class="py-2">Internet-facing address</td>
-                <td class="py-2">Home address</td>
-              </tr>
-              <tr class="border-t border-slate-800">
-                <td class="py-2">Private IP</td>
-                <td class="py-2">Internal network address</td>
-                <td class="py-2">Room number</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="glass p-6 rounded-2xl">
           <h3 class="text-xl font-bold">Quick Tips</h3>
           <ul class="mt-3 text-slate-300 list-disc list-inside">
             <li>Use an <strong>AMI</strong> to scale identical servers quickly.</li>
@@ -589,16 +492,6 @@
             <li>Keep backend systems on <strong>private IPs</strong> and use NAT or load balancers for controlled internet access.</li>
             <li>Reserve <strong>Elastic IPs</strong> only when you need stable public IPs.</li>
           </ul>
-        </div>
-
-        <div class="glass p-6 rounded-2xl">
-          <h3 class="text-xl font-bold">Cheat sheet</h3>
-          <p class="mt-2 text-slate-300 text-sm">Copy-paste friendly short lines for quick reference:</p>
-          <pre class="mt-3 bg-slate-800 p-3 rounded text-slate-200 text-sm">AMI = Template for EC2
-EBS = Persistent disk
-Public IP = Internet address
-Private IP = Internal address
-Hypervisor = VM manager</pre>
         </div>
       </aside>
     </main>
