@@ -247,30 +247,60 @@
   <p>AWS is a subset of cloud computing—one of many providers, alongside Microsoft Azure, Google Cloud Platform, IBM Cloud, etc.</p>
   </div>
 
-  <div class="card">
-    <h1>AWS — Simple Guide</h1>
-    <p class="small">A short, easy-to-read HTML page explaining AWS Local Zones, Outposts, Wavelength, Snowball, and cloud types.</p>
-  </div>
+ <div class="card">
+  <h1>AWS — Simple Guide</h1>
+  <p class="small">
+    A short and easy-to-read guide explaining AWS Regions, Availability Zones, Local Zones, Outposts, and Wavelength Zones with examples.
+  </p>
+</div>
 
-  <section class="card" id="local-zones">
-    <h2>🏙️ 1. AWS Local Zones</h2>
-    <p>Local Zones are mini AWS data centers located close to big cities. They help run applications that need very low delay (latency), such as online gaming, video streaming, and real-time apps.</p>
-    <p><strong>More details:</strong> Instead of sending data to faraway AWS Regions, Local Zones bring compute and storage closer to end users. This reduces response time and improves user experience for latency-sensitive workloads.</p>
-    <p>Example: If users are in Mumbai, an AWS Local Zone in Mumbai helps data travel faster to them. It is ideal for healthcare, media, and gaming applications.</p>
-  </section>
+<section class="card" id="regions">
+  <h2>🌍 1. AWS Regions</h2>
+  <p>
+    AWS Regions are large geographical areas where Amazon has built data centers. Each region is separate to provide better security and reliability. 
+    Regions help users choose where they want to store data and run applications. For example, there are AWS Regions in Mumbai, London, and Tokyo.
+    If your business is in India, using the Mumbai Region gives faster performance. Regions also help follow local data laws.
+  </p>
+</section>
 
-  <section class="card" id="outposts">
-    <h2>🏢 2. AWS Outposts</h2>
-    <p>AWS Outposts bring AWS servers and tools into your own data center. It’s like having a small AWS cloud inside your office.</p>
-    <p><strong>More details:</strong> Outposts let companies run AWS services on-premises while maintaining a connection to the main AWS cloud. It’s useful for industries like banking, healthcare, or government where data compliance or local processing is required.</p>
-    <p>Outposts come in two types: fully managed racks by AWS, or small form-factor servers for smaller sites. It provides consistent APIs and services as in AWS Cloud.</p>
-  </section>
+<section class="card" id="availability-zones">
+  <h2>🏗️ 2. AWS Availability Zones (AZs)</h2>
+  <p>
+    Each AWS Region has multiple Availability Zones. An Availability Zone is a group of one or more data centers inside a region.
+    They are built close together but separately, so if one fails, others keep running. This setup improves high availability and disaster recovery.
+    For example, the Mumbai Region has 3 AZs. If one AZ goes down, your app still runs using another AZ. It helps businesses stay online always.
+  </p>
+</section>
 
-  <section class="card" id="wavelength">
-    <h2>📱 3. AWS Wavelength Zones</h2>
-    <p>Wavelength Zones are built inside telecom networks (4G/5G). AWS places servers in telecom operator sites so mobile apps get ultra-low latency.</p>
-    <p><strong>More details:</strong> This helps developers build edge applications such as live streaming, AR/VR, and autonomous vehicles that need milliseconds of response time. AWS partners with telecoms like Verizon, Vodafone, and Bharti Airtel to provide these zones.</p>
-  </section>
+<section class="card" id="local-zones">
+  <h2>🏙️ 3. AWS Local Zones</h2>
+  <p>
+    Local Zones are smaller AWS data centers placed near big cities. They help reduce delay (latency) for apps that need fast response.
+    Data does not travel far to main regions, so apps like gaming, video streaming, and healthcare run faster. 
+    For example, AWS has a Local Zone in Mumbai to serve local users quickly. It’s great for real-time and media-based apps.
+    Local Zones bring cloud power closer to end users for a smoother experience.
+  </p>
+</section>
+
+<section class="card" id="outposts">
+  <h2>🏢 4. AWS Outposts</h2>
+  <p>
+    AWS Outposts bring AWS servers and tools directly into your own building or data center. It’s like having a small AWS inside your office.
+    It helps companies that must keep data locally but still want AWS features. Outposts stay connected to the main AWS Cloud for updates and backup.
+    For example, a hospital or bank can use Outposts to store sensitive data on-site. It gives the same APIs and services as in the AWS Cloud.
+  </p>
+</section>
+
+<section class="card" id="wavelength">
+  <h2>📱 5. AWS Wavelength Zones</h2>
+  <p>
+    Wavelength Zones place AWS services inside telecom networks (like 4G or 5G towers). This gives ultra-low latency for mobile apps and devices.
+    It helps build apps needing very fast responses, such as AR/VR, online games, or self-driving cars. 
+    AWS works with telecom partners like Verizon, Vodafone, and Airtel for these zones.
+    For example, when a user plays a mobile game, data travels only a short distance to a Wavelength Zone, making it very smooth and fast.
+  </p>
+</section>
+
 
   <section class="card" id="snowball">
     <h2>🧊 4. AWS Snowball (Data Transfer)</h2>
@@ -486,30 +516,6 @@ A Private IP is used for internal communication inside your AWS Virtual Private 
             <li>A <strong>Private IP</strong> is assigned for internal communication.</li>
             <li>If needed, AWS assigns a <strong>Public IP</strong> for internet access (or an Elastic IP for permanence).</li>
           </ol>
-
-          <div class="mt-6">
-            <h3 class="font-semibold text-lg">Quick diagram</h3>
-            <svg class="w-full h-48 mt-3" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-              <rect x="20" y="20" width="760" height="160" rx="8" fill="#0b1220" stroke="#152238" />
-              <text x="40" y="48" fill="#a3e3e1" font-size="16">Physical Host (AWS Data Center)</text>
-
-              <rect x="40" y="64" width="200" height="100" rx="6" fill="#071022" stroke="#123" />
-              <text x="60" y="88" fill="#9eead6">Hypervisor</text>
-              <text x="60" y="106" fill="#9eead6">(Nitro)</text>
-
-              <rect x="260" y="64" width="200" height="100" rx="6" fill="#071022" stroke="#123" />
-              <text x="280" y="88" fill="#c7d2fe">EC2 (VM)</text>
-              <text x="280" y="106" fill="#c7d2fe">- Private IP</text>
-              <text x="280" y="124" fill="#c7d2fe">- Public IP</text>
-
-              <rect x="480" y="64" width="220" height="100" rx="6" fill="#071022" stroke="#123" />
-              <text x="500" y="88" fill="#ffd7a6">EBS Volume</text>
-              <text x="500" y="106" fill="#ffd7a6">(Persistent storage)</text>
-
-              <line x1="260" y1="114" x2="480" y2="114" stroke="#2dd4bf" stroke-width="2" stroke-dasharray="6 4" />
-              <text x="340" y="104" fill="#94a3b8" font-size="12">attach/detach</text>
-            </svg>
-          </div>
         </article>
       </section>
 
