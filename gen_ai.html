@@ -250,34 +250,24 @@
     <div class="card">
         <h1>LLMs Capabilities in Generative AI</h1>
         <p>Large Language Models (LLMs) are powerful AI models that can perform many tasks in Generative AI. They can generate content, understand language, and help create applications. Below is a description of their main capabilities in simple English.</p>
-    </div>
 
-    <div class="card">
         <h2>Text Generation</h2>
         <p>LLMs can generate text automatically in many forms. They can write essays, articles, stories, emails, social media posts, and even code. They are capable of answering questions intelligently and providing creative writing suggestions. They can
             summarize long text into key points, draft reports and documentation, and suggest dialogue for chatbots or virtual assistants. Essentially, LLMs can create almost any type of text content you need, quickly and accurately.</p>
-    </div>
 
-    <div class="card">
         <h2>Image Generation</h2>
         <p>LLMs, when combined with generative image models, can create images from text prompts. They can produce illustrations, digital art, logos, and branding visuals. They can turn sketches into polished images, generate avatars or character designs,
             and create realistic photos for media or advertisements. They can also produce graphics for social media posts, concept art for games or movies, patterns and textures for designs, and even storyboards or visual ideas from text descriptions.</p>
-    </div>
 
-    <div class="card">
         <h2>Summarization</h2>
         <p>LLMs can read and understand long documents and then provide concise summaries. They can shorten articles into key points, create executive summaries of reports, or provide bullet-point summaries for books or papers. They can give quick overviews
             of news articles, summarize meeting notes, highlight the main points of research papers, and create concise versions of emails. They can also extract important data from documents, make summaries easy to understand, and provide TL;DR versions
             for quick reading.</p>
-    </div>
 
-    <div class="card">
         <h2>Classification </h2>
         <p>LLMs can classify information into categories. For example, they can sort text as spam or not spam, detect sentiment as positive, negative, or neutral, and tag topics in articles. They can identify the language of a text, understand customer intent,
             and classify messages on social media or emails. They can also label images or other content automatically, categorize products in e-commerce data, detect harmful content, and organize documents for easy search and retrieval.</p>
-    </div>
 
-    <div class="card">
         <h2>Translation</h2>
         <p>LLMs can translate text between multiple languages. They can provide multilingual customer support, translate websites and apps for global audiences, and convert documents into other languages. They can support subtitles for videos, translate
             technical content accurately, help learners understand foreign languages, enable real-time chat translation, translate user reviews or comments, and assist in localization for international marketing. This makes LLMs very useful for connecting
@@ -409,7 +399,7 @@ and
                 <div class="subtitle">A clear summary of the OpenAI Embeddings documentation, with examples and code.</div>
             </div>
             <div class="actions">
-                <button class="btn" onclick="downloadHtml()">Download .html</button>
+                <!-- <button class="btn" onclick="downloadHtml()">Download .html</button> -->
             </div>
         </header>
 
@@ -520,30 +510,6 @@ print(response.data[0].embedding)</pre>
                 <li><strong>Zero-shot classification</strong> — classify without training examples.</li>
                 <li><strong>Cold-start recommendations</strong> — create embeddings for new users/items.</li>
             </ul>
-
-            <h2>FAQ (Important Questions)</h2>
-            <p><strong>Q1: How to count tokens before embedding?</strong>
-                <br> Use the <code>tiktoken</code> library to count tokens for the model's encoding (e.g., <code>cl100k_base</code> for v3 models):</p>
-            <div class="code"><pre>import tiktoken
-encoding = tiktoken.get_encoding("cl100k_base")
-num_tokens = len(encoding.encode("Hello world"))</pre></div>
-
-            <p><strong>Q2: How to search many vectors quickly?</strong>
-                <br> Use a vector database like FAISS, Pinecone, Qdrant, Weaviate, or Milvus for fast nearest-neighbor search.</p>
-
-            <p><strong>Q3: Which distance function should I use?</strong>
-                <br> Cosine similarity is recommended. OpenAI embeddings are normalized to length 1, so cosine similarity can be computed with a dot product and gives the same ranking as Euclidean distance on normalized vectors.</p>
-
-            <p><strong>Q4: Can I share my embeddings?</strong>
-                <br> Yes — customers own inputs and outputs. Make sure your data sharing follows applicable laws and OpenAI Terms.</p>
-
-            <p><strong>Q5: Do embeddings know recent events?</strong>
-                <br> No — text-embedding-3 models were trained on data up to September 2021. They do not know events after that date.</p>
-
-            <h2>Short Summary (One Paragraph)</h2>
-            <p>Embeddings are numeric vectors that capture text meaning. They allow machines to measure how similar or different texts are. Use them for search, recommendations, classification, clustering, and many other tasks. OpenAI provides v3 models
-                that are powerful, multilingual, and cost-effective for embedding-based applications.</p>
-
         </div>
 
     </div>
