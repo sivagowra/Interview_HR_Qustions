@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EC2 Concepts — No Word Cut</title>
+   <style>
+  .content {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #111;
+    background: #fbfbfb;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+  }
+
+  .no-break {
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-word-break: normal;
+    -webkit-line-break: after-white-space;
+  }
+
+  .no-break p {
+    margin: 0;
+    white-space: normal;
+  }
+
+  @media (max-width: 520px) {
+    .content { margin: 16px; padding: 14px; font-size: 15px; }
+  }
+
+  h2 {
+    margin-top: 1.5em;
+    font-size: 20px;
+    color: #0073e6; /* Blue color */
+  }
+</style>
+</head>
+<body>
+
+  <article class="content no-break">
+    <h2>Auto Scaling Groups</h2>
+    <p>
+      An Auto Scaling Group (ASG) in Amazon EC2 automatically manages the number of instances running in your application to maintain performance and cost efficiency. 
+      It ensures that the right number of EC2 instances are available to handle traffic or workload changes. When demand increases, 
+      the group launches new instances; when demand decreases, it terminates unnecessary ones. 
+      ASGs use scaling policies and CloudWatch alarms to decide when to adjust capacity. 
+      This automation improves reliability, reduces manual intervention, and optimizes costs by matching capacity to actual demand.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Network and Security</h2>
+    <p>
+      The Network & Security section in Amazon EC2 manages how instances communicate securely within the AWS cloud and with the internet.
+      It includes tools and resources like VPCs, subnets, route tables, and firewalls to control network flow. Through these features, 
+      users can design isolated networks, set access rules, and manage IP addressing. 
+      Security mechanisms like encryption and identity controls protect data in transit and at rest. 
+      Together, these features provide a secure and flexible foundation for running applications in AWS.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Security Groups</h2>
+    <p>
+      A Security Group acts as a virtual firewall for your EC2 instances, controlling inbound and outbound traffic.
+      It defines which protocols, ports, and IP ranges are allowed to connect to the instance.
+      Security Groups are stateful, meaning return traffic is automatically allowed once a request is permitted. 
+      You can associate multiple security groups with an instance for fine-grained control. 
+      This ensures only trusted and necessary traffic reaches your resources, enhancing network security.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Elastic IPs</h2>
+    <p>
+      An Elastic IP address (EIP) is a static, public IPv4 address designed for dynamic cloud computing.
+      Unlike regular IPs that change when an instance is stopped, an Elastic IP remains constant. 
+      It allows you to quickly remap the address to another instance in case of failure, ensuring high availability.
+      EIPs are particularly useful for hosting applications that require a fixed public endpoint.
+      AWS charges for unused EIPs to encourage efficient IP usage.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Placement Groups</h2>
+    <p>
+      Placement Groups determine how EC2 instances are physically arranged within AWS infrastructure to optimize performance or availability.
+      There are three types—Cluster, Spread, and Partition. 
+      Cluster groups place instances close together for low-latency, high-throughput networking. 
+      Spread groups distribute instances across hardware to reduce correlated failures. 
+      Partition groups organize instances into partitions for large-scale distributed workloads.
+      Choosing the right placement strategy ensures better performance, reliability, and fault tolerance.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Key Pair</h2>
+    <p>
+      A Key Pair in EC2 is used to securely connect to instances using SSH or RDP without needing a password.
+      It consists of a public key stored by AWS and a private key kept by the user. 
+      When launching an instance, AWS installs the public key, allowing authentication using the private key.
+      Losing the private key can result in losing access to the instance, so it must be stored carefully. 
+      Key Pairs ensure secure, encrypted communication between users and their instances.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Network Interfaces</h2>
+    <p>
+      A Network Interface, also known as an Elastic Network Interface (ENI), represents a virtual network card attached to an EC2 instance.
+      It includes attributes such as a primary private IP address, MAC address, and one or more security groups. 
+      ENIs enable flexible network configurations, such as managing multiple IPs or separating traffic for monitoring. 
+      They can be attached, detached, or moved between instances for fault tolerance. 
+      Network Interfaces provide greater control over networking and redundancy in complex architectures.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Volumes</h2>
+    <p>
+      In Amazon EC2, a Volume refers to an Elastic Block Store (EBS) volume, which provides persistent storage for your instances. 
+      It acts like a virtual hard drive that can be attached to one or more EC2 instances.
+      Volumes remain available even after an instance is stopped, allowing data to persist independently. 
+      They can be resized, backed up, and encrypted for security and flexibility. 
+      Different volume types offer various performance levels to suit workloads such as databases, analytics, or general computing.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Snapshots</h2>
+    <p>
+      A Snapshot is a point-in-time backup of an Amazon EBS volume. 
+      It captures the data stored on the volume and saves it to Amazon S3 for durability and long-term storage. 
+      Snapshots make it easy to restore volumes or create new ones with the same data configuration. 
+      They are incremental, meaning only changed data is saved after the first snapshot, which reduces storage costs. 
+      Snapshots are commonly used for data backup, disaster recovery, and migrating volumes across regions.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Lifecycle Manager</h2>
+    <p>
+      The Amazon Data Lifecycle Manager (DLM) automates the creation, retention, and deletion of EBS snapshots and AMIs. 
+      It helps manage backup policies to ensure data protection without manual intervention. 
+      Users can define lifecycle policies specifying when to create backups and how long to retain them. 
+      This automation reduces storage costs and ensures compliance with organizational data retention requirements. 
+      DLM improves reliability by regularly creating and cleaning up backups based on user-defined schedules.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Amazon Machine Image (AMI)</h2>
+    <p>
+      An Amazon Machine Image (AMI) is a pre-configured template that contains the information required to launch an EC2 instance. 
+      It includes the operating system, application server, and any software or settings needed for deployment. 
+      When you start an instance, you choose an AMI as the base image, ensuring that every new instance is identical in setup.
+      AMIs simplify scaling by allowing you to create multiple instances with the same configuration. 
+      Users can create custom AMIs or use public ones provided by AWS or the community.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>AMI Catalog</h2>
+    <p>
+      The AMI Catalog is a centralized collection of available Amazon Machine Images that users can browse and select from when launching instances. 
+      It includes AMIs provided by AWS, third-party vendors, and community contributors. 
+      The catalog makes it easy to search for images based on criteria such as operating system, software stack, region, or architecture. 
+      Users can also manage private AMIs they’ve created within their own accounts. 
+      By using the AMI Catalog, organizations can quickly find secure, optimized, and up-to-date images for their workloads.
+    </p>
+  </article>
+  <article class="content no-break">
+    <h2>Instances</h2>
+    <p>
+      An Amazon EC2 instance is a virtual server that provides resizable computing capacity in the cloud. 
+      It allows users to run applications just like on a physical machine, but with the flexibility to scale up or down as needed. 
+      Each instance can be configured with specific operating systems, storage, and networking options. 
+      Instances can be launched, stopped, or terminated based on workload requirements, giving users full control over their compute resources.
+       They are billed according to the amount of time they run and the pricing model chosen.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Instance Types</h2>
+    <p>
+      Instance types define the combination of CPU, memory, storage, and networking capacity available to EC2 instances. 
+      AWS offers many families of instance types optimized for different tasks such as general purpose, compute intensive, memory intensive, or storage optimized workloads. 
+      By selecting the right instance type, users can ensure their applications perform efficiently and cost-effectively. 
+      Each instance type provides a balance of resources suited for specific performance needs.
+       This flexibility allows organizations to match computing power to their application’s requirements.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Launch Templates</h2>
+    <p>
+      Launch Templates in AWS are blueprints that store configuration settings used to create EC2 instances consistently.
+      They contain details such as the Amazon Machine Image (AMI), instance type, key pair, security groups, and network settings.
+      By using templates, teams can standardize instance launches and reduce manual errors. 
+      They also support versioning, allowing users to modify configurations without losing older versions. 
+      This feature simplifies automation and makes large-scale instance deployment faster and more reliable.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Spot Requests</h2>
+    <p>
+      Spot Requests allow users to purchase unused EC2 capacity at discounted prices compared to On-Demand rates. 
+      When a user submits a Spot Request, AWS fulfills it if spare capacity is available and terminates it when demand increases. 
+      This model is ideal for fault-tolerant or flexible workloads such as data analysis or testing. 
+      It provides substantial cost savings, often up to 90%, though availability may vary.
+      Users can specify maximum bid prices or let AWS manage bids automatically through Spot Fleets.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Savings Plans</h2>
+    <p>
+      Savings Plans are flexible pricing models that help users save money on AWS compute usage
+       by committing to a consistent amount of usage (in $/hour) over one or three years. 
+      Unlike Reserved Instances, Savings Plans automatically apply discounts across EC2, Fargate, and Lambda. 
+      They offer two types—Compute Savings Plans for the most flexibility, and EC2 Instance Savings Plans for specific instance families. 
+      This model allows users to reduce costs while maintaining flexibility to change regions, instance sizes, or operating systems.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Reserved Instances</h2>
+    <p>
+      Reserved Instances (RIs) provide significant discounts compared to On-Demand pricing in exchange for 
+      committing to use specific instance types in a region for a one- or three-year term.
+     They are best suited for steady-state workloads with predictable usage.
+     RIs can be either Standard (offering the highest savings) or Convertible (allowing instance type changes).
+     This model helps organizations reduce long-term compute costs. 
+     While less flexible than Savings Plans, RIs offer reliable capacity and predictable billing.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Dedicated Hosts</h2>
+    <p>
+      A Dedicated Host is a physical server fully dedicated to a single AWS customer. 
+      It allows users to use their existing software licenses that are bound to physical hardware, helping meet compliance or regulatory requirements. 
+      Dedicated Hosts provide visibility into the physical sockets and cores, giving users greater control over placement. 
+      They eliminate “noisy neighbor” issues by isolating workloads on private hardware. 
+      This option is ideal for organizations requiring strict security or licensing control over their cloud infrastructure.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Capacity Reservations</h2>
+    <p>
+      Capacity Reservations guarantee EC2 instance capacity in a specific Availability Zone for as long as needed. 
+      They ensure that users can launch instances at any time without worrying about capacity shortages.
+       This is particularly useful for mission-critical or time-sensitive applications. 
+       Users pay On-Demand rates whether or not the reserved capacity is used. 
+       Capacity Reservations can also be combined with Savings Plans or RIs to optimize costs while ensuring guaranteed compute availability.
+    </p>
+  </article>
+
+  <article class="content no-break">
+    <h2>Capacity Manager</h2>
+    <p>
+      Capacity Manager is an AWS feature that helps users plan and manage EC2 capacity efficiently.
+       It provides insights into current and future capacity needs, helping organizations avoid shortages during scaling or high-demand events. 
+       Through automation and monitoring, Capacity Manager ensures optimal utilization of resources across Availability Zones.
+        It integrates with other AWS services to balance performance and cost.
+         This feature helps maintain high availability and reliability for applications that depend on consistent compute power.
+    </p>
+  </article>
+
+</body>
+</html>
+

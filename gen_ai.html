@@ -353,6 +353,104 @@
         <p>“Brainstorm ways to use drones for agriculture improvement.”</p>
 
     </div>
+      <section>
+                <h2>Large Language Model (LLM)</h2>
+                <p>A Large Language Model (LLM) is a smart computer program that can understand and write human language.
+                    It learns by reading a huge amount of text from books, websites, and articles. After learning, it can do
+                    many things like answering questions, writing essays, translating languages, summarizing text, or even helping 
+                    with computer code. LLMs use a special method called deep learning, which helps them find patterns in words and sentences. 
+                    Famous examples are ChatGPT by OpenAI, Gemini by Google, and LLaMA by Meta. These models have billions of small parts called parameters 
+                    that help them make better guesses about what to say next. They are used in chatbots, search tools, and AI assistants. Before being used, 
+                    they go through training and fine-tuning to make them more useful and accurate. Although LLMs are very powerful, they can sometimes make mistakes 
+                    or give wrong information. Still, they are changing the way people talk and work with computers.</p>
+        </section>
+
+    <section>
+    <h2>Vector DB</h2>
+    <p>
+        A vector database is a special kind of database made to store and search data represented as vectors, which are numerical lists showing meanings or features of information.
+        These vectors come from AI models that convert text, images, or audio into numbers so computers can understand them. Vector databases help find similar items quickly by comparing
+        how close these vectors are to each other. For example, they can be used to search for text with similar meaning or images that look alike. Unlike normal databases that match exact values, 
+        vector databases find results based on meaning or similarity. They are very useful in AI applications like chatbots, recommendation systems, and image recognition. Popular vector databases 
+        include Pinecone, FAISS, Weaviate, and Milvus. In simple terms, a vector database helps AI find and understand things that are alike in meaning, not just in words.
+    </p>
+</section>
+<section>
+    <h2>OpenAI</h2>
+<p>OpenAI is a company that develops advanced artificial intelligence systems to make technology more useful and safe for everyone. It creates powerful AI models like ChatGPT, which can understand
+and generate human-like text for various tasks such as writing, coding, and problem-solving. OpenAI’s goal is to ensure that artificial intelligence benefits all of humanity. It also builds other
+AI tools like DALL·E for creating images and Whisper for converting speech into text. These tools are used in education, business, research, and creativity to make work faster and easier.
+</p> 
+<p>OpenAI was founded to study and guide the future of AI responsibly while encouraging innovation. Its technology helps developers and companies create smart applications that can think and 
+respond naturally. In simple terms, OpenAI helps bring human-like intelligence into computers to solve real-world problems.
+    </p>
+</section>
+
+<section>
+    <h2>
+        Langchain
+    </h2>
+    <p>
+        LangChain is an open-source framework designed to help developers build powerful applications
+        that use large language models (LLMs) like GPT. It connects LLMs with external data sources,
+        APIs, and tools, enabling them to reason, act, and interact more effectively. With LangChain,
+        developers can create chatbots, automation systems, and intelligent agents that remember context 
+        and perform complex workflows.</p>
+
+        <p>It simplifies the process of integrating natural language understanding into real-world applications.</p>
+
+        <p>The framework supports features like prompt templates, memory, and document retrieval to make responses
+        more accurate and relevant. LangChain can also interact with databases, APIs, and other services to fetch 
+        or process information dynamically. It’s widely used in AI research, data analysis, and enterprise automation. 
+        Overall, LangChain acts as a bridge between human language and digital systems, allowing AI models to become
+        more useful and interactive.</p>
+    </p>
+</section>
+
+<section>
+    <h2>LangGraph</h2>
+    <p>
+        LangGraph is an open-source framework designed for building advanced AI agent systems that go beyond simple one-step tasks. At its core, it uses a graph-based architecture where each node represents a distinct action or decision, and edges define how workflows branch, iterate or loop based on evolving state. 
+
+ Unlike simpler tools, LangGraph retains long-term context and memory so agents can remember past interactions, persist state across sessions and handle workflows that span many steps. 
+
+ It also supports human-in-the-loop mechanisms, letting people intervene, monitor or adjust agent behaviour dynamically to ensure reliability in real-world deployments. 
+
+ Because of its flexibility, it’s suitable when tasks are complex, multi-actor or require branching logic rather than just a linear prompt-response flow. 
+LangChain AI
+ While it can be used alongside LangChain, LangGraph gives developers lower-level control and is geared for production-scale agent orchestration rather than simple chains. 
+LangChain Academy
+ In simple terms, if you imagine an AI assistant that doesn’t just ask a question and answer it once, but instead evaluates conditions, remembers context, calls tools, loops back, and adapts its path — LangGraph is the framework enabling that kind of “thinking flow”. Finally, it is open-source under the MIT license, meaning you can use and adapt it freely for building your own sophisticated agent workflows.
+    </p>
+</section>
+    <section>
+  <h2>Retrieval-Augmented Generation (RAG)</h2>
+
+  <p>
+    Retrieval-Augmented Generation (RAG) is an AI method that improves large language models (LLMs)
+    by connecting them with outside and up-to-date data sources. This helps the models give more
+    accurate, current, and topic-specific answers without needing new training.
+  </p>
+
+  <p>
+    The RAG process has two main steps. First, a retrieval model searches a vector database to find
+    documents or information that are similar in meaning to the user’s question. Second, this found
+    information is added to the user’s prompt and sent to the language model, which creates a final
+    answer using both the external data and its built-in knowledge.
+  </p>
+
+  <p>
+    This method reduces the chance of AI making up wrong information (called hallucinations) by
+    using real and trusted data. It also helps models show where the information came from, which
+    makes the results clearer and builds user trust.
+  </p>
+
+  <p>
+    RAG is especially useful for business and research tools, such as smart chatbots and knowledge
+    systems. It lets companies safely connect their models to private or live data sources while
+    keeping control over who can access the data and lowering the cost of computation.
+  </p>
+</section>
 
     <div class="card">
         <h1>🧠 LLM Vectors — Simple Definition</h1>
@@ -511,7 +609,6 @@ print(response.data[0].embedding)</pre>
                 <li><strong>Cold-start recommendations</strong> — create embeddings for new users/items.</li>
             </ul>
         </div>
-
     </div>
 
     <section>
@@ -561,36 +658,6 @@ print(response.data[0].embedding)</pre>
     <li>Managing engineering complexity, especially when scaling to billions of data objects.</li>
   </ul>
 </section>
-<section>
-  <h2>Retrieval-Augmented Generation (RAG)</h2>
-
-  <p>
-    Retrieval-Augmented Generation (RAG) is an AI method that improves large language models (LLMs)
-    by connecting them with outside and up-to-date data sources. This helps the models give more
-    accurate, current, and topic-specific answers without needing new training.
-  </p>
-
-  <p>
-    The RAG process has two main steps. First, a retrieval model searches a vector database to find
-    documents or information that are similar in meaning to the user’s question. Second, this found
-    information is added to the user’s prompt and sent to the language model, which creates a final
-    answer using both the external data and its built-in knowledge.
-  </p>
-
-  <p>
-    This method reduces the chance of AI making up wrong information (called hallucinations) by
-    using real and trusted data. It also helps models show where the information came from, which
-    makes the results clearer and builds user trust.
-  </p>
-
-  <p>
-    RAG is especially useful for business and research tools, such as smart chatbots and knowledge
-    systems. It lets companies safely connect their models to private or live data sources while
-    keeping control over who can access the data and lowering the cost of computation.
-  </p>
-</section>
-
-
 
     <script>
         function copyHtml(){
