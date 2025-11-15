@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AWS EC2 Volume Partition & Mount Guide</title>
+<meta charset="UTF-8">
+
+<!-- Full-screen styling applied (content not modified) -->
+<style>
+    body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        line-height: 1.7;
+        padding: 30px;
+        background: #fafafa;
+        color: #222;
+        width: 100%;
+        margin: 0;
+    }
+
+    h1, h2, h3 {
+        font-weight: 600;
+        margin-top: 30px;
+        color: #0a3d62;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        font-size: 32px;
+        text-align: left; /* changed for fullscreen */
+    }
+
+    pre {
+        background: #f0f0f0;
+        padding: 16px;
+        border-left: 5px solid #0a3d62;
+        border-radius: 6px;
+        font-size: 15px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+    }
+
+    code {
+        background: #f0f0f0;
+        padding: 3px 6px;
+        border-radius: 4px;
+        font-size: 15px;
+    }
+
+    ul {
+        background: #f0f0f0;
+        padding: 12px 18px;
+        border-radius: 6px;
+        border-left: 5px solid #0a3d62;
+        list-style: square;
+    }
+
+    p {
+        margin: 12px 0;
+        font-size: 16px;
+    }
+
+    div {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        margin-top: 25px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        width: 100%;
+    }
+</style>
+</head>
+<body>
+
+<h1>EC2 Ubuntu — Volume Partition, Format & Mount Guide</h1>
+
+<h2>1. Create Partition on /dev/xvdf</h2>
+<pre>
+sudo fdisk /dev/xvdf
+
+Command (m for help): n
+p
+1
+&lt;enter&gt;
+&lt;enter&gt;
+w
+</pre>
+
+<h2>2. Format & Mount /dev/xvdf1</h2>
+<pre>
+sudo mkfs.ext4 /dev/xvdf1
+sudo mkdir /mnt/vol1
+sudo mount /dev/xvdf1 /mnt/vol1
+</pre>
+
+<h2>3. Check Mounted Volumes</h2>
+<pre>
+df -h
+</pre>
+
+
+<div>
+
+<h3>✅ PART 1 — How to UNMOUNT & DETACH VOLUME (OLD INSTANCE)</h3>
+
+<p><strong>1️⃣ Unmount the volume</strong></p>
+<p>If your volume is mounted at <code>/mnt/vol1</code>:</p>
+
+<pre>sudo umount /mnt/vol1</pre>
+
+<p><strong>2️⃣ Confirm unmount</strong></p>
+<pre>df -h</pre>
+
+<p>The volume should NOT appear in the output.</p>
+
+<p><strong>3️⃣ Detach from EC2</strong></p>
+<p>Go to <strong>AWS Console → EC2 → Volumes → Select Volume → Actions → Detach Volume</strong></p>
+
+<p>Wait until the state becomes <strong>available</strong>.</p>
+
+</div>
+
+
+<h2>✔️ STEP 1 — Attach the Volume to the New EC2 Instance (RedHat)</h2>
+<p>In <strong>AWS Console → EC2 → Volumes</strong>:</p>
+<ul>
+  <li>Select your volume</li>
+  <li>Click <strong>Actions → Attach volume</strong></li>
+  <li>Choose the new EC2 instance</li>
+  <li>Set device name: <code>/dev/sdf</code></li>
+</ul>
+
+<p>Linux will detect it as:</p>
+<pre>/dev/xvdf</pre>
+
+<h2>✔️ STEP 2 — Check Attached Disks</h2>
+<p>Run this on the new EC2 instance:</p>
+<pre>lsblk</pre>
+
+<p>You should see output similar to:</p>
+<pre>
+xvdf    202:80   0   10G  0 disk
+└─xvdf1 202:81   0   10G  0 part
+</pre>
+
+<p>Your actual data is inside <strong>xvdf1</strong> (not xvdf).</p>
+
+<h2>✔️ STEP 3 — Create a Mount Point</h2>
+<p>Use the same folder:</p>
+<pre>sudo mkdir -p /mnt/vol1</pre>
+
+<h2>✔️ STEP 4 — Mount the Partition (IMPORTANT)</h2>
+<p>Mount the partition:</p>
+<pre>sudo mount /dev/xvdf1 /mnt/vol1</pre>
+
+<p><strong>⚠️ Do NOT mount <code>/dev/xvdf</code></strong> — it contains no file system.  
+Always use <strong><code>/dev/xvdf1</code></strong> (the partition).</p>
+
+<h2>✔️ STEP 5 — Check Your Data</h2>
+<p>Run:</p>
+<pre>ls /mnt/vol1</pre>
+
+<h2>6. Check Mounted Volumes</h2>
+<pre>
+df -h
+</pre>
+
+<p><strong>Now both volumes /mnt/vol1 and /mnt/vol2 are ready for storing data.</strong></p>
+
+</body>
+</html>
+`
