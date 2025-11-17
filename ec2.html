@@ -131,8 +131,9 @@
             This feature helps maintain high availability and reliability for applications that depend on consistent compute power.
          </p>
       </article>
-      <h1>images</h1>
       <article class="content no-break">
+               <h2>images</h2>
+
          <h2>Amazon Machine Image (AMI)</h2>
          <p>
             An Amazon Machine Image (AMI) is a pre-configured template that contains the information required to launch an EC2 instance. 
@@ -152,8 +153,9 @@
             By using the AMI Catalog, organizations can quickly find secure, optimized, and up-to-date images for their workloads.
          </p>
       </article>
-      <h1>Elastic Block Store</h1>
       <article class="content no-break">
+               <h2>Elastic Block Store</h2>
+
          <h2>Volumes</h2>
          <p>
             In Amazon EC2, a Volume refers to an Elastic Block Store (EBS) volume, which provides persistent storage for your instances. 
@@ -183,7 +185,6 @@
             DLM improves reliability by regularly creating and cleaning up backups based on user-defined schedules.
          </p>
       </article>
-      <h1>Network & Security</h1>
       <article class="content no-break">
          <h2>Network and Security</h2>
          <p>
@@ -256,77 +257,85 @@
          </p>
       </article>
       <br>
-      <h1>On-Demand Instances</h1>
-      <div>
+            <article class="content no-break">
+                     <h2>On-Demand Instances</h2>
+
          On-Demand Instances allow you to run servers whenever you need without any long-term commitment. 
          You pay only for the compute time you actually use, which makes it very flexible. 
          This is perfect for short workloads, testing, or new applications where usage is unpredictable. 
          You can start, stop, or terminate instances anytime based on your requirement. 
          Although easy and flexible, On-Demand is the most expensive option compared to other pricing models.
-      </div>
+       </article>
       <br>
-      <h1>Savings Plans</h1>
-      <div>
+            <article class="content no-break">
+                     <h2>Savings Plans</h2>
+
          Savings Plans provide lower prices when you commit to a certain amount of compute usage for one or three years. 
          Instead of committing to a specific instance type, you commit to a fixed hourly spend like 5 USD/hour. 
          This plan automatically applies discounts across EC2, Lambda, and Fargate. 
          It offers more flexibility because you can change instance types, sizes, or regions. 
          Savings Plans are ideal for stable workloads where usage is predictable and long-term.
-      </div>
+       </article>
       <br>
-      <h1>Reserved Instances</h1>
-      <div>
+            <article class="content no-break">
+                     <h2>Reserved Instances</h2>
+
          Reserved Instances offer significant discounts when you commit to using a specific instance type in a specific region for one or three years. 
          They work best when your workload is steady and always running. 
          You get cheaper pricing compared to On-Demand, but you need to plan usage in advance. 
          Reserved Instances are commonly used for production servers that run 24/7. 
          They reduce cost but offer less flexibility than Savings Plans.
-      </div>
+       </article>
       <br>
-      <h1>Spot Instances</h1>
-      <div>
+            <article class="content no-break">
+                     <h2>Spot Instances</h2>
+
          Spot Instances let you use AWS’s unused EC2 capacity at extremely low prices, sometimes up to 90% cheaper. 
          They are ideal for flexible and fault-tolerant applications because AWS may stop them when capacity is needed. 
          Spot is best for workloads like big data processing, machine learning training, and background jobs. 
          You cannot rely on Spot for critical applications because it may stop anytime. 
          This option is great when you need maximum savings and can handle interruptions.
-      </div>
+       </article>
       <br>
-      <h1>Dedicated Hosts</h1>
-      <div>
+            <article class="content no-break">
+                     <h2>Dedicated Hosts</h2>
+
          Dedicated Hosts give you a full physical server dedicated only to your account. 
          You get full control over hardware, CPU, memory, and placement of instances. 
          This is useful when you have strict licensing rules or compliance requirements. 
          Since the entire server is yours, no other AWS customer shares it. 
          Dedicated Hosts offer the highest isolation, but they are also the most expensive option.
-      </div>
+       </article>
       <br>
-      <h1>Dedicated Instances </h1>
-      <div>
+            <article class="content no-break">
+                     <h2>Dedicated Instances </h2>
+
          Dedicated Instances run on hardware that is dedicated only to your AWS account but shared within your own instances. 
          They provide physical isolation from other customers but are more flexible than Dedicated Hosts. 
          They are useful when you need isolation for compliance but do not require full server control. 
          You do not choose the exact hardware, but AWS ensures you do not share it with others. 
          Dedicated Instances cost more than regular On-Demand but less than Dedicated Hosts.
-      </div>
+       </article>
       <br>
-      <h1>Capacity Reservations</h1>
-      <div>
+            <article class="content no-break">
+                     <h2>Capacity Reservations</h2>
+
          Capacity Reservations allow you to reserve EC2 capacity in a specific Availability Zone without any long-term commitment. 
          They guarantee that the instance type you want will always be available, even during high demand. 
          You can create or cancel the reservation anytime, which gives flexibility. 
          This is ideal for critical workloads that must never fail due to capacity shortages. 
          You pay On-Demand pricing but get 100% availability assurance.
-      </div>
+       </article>
       <br>
-      <h1>EBS Optimization</h1>
-      <div>
+            <article class="content no-break">
+                     <h2>EBS Optimization</h2>
+
          EBS Optimization means your EC2 instance gets a dedicated, high-speed connection to EBS volumes.
          Normally, network traffic and disk traffic share the same bandwidth, which can slow down performance.
          With EBS Optimization enabled, EC2 provides separate bandwidth only for EBS I/O, so data transfers between 
          the instance and the EBS volume become faster and more stable. This helps reduce latency, increase throughput, 
          and improve performance for applications that read or write a lot of data. 
          Most modern instance types come with EBS Optimization enabled by default, giving better performance without extra setup.
-      </div>
+       </article>
    </body>
 </html>
