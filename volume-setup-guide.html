@@ -167,8 +167,62 @@ df -h
 
 <!-- ⭐ NEW SECTION ADDED BELOW ⭐ -->
 <h2>✔️ EBS Volume is Permanently Mounted</h2>
+    
 
 <p>After adding the entry in <code>/etc/fstab</code> and running the commands:</p>
+    <h1>or</h1>
+    <h1>Make <code>/dev/xvdp1</code> and <code>/dev/xvdp2</code> Mount Automatically on Reboot</h1>
+
+  <p>This short guide converts your instructions into an easy-to-read HTML format. Follow the steps below on your EC2 instance.</p>
+
+  <h2>Step 1 — Get UUIDs</h2>
+  <p>Run:</p>
+  <pre><code>sudo blkid</code></pre>
+  <p>Example output:</p>
+  <pre><code>/dev/xvdp2: UUID="4a851adb-d88f-430a-b6a5-a817f4e76d1b" TYPE="ext4"
+/dev/xvdp1: UUID="d9a2a857-9c6c-4c00-a97c-bcccbc700d49" TYPE="ext4"</code></pre>
+
+  <h2>Step 2 — Open <code>/etc/fstab</code></h2>
+  <p>Use your favourite editor (example uses <code>nano</code>):</p>
+  <pre><code>sudo nano /etc/fstab</code></pre>
+
+  <h2>Step 3 — Add fstab lines</h2>
+  <p>Paste these two lines at the bottom of <code>/etc/fstab</code>. Replace <strong>UUID</strong> values if different.</p>
+  <pre><code>UUID=d9a2a857-9c6c-4c00-a97c-bcccbc700d49   /mnt/vol2   ext4   defaults,nofail   0  0
+UUID=4a851adb-d88f-430a-b6a5-a817f4e76d1b   /mnt/vol3   ext4   defaults,nofail   0  0</code></pre>
+
+  <div class="note">
+    <strong>If filesystem is XFS:</strong>
+    <pre><code>UUID=d9a2a857-9c6c-4c00-a97c-bcccbc700d49   /mnt/vol2   xfs   defaults,nofail   0  0
+UUID=4a851adb-d88f-430a-b6a5-a817f4e76d1b   /mnt/vol3   xfs   defaults,nofail   0  0</code></pre>
+  </div>
+
+  <h2>Step 4 — Test the fstab (IMPORTANT)</h2>
+  <p>Run this before rebooting to ensure there are no errors:</p>
+  <pre><code>sudo mount -a</code></pre>
+  <p>If this command finishes without errors, your fstab lines are valid.</p>
+
+  <h2>Step 5 — Reboot and verify</h2>
+  <pre><code>sudo reboot
+
+# After the instance boots, verify:
+df -h</code></pre>
+  <div class="success">
+    <strong>Expected result:</strong>
+    <pre><code>/dev/xvdp1   /mnt/vol2
+/dev/xvdp2   /mnt/vol3</code></pre>
+  </div>
+
+  <h2>Notes & Tips</h2>
+  <ul>
+    <li>Use <code>nofail</code> so the instance still boots if the volume is detached.</li>
+    <li>If <code>/etc/fstab</code> is not writable because <code>/</code> is read-only, remount it first:
+      <pre class="cmd"><code>sudo mount -o remount,rw /</code></pre>
+    </li>
+    <li>Always run <code>sudo mount -a</code> after editing <code>/etc/fstab</code> to validate your entries.</li>
+  </ul>
+
+  <hr />
 
 <pre>
 sudo systemctl daemon-reload
