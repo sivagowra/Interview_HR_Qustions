@@ -185,6 +185,123 @@ To verify, reboot the instance:</p>
 <pre>df -h</pre>
 
 <p><strong>If /mnt/vol1 is listed → Your EBS volume is permanently mounted.</strong></p>
+<div>
+
+<h2>FULL COMMANDS — Create New EBS Volume With 2 Partitions</h2>
+
+<h3>STEP 1 — Attach New EBS Volume to EC2</h3>
+<ul>
+  <li>Go to AWS Console → EC2 → Volumes</li>
+  <li>Create Volume (example: 2 GB)</li>
+  <li>Attach to instance as <code>/dev/sdf</code></li>
+</ul>
+
+<p>Linux will show it as:</p>
+<pre>/dev/xvdp</pre>
+
+<hr>
+
+<h3>STEP 2 — Create 2 partitions on /dev/xvdp</h3>
+<pre>
+sudo fdisk /dev/xvdp
+
+# Inside fdisk:
+d            ← (only if old partitions exist)
+n
+p
+1
+&lt;enter&gt;
++1G         ← First partition size = 1 GB
+
+n
+p
+2
+&lt;enter&gt;
+&lt;enter&gt;     ← Use remaining space for partition 2
+
+w            ← Write changes & exit
+</pre>
+
+<hr>
+
+<h3>STEP 3 — Verify partitions</h3>
+<pre>
+lsblk
+</pre>
+
+Expected output:
+<pre>
+xvdp
+ ├─xvdp1   1G
+ └─xvdp2   1G
+</pre>
+
+<hr>
+
+<h3>STEP 4 — Format the partitions (ext4)</h3>
+<pre>
+sudo mkfs.ext4 /dev/xvdp1
+sudo mkfs.ext4 /dev/xvdp2
+</pre>
+
+<hr>
+
+<h3>STEP 5 — Create mount folders</h3>
+<pre>
+sudo mkdir -p /mnt/vol2
+sudo mkdir -p /mnt/vol3
+</pre>
+
+<hr>
+
+<h3>STEP 6 — Mount both partitions</h3>
+<pre>
+sudo mount /dev/xvdp1 /mnt/vol2
+sudo mount /dev/xvdp2 /mnt/vol3
+</pre>
+
+<hr>
+
+<h3>STEP 7 — Check mounts</h3>
+<pre>
+df -h
+lsblk
+</pre>
+
+<hr>
+
+<h3>STEP 8 — Make permanent using /etc/fstab</h3>
+<p>Get UUIDs:</p>
+<pre>
+sudo blkid /dev/xvdp1
+sudo blkid /dev/xvdp2
+</pre>
+
+<p>Then edit fstab:</p>
+<pre>
+sudo vi /etc/fstab
+</pre>
+
+<p>Add the following lines (replace YOUR-UUID-1 / YOUR-UUID-2):</p>
+<pre>
+UUID=YOUR-UUID-1   /mnt/vol2   ext4   defaults,nofail   0  2
+UUID=YOUR-UUID-2   /mnt/vol3   ext4   defaults,nofail   0  2
+</pre>
+
+<p>Reload systemd and test:</p>
+<pre>
+sudo systemctl daemon-reload
+sudo mount -a
+</pre>
+
+<p>If no errors → Reboot:</p>
+<pre>
+sudo reboot
+</pre>
+
+<h3>🎉 Done — Your EBS volume now has 2 partitions mounted permanently.</h3>
+
+</div>
 
 </body>
 </html>
