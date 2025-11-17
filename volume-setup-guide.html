@@ -25,7 +25,7 @@
     h1 {
         margin-bottom: 20px;
         font-size: 32px;
-        text-align: left; /* changed for fullscreen */
+        text-align: left;
     }
 
     pre {
@@ -97,7 +97,6 @@ sudo mount /dev/xvdf1 /mnt/vol1
 df -h
 </pre>
 
-
 <div>
 
 <h3>✅ PART 1 — How to UNMOUNT & DETACH VOLUME (OLD INSTANCE)</h3>
@@ -118,7 +117,6 @@ df -h
 <p>Wait until the state becomes <strong>available</strong>.</p>
 
 </div>
-
 
 <h2>✔️ STEP 1 — Attach the Volume to the New EC2 Instance (RedHat)</h2>
 <p>In <strong>AWS Console → EC2 → Volumes</strong>:</p>
@@ -166,6 +164,27 @@ df -h
 
 <p><strong>Now both volumes /mnt/vol1 and /mnt/vol2 are ready for storing data.</strong></p>
 
+
+<!-- ⭐ NEW SECTION ADDED BELOW ⭐ -->
+<h2>✔️ EBS Volume is Permanently Mounted</h2>
+
+<p>After adding the entry in <code>/etc/fstab</code> and running the commands:</p>
+
+<pre>
+sudo systemctl daemon-reload
+sudo mount -a
+</pre>
+
+<p>Your EBS volume will mount automatically every time the instance starts.  
+To verify, reboot the instance:</p>
+
+<pre>sudo reboot</pre>
+
+<p>After reboot, check:</p>
+
+<pre>df -h</pre>
+
+<p><strong>If /mnt/vol1 is listed → Your EBS volume is permanently mounted.</strong></p>
+
 </body>
 </html>
-`
