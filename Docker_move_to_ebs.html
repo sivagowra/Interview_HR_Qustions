@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Move Docker data-root to /mnt/vol1</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#60a5fa;--muted:#94a3b8;--text:#e6eef8}
+    body{font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,#071029 0%,#081426 100%);color:var(--text);padding:28px}
+    .container{max-width:900px;margin:0 auto}
+    header{display:flex;align-items:center;gap:14px}
+    h1{font-size:20px;margin:0}
+    p.lead{color:var(--muted);margin-top:6px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);padding:20px;border-radius:12px;margin-top:18px}
+    .step{margin-bottom:16px}
+    .step h3{margin:0 0 6px 0;font-size:15px;color:var(--accent)}
+    pre{background:#021027;color:var(--text);padding:12px;border-radius:8px;overflow:auto;border:1px solid rgba(255,255,255,0.03)}
+    code{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+    .note{background:#062430;padding:10px;border-radius:8px;border-left:4px solid var(--accent);color:var(--muted)}
+    footer{margin-top:18px;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Move Docker storage to <code>/mnt/vol1/docker</code></h1>
+        <p class="lead">HTML conversion of the step-by-step instructions to move Docker's data-root and ensure Docker uses the new location.</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="step">
+        <h3>1) Stop Docker completely</h3>
+        <pre><code>sudo systemctl stop docker
+sudo systemctl stop docker.socket</code></pre>
+      </div>
+
+      <div class="step">
+        <h3>2) Move old Docker data (optional — keep images & containers)</h3>
+        <p class="note">If you want to preserve existing images, containers, volumes and metadata, use <code>rsync</code>. If you prefer a fresh start, skip the rsync and clear the directory instead.</p>
+        <pre><code># To preserve existing data
+sudo rsync -aP /var/lib/docker/ /mnt/vol1/docker/
+
+# To start clean (be careful — this deletes any data in the target)
+sudo rm -rf /mnt/vol1/docker/*</code></pre>
+        <p><strong>Warning:</strong> Do not delete <code>/var/lib/docker</code> yet unless you are sure you want to remove all old Docker data.</p>
+      </div>
+
+      <div class="step">
+        <h3>3) Verify permissions</h3>
+        <pre><code>sudo chown -R root:root /mnt/vol1/docker
+sudo chmod -R 711 /mnt/vol1/docker</code></pre>
+      </div>
+
+      <div class="step">
+        <h3>4) Make sure <code>/etc/docker/daemon.json</code> is correct</h3>
+        <pre><code>sudo nano /etc/docker/daemon.json
+
+# File contents should be exactly:
+{
+  "data-root": "/mnt/vol1/docker"
+}</code></pre>
+      </div>
+
+      <div class="step">
+        <h3>5) Clear old Docker directory (optional — clean start)</h3>
+        <pre><code># Only if you want a fresh start (removes all images / containers in /var/lib/docker)
+sudo rm -rf /var/lib/docker/*</code></pre>
+        <p class="note">After this step Docker will have no images or containers left in the old location.</p>
+      </div>
+
+      <div class="step">
+        <h3>6) Restart Docker</h3>
+        <pre><code>sudo systemctl daemon-reload
+sudo systemctl start docker
+sudo systemctl status docker -l</code></pre>
+      </div>
+
+      <div class="step">
+        <h3>7) Test by pulling an image and checking disk usage</h3>
+        <pre><code>docker pull nginx
+
+sudo du -sh /mnt/vol1/docker
+sudo du -sh /var/lib/docker</code></pre>
+        <p>If done correctly: <code>/mnt/vol1/docker</code> should grow and <code>/var/lib/docker</code> should stay empty (or small).</p>
+      </div>
+
+      <div class="step">
+        <h3>Troubleshooting — force Docker to show which data-root it uses</h3>
+        <pre><code>sudo dockerd --debug</code></pre>
+        <p class="note">Look for the line: <code>Using data-root: /mnt/vol1/docker</code>. If it shows <code>/var/lib/docker</code>, then your <code>daemon.json</code> is invalid, duplicated, or not being read.</p>
+      </div>
+
+      <div class="step">
+        <h3>Commands to send for diagnostics (if you want help)</h3>
+        <pre><code>sudo systemctl status docker -l
+cat /etc/docker/daemon.json
+ls -la /mnt/vol1
+ls -la /mnt/vol1/docker</code></pre>
+        <p class="note">If you share the output of those commands, additional fixes can be suggested.</p>
+      </div>
+
+    </section>
+
+    <footer>
+      <p>Converted to HTML. Feel free to download or copy this file and open it in a browser.</p>
+    </footer>
+  </div>
+</body>
+</html>
