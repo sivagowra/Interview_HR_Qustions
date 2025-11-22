@@ -357,5 +357,36 @@ sudo reboot
 
 </div>
 
+<div style="background:#ffffff; padding:20px; font-family:Arial, sans-serif; line-height:1.6;">
+
+  <h2>Unmount Error Fix (target is busy)</h2>
+  <p>You are getting the “target is busy” error because some process is using the mount point. Use the steps below:</p>
+
+  <h3>Step 1 — Find the process using /mnt/vol1</h3>
+  <pre><code>sudo lsof +f -- /mnt/vol1
+sudo fuser -m /mnt/vol1
+</code></pre>
+
+  <h3>Step 2 — Kill the blocking processes</h3>
+  <pre><code>sudo kill -9 &lt;PID&gt;
+sudo fuser -k /mnt/vol1
+</code></pre>
+
+  <h3>Step 3 — Unmount safely</h3>
+  <pre><code>sudo umount /mnt/vol1
+</code></pre>
+
+  <h3>Lazy Unmount (safe)</h3>
+  <pre><code>sudo umount -l /mnt/vol1
+</code></pre>
+
+  <h3>Force Unmount (not recommended)</h3>
+  <pre><code>sudo umount -f /mnt/vol1
+</code></pre>
+
+  <p><strong>Best Order:</strong> lsof → kill → umount → lazy → force (last option)</p>
+
+</div>
+
 </body>
 </html>
