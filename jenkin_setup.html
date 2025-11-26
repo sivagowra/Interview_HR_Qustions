@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jenkins + Java 8 + Maven Setup (Amazon Linux)</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 14px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        code {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>✔ Part 1 — Install Java 1.8.0 (Java 8) on Amazon Linux</h2>
+
+<pre><code>
+sudo yum install java-1.8.0-openjdk java-1.8.0-openjdk-devel -y
+</code></pre>
+
+<h2>✔ Set Java 8 as Default</h2>
+
+<pre><code>
+sudo alternatives --config java
+sudo alternatives --config javac
+</code></pre>
+
+<h2>✔ Set JAVA_HOME Permanently</h2>
+
+<pre><code>
+sudo nano /etc/profile.d/java8.sh
+</code></pre>
+
+<h3>Add inside file:</h3>
+
+<pre><code>
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+export PATH=$JAVA_HOME/bin:$PATH
+</code></pre>
+
+<h3>Apply changes:</h3>
+
+<pre><code>
+source /etc/profile.d/java8.sh
+</code></pre>
+
+<h2>✔ Verify Java Version</h2>
+
+<pre><code>
+java -version
+</code></pre>
+
+<hr>
+
+<h2>✔ Part 2 — Install Maven (Amazon Linux)</h2>
+
+<pre><code>
+sudo yum install maven -y
+</code></pre>
+
+<h2>✔ Verify Maven</h2>
+
+<pre><code>
+mvn -version
+</code></pre>
+
+<hr>
+
+<h2>✔ Part 3 — Install Jenkins on Amazon Linux</h2>
+
+<h3>Step 1 — Add Jenkins Repo</h3>
+
+<pre><code>
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+</code></pre>
+
+<h3>Step 2 — Install Jenkins</h3>
+
+<pre><code>
+sudo yum install jenkins -y
+</code></pre>
+
+<h3>Step 3 — Start and Enable Jenkins</h3>
+
+<pre><code>
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+sudo systemctl status jenkins
+</code></pre>
+
+<hr>
+
+<h2>✔ Part 4 — Open Jenkins Port (8080)</h2>
+
+<pre><code>
+sudo firewall-cmd --permanent --add-port=8080/tcp
+sudo firewall-cmd --reload
+</code></pre>
+
+<hr>
+
+<h2>✔ Part 5 — Get Jenkins Initial Admin Password</h2>
+
+<pre><code>
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+</code></pre>
+
+<hr>
+
+<h2>🎉 Jenkins is now ready!</h2>
+
+<p>Open in browser:</p>
+
+<pre><code>
+http://your-ec2-public-ip:8080
+</code></pre>
+
+</body>
+</html>

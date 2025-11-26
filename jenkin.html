@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Java & Maven Setup</title>
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        code {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Java 8 Default Setup (Commands)</h2>
+
+<pre>
+<code>
+sudo alternatives --config java
+sudo alternatives --config javac
+</code>
+</pre>
+
+<h2>Java 8 Environment Variables (JAVA_HOME)</h2>
+
+<pre>
+<code>
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+export PATH=$JAVA_HOME/bin:$PATH
+</code>
+</pre>
+
+<h2>Permanent Path File</h2>
+
+<pre>
+<code>
+sudo nano /etc/profile.d/java8.sh
+</code>
+</pre>
+
+<h3>Inside the file add:</h3>
+
+<pre>
+<code>
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+export PATH=$JAVA_HOME/bin:$PATH
+</code>
+</pre>
+
+<h2>Verify Version</h2>
+
+<pre>
+<code>
+java -version
+mvn -version
+</code>
+</pre>
+
+<h2>Output Example</h2>
+
+<pre>
+<code>
+Apache Maven 3.8.4 (Red Hat 3.8.4-3.amzn2023.0.5)
+Java version: 1.8.0_472
+Vendor: Amazon.com Inc.
+Runtime: /usr/lib/jvm/java-1.8.0-amazon-corretto.x86_64/jre
+</code>
+</pre>
+
+</body>
+</html>
