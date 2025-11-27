@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS CLI Guide</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f9fbfd;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a73e8;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            border-left: 5px solid #1a73e8;
+            padding-left: 10px;
+        }
+
+        p, li {
+            font-size: 16px;
+            color: #444;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        pre {
+            background: #282c34;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 15px;
+        }
+
+        div {
+            margin-top: 25px;
+            padding: 15px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>AWS CLI – Complete Command List + Setup Guide</h1>
+
+<!-- INTRODUCTION -->
+ <div>
+<h2>What is AWS CLI?</h2>
+<p>
+  <b>AWS CLI</b> is a command-line tool that allows you to control AWS services like S3, EC2, IAM, Lambda, and more using terminal commands instead of the AWS Console.
+
+AWS CLI is a tool that allows you to control and manage Amazon Web Services using text commands instead of clicking in the AWS web console. It is mainly used by developers, system administrators, and DevOps engineers to work faster and more efficiently. With AWS CLI, you can manage cloud services like EC2, S3, IAM, Lambda, and many more directly from your computer or server. It helps automate repeated tasks, reduces manual work, and makes cloud management easier. AWS CLI is also useful when working on remote servers where no graphical interface is available. Overall, AWS CLI provides fast, simple, and automated control over AWS resources.</p>
+</div>
+<div>
+  <h2>Advantages of AWS CLI</h2>
+  <p>
+    AWS CLI is fast because you don’t need to open the AWS Console. 
+    It helps you automate tasks such as starting servers or uploading files. 
+    You can use it easily on Linux servers where no graphical interface is available. 
+    You don’t need a browser because everything works through commands. 
+    It is also easy to repeat the same tasks by saving your commands.
+  </p>
+  <h2>Disadvantages of AWS CLI</h2>
+  <p>
+    AWS CLI can be difficult for beginners because commands are hard to remember. 
+    If you type a wrong command, you may delete or stop important resources. 
+    It does not show any visual dashboard like the AWS Console. 
+    You must keep your access keys safe, or your account may be at risk. 
+    For big teams, visual tools and dashboards are easier to use than CLI.
+  </p>
+</div>
+<h2>1️⃣ Step 1 — Install AWS CLI</h2>
+<p>You already installed AWS CLI. 👍</p>
+
+<h2>2️⃣ Step 2 — Configure AWS CLI</h2>
+<p>Run the command:</p>
+
+<strong>
+aws configure
+</strong>
+
+<p>Then enter:</p>
+<ul>
+  <li><b>AWS Access Key ID</b></li>
+  <li><b>AWS Secret Access Key</b></li>
+  <li><b>Default Region</b> (example: ap-south-1)</li>
+  <li><b>Default Output Format</b> (json or leave blank)</li>
+</ul>
+
+<hr>
+
+<!-- GENERAL -->
+<div style="font-size: large;">
+<div>
+<h2>1️⃣ General AWS Commands</h2>
+<strong>aws sts get-caller-identity</strong>
+<p>Shows who you are in AWS (your user, account ID, and ARN).</p>
+<strong>aws ec2 describe-regions</strong>
+<p>Lists all AWS regions available (like ap-south-1, us-east-1).</p>
+<strong>aws help</strong>
+<p>Displays help for AWS CLI commands.</p>
+</div>
+
+<div>
+<h2>2️⃣ S3 – Storage Commands</h2>
+<strong>aws s3 ls</strong>
+<p>Lists all S3 buckets in your AWS account.</p>
+<strong>aws s3 ls s3://bucket-name</strong>
+<p>Shows all files inside a specific bucket.</p>
+<strong>aws s3 cp file.txt s3://bucket-name/</strong>
+<p>Uploads a file from your computer to the S3 bucket.</p>
+<strong>aws s3 cp s3://bucket-name/file.txt .</strong>
+<p>Downloads a file from S3 to your computer.</p>
+<strong>aws s3 sync local-folder/ s3://bucket-name/</strong>
+<p>Uploads a complete folder to S3 (all files & subfolders).</p>
+<strong>aws s3 rm s3://bucket-name/file.txt</strong>
+<p>Deletes a single file from S3.</p>
+<strong>aws s3 rm s3://bucket-name/folder/ --recursive</strong>
+<p>Deletes a full folder and everything inside it.</p>
+<strong>aws s3api create-bucket --bucket my-bucket --region ap-south-1</strong>
+<p>Creates a new S3 bucket in the given region.</p>
+</div>
+
+<div>
+<h2>3️⃣ EC2 – Virtual Machine Commands</h2>
+<strong>aws ec2 describe-instances</strong>
+<p>Shows all EC2 servers and their details.</p>
+<strong>aws ec2 start-instances --instance-ids i-1234567890</strong>
+<p>Starts (power on) an EC2 instance.</p>
+<strong>aws ec2 stop-instances --instance-ids i-1234567890</strong>
+<p>Stops (power off) an EC2 instance.</p>
+<strong>aws ec2 reboot-instances --instance-ids i-1234567890</strong>
+<p>Restarts an EC2 instance.</p>
+<strong>aws ec2 terminate-instances --instance-ids i-1234567890</strong>
+<p>Permanently deletes an EC2 instance.</p>
+<strong>aws ec2 describe-images --owners self</strong>
+<p>Shows AMIs created by you.</p>
+<strong>aws ec2 create-key-pair --key-name mykey</strong>
+<p>Creates a new EC2 SSH key pair.</p>
+</div>
+
+<div>
+<h2>4️⃣ IAM – Users & Access Keys</h2>
+<strong>aws iam list-users</strong>
+<p>Shows all IAM users in your AWS account.</p>
+<strong>aws iam create-user --user-name siva</strong>
+<p>Creates a new IAM user.</p>
+<strong>aws iam delete-user --user-name siva</strong>
+<p>Deletes an IAM user.</p>
+<strong>aws iam list-access-keys --user-name siva</strong>
+<p>Shows all access keys of that user.</p>
+<strong>aws iam create-access-key --user-name siva</strong>
+<p>Creates a new access key for that user.</p>
+<strong>aws iam delete-access-key --access-key-id AKIAxxxx --user-name siva</strong>
+<p>Deletes an access key.</p>
+</div>
+
+<div>
+<h2>5️⃣ Lambda – Serverless Functions</h2>
+<strong>aws lambda list-functions</strong>
+<p>Shows all Lambda functions.</p>
+<strong>aws lambda invoke --function-name myFunction output.json</strong>
+<p>Runs a Lambda function manually and saves the output.</p>
+<strong>aws lambda get-function --function-name myFunction</strong>
+<p>Shows full details of a Lambda function.</p>
+</div>
+
+<div>
+<h2>6️⃣ CloudWatch – Logs & Monitoring</h2>
+<strong>aws logs describe-log-groups</strong>
+<p>Lists all CloudWatch log groups.</p>
+<strong>aws logs describe-log-streams --log-group-name /aws/lambda/my-function</strong>
+<p>Shows log streams inside a log group.</p>
+<strong>aws logs get-log-events --log-group-name app-logs --log-stream-name stream1</strong>
+<p>Shows logs from a specific stream.</p>
+</div>
+
+<div>
+<h2>7️⃣ CloudFront – CDN</h2>
+<strong>aws cloudfront list-distributions</strong>
+<p>Shows all CloudFront distributions.</p>
+<strong>aws cloudfront create-invalidation --distribution-id EXXX123 --paths "/*"</strong>
+<p>Clears cache (new files will serve immediately).</p>
+</div>
+
+<div>
+<h2>8️⃣ RDS – Databases</h2>
+<strong>aws rds describe-db-instances</strong>
+<p>Shows all RDS databases.</p>
+<strong>aws rds start-db-instance --db-instance-identifier mydb</strong>
+<p>Starts an RDS database.</p>
+<strong>aws rds stop-db-instance --db-instance-identifier mydb</strong>
+<p>Stops an RDS database.</p>
+</div>
+
+<div>
+<h2>9️⃣ ECR – Docker Image Registry</h2>
+<strong>aws ecr create-repository --repository-name myrepo</strong>
+<p>Creates a new Docker image repository.</p>
+<strong>aws ecr describe-repositories</strong>
+<p>Shows all ECR repositories.</p>
+<strong>aws ecr get-login-password | docker login ...</strong>
+<p>Logs in to ECR so Docker can push/pull images.</p>
+</div>
+
+<div>
+<h2>🔟 ECS – Container Service</h2>
+<strong>aws ecs list-clusters</strong>
+<p>Shows all ECS clusters.</p>
+<strong>aws ecs list-services --cluster my-cluster</strong>
+<p>Shows services running inside an ECS cluster.</p>
+</div>
+
+<div>
+<h2>1️⃣1️⃣ EKS – Kubernetes</h2>
+<strong>aws eks update-kubeconfig --name mycluster</strong>
+<p>Connects kubectl to your EKS cluster.</p>
+<strong>aws eks list-clusters</strong>
+<p>Shows all EKS clusters.</p>
+</div>
+
+<div>
+<h2>1️⃣2️⃣ CloudFormation – Infrastructure as Code</h2>
+<strong>aws cloudformation list-stacks</strong>
+<p>Shows all CloudFormation stacks.</p>
+<strong>aws cloudformation deploy --stack-name mystack --template-file template.yaml</strong>
+<p>Deploys infrastructure using CloudFormation YAML.</p>
+</div>
+
+<div>
+<h2>1️⃣3️⃣ SQS – Queue Service</h2>
+<strong>aws sqs list-queues</strong>
+<p>Shows all SQS queues.</p>
+<strong>aws sqs send-message --queue-url URL --message-body "Hello"</strong>
+<p>Sends a message to an SQS queue.</p>
+</div>
+
+<div>
+<h2>1️⃣4️⃣ SNS – Notification Service</h2>
+<strong>aws sns list-topics</strong>
+<p>Shows all SNS topics.</p>
+<strong>aws sns publish --topic-arn arn:aws:sns:xx:msg --message "Hello"</strong>
+<p>Sends a notification message to an SNS topic.</p>
+</div>
+
+<div>
+<h2>1️⃣5️⃣ VPC – Networking</h2>
+<strong>aws ec2 describe-vpcs</strong>
+<p>Shows all VPCs in your account.</p>
+<strong>aws ec2 describe-subnets</strong>
+<p>Shows subnets insidae your VPCs.</p>
+<strong>aws ec2 describe-security-groups</strong>
+<p>Shows all security groups.</p>
+</div>
+</body>
+</html>
