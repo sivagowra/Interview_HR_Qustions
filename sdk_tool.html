@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS SDK Python Guide</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f9fbfd;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a73e8;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            border-left: 5px solid #1a73e8;
+            padding-left: 10px;
+        }
+
+        p, li {
+            font-size: 16px;
+            color: #444;
+        }
+
+        pre {
+            background: #282c34;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 15px;
+        }
+
+        div {
+            margin-top: 25px;
+            padding: 15px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>AWS SDK (boto3) – Python Complete Guide</h1>
+
+<div>
+    <h2>Introduction</h2>
+    <p>
+        <b>AWS SDK (boto3)</b> allows you to interact with AWS services like S3, EC2, IAM, Lambda, RDS, CloudWatch, SQS, and SNS using Python code.  
+        This tutorial shows how to list resources from multiple AWS services using one script.
+    </p>
+</div>
+
+<div>
+    <h2>Step 1 – Setup Python Environment</h2>
+    <pre>
+# Create virtual environment
+python3 -m venv awsenv
+
+# Activate virtual environment
+source awsenv/bin/activate
+
+# Install boto3
+pip install boto3
+    </pre>
+</div>
+
+<div>
+    <h2>Step 2 – Configure AWS CLI (Credentials)</h2>
+    <pre>
+aws configure
+
+# Enter your credentials:
+# AWS Access Key ID → AKIAxxxx
+# AWS Secret Access Key → xxxxx
+# Default region → ap-south-1
+# Output format → json (or leave blank)
+    </pre>
+    <p>boto3 automatically reads credentials from the AWS CLI configuration.</p>
+</div>
+
+<div>
+    <h2>Step 3 – Python Script to List AWS Resources</h2>
+    <pre>
+import boto3
+
+# 1️⃣ S3 – Buckets
+s3 = boto3.client('s3')
+print("S3 Buckets:")
+for bucket in s3.list_buckets()['Buckets']:
+    print("-", bucket['Name'])
+
+# 2️⃣ EC2 – Instances
+ec2 = boto3.client('ec2')
+print("EC2 Instances:")
+for reservation in ec2.describe_instances()['Reservations']:
+    for instance in reservation['Instances']:
+        print("-", instance['InstanceId'], instance['State']['Name'])
+
+# 3️⃣ IAM – Users
+iam = boto3.client('iam')
+print("IAM Users:")
+for user in iam.list_users()['Users']:
+    print("-", user['UserName'])
+
+# 4️⃣ Lambda – Functions
+lambda_client = boto3.client('lambda')
+print("Lambda Functions:")
+for fn in lambda_client.list_functions()['Functions']:
+    print("-", fn['FunctionName'])
+
+# 5️⃣ RDS – Databases
+rds = boto3.client('rds')
+print("RDS Databases:")
+for db in rds.describe_db_instances()['DBInstances']:
+    print("-", db['DBInstanceIdentifier'], db['Engine'], db['DBInstanceStatus'])
+
+# 6️⃣ CloudWatch – Log Groups
+logs = boto3.client('logs')
+print("CloudWatch Log Groups:")
+for log_group in logs.describe_log_groups()['logGroups']:
+    print("-", log_group['logGroupName'])
+
+# 7️⃣ SQS – Queues
+sqs = boto3.client('sqs')
+queues = sqs.list_queues()
+print("SQS Queues:")
+if 'QueueUrls' in queues:
+    for q in queues['QueueUrls']:
+        print("-", q)
+else:
+    print("- No queues found")
+
+# 8️⃣ SNS – Topics
+sns = boto3.client('sns')
+topics = sns.list_topics()
+print("SNS Topics:")
+if 'Topics' in topics:
+    for topic in topics['Topics']:
+        print("-", topic['TopicArn'])
+else:
+    print("- No topics found")
+    </pre>
+</div>
+
+<div>
+    <h2>Step 4 – Run Script</h2>
+    <pre>
+# Activate environment if not active
+source awsenv/bin/activate
+
+# Run Python script
+python aws_resources.py
+    </pre>
+    <p>The script will print all S3 buckets, EC2 instances, IAM users, Lambda functions, RDS databases, CloudWatch log groups, SQS queues, and SNS topics.</p>
+</div>
+
+<div>
+    <h2>Step 5 – Advantages of Using SDK</h2>
+    <ul>
+        <li>Automates tasks that are repetitive or large-scale.</li>
+        <li>Access all AWS services programmatically from Python code.</li>
+        <li>Integrates AWS into applications and scripts easily.</li>
+        <li>Works on servers without a GUI.</li>
+        <li>Reduces manual effort and errors.</li>
+    </ul>
+</div>
+
+<div>
+    <h2>Step 6 – Disadvantages of Using SDK</h2>
+    <ul>
+        <li>Beginners may find it difficult to learn commands.</li>
+        <li>Incorrect commands can affect resources (delete/stop).</li>
+        <li>Requires keeping credentials safe.</li>
+        <li>Debugging errors can be tricky for complex scripts.</li>
+        <li>Not as visual as AWS Console dashboards.</li>
+    </ul>
+</div>
+
+</body>
+</html>
