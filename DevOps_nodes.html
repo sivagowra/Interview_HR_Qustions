@@ -1,709 +1,686 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>What is Cloud Computing?</title>
-  <style>
-    :root{--bg:#ffffff;--text:#000000;--muted:#555;--accent:#0b5fff}
-    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; padding:28px; background:var(--bg); color:var(--text);}
-    .container{max-width:900px;margin:0 auto}
-    h1{font-size:28px;margin-bottom:6px}
-    p.lead{color:var(--muted);margin-top:0}
-    section{margin-top:18px}
-    ul{margin:8px 0 12px 20px}
-    .examples{display:flex;gap:12px;flex-wrap:wrap}
-    .example{background:#f6f9ff;border-left:4px solid var(--accent);padding:8px 12px;border-radius:6px;color:var(--muted)}
-    table{width:100%;border-collapse:collapse;margin-top:8px}
-    th,td{border:1px solid #e6e6e6;padding:10px;text-align:left}
-    th{background:#fafafa}
-    .benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:8px}
-    .card{border:1px solid #f0f0f0;padding:12px;border-radius:8px;background:#fff}
-    footer{margin-top:20px;color:var(--muted);font-size:13px}
-  </style>
-</head>
-<body>
-  <div class="card">
-    <h2>☁️ Cloud Computing</h2>
-    <p>
-      Cloud Computing is a technology that delivers computing services—such as servers, storage, databases, networking, 
-      and software—over the internet on a pay-as-you-go basis. It eliminates the need for organizations to own and maintain 
-      physical infrastructure, providing flexibility and cost savings. Cloud services are typically categorized into 
-      Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS). 
-      Leading providers like AWS, Microsoft Azure, and Google Cloud offer scalable and secure environments 
-      for hosting and deploying applications globally. The primary aim of cloud computing is to provide 
-      easy access to IT resources, scalability, and business continuity.
-    </p>
-  </div>
-    <section>
-      <h2>☁️ Examples</h2>
-      <div class="examples">
-        <div class="example">Store photos on <strong>Google Drive</strong></div>
-        <div class="example">Watch movies on <strong>Netflix</strong></div>
-        <div class="example">Use <strong>Gmail</strong> or <strong>Outlook</strong></div>
-        <div class="example">Host your website on <strong>AWS</strong> or <strong>Azure</strong></div>
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>What is Cloud Computing?</title>
+      <style>
+         :root{--bg:#ffffff;--text:#000000;--muted:#555;--accent:#0b5fff}
+         body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; padding:28px; background:var(--bg); color:var(--text);}
+         .container{max-width:900px;margin:0 auto}
+         h1{font-size:28px;margin-bottom:6px}
+         p.lead{color:var(--muted);margin-top:0}
+         section{margin-top:18px}
+         ul{margin:8px 0 12px 20px}
+         .examples{display:flex;gap:12px;flex-wrap:wrap}
+         .example{background:#f6f9ff;border-left:4px solid var(--accent);padding:8px 12px;border-radius:6px;color:var(--muted)}
+         table{width:100%;border-collapse:collapse;margin-top:8px}
+         th,td{border:1px solid #e6e6e6;padding:10px;text-align:left}
+         th{background:#fafafa}
+         .benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:8px}
+         .card{border:1px solid #f0f0f0;padding:12px;border-radius:8px;background:#fff}
+         footer{margin-top:20px;color:var(--muted);font-size:13px}
+      </style>
+   </head>
+   <body>
+      <div class="card">
+         <h2>☁️ Cloud Computing</h2>
+         <p>
+            Cloud Computing is a technology that delivers computing services—such as servers, storage, databases, networking, 
+            and software—over the internet on a pay-as-you-go basis. It eliminates the need for organizations to own and maintain 
+            physical infrastructure, providing flexibility and cost savings. Cloud services are typically categorized into 
+            Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS). 
+            Leading providers like AWS, Microsoft Azure, and Google Cloud offer scalable and secure environments 
+            for hosting and deploying applications globally. The primary aim of cloud computing is to provide 
+            easy access to IT resources, scalability, and business continuity.
+         </p>
       </div>
-    </section>
-     <div class="card">
-     <h2>🧑‍💻 DevOps</h2>
-    <p>
-      DevOps is a modern software engineering approach that combines development (Dev) and operations (Ops) teams 
-      to work collaboratively throughout the entire software lifecycle. It focuses on automation, continuous integration, 
-      continuous deployment (CI/CD), and monitoring to deliver high-quality applications faster. 
-      DevOps encourages a culture of communication and feedback between teams, helping organizations respond quickly 
-      to market changes. By using tools like Jenkins, Docker, and Kubernetes, it streamlines workflows and reduces 
-      human errors in deployment. The main goal of DevOps is to achieve faster delivery, better reliability, 
-      and consistent improvement in software performance.
-    </p>
-  </div>
-
-    <section>
-      <h2>Main Cloud Services</h2>
-      <p>Cloud computing is usually divided into three main types of services. Each layer builds upon the previous one and provides a different level of control, flexibility, and management.</p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Full Form</th>
-            <th>Description</th>
-            <th>Example</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>IaaS</td>
-            <td>Infrastructure as a Service</td>
-            <td>It provides virtual machines, servers, storage, and networking over the internet.<br>
-Users can install their own operating systems and applications on these virtual machines.<br>
-It helps companies avoid buying expensive physical hardware.<br>
-You can easily scale up or down as per your needs.</td>
-            <td>AWS EC2, Google Compute Engine</td>
-          </tr>
-          <tr>
-            <td>PaaS</td>
-            <td>Platform as a Service</td>
-            <td>It offers a complete platform for developers to build, run, and manage applications.<br>
-Developers don’t have to worry about maintaining servers or managing infrastructure.<br>
-It saves time and allows faster app development.<br>
-You just focus on coding and deploying your applications.</td>
-            <td>AWS Elastic Beanstalk, Google App Engine</td>
-          </tr>
-          <tr>
-            <td>SaaS</td>
-            <td>Software as a Service</td>
-            <td>It provides ready-to-use software over the internet through a browser or app.<br>
-Users don’t need to install or manage anything on their computer.<br>
-All updates and maintenance are handled by the provider.<br>
-It is simple, cost-effective, and can be accessed anytime from anywhere.</td>
-            <td>Gmail, Zoom, Salesforce</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-    <div class="card">
-    <header>
+      <section>
+         <h2>☁️ Examples</h2>
+         <div class="examples">
+            <div class="example">Store photos on <strong>Google Drive</strong></div>
+            <div class="example">Watch movies on <strong>Netflix</strong></div>
+            <div class="example">Use <strong>Gmail</strong> or <strong>Outlook</strong></div>
+            <div class="example">Host your website on <strong>AWS</strong> or <strong>Azure</strong></div>
+         </div>
+      </section>
+      <div class="card">
+         <h2>🧑‍💻 DevOps</h2>
+         <p>
+            DevOps is a modern software engineering approach that combines development (Dev) and operations (Ops) teams 
+            to work collaboratively throughout the entire software lifecycle. It focuses on automation, continuous integration, 
+            continuous deployment (CI/CD), and monitoring to deliver high-quality applications faster. 
+            DevOps encourages a culture of communication and feedback between teams, helping organizations respond quickly 
+            to market changes. By using tools like Jenkins, Docker, and Kubernetes, it streamlines workflows and reduces 
+            human errors in deployment. The main goal of DevOps is to achieve faster delivery, better reliability, 
+            and consistent improvement in software performance.
+         </p>
+      </div>
+      <section>
+         <h2>Main Cloud Services</h2>
+         <p>Cloud computing is usually divided into three main types of services. Each layer builds upon the previous one and provides a different level of control, flexibility, and management.</p>
+         <table>
+            <thead>
+               <tr>
+                  <th>Type</th>
+                  <th>Full Form</th>
+                  <th>Description</th>
+                  <th>Example</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>IaaS</td>
+                  <td>Infrastructure as a Service</td>
+                  <td>It provides virtual machines, servers, storage, and networking over the internet.<br>
+                     Users can install their own operating systems and applications on these virtual machines.<br>
+                     It helps companies avoid buying expensive physical hardware.<br>
+                     You can easily scale up or down as per your needs.
+                  </td>
+                  <td>AWS EC2, Google Compute Engine</td>
+               </tr>
+               <tr>
+                  <td>PaaS</td>
+                  <td>Platform as a Service</td>
+                  <td>It offers a complete platform for developers to build, run, and manage applications.<br>
+                     Developers don’t have to worry about maintaining servers or managing infrastructure.<br>
+                     It saves time and allows faster app development.<br>
+                     You just focus on coding and deploying your applications.
+                  </td>
+                  <td>AWS Elastic Beanstalk, Google App Engine</td>
+               </tr>
+               <tr>
+                  <td>SaaS</td>
+                  <td>Software as a Service</td>
+                  <td>It provides ready-to-use software over the internet through a browser or app.<br>
+                     Users don’t need to install or manage anything on their computer.<br>
+                     All updates and maintenance are handled by the provider.<br>
+                     It is simple, cost-effective, and can be accessed anytime from anywhere.
+                  </td>
+                  <td>Gmail, Zoom, Salesforce</td>
+               </tr>
+            </tbody>
+         </table>
+      </section>
+      <div class="card">
+         <header>
+            <div>
+               <h1>DevOps vs Cloud</h1>
+            </div>
+            <div>
+               <span class="badge devops-badge">DevOps 🧑‍💻</span>
+               <span class="badge cloud-badge" style="margin-left:8px">Cloud ☁️</span>
+            </div>
+         </header>
+         <div class="card" role="region" aria-label="Comparison table: DevOps vs Cloud">
+            <table>
+               <thead>
+                  <tr>
+                     <th>No.</th>
+                     <th>DevOps</th>
+                     <th>Cloud Computing</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>1</td>
+                     <td><strong>A software development practice</strong> combining development &amp; operations.</td>
+                     <td><strong>A technology platform</strong> that provides computing services over the internet.</td>
+                  </tr>
+                  <tr>
+                     <td>2</td>
+                     <td><strong>Focuses on automation, CI/CD, and collaboration.</strong>
+                        <span class="muted">Pipelines, tests, deployments.</span>
+                     </td>
+                     <td><strong>Focuses on scalable infrastructure and on-demand resources.</strong>
+                        <span class="muted">Elastic compute, storage, networking.</span>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>3</td>
+                     <td><strong>Deals with processes, culture, and tools</strong> to deliver software faster.</td>
+                     <td><strong>Deals with hardware, virtualization, and managed services.</strong> </td>
+                  </tr>
+                  <tr>
+                     <td>4</td>
+                     <td><strong>Main goal: faster software delivery and continuous improvement.</strong></td>
+                     <td><strong>Main goal: cost efficiency and flexible resource usage.</strong></td>
+                  </tr>
+                  <tr>
+                     <td>5</td>
+                     <td><strong>Common tools:</strong> Jenkins, Docker, Kubernetes, Ansible, Terraform, GitLab CI.</td>
+                     <td><strong>Common platforms:</strong> AWS, Azure, Google Cloud Platform (GCP), IBM Cloud.</td>
+                  </tr>
+                  <tr>
+                     <td>6</td>
+                     <td><strong>Works on <em>how</em> applications are built, tested, and deployed.</strong></td>
+                     <td><strong>Works on <em>where</em> applications are hosted and run.</strong></td>
+                  </tr>
+                  <tr>
+                     <td>7</td>
+                     <td><strong>Enables automation pipelines and monitoring.</strong>
+                        <span class="muted">Observability, alerts, feedback loops.</span>
+                     </td>
+                     <td><strong>Enables virtual machines, managed databases, and serverless.</strong>
+                        <span class="muted">IaaS, PaaS, SaaS models.</span>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>8</td>
+                     <td><strong>Needs cloud or on-premises infrastructure to operate.</strong></td>
+                     <td><strong>Can be used with or without DevOps practices.</strong>
+                        <span class="muted">Cloud services are independent of the development workflow.</span>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>9</td>
+                     <td><strong>Example task:</strong> Automating app deployment using CI/CD.</td>
+                     <td><strong>Example task:</strong> Creating a virtual server instance (e.g., EC2 on AWS).</td>
+                  </tr>
+                  <tr>
+                     <td>10</td>
+                     <td><strong>DevOps is a methodology/process.</strong></td>
+                     <td><strong>Cloud is a service/infrastructure model.</strong></td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+      <section>
+         <h2>Benefits of Cloud Computing</h2>
+         <p>Cloud computing offers several benefits that make it the preferred choice for businesses and individuals:</p>
+         <div class="benefits">
+            <div class="card">
+               <strong>Cost-Effective</strong>
+               <div style="color:var(--muted);margin-top:6px">No need to buy or maintain expensive hardware.</div>
+            </div>
+            <div class="card">
+               <strong>Scalable</strong>
+               <div style="color:var(--muted);margin-top:6px">Increase or decrease resources anytime as needed.</div>
+            </div>
+            <div class="card">
+               <strong>Secure</strong>
+               <div style="color:var(--muted);margin-top:6px">Data is protected using encryption, firewalls, and backups.</div>
+            </div>
+            <div class="card">
+               <strong>Accessible Anywhere</strong>
+               <div style="color:var(--muted);margin-top:6px">Access your data or apps from any device with internet.</div>
+            </div>
+            <div class="card">
+               <strong>Automatic Updates</strong>
+               <div style="color:var(--muted);margin-top:6px">Service providers handle patches and upgrades.</div>
+            </div>
+         </div>
+      </section>
+      <section>
+         <h2>🏢 Popular Cloud Providers</h2>
+         <ul>
+            <li>Amazon Web Services (AWS)</li>
+            <li>Microsoft Azure</li>
+            <li>Google Cloud Platform (GCP)</li>
+            <li>IBM Cloud</li>
+            <li>Oracle Cloud</li>
+         </ul>
+      </section>
+      </div>
+      <section class="card" id="regions">
+         <h2>🌍 1. AWS Regions</h2>
+         <p>
+            AWS Regions are large geographical areas where Amazon has built data centers. Each region is separate to provide better security and reliability. 
+            Regions help users choose where they want to store data and run applications. For example, there are AWS Regions in Mumbai, London, and Tokyo.
+            If your business is in India, using the Mumbai Region gives faster performance. Regions also help follow local data laws.
+         </p>
+         <h2>🏗️ 2. AWS Availability Zones (AZs)</h2>
+         <p>
+            Each AWS Region has multiple Availability Zones. An Availability Zone is a group of one or more data centers inside a region.
+            They are built close together but separately, so if one fails, others keep running. This setup improves high availability and disaster recovery.
+            For example, the Mumbai Region has 3 AZs. If one AZ goes down, your app still runs using another AZ. It helps businesses stay online always.
+         </p>
+         <h2>🏙️ 3. AWS Local Zones</h2>
+         <p>
+            Local Zones are smaller AWS data centers placed near big cities. They help reduce delay (latency) for apps that need fast response.
+            Data does not travel far to main regions, so apps like gaming, video streaming, and healthcare run faster. 
+            For example, AWS has a Local Zone in Mumbai to serve local users quickly. It’s great for real-time and media-based apps.
+            Local Zones bring cloud power closer to end users for a smoother experience.
+         </p>
+         <h2>🏢 4. AWS Outposts</h2>
+         <p>
+            AWS Outposts bring AWS servers and tools directly into your own building or data center. It’s like having a small AWS inside your office.
+            It helps companies that must keep data locally but still want AWS features. Outposts stay connected to the main AWS Cloud for updates and backup.
+            For example, a hospital or bank can use Outposts to store sensitive data on-site. It gives the same APIs and services as in the AWS Cloud.
+         </p>
+         <h2>📱 5. AWS Wavelength Zones</h2>
+         <p>
+            Wavelength Zones place AWS services inside telecom networks (like 4G or 5G towers). This gives ultra-low latency for mobile apps and devices.
+            It helps build apps needing very fast responses, such as AR/VR, online games, or self-driving cars. 
+            AWS works with telecom partners like Verizon, Vodafone, and Airtel for these zones.
+            For example, when a user plays a mobile game, data travels only a short distance to a Wavelength Zone, making it very smooth and fast.
+         </p>
+         <h2>🧊 6. AWS Snowball (Data Transfer)</h2>
+         <p>AWS Snowball is a physical data transfer device used to move large amounts of data (terabytes or petabytes) to AWS without using the public internet.</p>
+         <p><strong>More details:</strong> It helps organizations migrate or back up huge datasets securely. Snowball devices come encrypted, tamper-resistant, and are ideal for areas with poor internet connectivity.</p>
+         <ul>
+            <li><strong>Snowball Edge Storage Optimized:</strong> Larger storage and some local compute.</li>
+            <li><strong>Snowball Edge Compute Optimized:</strong> Includes GPU/CPU for analytics, ML, and edge processing.</li>
+            <li><strong>Snowcone:</strong> Small portable device (8–14 TB) for remote or mobile use.</li>
+            <li><strong>Snowmobile:</strong> A truck-sized data transfer solution (up to 100 PB).</li>
+         </ul>
+      </section>
+      <section class="card" id="quick-tables">
+         <table>
+            <thead>
+               <tr>
+                  <th>Service</th>
+                  <th>Purpose</th>
+                  <th>Capacity</th>
+                  <th>Portability</th>
+                  <th>Use Case</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>AWS Snowball</td>
+                  <td>Transfer large data</td>
+                  <td>~80 TB (varies)</td>
+                  <td>Medium</td>
+                  <td>Data migration</td>
+               </tr>
+               <tr>
+                  <td>AWS Snowcone</td>
+                  <td>Edge/mobile device</td>
+                  <td>8–14 TB</td>
+                  <td>High</td>
+                  <td>Remote data collection</td>
+               </tr>
+               <tr>
+                  <td>AWS Snowmobile</td>
+                  <td>Massive data migration</td>
+                  <td>Up to 100 PB</td>
+                  <td>Low</td>
+                  <td>Datacenter migration</td>
+               </tr>
+            </tbody>
+         </table>
+      </section>
+      <section class="card" id="cloud-types">
+         <h2>🌍 Types of Cloud: Public, Private, Hybrid</h2>
+         <div style="display: flex; gap: 20px;">
+            <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+               <h3>Public Cloud</h3>
+               <p>A Public Cloud is a type of cloud that is owned and managed by companies like Amazon Web Services, Microsoft Azure, or Google Cloud. It is open for anyone to use through the internet. Many people and organizations share the same servers and storage, but their data stays separate. It is easy to start using and you only pay for what you use. Public clouds are cheaper and very good for small companies or startups. They are mostly used for hosting websites, apps, and online services.</p>
+            </div>
+            <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+               <h3>Private Cloud</h3>
+               <p> A Private Cloud is made for one single company or organization. It can be hosted inside the company’s office or by a trusted cloud provider. This cloud is not shared with others, so it gives more privacy and control. It is very secure and is often used for storing sensitive data. Big companies, banks, and government offices use private clouds to protect important information. It costs more than public cloud but gives full control over data and security.</p>
+            </div>
+            <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+               <h3>Hybrid Cloud</h3>
+               <p>A Hybrid Cloud is a mix of public and private clouds working together. It allows data and applications to move between both types of clouds easily. This helps companies use the public cloud for simple tasks and the private cloud for secure work. It provides flexibility, better cost control, and improved performance. Many organizations use hybrid clouds to balance safety and scalability. For example, AWS Outposts or Azure Arc are used for hybrid cloud systems.</p>
+            </div>
+         </div>
+         <table aria-label="Cloud types summary">
+            <thead>
+               <tr>
+                  <th>Type of Cloud</th>
+                  <th>Ownership</th>
+                  <th>Access</th>
+                  <th>Cost</th>
+                  <th>Security</th>
+                  <th>Example</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>Public Cloud</td>
+                  <td>Cloud provider</td>
+                  <td>Public via Internet</td>
+                  <td>Low</td>
+                  <td>Moderate</td>
+                  <td>AWS, Azure, GCP</td>
+               </tr>
+               <tr>
+                  <td>Private Cloud</td>
+                  <td>Single organization</td>
+                  <td>Restricted</td>
+                  <td>High</td>
+                  <td>High</td>
+                  <td>VMware, OpenStack, Outposts</td>
+               </tr>
+               <tr>
+                  <td>Hybrid Cloud</td>
+                  <td>Combination</td>
+                  <td>Mixed</td>
+                  <td>Medium</td>
+                  <td>High</td>
+                  <td>AWS Outposts + Cloud, Azure Arc</td>
+               </tr>
+            </tbody>
+         </table>
+      </section>
       <div>
-        <h1>DevOps vs Cloud</h1>
+         <h2>🧠 What is a Launch Template in AWS EC2?</h2>
+         <p>
+            A Launch Template in AWS is like a blueprint or saved configuration for launching EC2 instances (virtual servers).
+            Instead of entering all settings manually every time you create a new EC2 instance, you can save those settings once in a launch template and reuse them easily later.
+         </p>
+         <h3>🔧 In Simple Words:</h3>
+         <p>
+            Think of it like saving your favorite “custom PC build” — with the same OS, instance type, key pair, security groups, and settings — so you can launch identical servers quickly anytime.
+         </p>
+         <h3>⚙️ A Launch Template can include:</h3>
+         <ul>
+            <li><strong>AMI (Amazon Machine Image)</strong> — which operating system or app base to use.</li>
+            <li><strong>Instance Type</strong> — how much CPU and memory (e.g., t2.micro, t3.large).</li>
+            <li><strong>Key Pair</strong> — for SSH login.</li>
+            <li><strong>Security Groups</strong> — for firewall rules.</li>
+            <li><strong>EBS Volumes</strong> — storage details.</li>
+            <li><strong>Network settings</strong> — VPC, subnet, etc.</li>
+            <li><strong>User Data</strong> — scripts to run when the instance starts (for setup automation).</li>
+         </ul>
+         <h3>🚀 Why Launch Templates Are Useful:</h3>
+         <ul>
+            <li>🕒 <strong>Save time</strong> — no need to re-enter instance settings.</li>
+            <li>🧩 <strong>Consistency</strong> — launch identical servers every time.</li>
+            <li>🛠️ <strong>Automation</strong> — used by Auto Scaling Groups and EC2 Fleet.</li>
+            <li>💰 <strong>Cost control</strong> — easily test, update, or version instance setups.</li>
+         </ul>
       </div>
-      <div>
-        <span class="badge devops-badge">DevOps 🧑‍💻</span>
-        <span class="badge cloud-badge" style="margin-left:8px">Cloud ☁️</span>
+      <div class="max-w-6xl mx-auto p-6">
+         <header class="mb-8">
+            <h1 class="text-3xl font-extrabold">AWS Core Concepts</h1>
+            <p class="mt-2 text-slate-300">Deep but simple English explanations for <span class="accent">VM (Hypervisor)</span>, <span class="accent">AMI</span>, <span class="accent">EBS</span>, <span class="accent">Public IP</span> and <span class="accent">Private IP</span>, with examples and a visual flow.</p>
+         </header>
+         <main class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Left column: Terms -->
+            <section class="lg:col-span-2 space-y-6">
+            <!-- VM & Hypervisor -->
+            <article class="glass p-6 rounded-2xl">
+               <h2 class="text-2xl font-bold">1. Virtual Machine (VM) &amp; Hypervisor</h2>
+               <p class="mt-3 text-slate-300">
+                  A Virtual Machine, or VM, is a computer created with software inside a real physical computer. It has its own CPU, memory, and storage but runs virtually instead of physically. The Hypervisor is special software that creates and controls these virtual machines. It shares the real computer’s resources among several VMs so they can run at the same time. There are two kinds of hypervisors — Type 1 runs directly on hardware, and Type 2 runs on an operating system. In AWS, the Nitro hypervisor manages EC2 instances behind the scenes.
+               </p>
+               <div class="term border-emerald-400">
+                  <h3 class="font-semibold">Types of hypervisors</h3>
+                  <ul class="mt-2 text-slate-300 list-disc list-inside">
+                     <li><strong>Type 1 (Bare-metal):</strong> Runs directly on hardware (example: KVM, VMware ESXi) — used in cloud providers.</li>
+                     <li><strong>Type 2 (Hosted):</strong> Runs on top of an OS (example: VirtualBox) — good for local/dev use.</li>
+                  </ul>
+               </div>
       </div>
-    </header>
-
-    <div class="card" role="region" aria-label="Comparison table: DevOps vs Cloud">
-      <table>
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>DevOps</th>
-            <th>Cloud Computing</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td><strong>A software development practice</strong> combining development &amp; operations.</td>
-            <td><strong>A technology platform</strong> that provides computing services over the internet.</td>
-          </tr>
-
-          <tr>
-            <td>2</td>
-            <td><strong>Focuses on automation, CI/CD, and collaboration.</strong>
-              <span class="muted">Pipelines, tests, deployments.</span>
-            </td>
-            <td><strong>Focuses on scalable infrastructure and on-demand resources.</strong>
-              <span class="muted">Elastic compute, storage, networking.</span>
-            </td>
-          </tr>
-
-          <tr>
-            <td>3</td>
-            <td><strong>Deals with processes, culture, and tools</strong> to deliver software faster.</td>
-            <td><strong>Deals with hardware, virtualization, and managed services.</strong> </td>
-          </tr>
-
-          <tr>
-            <td>4</td>
-            <td><strong>Main goal: faster software delivery and continuous improvement.</strong></td>
-            <td><strong>Main goal: cost efficiency and flexible resource usage.</strong></td>
-          </tr>
-
-          <tr>
-            <td>5</td>
-            <td><strong>Common tools:</strong> Jenkins, Docker, Kubernetes, Ansible, Terraform, GitLab CI.</td>
-            <td><strong>Common platforms:</strong> AWS, Azure, Google Cloud Platform (GCP), IBM Cloud.</td>
-          </tr>
-
-          <tr>
-            <td>6</td>
-            <td><strong>Works on <em>how</em> applications are built, tested, and deployed.</strong></td>
-            <td><strong>Works on <em>where</em> applications are hosted and run.</strong></td>
-          </tr>
-
-          <tr>
-            <td>7</td>
-            <td><strong>Enables automation pipelines and monitoring.</strong>
-              <span class="muted">Observability, alerts, feedback loops.</span>
-            </td>
-            <td><strong>Enables virtual machines, managed databases, and serverless.</strong>
-              <span class="muted">IaaS, PaaS, SaaS models.</span>
-            </td>
-          </tr>
-
-          <tr>
-            <td>8</td>
-            <td><strong>Needs cloud or on-premises infrastructure to operate.</strong></td>
-            <td><strong>Can be used with or without DevOps practices.</strong>
-              <span class="muted">Cloud services are independent of the development workflow.</span>
-            </td>
-          </tr>
-
-          <tr>
-            <td>9</td>
-            <td><strong>Example task:</strong> Automating app deployment using CI/CD.</td>
-            <td><strong>Example task:</strong> Creating a virtual server instance (e.g., EC2 on AWS).</td>
-          </tr>
-
-          <tr>
-            <td>10</td>
-            <td><strong>DevOps is a methodology/process.</strong></td>
-            <td><strong>Cloud is a service/infrastructure model.</strong></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-    <section>
-      <h2>Benefits of Cloud Computing</h2>
-      <p>Cloud computing offers several benefits that make it the preferred choice for businesses and individuals:</p>
-      <div class="benefits">
-        <div class="card"><strong>Cost-Effective</strong><div style="color:var(--muted);margin-top:6px">No need to buy or maintain expensive hardware.</div></div>
-        <div class="card"><strong>Scalable</strong><div style="color:var(--muted);margin-top:6px">Increase or decrease resources anytime as needed.</div></div>
-        <div class="card"><strong>Secure</strong><div style="color:var(--muted);margin-top:6px">Data is protected using encryption, firewalls, and backups.</div></div>
-        <div class="card"><strong>Accessible Anywhere</strong><div style="color:var(--muted);margin-top:6px">Access your data or apps from any device with internet.</div></div>
-        <div class="card"><strong>Automatic Updates</strong><div style="color:var(--muted);margin-top:6px">Service providers handle patches and upgrades.</div></div>
-      </div>
-    </section>
-
-    <section>
-      <h2>🏢 Popular Cloud Providers</h2>
-      <ul>
-        <li>Amazon Web Services (AWS)</li>
-        <li>Microsoft Azure</li>
-        <li>Google Cloud Platform (GCP)</li>
-        <li>IBM Cloud</li>
-        <li>Oracle Cloud</li>
+      <p class="mt-4 text-slate-300"><strong>AWS note:</strong> AWS uses the Nitro hypervisor to run EC2 instances behind the scenes. You don't manage it directly — AWS handles it for you.</p>
+      </article>
+      <!-- AMI -->
+      <article class="glass p-6 rounded-2xl">
+      <h2 class="text-2xl font-bold">2. AMI (Amazon Machine Image)</h2>
+      <p class="mt-3 text-slate-300">
+      An Amazon Machine Image, or AMI, is a ready-made template used to start a new EC2 instance. It includes an operating system, software, and configuration needed to run a server. When you launch an instance from an AMI, it looks exactly like the saved setup. This helps you create many identical servers quickly without manual setup. You can also make your own AMI from an existing server to use later. AWS Marketplace provides many pre-built AMIs like Ubuntu, WordPress, and Windows Server.</p>
+      <div class="mt-4 grid sm:grid-cols-2 gap-4">
+      <div class="term border-indigo-500">
+      <h3 class="font-semibold">Why AMIs are useful</h3>
+      <ul class="mt-2 text-slate-300 list-disc list-inside">
+      <li>Launch multiple identical servers quickly.</li>
+      <li>Create backups of a configured server (save as AMI).</li>
+      <li>Share custom configurations within your team.</li>
       </ul>
-    </section>
-  </div>
-
- <div class="card">
-  <h1>AWS — Simple Guide</h1>
-  <p class="small">
-    A short and easy-to-read guide explaining AWS Regions, Availability Zones, Local Zones, Outposts, and Wavelength Zones with examples.
-  </p>
-</div>
-
-<section class="card" id="regions">
-  <h2>🌍 1. AWS Regions</h2>
-  <p>
-    AWS Regions are large geographical areas where Amazon has built data centers. Each region is separate to provide better security and reliability. 
-    Regions help users choose where they want to store data and run applications. For example, there are AWS Regions in Mumbai, London, and Tokyo.
-    If your business is in India, using the Mumbai Region gives faster performance. Regions also help follow local data laws.
-  </p>
-</section>
-
-<section class="card" id="availability-zones">
-  <h2>🏗️ 2. AWS Availability Zones (AZs)</h2>
-  <p>
-    Each AWS Region has multiple Availability Zones. An Availability Zone is a group of one or more data centers inside a region.
-    They are built close together but separately, so if one fails, others keep running. This setup improves high availability and disaster recovery.
-    For example, the Mumbai Region has 3 AZs. If one AZ goes down, your app still runs using another AZ. It helps businesses stay online always.
-  </p>
-</section>
-
-<section class="card" id="local-zones">
-  <h2>🏙️ 3. AWS Local Zones</h2>
-  <p>
-    Local Zones are smaller AWS data centers placed near big cities. They help reduce delay (latency) for apps that need fast response.
-    Data does not travel far to main regions, so apps like gaming, video streaming, and healthcare run faster. 
-    For example, AWS has a Local Zone in Mumbai to serve local users quickly. It’s great for real-time and media-based apps.
-    Local Zones bring cloud power closer to end users for a smoother experience.
-  </p>
-</section>
-
-<section class="card" id="outposts">
-  <h2>🏢 4. AWS Outposts</h2>
-  <p>
-    AWS Outposts bring AWS servers and tools directly into your own building or data center. It’s like having a small AWS inside your office.
-    It helps companies that must keep data locally but still want AWS features. Outposts stay connected to the main AWS Cloud for updates and backup.
-    For example, a hospital or bank can use Outposts to store sensitive data on-site. It gives the same APIs and services as in the AWS Cloud.
-  </p>
-</section>
-
-<section class="card" id="wavelength">
-  <h2>📱 5. AWS Wavelength Zones</h2>
-  <p>
-    Wavelength Zones place AWS services inside telecom networks (like 4G or 5G towers). This gives ultra-low latency for mobile apps and devices.
-    It helps build apps needing very fast responses, such as AR/VR, online games, or self-driving cars. 
-    AWS works with telecom partners like Verizon, Vodafone, and Airtel for these zones.
-    For example, when a user plays a mobile game, data travels only a short distance to a Wavelength Zone, making it very smooth and fast.
-  </p>
-</section>
-
-
-  <section class="card" id="snowball">
-    <h2>🧊 4. AWS Snowball (Data Transfer)</h2>
-    <p>AWS Snowball is a physical data transfer device used to move large amounts of data (terabytes or petabytes) to AWS without using the public internet.</p>
-    <p><strong>More details:</strong> It helps organizations migrate or back up huge datasets securely. Snowball devices come encrypted, tamper-resistant, and are ideal for areas with poor internet connectivity.</p>
-    <ul>
-      <li><strong>Snowball Edge Storage Optimized:</strong> Larger storage and some local compute.</li>
-      <li><strong>Snowball Edge Compute Optimized:</strong> Includes GPU/CPU for analytics, ML, and edge processing.</li>
-      <li><strong>Snowcone:</strong> Small portable device (8–14 TB) for remote or mobile use.</li>
-      <li><strong>Snowmobile:</strong> A truck-sized data transfer solution (up to 100 PB).</li>
-    </ul>
-  </section>
-
-  <section class="card" id="cloud-types">
-    <h2>🌍 Types of Cloud: Public, Private, Hybrid</h2>
-    <div>
-      <h3>Public Cloud</h3>
-      <p>A Public Cloud is a type of cloud that is owned and managed by companies like Amazon Web Services, Microsoft Azure, or Google Cloud. It is open for anyone to use through the internet. Many people and organizations share the same servers and storage, but their data stays separate. It is easy to start using and you only pay for what you use. Public clouds are cheaper and very good for small companies or startups. They are mostly used for hosting websites, apps, and online services.</p>
-    </div>
-
-    <div>
-      <h3>Private Cloud</h3>
-      <p> A Private Cloud is made for one single company or organization. It can be hosted inside the company’s office or by a trusted cloud provider. This cloud is not shared with others, so it gives more privacy and control. It is very secure and is often used for storing sensitive data. Big companies, banks, and government offices use private clouds to protect important information. It costs more than public cloud but gives full control over data and security.</p>
-    </div>
-
-    <div>
-      <h3>Hybrid Cloud</h3>
-      <p>A Hybrid Cloud is a mix of public and private clouds working together. It allows data and applications to move between both types of clouds easily. This helps companies use the public cloud for simple tasks and the private cloud for secure work. It provides flexibility, better cost control, and improved performance. Many organizations use hybrid clouds to balance safety and scalability. For example, AWS Outposts or Azure Arc are used for hybrid cloud systems.</p>
-    </div>
-
-    <table aria-label="Cloud types summary">
-      <thead>
-        <tr><th>Type of Cloud</th><th>Ownership</th><th>Access</th><th>Cost</th><th>Security</th><th>Example</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Public Cloud</td><td>Cloud provider</td><td>Public via Internet</td><td>Low</td><td>Moderate</td><td>AWS, Azure, GCP</td></tr>
-        <tr><td>Private Cloud</td><td>Single organization</td><td>Restricted</td><td>High</td><td>High</td><td>VMware, OpenStack, Outposts</td></tr>
-        <tr><td>Hybrid Cloud</td><td>Combination</td><td>Mixed</td><td>Medium</td><td>High</td><td>AWS Outposts + Cloud, Azure Arc</td></tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section class="card" id="quick-tables">
-    <h2>Quick Comparison — Edge & Transfer Solutions</h2>
-    <p>This table summarizes AWS edge and data transfer devices, comparing capacity and use cases.</p>
-    <table>
-      <thead>
-        <tr><th>Service</th><th>Purpose</th><th>Capacity</th><th>Portability</th><th>Use Case</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>AWS Snowball</td><td>Transfer large data</td><td>~80 TB (varies)</td><td>Medium</td><td>Data migration</td></tr>
-        <tr><td>AWS Snowcone</td><td>Edge/mobile device</td><td>8–14 TB</td><td>High</td><td>Remote data collection</td></tr>
-        <tr><td>AWS Snowmobile</td><td>Massive data migration</td><td>Up to 100 PB</td><td>Low</td><td>Datacenter migration</td></tr>
-      </tbody>
-    </table>
-  </section>
-<div>
-  <h2>🧠 What is a Launch Template in AWS EC2?</h2>
-  <p>
-    A Launch Template in AWS is like a blueprint or saved configuration for launching EC2 instances (virtual servers).
-    Instead of entering all settings manually every time you create a new EC2 instance, you can save those settings once in a launch template and reuse them easily later.
-  </p>
-
-  <h3>🔧 In Simple Words:</h3>
-  <p>
-    Think of it like saving your favorite “custom PC build” — with the same OS, instance type, key pair, security groups, and settings — so you can launch identical servers quickly anytime.
-  </p>
-
-  <h3>⚙️ A Launch Template can include:</h3>
-  <ul>
-    <li><strong>AMI (Amazon Machine Image)</strong> — which operating system or app base to use.</li>
-    <li><strong>Instance Type</strong> — how much CPU and memory (e.g., t2.micro, t3.large).</li>
-    <li><strong>Key Pair</strong> — for SSH login.</li>
-    <li><strong>Security Groups</strong> — for firewall rules.</li>
-    <li><strong>EBS Volumes</strong> — storage details.</li>
-    <li><strong>Network settings</strong> — VPC, subnet, etc.</li>
-    <li><strong>User Data</strong> — scripts to run when the instance starts (for setup automation).</li>
-  </ul>
-
-  <h3>🚀 Why Launch Templates Are Useful:</h3>
-  <ul>
-    <li>🕒 <strong>Save time</strong> — no need to re-enter instance settings.</li>
-    <li>🧩 <strong>Consistency</strong> — launch identical servers every time.</li>
-    <li>🛠️ <strong>Automation</strong> — used by Auto Scaling Groups and EC2 Fleet.</li>
-    <li>💰 <strong>Cost control</strong> — easily test, update, or version instance setups.</li>
-  </ul>
-</div>
-
-
-
-  <div class="max-w-6xl mx-auto p-6">
-    <header class="mb-8">
-      <h1 class="text-3xl font-extrabold">AWS Core Concepts</h1>
-      <p class="mt-2 text-slate-300">Deep but simple English explanations for <span class="accent">VM (Hypervisor)</span>, <span class="accent">AMI</span>, <span class="accent">EBS</span>, <span class="accent">Public IP</span> and <span class="accent">Private IP</span>, with examples and a visual flow.</p>
-    </header>
-
-    <main class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <!-- Left column: Terms -->
-      <section class="lg:col-span-2 space-y-6">
-        <!-- VM & Hypervisor -->
-        <article class="glass p-6 rounded-2xl">
-          <h2 class="text-2xl font-bold">1. Virtual Machine (VM) &amp; Hypervisor</h2>
-          <p class="mt-3 text-slate-300">
-A Virtual Machine, or VM, is a computer created with software inside a real physical computer. It has its own CPU, memory, and storage but runs virtually instead of physically. The Hypervisor is special software that creates and controls these virtual machines. It shares the real computer’s resources among several VMs so they can run at the same time. There are two kinds of hypervisors — Type 1 runs directly on hardware, and Type 2 runs on an operating system. In AWS, the Nitro hypervisor manages EC2 instances behind the scenes.</p>
-    
-
-            <div class="term border-emerald-400">
-              <h3 class="font-semibold">Types of hypervisors</h3>
-              <ul class="mt-2 text-slate-300 list-disc list-inside">
-                <li><strong>Type 1 (Bare-metal):</strong> Runs directly on hardware (example: KVM, VMware ESXi) — used in cloud providers.</li>
-                <li><strong>Type 2 (Hosted):</strong> Runs on top of an OS (example: VirtualBox) — good for local/dev use.</li>
-              </ul>
-            </div>
-          </div>
-
-          <p class="mt-4 text-slate-300"><strong>AWS note:</strong> AWS uses the Nitro hypervisor to run EC2 instances behind the scenes. You don't manage it directly — AWS handles it for you.</p>
-        </article>
-
-        <!-- AMI -->
-        <article class="glass p-6 rounded-2xl">
-          <h2 class="text-2xl font-bold">2. AMI (Amazon Machine Image)</h2>
-          <p class="mt-3 text-slate-300">
-An Amazon Machine Image, or AMI, is a ready-made template used to start a new EC2 instance. It includes an operating system, software, and configuration needed to run a server. When you launch an instance from an AMI, it looks exactly like the saved setup. This helps you create many identical servers quickly without manual setup. You can also make your own AMI from an existing server to use later. AWS Marketplace provides many pre-built AMIs like Ubuntu, WordPress, and Windows Server.</p>
-          <div class="mt-4 grid sm:grid-cols-2 gap-4">
-            <div class="term border-indigo-500">
-              <h3 class="font-semibold">Why AMIs are useful</h3>
-              <ul class="mt-2 text-slate-300 list-disc list-inside">
-                <li>Launch multiple identical servers quickly.</li>
-                <li>Create backups of a configured server (save as AMI).</li>
-                <li>Share custom configurations within your team.</li>
-              </ul>
-            </div>
-
-            <div class="term border-rose-400">
-              <h3 class="font-semibold">Real-world example</h3>
-              <p class="text-slate-300">If a VM is a new phone, the AMI is a <em>backup image</em> with apps and settings pre-installed — you get the same phone setup instantly.</p>
-            </div>
-          </div>
-
-          <p class="mt-4 text-slate-300">AWS Marketplace offers many public AMIs (WordPress, Node.js stacks, Windows Server, etc.) so you can skip manual installation steps.</p>
-        </article>
-
-        <!-- EBS -->
-        <article class="glass p-6 rounded-2xl">
-          <h2 class="text-2xl font-bold">3. AWS EBS (Elastic Block Store)</h2>
-          <p class="mt-3 text-slate-300">
-AWS Elastic Block Store, or EBS, is like a virtual hard disk for your EC2 instance. It stores your data safely and keeps it even after your server is stopped. You can use EBS to take snapshots, create backups, or attach it to another instance. It comes in different types for general use, high speed, or large data storage. Think of it as your computer’s hard drive but hosted in the cloud. EBS volumes make it easy to manage storage and recover data whenever needed.</p>
-          <div class="mt-4 grid sm:grid-cols-2 gap-4">
-            <div class="term border-yellow-400">
-              <h3 class="font-semibold">Key features</h3>
-              <ul class="mt-2 text-slate-300 list-disc list-inside">
-                <li>Persistent storage (data stays after restart).</li>
-                <li>Snapshots for backups and replication.</li>
-                <li>Attach/detach volumes to other instances.</li>
-              </ul>
-            </div>
-
-            <div class="term border-violet-400">
-              <h3 class="font-semibold">Volume types</h3>
-              <p class="text-slate-300">General purpose SSD (<em>gp3/gp2</em>), Provisioned IOPS SSD (<em>io1/io2</em>), and HDD types (<em>st1/sc1</em>) for large sequential workloads.</p>
-            </div>
-          </div>
-
-          <p class="mt-4 text-slate-300">Think of EBS as the <em>hard disk</em> in your cloud computer. You can resize it, snapshot it, or move it between instances.</p>
-        </article>
-
-        <!-- Public IP -->
-        <article class="glass p-6 rounded-2xl">
-          <h2 class="text-2xl font-bold">4. Public IP</h2>
-          <p class="mt-3 text-slate-300">A Public IP is an internet-facing address that lets your EC2 instance communicate with the outside world. It allows people to visit your website or connect to your server remotely. You can use it to host web applications, APIs, or connect through SSH and RDP. However, AWS-assigned public IPs are temporary and may change when you restart the instance. To keep a fixed address, you should use an Elastic IP. Public IPs are essential when your instance needs to be accessed from anywhere</p>
-          <div class="mt-4 grid sm:grid-cols-2 gap-4">
-            <div class="term border-cyan-400">
-              <h3 class="font-semibold">When to use</h3>
-              <ul class="mt-2 text-slate-300 list-disc list-inside">
-                <li>Host websites or APIs accessible globally.</li>
-                <li>SSH or RDP from outside the cloud.</li>
-                <li>Communicate with external services directly.</li>
-              </ul>
-            </div>
-
-            <div class="term border-pink-400">
-              <h3 class="font-semibold">Important notes</h3>
-              <p class="text-slate-300">Public IPs assigned by AWS are usually temporary — they change when you stop/start the instance. Use <span class="kbd">Elastic IP</span> if you need a permanent static public IP.</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Private IP -->
-        <article class="glass p-6 rounded-2xl">
-          <h2 class="text-2xl font-bold">5. Private IP</h2>
-          <p class="mt-3 text-slate-300">
-A Private IP is used for internal communication inside your AWS Virtual Private Cloud (VPC). It allows EC2 instances to talk securely without using the public internet. This is ideal for backend servers, databases, and internal applications. Private IPs protect your systems by keeping them invisible to the outside world. Every EC2 instance automatically gets one private IP when it starts. It’s like having an internal phone number used only inside your company’s network.</p>
-          <div class="mt-4 grid sm:grid-cols-2 gap-4">
-            <div class="term border-lime-400">
-              <h3 class="font-semibold">Use cases</h3>
-              <ul class="mt-2 text-slate-300 list-disc list-inside">
-                <li>Backend services talking to databases.</li>
-                <li>Internal microservice communication.</li>
-                <li>Keeping sensitive systems off the public internet.</li>
-              </ul>
-            </div>
-          <p class="mt-4 text-slate-300">Every EC2 instance receives at least one private IP. You can also add multiple private IPs for special routing or multi-homed applications.</p>
-        </article>
-
-        <article class="content no-break">
-    <h2>Elastic IPs</h2>
-    <p>
+      </div>
+      <div class="term border-rose-400">
+      <h3 class="font-semibold">Real-world example</h3>
+      <p class="text-slate-300">If a VM is a new phone, the AMI is a <em>backup image</em> with apps and settings pre-installed — you get the same phone setup instantly.</p>
+      </div>
+      </div>
+      <p class="mt-4 text-slate-300">AWS Marketplace offers many public AMIs (WordPress, Node.js stacks, Windows Server, etc.) so you can skip manual installation steps.</p>
+      </article>
+      <!-- EBS -->
+      <article class="glass p-6 rounded-2xl">
+      <h2 class="text-2xl font-bold">3. AWS EBS (Elastic Block Store)</h2>
+      <p class="mt-3 text-slate-300">
+      AWS Elastic Block Store, or EBS, is like a virtual hard disk for your EC2 instance. It stores your data safely and keeps it even after your server is stopped. You can use EBS to take snapshots, create backups, or attach it to another instance. It comes in different types for general use, high speed, or large data storage. Think of it as your computer’s hard drive but hosted in the cloud. EBS volumes make it easy to manage storage and recover data whenever needed.</p>
+      <div class="mt-4 grid sm:grid-cols-2 gap-4">
+      <div class="term border-yellow-400">
+      <h3 class="font-semibold">Key features</h3>
+      <ul class="mt-2 text-slate-300 list-disc list-inside">
+      <li>Persistent storage (data stays after restart).</li>
+      <li>Snapshots for backups and replication.</li>
+      <li>Attach/detach volumes to other instances.</li>
+      </ul>
+      </div>
+      <div class="term border-violet-400">
+      <h3 class="font-semibold">Volume types</h3>
+      <p class="text-slate-300">General purpose SSD (<em>gp3/gp2</em>), Provisioned IOPS SSD (<em>io1/io2</em>), and HDD types (<em>st1/sc1</em>) for large sequential workloads.</p>
+      </div>
+      </div>
+      <p class="mt-4 text-slate-300">Think of EBS as the <em>hard disk</em> in your cloud computer. You can resize it, snapshot it, or move it between instances.</p>
+      </article>
+      <!-- Public IP -->
+      <article class="glass p-6 rounded-2xl">
+      <h2 class="text-2xl font-bold">4. Public IP</h2>
+      <p class="mt-3 text-slate-300">A Public IP is an internet-facing address that lets your EC2 instance communicate with the outside world. It allows people to visit your website or connect to your server remotely. You can use it to host web applications, APIs, or connect through SSH and RDP. However, AWS-assigned public IPs are temporary and may change when you restart the instance. To keep a fixed address, you should use an Elastic IP. Public IPs are essential when your instance needs to be accessed from anywhere</p>
+      <div class="mt-4 grid sm:grid-cols-2 gap-4">
+      <div class="term border-cyan-400">
+      <h3 class="font-semibold">When to use</h3>
+      <ul class="mt-2 text-slate-300 list-disc list-inside">
+      <li>Host websites or APIs accessible globally.</li>
+      <li>SSH or RDP from outside the cloud.</li>
+      <li>Communicate with external services directly.</li>
+      </ul>
+      </div>
+      <div class="term border-pink-400">
+      <h3 class="font-semibold">Important notes</h3>
+      <p class="text-slate-300">Public IPs assigned by AWS are usually temporary — they change when you stop/start the instance. Use <span class="kbd">Elastic IP</span> if you need a permanent static public IP.</p>
+      </div>
+      </div>
+      </article>
+      <!-- Private IP -->
+      <article class="glass p-6 rounded-2xl">
+      <h2 class="text-2xl font-bold">5. Private IP</h2>
+      <p class="mt-3 text-slate-300">
+      A Private IP is used for internal communication inside your AWS Virtual Private Cloud (VPC). It allows EC2 instances to talk securely without using the public internet. This is ideal for backend servers, databases, and internal applications. Private IPs protect your systems by keeping them invisible to the outside world. Every EC2 instance automatically gets one private IP when it starts. It’s like having an internal phone number used only inside your company’s network.</p>
+      <div class="mt-4 grid sm:grid-cols-2 gap-4">
+      <div class="term border-lime-400">
+      <h3 class="font-semibold">Use cases</h3>
+      <ul class="mt-2 text-slate-300 list-disc list-inside">
+      <li>Backend services talking to databases.</li>
+      <li>Internal microservice communication.</li>
+      <li>Keeping sensitive systems off the public internet.</li>
+      </ul>
+      </div>
+      <p class="mt-4 text-slate-300">Every EC2 instance receives at least one private IP. You can also add multiple private IPs for special routing or multi-homed applications.</p>
+      </article>
+      <article class="content no-break">
+      <h2>Elastic IPs</h2>
+      <p>
       An Elastic IP address (EIP) is a static, public IPv4 address designed for dynamic cloud computing.
       Unlike regular IPs that change when an instance is stopped, an Elastic IP remains constant. 
       It allows you to quickly remap the address to another instance in case of failure, ensuring high availability.
       EIPs are particularly useful for hosting applications that require a fixed public endpoint.
       AWS charges for unused EIPs to encourage efficient IP usage.
-    </p>
-  </article>
-
+      </p>
+      </article>
       <!-- Right column: Summary & Tables -->
-    </main>
-  </div>
-  <div style="background:#ffffff; color:#0b1726; padding:28px; line-height:1.6; font-family:Inter, Arial, sans-serif;">
-
-  <h1 style="font-size:24px; margin:0 0 10px;">REST API Methods — Quick Reference</h1>
-  <p style="color:#334155; margin:6px 0 18px;">
-    Simple, one-page reference describing the common HTTP methods used with REST APIs and short examples.
-  </p>
-
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-
-    <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
-      <h3 style="margin:0 0 6px; font-size:16px;">GET</h3>
-      <p><strong>Meaning:</strong> Read or fetch data. Does not change server state.</p>
-      <p><strong>Usage:</strong> Get user details, download file, list S3 buckets.</p>
-      <p><strong>Example:</strong> <code>GET /users/123</code></p>
-    </div>
-
-    <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
-      <h3 style="margin:0 0 6px; font-size:16px;">POST</h3>
-      <p><strong>Meaning:</strong> Create new data (with body).</p>
-      <p><strong>Usage:</strong> Create user, login, submit form.</p>
-      <p><strong>Example:</strong> <code>POST /users</code></p>
-    </div>
-
-    <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
-      <h3 style="margin:0 0 6px; font-size:16px;">PUT</h3>
-      <p><strong>Meaning:</strong> Create or update a resource.</p>
-      <p><strong>Usage:</strong> Upload file, update record.</p>
-      <p><strong>Example:</strong> <code>PUT /users/123</code></p>
-    </div>
-
-    <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
-      <h3 style="margin:0 0 6px; font-size:16px;">DELETE</h3>
-      <p><strong>Meaning:</strong> Remove a resource.</p>
-      <p><strong>Usage:</strong> Delete file, delete user.</p>
-      <p><strong>Example:</strong> <code>DELETE /users/123</code></p>
-    </div>
-
-    <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
-      <h3 style="margin:0 0 6px; font-size:16px;">PATCH</h3>
-      <p><strong>Meaning:</strong> Update partial data.</p>
-      <p><strong>Usage:</strong> Update only name/email.</p>
-      <p><strong>Example:</strong> <code>PATCH /users/123</code></p>
-    </div>
-
-    <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
-      <h3 style="margin:0 0 6px; font-size:16px;">HEAD</h3>
-      <p><strong>Meaning:</strong> Same as GET but returns only headers.</p>
-      <p><strong>Usage:</strong> Check file exists, get metadata.</p>
-      <p><strong>Example:</strong> <code>HEAD /users/123</code></p>
-    </div>
-
-  </div>
-
-</div>
-<div style="display: flex; gap: 20px;">
-
-<div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
-        <h2>HTTP</h2>
-        <ul>
-            <li>HTTP stands for Hyper Text Transfer Protocol.</li>
-            <li>It is used for communication between browser and web server.</li>
-            <li>HTTP sends data in plain text (not encrypted).</li>
-            <li>It works on port 80.</li>
-            <li>It is not secure; data can be intercepted by hackers.</li>
-            <li>It does not use SSL/TLS certificates.</li>
-            <li>Browser address starts with http://</li>
-            <li>No padlock symbol appears in the browser.</li>
-            <li>Used in simple websites where security is not important.</li>
-            <li>Data integrity is not guaranteed; content can be modified.</li>
-        </ul>
-    </div>
-
-    <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
-        <h2>HTTPS</h2>
-        <ul>
-            <li>HTTPS stands for Hyper Text Transfer Protocol Secure.</li>
-            <li>It encrypts data using SSL/TLS encryption.</li>
-            <li>Works on port 443.</li>
-            <li>Provides secure communication between client and server.</li>
-            <li>Uses SSL/TLS certificates to verify server identity.</li>
-            <li>Browser address starts with https://</li>
-            <li>Shows a padlock icon in the address bar.</li>
-            <li>Protects sensitive data like passwords and payments.</li>
-            <li>Prevents Man-in-the-Middle attacks.</li>
-            <li>Google gives higher ranking to HTTPS websites.</li>
-        </ul>
-    </div>
-    </div>
-
-
-</div>
-
-<br>
-<div style="display: flex; gap: 20px;">
-  <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
-  <h3>LAN – Local Area Network (6 Lines)</h3>
-  <p>1. LAN stands for Local Area Network.</p>
-  <p>2. It covers a small area like a home or office.</p>
-  <p>3. It provides high-speed communication.</p>
-  <p>4. Devices like computers and printers connect in LAN.</p>
-  <p>5. It is cheap to install and maintain.</p>
-  <p>6. Example: Home Wi-Fi.</p>
-</div>
-<div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
-  <h3>MAN – Metropolitan Area Network (6 Lines)</h3>
-  <p>1. MAN stands for Metropolitan Area Network.</p>
-  <p>2. It covers a large area like a city.</p>
-  <p>3. It is bigger than LAN but smaller than WAN.</p>
-  <p>4. Speed is medium compared to LAN.</p>
-  <p>5. Used by ISPs to provide city internet.</p>
-  <p>6. Example: City-wide cable internet.</p>
-  </div>
-<div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
-  <h3>WAN – Wide Area Network (6 Lines)</h3>
-  <p>1. WAN stands for Wide Area Network.</p>
-  <p>2. It covers multiple countries or continents.</p>
-  <p>3. It is the largest type of network.</p>
-  <p>4. Speed is lower due to long distances.</p>
-  <p>5. Used by banks and multinational companies.</p>
-  <p>6. Example: The Internet.</p>
-</div>
-</div>
-
-<div style="display: flex; gap: 20px;">
-
-  <!-- LAN -->
-  <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
-    <h3>1️⃣ LAN – Local Area Network</h3>
-    <p><b>Full Form:</b> Local Area Network</p>
-    <p><b>Area Covered:</b> Small area (Home / Office / School)</p>
-    <p><b>Speed:</b> High</p>
-    <p><b>Range:</b> Up to 1 km</p>
-    <p><b>Example:</b> Home Wi-Fi network</p>
-  </div>
-
-  <!-- MAN -->
-  <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
-    <h3>2️⃣ MAN – Metropolitan Area Network</h3>
-    <p><b>Full Form:</b> Metropolitan Area Network</p>
-    <p><b>Area Covered:</b> City / Large campus</p>
-    <p><b>Speed:</b> Medium</p>
-    <p><b>Range:</b> Up to 50 km</p>
-    <p><b>Example:</b> City-wide cable internet</p>
-  </div>
-
-  <!-- WAN -->
-  <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
-    <h3>3️⃣ WAN – Wide Area Network</h3>
-    <p><b>Full Form:</b> Wide Area Network</p>
-    <p><b>Area Covered:</b> Country / World</p>
-    <p><b>Speed:</b> Slowest</p>
-    <p><b>Range:</b> Unlimited</p>
-    <p><b>Example:</b> The Internet</p>
-  </div>
-
-</div>
-</div>
-<div style="font-family: Arial, Helvetica, sans-serif; color:#111;">
-  <!-- Simple normal paragraph -->
-  <p>
-    <strong>IPv4</strong> is an older version of the Internet Protocol that helps devices communicate on a network. It uses a 32-bit address system, which means it can create about 4.3 billion unique IP addresses (for example <code>192.168.1.1</code>). Because the number of internet users and devices has grown enormously, IPv4 addresses started running out.<br> 
-  </p>
-
-  <!-- Detailed points as requested -->
-  <h3>🌐 What is IPv4?</h3>
-  <div>
-    <p><strong>✅ IPv4 (Internet Protocol Version 4)</strong></p>
-    <p>IPv4 is the 4th version of the Internet Protocol.</p>
-    <p>It uses a 32-bit address, meaning it can create 4.3 billion unique IP addresses.</p>
-    <p>Format example: <code>192.168.1.1</code></p>
-    <p>IPv4 addresses are written in four numbers separated by dots.</p>
-    <p>It is the most widely used IP version today.</p>
-    <p>Due to increasing internet devices, IPv4 addresses are almost finished.</p>
-  </div>
-
-  <h3>🌐 What is IPv6?</h3>
-  <p><strong>IPv6</strong> is the newer version of the Internet Protocol created to solve that shortage. It uses a 128-bit address system (for example <code>2001:0db8:85a3::7334</code>), supports many more devices, and brings improvements in efficiency and security.</p>
-  <div>
-    <p><strong>✅ IPv6 (Internet Protocol Version 6)</strong></p>
-    <p>IPv6 is the latest version of the Internet Protocol.</p>
-    <p>It uses a 128-bit address, meaning it can create a very large number of unique IP addresses (3.4×10<sup>38</sup>).</p>
-    <p>Format example: <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></p>
-    <p>IPv6 addresses are written in eight groups separated by colons.</p>
-    <p>It provides better speed, security, and performance.</p>
-    <p>It solves the IPv4 address shortage problem.</p>
-  </div>
-</div>
-<div style="font-family: Arial; font-size:10px; line-height:1.5; color:#111;">
-
-  <h3>🔑 Authentication – 5-Line Paragraph</h3>
-  <p>
-    Authentication is the process of verifying who a person is before allowing access to a system. 
-    It checks identity using methods like passwords, fingerprints, or OTP codes. 
-    This step is always done first when a user tries to log in. 
-    If authentication fails, the user is not allowed to enter the system. 
-    In simple words, authentication confirms “Are you the real user?”
-  </p>
-
-  <h3>🛡️ Authorization – 5-Line Paragraph</h3>
-  <p>
-    Authorization is the process of deciding what a user can do after they have logged in. 
-    It controls permissions such as viewing data, editing information, or accessing admin features. 
-    Each user gets different access based on their role in the system. 
-    Authorization always happens after authentication is successful. 
-    In simple words, authorization decides “What are you allowed to do?”
-  </p>
-
-</div>
-
-
-
-
-
-</body>
+      </main>
+      </div>
+      <div style="background:#ffffff; color:#0b1726; padding:28px; line-height:1.6; font-family:Inter, Arial, sans-serif;">
+         <h1 style="font-size:24px; margin:0 0 10px;">REST API Methods — Quick Reference</h1>
+         <p style="color:#334155; margin:6px 0 18px;">
+            Simple, one-page reference describing the common HTTP methods used with REST APIs and short examples.
+         </p>
+         <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+            <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
+               <h3 style="margin:0 0 6px; font-size:16px;">GET</h3>
+               <p><strong>Meaning:</strong> Read or fetch data. Does not change server state.</p>
+               <p><strong>Usage:</strong> Get user details, download file, list S3 buckets.</p>
+               <p><strong>Example:</strong> <code>GET /users/123</code></p>
+            </div>
+            <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
+               <h3 style="margin:0 0 6px; font-size:16px;">POST</h3>
+               <p><strong>Meaning:</strong> Create new data (with body).</p>
+               <p><strong>Usage:</strong> Create user, login, submit form.</p>
+               <p><strong>Example:</strong> <code>POST /users</code></p>
+            </div>
+            <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
+               <h3 style="margin:0 0 6px; font-size:16px;">PUT</h3>
+               <p><strong>Meaning:</strong> Create or update a resource.</p>
+               <p><strong>Usage:</strong> Upload file, update record.</p>
+               <p><strong>Example:</strong> <code>PUT /users/123</code></p>
+            </div>
+            <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
+               <h3 style="margin:0 0 6px; font-size:16px;">DELETE</h3>
+               <p><strong>Meaning:</strong> Remove a resource.</p>
+               <p><strong>Usage:</strong> Delete file, delete user.</p>
+               <p><strong>Example:</strong> <code>DELETE /users/123</code></p>
+            </div>
+            <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
+               <h3 style="margin:0 0 6px; font-size:16px;">PATCH</h3>
+               <p><strong>Meaning:</strong> Update partial data.</p>
+               <p><strong>Usage:</strong> Update only name/email.</p>
+               <p><strong>Example:</strong> <code>PATCH /users/123</code></p>
+            </div>
+            <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
+               <h3 style="margin:0 0 6px; font-size:16px;">HEAD</h3>
+               <p><strong>Meaning:</strong> Same as GET but returns only headers.</p>
+               <p><strong>Usage:</strong> Check file exists, get metadata.</p>
+               <p><strong>Example:</strong> <code>HEAD /users/123</code></p>
+            </div>
+         </div>
+      </div>
+      <div style="display: flex; gap: 20px;">
+         <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+            <h2>HTTP</h2>
+            <ul>
+               <li>HTTP stands for Hyper Text Transfer Protocol.</li>
+               <li>It is used for communication between browser and web server.</li>
+               <li>HTTP sends data in plain text (not encrypted).</li>
+               <li>It works on port 80.</li>
+               <li>It is not secure; data can be intercepted by hackers.</li>
+               <li>It does not use SSL/TLS certificates.</li>
+               <li>Browser address starts with http://</li>
+               <li>No padlock symbol appears in the browser.</li>
+               <li>Used in simple websites where security is not important.</li>
+               <li>Data integrity is not guaranteed; content can be modified.</li>
+            </ul>
+         </div>
+         <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+            <h2>HTTPS</h2>
+            <ul>
+               <li>HTTPS stands for Hyper Text Transfer Protocol Secure.</li>
+               <li>It encrypts data using SSL/TLS encryption.</li>
+               <li>Works on port 443.</li>
+               <li>Provides secure communication between client and server.</li>
+               <li>Uses SSL/TLS certificates to verify server identity.</li>
+               <li>Browser address starts with https://</li>
+               <li>Shows a padlock icon in the address bar.</li>
+               <li>Protects sensitive data like passwords and payments.</li>
+               <li>Prevents Man-in-the-Middle attacks.</li>
+               <li>Google gives higher ranking to HTTPS websites.</li>
+            </ul>
+         </div>
+      </div>
+      </div>
+      <br>
+      <div style="display: flex; gap: 20px;">
+         <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+            <h3>LAN – Local Area Network (6 Lines)</h3>
+            <p>1. LAN stands for Local Area Network.</p>
+            <p>2. It covers a small area like a home or office.</p>
+            <p>3. It provides high-speed communication.</p>
+            <p>4. Devices like computers and printers connect in LAN.</p>
+            <p>5. It is cheap to install and maintain.</p>
+            <p>6. Example: Home Wi-Fi.</p>
+         </div>
+         <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+            <h3>MAN – Metropolitan Area Network (6 Lines)</h3>
+            <p>1. MAN stands for Metropolitan Area Network.</p>
+            <p>2. It covers a large area like a city.</p>
+            <p>3. It is bigger than LAN but smaller than WAN.</p>
+            <p>4. Speed is medium compared to LAN.</p>
+            <p>5. Used by ISPs to provide city internet.</p>
+            <p>6. Example: City-wide cable internet.</p>
+         </div>
+         <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+            <h3>WAN – Wide Area Network (6 Lines)</h3>
+            <p>1. WAN stands for Wide Area Network.</p>
+            <p>2. It covers multiple countries or continents.</p>
+            <p>3. It is the largest type of network.</p>
+            <p>4. Speed is lower due to long distances.</p>
+            <p>5. Used by banks and multinational companies.</p>
+            <p>6. Example: The Internet.</p>
+         </div>
+      </div>
+      <div style="display: flex; gap: 20px;">
+         <!-- LAN -->
+         <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+            <h3>1️⃣ LAN – Local Area Network</h3>
+            <p><b>Full Form:</b> Local Area Network</p>
+            <p><b>Area Covered:</b> Small area (Home / Office / School)</p>
+            <p><b>Speed:</b> High</p>
+            <p><b>Range:</b> Up to 1 km</p>
+            <p><b>Example:</b> Home Wi-Fi network</p>
+         </div>
+         <!-- MAN -->
+         <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+            <h3>2️⃣ MAN – Metropolitan Area Network</h3>
+            <p><b>Full Form:</b> Metropolitan Area Network</p>
+            <p><b>Area Covered:</b> City / Large campus</p>
+            <p><b>Speed:</b> Medium</p>
+            <p><b>Range:</b> Up to 50 km</p>
+            <p><b>Example:</b> City-wide cable internet</p>
+         </div>
+         <!-- WAN -->
+         <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
+            <h3>3️⃣ WAN – Wide Area Network</h3>
+            <p><b>Full Form:</b> Wide Area Network</p>
+            <p><b>Area Covered:</b> Country / World</p>
+            <p><b>Speed:</b> Slowest</p>
+            <p><b>Range:</b> Unlimited</p>
+            <p><b>Example:</b> The Internet</p>
+         </div>
+      </div>
+      </div>
+      <div style="font-family: Arial, Helvetica, sans-serif; color:#111;">
+         <!-- Simple normal paragraph -->
+         <p>
+            <strong>IPv4</strong> is an older version of the Internet Protocol that helps devices communicate on a network. It uses a 32-bit address system, which means it can create about 4.3 billion unique IP addresses (for example <code>192.168.1.1</code>). Because the number of internet users and devices has grown enormously, IPv4 addresses started running out.<br> 
+         </p>
+         <!-- Detailed points as requested -->
+         <h2>🌐 What is IPv4?</h2>
+         <div>
+            <p><strong>✅ IPv4 (Internet Protocol Version 4)</strong></p>
+            <p>IPv4 is the 4th version of the Internet Protocol.</p>
+            <p>It uses a 32-bit address, meaning it can create 4.3 billion unique IP addresses.</p>
+            <p>Format example: <code>192.168.1.1</code></p>
+            <p>IPv4 addresses are written in four numbers separated by dots.</p>
+            <p>It is the most widely used IP version today.</p>
+            <p>Due to increasing internet devices, IPv4 addresses are almost finished.</p>
+         </div>
+         <h2>🌐 What is IPv6?</h2>
+         <p><strong>IPv6</strong> is the newer version of the Internet Protocol created to solve that shortage. It uses a 128-bit address system (for example <code>2001:0db8:85a3::7334</code>), supports many more devices, and brings improvements in efficiency and security.</p>
+         <div>
+            <p><strong>✅ IPv6 (Internet Protocol Version 6)</strong></p>
+            <p>IPv6 is the latest version of the Internet Protocol.</p>
+            <p>It uses a 128-bit address, meaning it can create a very large number of unique IP addresses (3.4×10<sup>38</sup>).</p>
+            <p>Format example: <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></p>
+            <p>IPv6 addresses are written in eight groups separated by colons.</p>
+            <p>It provides better speed, security, and performance.</p>
+            <p>It solves the IPv4 address shortage problem.</p>
+         </div>
+      </div>
+      <div style="font-family: Arial; line-height:1.5; color:#111;">
+         <h2>🔑 Authentication</h2>
+         <p>
+            Authentication is the process of verifying who a person is before allowing access to a system. 
+            It checks identity using methods like passwords, fingerprints, or OTP codes. 
+            This step is always done first when a user tries to log in. 
+            If authentication fails, the user is not allowed to enter the system. 
+            In simple words, authentication confirms “Are you the real user?”
+         </p>
+         <h2>🛡️ Authorization </h2>
+         <p>
+            Authorization is the process of deciding what a user can do after they have logged in. 
+            It controls permissions such as viewing data, editing information, or accessing admin features. 
+            Each user gets different access based on their role in the system. 
+            Authorization always happens after authentication is successful. 
+            In simple words, authorization decides “What are you allowed to do?”
+         </p>
+      </div>
+   </body>
 </html>
