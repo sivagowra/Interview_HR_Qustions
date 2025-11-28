@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>20 S3 Bucket Policy Examples — Easy → Hard</title>
+  <style>
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:24px;background:#f7f9fb;color:#0b1220}
+    header{margin-bottom:20px}
+    h1{font-size:28px;margin:0 0 8px}
+    p.lead{margin:0;color:#475569}
+    nav{background:#fff;border-radius:12px;padding:12px;margin-bottom:18px;box-shadow:0 1px 3px rgba(2,6,23,0.06)}
+    nav a{display:inline-block;margin-right:10px;color:#0b62d6;text-decoration:none}
+    section.card{background:#fff;border-radius:12px;padding:18px;margin-bottom:12px;box-shadow:0 1px 3px rgba(2,6,23,0.04)}
+    pre{background:#0b1220;color:#e6eef8;padding:14px;border-radius:8px;overflow:auto}
+    code{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:13px}
+    h2{margin-top:8px}
+    .meta{color:#6b7280;font-size:13px;margin-bottom:8px}
+    .explain{background:#f1f5f9;padding:12px;border-radius:8px;margin-top:10px}
+    footer{margin-top:24px;color:#6b7280;font-size:13px}
+    .toc{columns:2}
+    .level{font-weight:600;margin-top:6px}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>20 S3 Bucket Policy Examples — Easy → Hard</h1>
+    <p class="lead">Each example includes the policy JSON and a short explanation. Use these for learning and practice.</p>
+  </header>
+
+  <nav>
+    <a href="#level1">Level 1 — Basics (1–5)</a>
+    <a href="#level2">Level 2 — Medium (6–10)</a>
+    <a href="#level3">Level 3 — Hard (11–15)</a>
+    <a href="#level4">Level 4 — Very Hard (16–20)</a>
+  </nav>
+<h1>Amazon S3 Policy Fields Explained</h1>
+
+<div class="box">
+    <h2>Full Policy Example</h2>
+    <pre>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "NameOfPolicy",
+      "Effect": "Allow or Deny",
+      "Principal": "User/Role/* Anyone",
+      "Action": "s3:GetObject, s3:PutObject, ...",
+      "Resource": "arn:aws:s3:::bucket-name/*"
+    }
+  ]
+}</pre>
+</div>
+
+<div class="box">
+    <h2>1. Version</h2>
+    <p><b>Meaning:</b> The policy language version.</p>
+    <p><b>Purpose:</b> Tells AWS which policy format is used.</p>
+    <p><b>Value:</b> <code>"2012-10-17"</code> (latest recommended version)</p>
+</div>
+
+<div class="box">
+    <h2>2. Statement</h2>
+    <p><b>Meaning:</b> A list (array) of all permission rules.</p>
+    <p><b>Purpose:</b> Allows you to include multiple rules inside one policy.</p>
+    <p><b>Example:</b></p>
+    <pre>"Statement": [ { rule1 }, { rule2 } ]</pre>
+</div>
+
+<div class="box">
+    <h2>3. Sid (Statement ID)</h2>
+    <p><b>Meaning:</b> A unique name for each policy rule.</p>
+    <p><b>Purpose:</b> Helps identify, document, or debug policies.</p>
+    <p><b>Example:</b> <code>"Sid": "AllowPublicRead"</code></p>
+</div>
+
+<div class="box">
+    <h2>4. Effect</h2>
+    <p><b>Meaning:</b> Decides whether rule allows or denies access.</p>
+    <p><b>Values:</b></p>
+    <ul>
+        <li><code>Allow</code> → Gives permission</li>
+        <li><code>Deny</code> → Blocks permission (stronger than Allow)</li>
+    </ul>
+</div>
+
+<div class="box">
+    <h2>5. Principal</h2>
+    <p><b>Meaning:</b> Who the permission is for.</p>
+    <p><b>Purpose:</b> Defines the user, role, or public.</p>
+
+    <h3>Examples:</h3>
+    <table>
+        <tr><th>Principal Value</th><th>Meaning</th></tr>
+        <tr><td><code>"*"</code></td><td>Anyone (public access)</td></tr>
+        <tr><td><code>"AWS": "arn:aws:iam::12345:user/user1"</code></td><td>Specific user</td></tr>
+        <tr><td><code>"AWS": ["arn1", "arn2"]</code></td><td>Multiple users</td></tr>
+        <tr><td><code>"Service": "lambda.amazonaws.com"</code></td><td>AWS service like Lambda</td></tr>
+    </table>
+</div>
+
+<div class="box">
+    <h2>6. Action</h2>
+    <p><b>Meaning:</b> What operation the user can perform.</p>
+
+    <h3>Common S3 Actions</h3>
+    <table>
+        <tr><th>Action</th><th>Purpose</th></tr>
+        <tr><td><code>s3:GetObject</code></td><td>Download files</td></tr>
+        <tr><td><code>s3:PutObject</code></td><td>Upload files</td></tr>
+        <tr><td><code>s3:DeleteObject</code></td><td>Delete files</td></tr>
+        <tr><td><code>s3:ListBucket</code></td><td>List bucket contents</td></tr>
+        <tr><td><code>s3:*</code></td><td>All S3 actions</td></tr>
+    </table>
+</div>
+
+<div class="box">
+    <h2>7. Resource</h2>
+    <p><b>Meaning:</b> Which bucket or object the rule applies to.</p>
+
+    <h3>Examples:</h3>
+    <ul>
+        <li><b>Bucket:</b> <code>arn:aws:s3:::mybucket</code></li>
+        <li><b>All files inside bucket:</b> <code>arn:aws:s3:::mybucket/*</code></li>
+        <li><b>Specific file:</b> <code>arn:aws:s3:::mybucket/index.html</code></li>
+    </ul>
+</div>
+  <section id="level1" class="card">
+    <h2>LEVEL–1 (Very Easy — Basics)</h2>
+    <div class="toc">
+      <div class="level">1. Public Read Access</div>
+      <div class="level">2. Deny Public Access</div>
+      <div class="level">3. Allow Only Listing</div>
+      <div class="level">4. Folder Read Access</div>
+      <div class="level">5. PutObject (upload) only</div>
+    </div>
+
+    <hr />
+
+    <h3>1. Allow Public Read Access (Static website hosting)</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::mybucket/*"
+    }
+  ]
+}</code></pre>
+    <div class="explain">Anyone on the internet can view your files (READ ONLY). Useful for static websites.</div>
+
+    <h3>2. Deny Public Access to Entire Bucket</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "*",
+      "Resource": [
+        "arn:aws:s3:::mybucket",
+        "arn:aws:s3:::mybucket/*"
+      ]
+    }
+  ]
+}</code></pre>
+    <div class="explain">No public access — complete protection for the bucket (deny all actions).</div>
+
+    <h3>3. Allow Only Listing the Bucket</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::mybucket"
+    }
+  ]
+}</code></pre>
+    <div class="explain">People can list the objects (see filenames) but cannot download them.</div>
+
+    <h3>4. Allow Read Access Only to a Specific Folder</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::mybucket/photos/*"
+    }
+  ]
+}</code></pre>
+    <div class="explain">Public can only read objects inside the <code>photos/</code> folder.</div>
+
+    <h3>5. Allow File Upload but NOT Delete</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::mybucket/uploads/*"
+    }
+  ]
+}</code></pre>
+    <div class="explain">Allows uploads into <code>uploads/</code>. This statement alone does not explicitly deny delete; combine with a Deny Delete statement if you want to prevent deletions.</div>
+  </section>
+
+  <section id="level2" class="card">
+    <h2>LEVEL–2 (Medium — IAM & Conditions)</h2>
+
+    <h3>6. Allow Access to Bucket Only from Your IAM User</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": { "AWS": "arn:aws:iam::123456789012:user/DevUser" },
+      "Action": "s3:*",
+      "Resource": ["arn:aws:s3:::mybucket","arn:aws:s3:::mybucket/*"]
+    }
+  ]
+}</code></pre>
+    <div class="explain">Only the IAM user <code>DevUser</code> from account <code>123456789012</code> may perform S3 actions on the bucket and its objects.</div>
+
+    <h3>7. Block Upload Unless File Is Encrypted (SSE-S3)</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::mybucket/*",
+      "Condition": {
+        "StringNotEquals": { "s3:x-amz-server-side-encryption": "AES256" }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="explain">Uploads are denied unless the request specifies server-side encryption using AES256.</div>
+
+    <h3>8. Allow Access Only from Your VPC Endpoint</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": "arn:aws:s3:::mybucket/*",
+      "Condition": {
+        "StringNotEquals": { "aws:sourceVpce": "vpce-12345678" }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="explain">Deny all requests unless they come through the specified VPC endpoint (private access from your VPC).</div>
+
+    <h3>9. Allow Read/Write Only from Your Office IP</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": ["s3:GetObject","s3:PutObject"],
+      "Resource": "arn:aws:s3:::mybucket/*",
+      "Condition": {
+        "IpAddress": { "aws:SourceIp": "203.0.113.10/32" }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="explain">Only requests from the single IP <code>203.0.113.10</code> can read or upload objects.</div>
+
+    <h3>10. Allow Read Access Only to .jpg Files</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::mybucket/*.jpg"
+    }
+  ]
+}</code></pre>
+    <div class="explain">This aims to allow read access only to objects ending in <code>.jpg</code>. Note: S3 ARN wildcard behavior for suffix matching may require additional handling (prefix-based conditions or object key conditions).</div>
+  </section>
+
+  <section id="level3" class="card">
+    <h2>LEVEL–3 (Hard — Real-World Security Cases)</h2>
+
+    <h3>11. Deny All Uploads Except a Specific Folder (uploads/)</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:PutObject",
+      "NotResource": "arn:aws:s3:::mybucket/uploads/*"
+    }
+  ]
+}</code></pre>
+    <div class="explain">Deny PutObject on everything except <code>uploads/</code>. This forces uploads to go only inside the uploads folder.</div>
+
+    <h3>12. Prevent Deleting Files (Even Admin Cannot Delete)</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": ["s3:DeleteObject"],
+      "Resource": "arn:aws:s3:::mybucket/*"
+    }
+  ]
+}</code></pre>
+    <div class="explain">No principal can delete objects. Use with caution — this blocks delete operations for everyone.</div>
+
+    <h3>13. Allow CloudFront Only Access (OAC Signed)</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E123ABCXYZ"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::mybucket/*"
+    }
+  ]
+}</code></pre>
+    <div class="explain">Only CloudFront (Origin Access Identity) can retrieve objects from the bucket, useful when serving content through CDN securely.</div>
+
+    <h3>14. Deny Access If Request Is Not HTTPS</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyInsecureConnections",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": "arn:aws:s3:::mybucket/*",
+      "Condition": {
+        "Bool": { "aws:SecureTransport": "false" }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="explain">Blocks HTTP (insecure) requests — only HTTPS requests allowed.</div>
+
+    <h3>15. Allow Only Certain File Types to Be Uploaded (.png, .jpeg)</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::mybucket/*",
+      "Condition": {
+        "StringNotLike": { "s3:prefix": ["*.png","*.jpeg"] }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="explain">Blocks uploads unless the object key matches the specified patterns. Be careful: S3 policy conditions often use <code>s3:prefix</code> and prefix matching; testing is recommended.</div>
+  </section>
+
+  <section id="level4" class="card">
+    <h2>LEVEL–4 (Very Hard — Production Level)</h2>
+
+    <h3>16. Multi-Condition Access (IP + MFA + Encryption Required)</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": "arn:aws:s3:::mybucket/*",
+      "Condition": {
+        "IpAddress": { "aws:SourceIp": "203.0.113.10/32" },
+        "Bool": { "aws:MultiFactorAuthPresent": "true" },
+        "StringEquals": { "s3:x-amz-server-side-encryption": "AES256" }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="explain">Allow actions only if multiple conditions are met: request from a specific IP, MFA present, and object is encrypted with AES256.</div>
+
+    <h3>17. Allow Only Amazon Rekognition to Access</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": { "Service": "rekognition.amazonaws.com" },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::mybucket/*"
+    }
+  ]
+}</code></pre>
+    <div class="explain">Grants the Rekognition service permission to read objects. Useful when integrating AWS ML services.</div>
+
+    <h3>18. Cross-Account Access (Account A → Account B Bucket)</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": { "AWS": "123456789012" },
+      "Action": ["s3:GetObject", "s3:PutObject"],
+      "Resource": "arn:aws:s3:::mybucket/*"
+    }
+  ]
+}</code></pre>
+    <div class="explain">Another AWS account (ID <code>123456789012</code>) can upload and download objects. Use cross-account IAM principals carefully.</div>
+
+    <h3>19. Allow Lambda Function Only Access (IAM Role)</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::123456789012:role/lambdaExecRole"
+      },
+      "Action": "s3:*",
+      "Resource": "arn:aws:s3:::mybucket/*"
+    }
+  ]
+}</code></pre>
+    <div class="explain">Gives an IAM role used by Lambda full access to the bucket and objects.</div>
+
+    <h3>20. Intelligent Access Control with Prefix Matching (Team folders)</h3>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "TeamAccessControl",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::mybucket/teamA/*",
+        "arn:aws:s3:::mybucket/teamB/*"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "s3:prefix": ["teamA/","teamB/"]
+        }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="explain">Allows get/put only for specified team prefixes. Use prefix or object key conditions to enforce per-team access boundaries.</div>
+  </section>
+
+  <footer>
+    <p>Need these exported as a downloadable HTML file or want me to replace <code>mybucket</code> and ARNs with your real bucket values? Ask and I will update.</p>
+  </footer>
+</body>
+</html>
