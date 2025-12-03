@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AWS to Azure Services Mapping</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background: #f5f5f5;
+    }
+    h2 {
+        color: #333;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+    }
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+    th {
+        background: #0078D4;
+        color: white;
+        padding: 10px;
+        text-align: left;
+    }
+    td {
+        padding: 10px;
+    }
+    tr:nth-child(even){
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+<body>
+
+<h2>AWS to Azure Services Mapping</h2>
+
+<table>
+    <tr>
+        <th>AWS Service</th>
+        <th>Purpose</th>
+        <th>Azure Equivalent</th>
+    </tr>
+    <tr>
+        <td>EC2</td>
+        <td>Virtual machines for compute</td>
+        <td>Azure Virtual Machines (VMs)</td>
+    </tr>
+    <tr>
+        <td>S3</td>
+        <td>Object storage service</td>
+        <td>Azure Blob Storage</td>
+    </tr>
+    <tr>
+        <td>VPC</td>
+        <td>Virtual private cloud network</td>
+        <td>Azure Virtual Network (VNet)</td>
+    </tr>
+    <tr>
+        <td>SQS</td>
+        <td>Message queue service</td>
+        <td>Azure Queue Storage / Azure Service Bus Queues</td>
+    </tr>
+    <tr>
+        <td>SNS</td>
+        <td>Notification + pub/sub messaging</td>
+        <td>Azure Event Grid / Azure Notification Hubs / Service Bus Topics</td>
+    </tr>
+    <tr>
+        <td>CloudWatch</td>
+        <td>Monitoring & logging</td>
+        <td>Azure Monitor + Azure Log Analytics</td>
+    </tr>
+    <tr>
+        <td>IAM</td>
+        <td>Identity & access management</td>
+        <td>Azure Active Directory (Entra ID)</td>
+    </tr>
+    <tr>
+        <td>RDS</td>
+        <td>Managed relational database</td>
+        <td>Azure SQL Database / Azure Database for MySQL/PostgreSQL</td>
+    </tr>
+</table>
+
+</body>
+</html>

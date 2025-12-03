@@ -594,5 +594,116 @@
             In simple words, authorization decides “What are you allowed to do?”
          </p>
       </div>
+       <h1>Agile vs Waterfall (Each as a 10-line Paragraph)</h1>
+
+  <section>
+    <h2>Agile Methodology</h2>
+    <p class="paragraph">
+Agile methodology is a modern software development approach where the project is divided into small workable parts called sprints.<br>
+Each sprint usually lasts two to four weeks and includes planning, development, testing, and review.<br>
+The team works together daily and discusses progress and problems in short meetings.<br>
+Customers can see the work regularly and give feedback anytime during the project.<br>
+This allows quick changes if requirements change or new ideas come.<br>
+Development and testing happen continuously, so issues are found early and fixed fast.<br>
+Agile encourages teamwork between developers, testers, DevOps, and product owners.<br>
+It improves communication and reduces misunderstandings.<br>
+The product grows step-by-step and becomes better with every sprint.<br>
+Agile helps deliver faster, improve quality, and satisfy customers more effectively.
+    </p>
+  </section>
+
+  <section>
+    <h2>Waterfall Model</h2>
+    <p class="paragraph">
+The Waterfall model is a traditional software development method where the entire project flows step by step in a fixed order.<br>
+It begins with complete requirement gathering and then moves to system design after everything is clearly understood.<br>
+Once the design is ready, the full development of the project starts without going back to earlier steps.<br>
+After development is complete, the testing team checks the entire project at once to find errors or issues.<br>
+Only after testing is finished, the project is delivered to the customer.<br>
+In this model, changes are very difficult to make once the project has moved forward.<br>
+Customers usually see the final product only at the end, not during development.<br>
+This makes the process slow and rigid compared to modern methods.<br>
+The Waterfall model is suitable only for projects with fixed and unchanging requirements.<br>
+It works well for government or banking systems where stability is more important than flexibility.
+    </p>
+  </section>
+  <div style="margin-bottom: 30px; font-family: Arial; line-height: 1.6;">
+  <h2>Monolithic Architecture</h2>
+  <p>
+    A monolithic architecture is a software design where the entire application is built as one single unit.<br>
+    All features such as login, payment, database access, and UI run inside one big codebase.<br>
+    Every module depends on the other, so even a small change requires rebuilding and redeploying the entire application.<br>
+    This makes development slower as the project grows in size and complexity.<br>
+    Testing becomes harder because everything is tightly connected and difficult to isolate.<br>
+    If one part fails, the entire application may stop working.<br>
+    Scaling is difficult because you must scale the whole app even if only one feature needs more resources.<br>
+    Monolithic applications are simple to start and easy for small teams to manage.<br>
+    However, they become large and harder to maintain over time.<br>
+    They are suitable for small to medium-sized projects with stable requirements.
+  </p>
+</div>
+
+<div style="margin-bottom: 30px; font-family: Arial; line-height: 1.6;">
+  <h2>Microservices Architecture</h2>
+  <p>
+    Microservices architecture is a modern approach where an application is divided into many small, independent services.<br>
+    Each service focuses on a single function such as login, payment, search, or notifications.<br>
+    These services run separately and communicate with each other using APIs.<br>
+    If one service fails, the rest of the application continues to run normally.<br>
+    Developers can update, deploy, and scale each service independently.<br>
+    This makes scaling easier because only high-load services need extra resources.<br>
+    Different services can be written in different programming languages if needed.<br>
+    Testing becomes simpler as each service is small and isolated.<br>
+    Microservices allow fast development for large and complex systems.<br>
+    They are suitable for modern applications like e-commerce, cloud platforms, and banking systems.
+  </p>
+</div>
+<div>
+  <h2>Docker (Simple English Explanation)</h2>
+  <p>
+    Docker is a tool that helps you run applications in a clean and separate environment called a container. 
+    Normally, when we install software on a computer, it may cause version problems or dependency issues. 
+    Docker avoids these problems by packing everything an application needs—code, libraries, runtime—into one container. 
+    This container works the same on any machine, so the application runs without errors everywhere. 
+    Developers use Docker to move applications easily from their laptop to servers or cloud. 
+    It also helps teams work faster because containers start quickly and need very little memory. 
+    Docker images are like templates, and containers are the running versions of those images. 
+    Using Docker, we can run many small apps separately on the same machine without conflict. 
+    It is one of the most important tools in DevOps for CI/CD pipelines. 
+    Overall, Docker makes application deployment faster, easier, and more reliable.
+  </p>
+</div>
+<div>
+  <h2>Docker Image</h2>
+  <p>
+    A Docker image is like a blueprint or template used to create containers. 
+    It contains everything an application needs, such as code, libraries, and system files. 
+    You cannot change an image while it is running; it is always read-only. 
+    Images are created only once and reused many times. 
+    You can store images in Docker Hub or your private registry. 
+    When you run an image, Docker uses it to start a container. 
+    Think of a Docker image like a cake recipe that tells how to make a cake. 
+    The recipe never changes; it only describes how the cake should be. 
+    Developers use images to make sure their app runs the same in all environments. 
+    In short, an image is the package that contains the app and all its dependencies.
+  </p>
+</div>
+<div>
+  <h2>Docker Container</h2>
+  <p>
+    A Docker container is the running version of a Docker image. 
+    It is like the actual cake made from the recipe. 
+    Containers run the application in a fully isolated environment. 
+    Each container has its own file system, processes, and configuration. 
+    Containers are lightweight and start very fast. 
+    You can start, stop, restart, and delete containers easily. 
+    Containers use the image as a base but can have changes during runtime. 
+    Multiple containers can run from the same image at the same time. 
+    They do not affect each other, making them safe and independent. 
+    In simple words, a container is an alive, working app created from an image.
+  </p>
+</div>
+
+
    </body>
 </html>
