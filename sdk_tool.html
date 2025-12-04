@@ -63,8 +63,7 @@
 <div>
     <h2>Introduction</h2>
     <p>
-        <b>AWS SDK (boto3)</b> allows you to interact with AWS services like S3, EC2, IAM, Lambda, RDS, CloudWatch, SQS, and SNS using Python code.  
-        This tutorial shows how to list resources from multiple AWS services using one script.
+        <b>AWS SDK (boto3)</b> is the official Python software development kit used to interact with AWS services programmatically. Instead of running AWS CLI commands manually, boto3 allows developers to automate tasks such as creating S3 buckets, launching EC2 instances, uploading files, or managing IAM users through Python code. It is built on top of AWS APIs, making cloud operations faster, more flexible, and easily repeatable inside applications. Boto3 supports both high-level resource APIs and low-level client APIs, giving complete control over AWS services. With boto3, you can integrate AWS into web apps, automate DevOps workflows, process data, or build serverless applications. It also uses your AWS CLI credentials automatically, so once configured, you can run scripts without extra setup. Because it’s pure Python, boto3 works on Linux, Windows, and macOS. In simple terms, AWS SDK (boto3) makes cloud automation easy, powerful, and perfect for developers who want to build scalable AWS-based solutions.
     </p>
 </div>
 
@@ -193,6 +192,203 @@ python aws_resources.py
         <li>Not as visual as AWS Console dashboards.</li>
     </ul>
 </div>
+
+<div class="container">
+<h1>10 Simple S3 Examples (boto3)</h1>
+
+<div class="example">
+<h3>1. List all buckets</h3>
+<pre><code>import boto3
+s3 = boto3.client("s3")
+response = s3.list_buckets()
+for b in response["Buckets"]:
+    print(b["Name"])</code></pre>
+</div>
+
+<div class="example">
+<h3>2. Create bucket</h3>
+<pre><code>import boto3
+s3 = boto3.client("s3")
+s3.create_bucket(Bucket="my-simple-bucket-12345")
+print("Bucket created")</code></pre>
+</div>
+
+<div class="example">
+<h3>3. Upload file</h3>
+<pre><code>import boto3
+s3 = boto3.client("s3")
+s3.upload_file("local.txt", "sivagowra", "file.txt")
+print("Uploaded")</code></pre>
+</div>
+
+<div class="example">
+<h3>4. Download file</h3>
+<pre><code>import boto3
+s3 = boto3.client("s3")
+s3.download_file("sivagowra", "file.txt", "downloaded.txt")
+print("Downloaded")</code></pre>
+</div>
+
+<div class="example">
+<h3>5. List objects in a bucket</h3>
+<pre><code>import boto3
+s3 = boto3.client("s3")
+response = s3.list_objects_v2(Bucket="sivagowra")
+for obj in response.get("Contents", []):
+    print(obj["Key"])</code></pre>
+</div>
+
+<div class="example">
+<h3>6. Delete an object</h3>
+<pre><code>import boto3
+s3 = boto3.client("s3")
+s3.delete_object(Bucket="sivagowra", Key="file.txt")
+print("Deleted")</code></pre>
+</div>
+
+<div class="example">
+<h3>7. Copy file inside S3</h3>
+<pre><code>import boto3
+s3 = boto3.client("s3")
+source = {"Bucket": "sivagowra", "Key": "file.txt"}
+s3.copy(source, "sivagowra", "file_copy.txt")
+print("Copied")</code></pre>
+</div>
+
+<div class="example">
+<h3>8. Generate presigned URL</h3>
+<pre><code>import boto3
+s3 = boto3.client("s3")
+url = s3.generate_presigned_url("get_object", Params={"Bucket": "sivagowra", "Key": "file.txt"}, ExpiresIn=300)
+print(url)</code></pre>
+</div>
+
+<div class="example">
+<h3>9. Enable Versioning</h3>
+<pre><code>import boto3
+s3 = boto3.client("s3")
+s3.put_bucket_versioning(Bucket="sivagowra", VersioningConfiguration={"Status": "Enabled"})
+print("Versioning Enabled")</code></pre>
+</div>
+
+<div class="example">
+<h3>10. Delete bucket (empty only)</h3>
+<pre><code>import boto3
+s3 = boto3.client("s3")
+s3.delete_bucket(Bucket="my-simple-bucket-12345")
+print("Bucket Deleted")</code></pre>
+</div>
+</div>
+
+<div class="container">
+<h1>10 Simple EC2 Examples (boto3)</h1>
+
+<div class="example">
+<h3>1. List all EC2 instances</h3>
+<pre><code>import boto3
+
+ec2 = boto3.client("ec2")
+response = ec2.describe_instances()
+for reservation in response['Reservations']:
+    for instance in reservation['Instances']:
+        print(instance['InstanceId'], instance['State']['Name'])</code></pre>
+</div>
+
+<div class="example">
+<h3>2. Start an instance</h3>
+<pre><code>import boto3
+
+ec2 = boto3.client("ec2")
+ec2.start_instances(InstanceIds=['i-1234567890abcd'])
+print("Instance Started")</code></pre>
+</div>
+
+<div class="example">
+<h3>3. Stop an instance</h3>
+<pre><code>import boto3
+
+ec2 = boto3.client("ec2")
+ec2.stop_instances(InstanceIds=['i-1234567890abcd'])
+print("Instance Stopped")</code></pre>
+</div>
+
+<div class="example">
+<h3>4. Reboot an instance</h3>
+<pre><code>import boto3
+
+ec2 = boto3.client("ec2")
+ec2.reboot_instances(InstanceIds=['i-1234567890abcd'])
+print("Instance Rebooted")</code></pre>
+</div>
+
+<div class="example">
+<h3>5. Terminate an instance</h3>
+<pre><code>import boto3
+
+ec2 = boto3.client("ec2")
+ec2.terminate_instances(InstanceIds=['i-1234567890abcd'])
+print("Instance Terminated")</code></pre>
+</div>
+
+<div class="example">
+<h3>6. Describe instance status</h3>
+<pre><code>import boto3
+
+ec2 = boto3.client("ec2")
+response = ec2.describe_instance_status()
+for status in response['InstanceStatuses']:
+    print(status['InstanceId'], status['InstanceState']['Name'])</code></pre>
+</div>
+
+<div class="example">
+<h3>7. Create a new key pair</h3>
+<pre><code>import boto3
+
+ec2 = boto3.client("ec2")
+key = ec2.create_key_pair(KeyName='my-key-pair')
+with open('my-key-pair.pem', 'w') as f:
+    f.write(key['KeyMaterial'])
+print("Key pair created")</code></pre>
+</div>
+
+<div class="example">
+<h3>8. Describe security groups</h3>
+<pre><code>import boto3
+
+ec2 = boto3.client("ec2")
+response = ec2.describe_security_groups()
+for sg in response['SecurityGroups']:
+    print(sg['GroupName'], sg['GroupId'])</code></pre>
+</div>
+
+<div class="example">
+<h3>9. Create a security group</h3>
+<pre><code>import boto3
+
+ec2 = boto3.client("ec2")
+response = ec2.create_security_group(GroupName='my-sg', Description='My security group')
+print("Security Group Created:", response['GroupId'])</code></pre>
+</div>
+
+<div class="example">
+<h3>10. Add inbound rule to security group</h3>
+<pre><code>import boto3
+
+ec2 = boto3.client("ec2")
+ec2.authorize_security_group_ingress(
+    GroupId='sg-12345678',
+    IpPermissions=[{
+        'IpProtocol': 'tcp',
+        'FromPort': 22,
+        'ToPort': 22,
+        'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
+    }]
+)
+print("Inbound rule added")</code></pre>
+</div>
+
+</div>
+
 
 </body>
 </html>
