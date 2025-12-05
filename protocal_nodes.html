@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Protocols and Ports in Networking</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f8f9fa; color: #333; }
+        h1 { color: #007bff; text-align: center; border-bottom: 3px solid #007bff; padding-bottom: 10px; margin-bottom: 30px; }
+        h2 { color: #28a745; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 25px; }
+        h3 { color: #6c757d; margin-top: 20px; }
+        table { width: 100%; margin: 20px 0; border-collapse: collapse; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); }
+        th, td { border: 1px solid #ddd; padding: 12px 15px; text-align: left; vertical-align: top; }
+        th { background-color: #e9ecef; color: #495057; text-transform: uppercase; font-size: 0.9em; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .protocol-name { font-weight: bold; color: #007bff; }
+        .port-info { font-family: 'Courier New', Courier, monospace; background-color: #ffebeb; padding: 2px 4px; border-radius: 3px; }
+        ul, ol { margin-left: 20px; padding-left: 0; }
+        .summary-box { border: 1px solid #ffc107; background-color: #fff3cd; padding: 15px; border-radius: 5px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Most Important Core Protocols and Ports in Networking</h1>
+
+    <h2>Core Protocols and Their Ports</h2>
+
+    <h2>1. FTP (File Transfer Protocol)</h2>
+    <ul>
+        <li><span class="protocol-name">Purpose:</span> Transfer files between client and server.</li>
+        <li><span class="protocol-name">Port:</span> <span class="port-info">TCP 21 (control), TCP 20 (data)</span>.</li>
+        <li><span class="protocol-name">How it works:</span> Client connects to FTP server, authenticates, then uploads/downloads files.</li>
+        <li><span class="protocol-name">Example:</span> A web developer uploads website files to a hosting server.</li>
+    </ul>
+
+    <h2>2. SSH (Secure Shell)</h2>
+    <ul>
+        <li><span class="protocol-name">Purpose:</span> Secure remote login and command execution.</li>
+        <li><span class="protocol-name">Port:</span> <span class="port-info">TCP 22</span>.</li>
+        <li><span class="protocol-name">How it works:</span> Encrypts all traffic (unlike Telnet). Used mainly in Linux/Unix.</li>
+        <li><span class="protocol-name">Example:</span> A system admin logs into a Linux server from home securely.</li>
+    </ul>
+
+    <h2>3. Telnet</h2>
+    <ul>
+        <li><span class="protocol-name">Purpose:</span> Remote login and command execution (insecure).</li>
+        <li><span class="protocol-name">Port:</span> <span class="port-info">TCP 23</span>.</li>
+        <li><span class="protocol-name">How it works:</span> Sends data in plain text, easily intercepted. Rarely used today.</li>
+        <li><span class="protocol-name">Example:</span> In the past, admins managed routers/switches with Telnet (now replaced by SSH).</li>
+    </ul>
+
+    <h2>4. SMTP (Simple Mail Transfer Protocol)</h2>
+    <ul>
+        <li><span class="protocol-name">Purpose:</span> Sending email between mail servers.</li>
+        <li><span class="protocol-name">Port:</span> <span class="port-info">TCP 25 (standard), TCP 587 (submission), TCP 465 (secure, legacy)</span>.</li>
+        <li><span class="protocol-name">How it works:</span> When you send an email, your client uses SMTP to deliver it to the mail server.</li>
+        <li><span class="protocol-name">Example:</span> Gmail sending an email to Outlook.com.</li>
+    </ul>
+
+    <h2>5. DNS (Domain Name System)</h2>
+    <ul>
+        <li><span class="protocol-name">Purpose:</span> Translates domain names to IP addresses.</li>
+        <li><span class="protocol-name">Port:</span> <span class="port-info">UDP 53 (queries), TCP 53 (zone transfers)</span>.</li>
+        <li><span class="protocol-name">How it works:</span> You type google.com, DNS resolves it to an IP (e.g., 142.250.72.206).</li>
+        <li><span class="protocol-name">Example:</span> Without DNS, you'd have to remember IPs for every website.</li>
+    </ul>
+
+    <h2>6. DHCP (Dynamic Host Configuration Protocol)</h2>
+    <ul>
+        <li><span class="protocol-name">Purpose:</span> Automatically assigns IP addresses and network configs.</li>
+        <li><span class="protocol-name">Port:</span> <span class="port-info">UDP 67 (server), UDP 68 (client)</span>.</li>
+        <li><span class="protocol-name">How it works:</span> Client sends a broadcast "I need an IP," DHCP server replies with IP, subnet mask, gateway, DNS.</li>
+        <li><span class="protocol-name">Example:</span> Your phone automatically gets an IP when joining Wi-Fi.</li>
+    </ul>
+
+    <h2>7. HTTP (HyperText Transfer Protocol)</h2>
+    <ul>
+        <li><span class="protocol-name">Purpose:</span> Web browsing (not secure).</li>
+        <li><span class="protocol-name">Port:</span> <span class="port-info">TCP 80</span>.</li>
+        <li><span class="protocol-name">How it works:</span> Client (browser) requests a webpage, server responds with HTML.</li>
+        <li><span class="protocol-name">Example:</span> Visiting a website using `http://`.</li>
+    </ul>
+
+    <h2>8. HTTPS (HyperText Transfer Protocol Secure)</h2>
+    <ul>
+        <li><span class="protocol-name">Purpose:</span> Secure web browsing (encrypted with SSL/TLS).</li>
+        <li><span class="protocol-name">Port:</span> <span class="port-info">TCP 443</span>.</li>
+        <li><span class="protocol-name">How it works:</span> Same as HTTP but with encryption, which prevents eavesdropping.</li>
+        <li><span class="protocol-name">Example:</span> Online banking, shopping, secure logins (`https://`).</li>
+    </ul>
+
+    <h2>9. POP3 (Post Office Protocol v3)</h2>
+    <ul>
+        <li><span class="protocol-name">Purpose:</span> Retrieve emails from mail server (downloads and usually deletes from server).</li>
+        <li><span class="protocol-name">Port:</span> <span class="port-info">TCP 110 (POP3), TCP 995 (POP3S secure)</span>.</li>
+        <li><span class="protocol-name">How it works:</span> Downloads emails to local device, not stored on server.</li>
+        <li><span class="protocol-name">Example:</span> Old email clients like Outlook Express.</li>
+    </ul>
+
+    <h2>10. IMAP (Internet Message Access Protocol)</h2>
+    <ul>
+        <li><span class="protocol-name">Purpose:</span> Retrieve emails, but keeps them stored on the server.</li>
+        <li><span class="protocol-name">Port:</span> <span class="port-info">TCP 143 (IMAP), TCP 993 (IMAPS secure)</span>.</li>
+        <li><span class="protocol-name">How it works:</span> Synchronizes emails across devices (server keeps master copy).</li>
+        <li><span class="protocol-name">Example:</span> Gmail app syncing email across your phone, tablet, and laptop.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Quick Revision Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Protocol</th>
+                <th>Full Form</th>
+                <th>Port(s)</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="protocol-name">FTP</span></td>
+                <td>File Transfer Protocol</td>
+                <td><span class="port-info">TCP 20, 21</span></td>
+                <td>File transfer</td>
+            </tr>
+            <tr>
+                <td><span class="protocol-name">SSH</span></td>
+                <td>Secure Shell</td>
+                <td><span class="port-info">TCP 22</span></td>
+                <td>Secure remote login</td>
+            </tr>
+            <tr>
+                <td><span class="protocol-name">Telnet</span></td>
+                <td>Telecommunication Network</td>
+                <td><span class="port-info">TCP 23</span></td>
+                <td>Remote login (insecure)</td>
+            </tr>
+            <tr>
+                <td><span class="protocol-name">SMTP</span></td>
+                <td>Simple Mail Transfer Protocol</td>
+                <td><span class="port-info">TCP 25, 587, 465</span></td>
+                <td>Send emails</td>
+            </tr>
+            <tr>
+                <td><span class="protocol-name">DNS</span></td>
+                <td>Domain Name System</td>
+                <td><span class="port-info">UDP/TCP 53</span></td>
+                <td>Domain → IP resolution</td>
+            </tr>
+            <tr>
+                <td><span class="protocol-name">DHCP</span></td>
+                <td>Dynamic Host Config Protocol</td>
+                <td><span class="port-info">UDP 67/68</span></td>
+                <td>Auto IP assignment</td>
+            </tr>
+            <tr>
+                <td><span class="protocol-name">HTTP</span></td>
+                <td>Hyper Text Transfer Protocol</td>
+                <td><span class="port-info">TCP 80</span></td>
+                <td>Web browsing (not secure)</td>
+            </tr>
+            <tr>
+                <td><span class="protocol-name">HTTPS</span></td>
+                <td>Hyper Text Transfer Protocol Secure</td>
+                <td><span class="port-info">TCP 443</span></td>
+                <td>Secure web browsing</td>
+            </tr>
+            <tr>
+                <td><span class="protocol-name">POP3</span></td>
+                <td>Post Office Protocol v3</td>
+                <td><span class="port-info">TCP 110/995</span></td>
+                <td>Download emails</td>
+            </tr>
+            <tr>
+                <td><span class="protocol-name">IMAP</span></td>
+                <td>Internet Message Access Protocol</td>
+                <td><span class="port-info">TCP 143/993</span></td>
+                <td>Sync emails</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="summary-box">
+        <h3>Summary of Protocol Types</h3>
+        <ul>
+            <li><span class="protocol-name">FTP, HTTP, SMTP</span> = transfer protocols (files, web pages, emails).</li>
+            <li><span class="protocol-name">SSH, Telnet</span> = remote access protocols.</li>
+            <li><span class="protocol-name">DNS, DHCP</span> = network services.</li>
+            <li><span class="protocol-name">POP3, IMAP</span> = email retrieval protocols.</li>
+            <li><span class="protocol-name">HTTPS</span> = secure version of HTTP.</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <h2>NetBIOS (Network Basic Input/Output System)</h2>
+    <ul>
+        <li>It's an <span class="protocol-name">API</span> that allows applications on different computers to communicate over a local network (created in the 1980s).</li>
+        <li>It is a set of functions (like name resolution, session management, data transfer), not a protocol by itself.</li>
+    </ul>
+
+    <h3>NetBIOS over TCP/IP (NetBT)</h3>
+    <ul>
+        <li><span class="protocol-name">NetBT</span> is the method of running NetBIOS services on top of the TCP/IP stack.</li>
+        <li>This allows NetBIOS-based applications (like older Windows file sharing) to work across larger routed networks.</li>
+    </ul>
+
+    <h3>Ports used by NetBIOS/NetBT:</h3>
+    <ul>
+        <li><span class="port-info">UDP 137</span> → NetBIOS Name Service (name registration and resolution)</li>
+        <li><span class="port-info">UDP 138</span> → NetBIOS Datagram Service (connectionless communication, broadcasts)</li>
+        <li><span class="port-info">TCP 139</span> → NetBIOS Session Service (connection-oriented communication, legacy file/printer sharing)</li>
+    </ul>
+
+    <h2>Lightweight Directory Access Protocol (LDAP)</h2>
+    <ul>
+        <li><span class="protocol-name">LDAP</span> is an open, standard protocol used to access and manage directory services (like a phonebook for network resources).</li>
+        <li><span class="protocol-name">In plain words:</span> It is the language applications use to look up info about users, computers, groups, etc., on a directory server.</li>
+    </ul>
+
+    <h3>Ports used by LDAP</h3>
+    <ul>
+        <li><span class="port-info">TCP/UDP 389</span> → Standard LDAP</li>
+        <li><span class="port-info">TCP 636</span> → LDAPS (LDAP over SSL/TLS, secure)</li>
+    </ul>
+
+    <h2>LDAP vs Active Directory (AD)</h2>
+    <ul>
+        <li><span class="protocol-name">Active Directory (AD)</span> is Microsoft's directory service (the database/service itself).</li>
+        <li><span class="protocol-name">LDAP</span> is the protocol (the language) used to talk to directory services like AD for authentication, authorization, and lookups.</li>
+    </ul>
+    <h3>Ports in AD (using LDAP)</h3>
+    <ul>
+        <li><span class="port-info">389</span> (LDAP) - Clear text queries/authentication.</li>
+        <li><span class="port-info">636</span> (LDAPS) - Secure LDAP over SSL/TLS.</li>
+        <li><span class="port-info">3268</span> - Global Catalog LDAP (for searching across multiple domains).</li>
+    </ul>
+
+    <hr>
+
+    <h2>Server Message Block (SMB) and CIFS</h2>
+    <ul>
+        <li><span class="protocol-name">SMB</span> is the network file sharing protocol that makes "Windows File Sharing" work (i.e., accessing `\\Server\SharedFolder`).</li>
+        <li><span class="protocol-name">CIFS</span> (Common Internet File System) is Microsoft's specific and now <span class="protocol-name">obsolete (legacy)</span> implementation of SMB version 1.0.</li>
+        <li><span class="protocol-name">Modern systems</span> use newer versions (SMB 3.x) which add encryption and performance improvements.</li>
+    </ul>
+
+    <h3>Ports Used by SMB</h3>
+    <ul>
+        <li><span class="port-info">TCP 445</span> → Direct SMB over TCP (<span class="protocol-name">modern use</span>).</li>
+        <li><span class="port-info">TCP 139</span> → SMB over NetBIOS Session Service (<span class="protocol-name">legacy use</span>).</li>
+    </ul>
+
+    <h2>Remote Desktop Protocol (RDP)</h2>
+    <ul>
+        <li><span class="protocol-name">RDP</span> is a Microsoft protocol that allows a user to connect to another computer over the network and control its full desktop environment remotely.</li>
+        <li>It is essentially secure screen sharing + input redirection.</li>
+    </ul>
+
+    <h3>Ports Used by RDP</h3>
+    <ul>
+        <li><span class="port-info">TCP 3389</span> → Default RDP port.</li>
+        <li><span class="port-info">UDP 3389</span> → Used in newer versions for performance.</li>
+    </ul>
+
+    <h2>Quick Comparison (RDP vs SMB/SSH/VNC)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Protocol</th>
+                <th>Purpose</th>
+                <th>Default Port</th>
+                <th>Common Use</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="protocol-name">RDP</span></td>
+                <td>Remote desktop (full GUI)</td>
+                <td><span class="port-info">TCP 3389</span></td>
+                <td>Windows remote access</td>
+            </tr>
+            <tr>
+                <td><span class="protocol-name">SMB</span></td>
+                <td>File/printer sharing</td>
+                <td><span class="port-info">TCP 445</span></td>
+                <td>Shared drives/folders</td>
+            </tr>
+            <tr>
+                <td><span class="protocol-name">SSH</span></td>
+                <td>Secure command-line access</td>
+                <td><span class="port-info">TCP 22</span></td>
+                <td>Linux remote management</td>
+            </tr>
+            <tr>
+                <td><span class="protocol-name">VNC</span></td>
+                <td>Remote desktop (cross platform)</td>
+                <td><span class="port-info">TCP 5900+</span></td>
+                <td>GUI remote control, less efficient than RDP</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Transport Layer Protocols: TCP and UDP</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>TCP (Transmission Control Protocol)</th>
+                <th>UDP (User Datagram Protocol)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Type</td>
+                <td><span class="protocol-name">Connection-oriented</span> (requires handshake)</td>
+                <td><span class="protocol-name">Connectionless</span> (no handshake)</td>
+            </tr>
+            <tr>
+                <td>Reliability</td>
+                <td><span class="protocol-name">Reliable</span> (Ensures delivery, order, and checks for errors)</td>
+                <td><span class="protocol-name">Unreliable</span> (No guarantee of delivery or order)</td>
+            </tr>
+            <tr>
+                <td>Speed</td>
+                <td>Slower (due to overhead for reliability)</td>
+                <td>Faster (minimal overhead)</td>
+            </tr>
+            <tr>
+                <td>Use Case</td>
+                <td>When accuracy matters (web, file transfer, emails)</td>
+                <td>When speed matters (streaming, calls, games)</td>
+            </tr>
+            <tr>
+                <td>Analogy</td>
+                <td>Registered letter with tracking</td>
+                <td>Regular postcard</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="summary-box">
+        <h3>Application Layer Protocols (Layer 7)</h3>
+        <p>These protocols (<span class="protocol-name">HTTP, SMTP, FTP, DNS</span>, etc.) sit above TCP/UDP and define the rules for how applications interpret the data. TCP/UDP provide *delivery*, while Application Protocols provide *context and meaning*.</p>
+    </div>
+
+</body>
+</html>

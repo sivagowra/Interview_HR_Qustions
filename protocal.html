@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential Port Numbers for DevOps Engineers</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; color: #333; }
+        h1 { color: #d9534f; text-align: center; margin-bottom: 5px; }
+        h2 { color: #5cb85c; border-bottom: 2px solid #5cb85c; padding-bottom: 5px; margin-top: 30px; }
+        table { width: 90%; margin: 20px auto; border-collapse: collapse; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        th, td { border: 1px solid #ddd; padding: 12px 15px; text-align: left; vertical-align: top; }
+        th { background-color: #d9534f; color: white; text-transform: uppercase; font-size: 0.9em; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .service { font-weight: bold; color: #337ab7; }
+        .port { font-family: 'Courier New', Courier, monospace; background-color: #eee; padding: 2px 4px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>PORT NUMBERS FOR EVERY DEVOPS ENGINEER</h1>
+    <h1 style="color: #333; font-size: 1.5em; border-bottom: none;">Essential Port Numbers for DevOps Engineers</h1>
+
+    <h2>Common Protocols and Services</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Port</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="service">HTTP</span></td>
+                <td><span class="port">80</span></td>
+                <td>Unsecured web traffic.</td>
+            </tr>
+            <tr>
+                <td><span class="service">HTTPS</span></td>
+                <td><span class="port">443</span></td>
+                <td>Secure web traffic (TLS/SSL).</td>
+            </tr>
+            <tr>
+                <td><span class="service">SSH</span></td>
+                <td><span class="port">22</span></td>
+                <td>Secure shell access for remote administration.</td>
+            </tr>
+            <tr>
+                <td><span class="service">FTP</span></td>
+                <td><span class="port">20 (data transfer), 21 (control)</span></td>
+                <td>File Transfer Protocol.</td>
+            </tr>
+            <tr>
+                <td><span class="service">SFTP</span></td>
+                <td><span class="port">22</span></td>
+                <td>Secure FTP via SSH.</td>
+            </tr>
+            <tr>
+                <td><span class="service">Telnet</span></td>
+                <td><span class="port">23</span></td>
+                <td>Unsecured remote administration (rarely used now).</td>
+            </tr>
+            <tr>
+                <td><span class="service">DNS</span></td>
+                <td><span class="port">53</span></td>
+                <td>Domain Name System resolution.</td>
+            </tr>
+            <tr>
+                <td><span class="service">SMTP</span></td>
+                <td><span class="port">25, 587 (with encryption), 465 (deprecated)</span></td>
+                <td>Email sending.</td>
+            </tr>
+            <tr>
+                <td><span class="service">IMAP</span></td>
+                <td><span class="port">143 (unencrypted), 993 (encrypted)</span></td>
+                <td>Retrieve emails (modern email clients).</td>
+            </tr>
+            <tr>
+                <td><span class="service">POP3</span></td>
+                <td><span class="port">110 (unencrypted), 995 (encrypted)</span></td>
+                <td>Retrieve emails (older protocol).</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>DevOps and Automation Tools</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tool/Service</th>
+                <th>Port</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="service">Jenkins</span></td>
+                <td><span class="port">8080 (default)</span></td>
+                <td>Continuous Integration/Delivery.</td>
+            </tr>
+            <tr>
+                <td><span class="service">Docker</span></td>
+                <td><span class="port">2375 (unencrypted), 2376 (encrypted)</span></td>
+                <td>Docker API.</td>
+            </tr>
+            <tr>
+                <td><span class="service">Kubernetes API Server</span></td>
+                <td><span class="port">6443</span></td>
+                <td>Communication with Kubernetes API.</td>
+            </tr>
+            <tr>
+                <td><span class="service">Terraform Enterprise</span></td>
+                <td><span class="port">8800 (default)</span></td>
+                <td>Backend services.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Databases</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Database</th>
+                <th>Port</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="service">MySQL</span></td>
+                <td><span class="port">3306</span></td>
+                <td>MySQL database.</td>
+            </tr>
+            <tr>
+                <td><span class="service">PostgreSQL</span></td>
+                <td><span class="port">5432</span></td>
+                <td>PostgreSQL database.</td>
+            </tr>
+            <tr>
+                <td><span class="service">MongoDB</span></td>
+                <td><span class="port">27017</span></td>
+                <td>MongoDB NoSQL database.</td>
+            </tr>
+            <tr>
+                <td><span class="service">Redis</span></td>
+                <td><span class="port">6379</span></td>
+                <td>In-memory data store.</td>
+            </tr>
+            <tr>
+                <td><span class="service">Elasticsearch</span></td>
+                <td><span class="port">9200 (HTTP), 9300 (Node communication)</span></td>
+                <td>Search and analytics engine.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Cloud and Monitoring Tools</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tool/Service</th>
+                <th>Port</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="service">Prometheus</span></td>
+                <td><span class="port">9090</span></td>
+                <td>Monitoring and alerting.</td>
+            </tr>
+            <tr>
+                <td><span class="service">Grafana</span></td>
+                <td><span class="port">3000</span></td>
+                <td>Data visualization and dashboards.</td>
+            </tr>
+            <tr>
+                <td><span class="service">Consul</span></td>
+                <td><span class="port">8500 (HTTP API), 8600 (DNS queries)</span></td>
+                <td>Service discovery and configuration.</td>
+            </tr>
+            <tr>
+                <td><span class="service">Vault</span></td>
+                <td><span class="port">8200</span></td>
+                <td>Secrets management.</td>
+            </tr>
+            <tr>
+                <td><span class="service">Zabbix</span></td>
+                <td><span class="port">10051 (server), 10050 (agent)</span></td>
+                <td>Monitoring.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Version Control</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Protocol</th>
+                <th>Port</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="service">Git (SSH)</span></td>
+                <td><span class="port">22</span></td>
+                <td>Secure Git operations.</td>
+            </tr>
+            <tr>
+                <td><span class="service">Git (HTTPS)</span></td>
+                <td><span class="port">443</span></td>
+                <td>Secure Git operations via HTTPS.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Messaging and Queueing Systems</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>System</th>
+                <th>Port</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="service">RabbitMQ</span></td>
+                <td><span class="port">5672 (AMQP), 15672 (Management console)</span></td>
+                <td>Message broker.</td>
+            </tr>
+            <tr>
+                <td><span class="service">Kafka</span></td>
+                <td><span class="port">9092</span></td>
+                <td>Distributed messaging system.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Miscellaneous</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Protocol/Service</th>
+                <th>Port</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="service">NTP</span></td>
+                <td><span class="port">123</span></td>
+                <td>Network Time Protocol.</td>
+            </tr>
+            <tr>
+                <td><span class="service">LDAP</span></td>
+                <td><span class="port">389 (unencrypted), 636 (encrypted)</span></td>
+                <td>Directory services.</td>
+            </tr>
+            <tr>
+                <td><span class="service">SNMP</span></td>
+                <td><span class="port">161 (queries), 162 (traps)</span></td>
+                <td>Network monitoring.</td>
+            </tr>
+            <tr>
+                <td><span class="service">RDP</span></td>
+                <td><span class="port">3389</span></td>
+                <td>Remote Desktop Protocol (Windows).</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Command Cheat Sheet</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+        h1 { color: #333; border-bottom: 2px solid #333; padding-bottom: 10px; }
+        h2 { color: #555; margin-top: 25px; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; color: #333; }
+        .command { font-family: 'Courier New', Courier, monospace; background-color: #eee; padding: 2px 4px; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>🐧 Linux Command Cheat Sheet</h1>
+
+    <p style="font-style: italic;">DEVOPS BY SIVAGOWRA</p>
+
+    <h2>💻 System Commands</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+             <tr>
+                <td><span class="command">sudo -i</span></td>
+                <td>Go to root user</td>
+            </tr>
+            <tr>
+                <td><span class="command">uname</span></td>
+                <td>Used to get OS</td>
+            </tr>
+            <tr>
+                <td><span class="command">uname -r</span></td>
+                <td>Displays Linux kernel version</td>
+            </tr>
+            <tr>
+                <td><span class="command">uname -a</span></td>
+                <td>Displays all information about Linux system information</td>
+            </tr>
+            <tr>
+                <td><span class="command">uptime</span></td>
+                <td>Displays since how system has been running</td>
+            </tr>
+            <tr>
+                <td><span class="command">uptime -p</span></td>
+                <td>Shows uptime in pretty format</td>
+            </tr>
+            <tr>
+                <td><span class="command">uptime -s</span></td>
+                <td>Shows uptime in pretty format</td>
+            </tr>
+            <tr>
+                <td><span class="command">hostname</span></td>
+                <td>Displays the Hostname</td>
+            </tr>
+            <tr>
+                <td><span class="command">hostname -i</span></td>
+                <td>Displays IP addresses for the host name</td>
+            </tr>
+            <tr>
+                <td><span class="command">hostname -I</span></td>
+                <td>Displays IP addresses for the host name</td>
+            </tr>
+            <tr>
+                <td><span class="command">last reboot</span></td>
+                <td>Shows system reboot history</td>
+            </tr>
+            <tr>
+                <td><span class="command">ip addr</span></td>
+                <td>Shows addresses assigned to all network interfaces</td>
+            </tr>
+            <tr>
+                <td><span class="command">ip route</span></td>
+                <td>Show table routes</td>
+            </tr>
+            <tr>
+                <td><span class="command">ifconfig</span></td>
+                <td>Displays the IP address of the system</td>
+            </tr>
+            <tr>
+                <td><span class="command">date</span></td>
+                <td>Shows system date and timestamp</td>
+            </tr>
+            <tr>
+                <td><span class="command">date +"%d"</span></td>
+                <td>Prints day of the month (01-31)</td>
+            </tr>
+            <tr>
+                <td><span class="command">date +"%m"</span></td>
+                <td>Prints the month of the year 01-12</td>
+            </tr>
+            <tr>
+                <td><span class="command">date +"%y"</span></td>
+                <td>Prints only the last two digits of Year</td>
+            </tr>
+            <tr>
+                <td><span class="command">date +"%H"</span></td>
+                <td>Prints the hour 00-23</td>
+            </tr>
+            <tr>
+                <td><span class="command">date +"%M"</span></td>
+                <td>Prints the Minute of the hour 00-59</td>
+            </tr>
+            <tr>
+                <td><span class="command">date +"%S"</span></td>
+                <td>Prints the current seconds count in the minute (00-60)</td>
+            </tr>
+            <tr>
+                <td><span class="command">date +"%D"</span></td>
+                <td>Prints Date in MM/DD/YY</td>
+            </tr>
+            <tr>
+                <td><span class="command">date +"%F"</span></td>
+                <td>Prints only the Full date as YYYY-MM-DD</td>
+            </tr>
+            <tr>
+                <td><span class="command">date +"%A"</span></td>
+                <td>Prints the Day of the Week Saturday-Sunday</td>
+            </tr>
+            <tr>
+                <td><span class="command">date +%B</span></td>
+                <td>Prints the month between January-December</td>
+            </tr>
+            <tr>
+                <td><span class="command">who</span></td>
+                <td>Prints information about all users who are currently logged in</td>
+            </tr>
+            <tr>
+                <td><span class="command">whoami</span></td>
+                <td>Prints information about default user in our server</td>
+            </tr>
+            <tr>
+                <td><span class="command">top</span></td>
+                <td>List out the running processors in our system</td>
+            </tr>
+            <tr>
+                <td><span class="command">ps</span></td>
+                <td>Displays information about a selection of active processes</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>⚙️ Hardware Commands</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="command">lscpu</span></td>
+                <td>Displays information about the CPU architecture</td>
+            </tr>
+            <tr>
+                <td><span class="command">lsblk -a</span></td>
+                <td>Lists the information about all the block devices attached to the system</td>
+            </tr>
+            <tr>
+                <td><span class="command">free</span></td>
+                <td>Displays system memory (RAM) details in KB</td>
+            </tr>
+            <tr>
+                <td><span class="command">free -m</span></td>
+                <td>Displays system memory (RAM) details in MB</td>
+            </tr>
+            <tr>
+                <td><span class="command">df</span></td>
+                <td>Report file system disk space usage</td>
+            </tr>
+            <tr>
+                <td><span class="command">df -h</span></td>
+                <td>Report file system disk space usage in human readable languages</td>
+            </tr>
+            <tr>
+                <td><span class="command">du filename</span></td>
+                <td>Summarize disk usage of each FILE, recursively for directories</td>
+            </tr>
+            <tr>
+                <td><span class="command">du -sh filename</span></td>
+                <td>Summarize disk usage in human readable format</td>
+            </tr>
+            <tr>
+                <td><span class="command">cat /proc/cpuinfo</span></td>
+                <td>Displays information about the CPU</td>
+            </tr>
+            <tr>
+                <td><span class="command">cat /proc/meminfo</span></td>
+                <td>Displays system memory (RAM) details</td>
+            </tr>
+            <tr>
+                <td><span class="command">fdisk -l</span></td>
+                <td>List the partition tables for the specified devices</td>
+            </tr>
+            <tr>
+                <td><span class="command">fdisk -s &lt;partition&gt;</span></td>
+                <td>Displays partition size(s) in blocks (to convert block into MB: blocksize*1024/1000000)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>🗂️ File Commands</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="command">touch file-name</span></td>
+                <td>Used to create a single file</td>
+            </tr>
+            <tr>
+                <td><span class="command">touch f1 f2 f3</span></td>
+                <td>Used to create multiple files</td>
+            </tr>
+            <tr>
+                <td><span class="command">touch file{1..5}</span></td>
+                <td>Create 5 files at a time</td>
+            </tr>
+            <tr>
+                <td><span class="command">rm file</span></td>
+                <td>Used to remove single file</td>
+            </tr>
+            <tr>
+                <td><span class="command">rm f1 f2 f3</span></td>
+                <td>Used to remove multiple files</td>
+            </tr>
+            <tr>
+                <td><span class="command">rm file{1..5}</span></td>
+                <td>Used to remove 5 files</td>
+            </tr>
+            <tr>
+                <td><span class="command">rm -f filename</span></td>
+                <td>Used to remove a file without our permission (forcefully)</td>
+            </tr>
+            <tr>
+                <td><span class="command">rm -f *</span></td>
+                <td>Used to remove all files at a time</td>
+            </tr>
+            <tr>
+                <td><span class="command">mkdir folder1</span></td>
+                <td>Used to create a single folder</td>
+            </tr>
+            <tr>
+                <td><span class="command">mkdir f1 f2 f3</span></td>
+                <td>Used to create multiple folders</td>
+            </tr>
+            <tr>
+                <td><span class="command">mkdir folder{1..7}</span></td>
+                <td>Used to create 7 folders</td>
+            </tr>
+            <tr>
+                <td><span class="command">touch foldername/filename</span></td>
+                <td>Used to create a file inside the folder</td>
+            </tr>
+            <tr>
+                <td><span class="command">mkdir foldername/foldername</span></td>
+                <td>Used to create a folder inside a folder</td>
+            </tr>
+            <tr>
+                <td><span class="command">mkdir -p foldername/foldername/foldername</span></td>
+                <td>Used to create folders inside a folder (parent directories first)</td>
+            </tr>
+            <tr>
+                <td><span class="command">cd foldername</span></td>
+                <td>Used to change the directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">cd ..</span></td>
+                <td>Used to back to one step back (parent directory)</td>
+            </tr>
+            <tr>
+                <td><span class="command">cd -</span></td>
+                <td>Used to go back to the previous directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">cd</span></td>
+                <td>Used to go to root directory at a time (actually home directory)</td>
+            </tr>
+            <tr>
+                <td><span class="command">cd /</span></td>
+                <td>To change the PWD to root directory which is the topmost/outermost parent directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">pwd</span></td>
+                <td>Present working directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">rmdir folder</span></td>
+                <td>Used to remove empty directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">rmdir *</span></td>
+                <td>Used to remove all empty directories</td>
+            </tr>
+            <tr>
+                <td><span class="command">rm -rf</span></td>
+                <td>Used to remove all files and folders at a time (forcefully, recursively)</td>
+            </tr>
+            <tr>
+                <td><span class="command">ls</span></td>
+                <td>Used to see only file names</td>
+            </tr>
+            <tr>
+                <td><span class="command">ls -l</span></td>
+                <td>Used to see all the files along with the data (long listing format)</td>
+            </tr>
+            <tr>
+                <td><span class="command">ls folder1</span></td>
+                <td>Used to see the list of files present in folder1</td>
+            </tr>
+            <tr>
+                <td><span class="command">ls -la</span></td>
+                <td>Used to see hidden files</td>
+            </tr>
+            <tr>
+                <td><span class="command">ls -r</span></td>
+                <td>Used to see the files in reverse order</td>
+            </tr>
+            <tr>
+                <td><span class="command">ls -lt</span></td>
+                <td>Used to see the latest files in top</td>
+            </tr>
+            <tr>
+                <td><span class="command">ls -lrt</span></td>
+                <td>To list the files in long listing format with sort by modification time, newest first and then in reverse order</td>
+            </tr>
+            <tr>
+                <td><span class="command">cat filename</span></td>
+                <td>Used to read the data into a file</td>
+            </tr>
+            <tr>
+                <td><span class="command">cat > filename</span></td>
+                <td>Used to overwrite the data in a file</td>
+            </tr>
+            <tr>
+                <td><span class="command">cat >> filename</span></td>
+                <td>Used to append the data into a file</td>
+            </tr>
+            <tr>
+                <td><span class="command">cat -n filename</span></td>
+                <td>Used to read the data along the line numbers</td>
+            </tr>
+            <tr>
+                <td><span class="command">tac filename</span></td>
+                <td>Displays the file1 content in reverse i.e., last line first</td>
+            </tr>
+            <tr>
+                <td><span class="command">rev filename</span></td>
+                <td>Used to reverse the content in a file (character by character)</td>
+            </tr>
+            <tr>
+                <td><span class="command">cat f1 f2 f3</span></td>
+                <td>Used to see all the files data at a time</td>
+            </tr>
+            <tr>
+                <td><span class="command">more f1 f2 f3</span></td>
+                <td>Used to see all the files data at a time with percentages</td>
+            </tr>
+            <tr>
+                <td><span class="command">head filename</span></td>
+                <td>Used to print first 10 lines of a file</td>
+            </tr>
+            <tr>
+                <td><span class="command">tail filename</span></td>
+                <td>Used to print last 10 lines of a file</td>
+            </tr>
+            <tr>
+                <td><span class="command">sed -n '5,9p' filename</span></td>
+                <td>Used to print the lines between 5 to 9</td>
+            </tr>
+            <tr>
+                <td><span class="command">sed -n '7p' filename</span></td>
+                <td>Used to print the 7th line</td>
+            </tr>
+            <tr>
+                <td><span class="command">head -n 8 filename</span></td>
+                <td>Prints 8 lines in a file (from the beginning)</td>
+            </tr>
+            <tr>
+                <td><span class="command">tail -n 4 filename</span></td>
+                <td>Used to print last 4 lines in a file</td>
+            </tr>
+            <tr>
+                <td><span class="command">wc filename</span></td>
+                <td>Used to get the no of lines, words, letters in a file</td>
+            </tr>
+            <tr>
+                <td><span class="command">wc -l filename</span></td>
+                <td>Used to get only line numbers of a file</td>
+            </tr>
+            <tr>
+                <td><span class="command">wc -w filename</span></td>
+                <td>Used to get no of words in a file</td>
+            </tr>
+            <tr>
+                <td><span class="command">wc -c filename</span></td>
+                <td>Used to get no of characters in a file</td>
+            </tr>
+            <tr>
+                <td><span class="command">cp file1 file2</span></td>
+                <td>Used to copy the data from file1 to file2</td>
+            </tr>
+            <tr>
+                <td><span class="command">cat file1 >> file2</span></td>
+                <td>Used to append the data from file1 to file2</td>
+            </tr>
+            <tr>
+                <td><span class="command">cat file1 | tee file2 file3 file4</span></td>
+                <td>Used to copy the data from file1 to file2, file3, file4 (using tee to write to multiple files)</td>
+            </tr>
+            <tr>
+                <td><span class="command">cat file1 | tee -a file2 file3 file4</span></td>
+                <td>Used to append the data from file1 to file2, file3, file4</td>
+            </tr>
+            <tr>
+                <td><span class="command">cp file1 folder1</span></td>
+                <td>Used to copy file1 to folder1</td>
+            </tr>
+            <tr>
+                <td><span class="command">mv file1 file2</span></td>
+                <td>Used to move the data from file1 to file2 (rename)</td>
+            </tr>
+            <tr>
+                <td><span class="command">mv file1 folder1</span></td>
+                <td>Used to move file1 to folder1</td>
+            </tr>
+            <tr>
+                <td><span class="command">echo folder{2..7} | xargs -n 1 cp -v folder1/*</span></td>
+                <td>Copy files from folder1 to folder2 to folder at a time (copying all files from folder1 into folders 2 through 7)</td>
+            </tr>
+            <tr>
+                <td><span class="command">cmp file1 file2</span></td>
+                <td>Used to compare the 2 files (byte by byte)</td>
+            </tr>
+            <tr>
+                <td><span class="command">diff file1 file2</span></td>
+                <td>Used to get the differences of a file between 2 files</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>🔍 Search Commands</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="command">find . -name file</span></td>
+                <td>Used to find a file in the current directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find /proc/ -name filename</span></td>
+                <td>Finds a file in the /proc/ directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find . -type d -name folder</span></td>
+                <td>Finds a directory in the current directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find . -type f -name &lt;file1.txt&gt;</span></td>
+                <td>Finds a file in the current directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find . -type f -perm 777</span></td>
+                <td>Finds all the files whose permissions are 777 in the current directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find . -type f ! -perm 777</span></td>
+                <td>Finds all the files whose permissions are NOT 777 in the current directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find . -perm /u=r</span></td>
+                <td>Finds all Read-Only files in the current directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find . -perm /a=x</span></td>
+                <td>Finds all executables files in the current directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find . -perm /a=w</span></td>
+                <td>Finds all writable files in the current directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find . -type f -empty</span></td>
+                <td>Find all Empty Files in the current directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find . -type d -empty</span></td>
+                <td>Find all Empty directories in the current directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find / -user &lt;username&gt;</span></td>
+                <td>Finds all the files specific user owned in / directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find / -group &lt;groupname&gt;</span></td>
+                <td>Finds all the files specific group owned in / directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find . -mtime 10</span></td>
+                <td>Finds all the files which are modified 10 days back in current folder</td>
+            </tr>
+            <tr>
+                <td><span class="command">find / -atime 100</span></td>
+                <td>Finds all the files which are accessed 100 days back in current folder</td>
+            </tr>
+            <tr>
+                <td><span class="command">find . -cmin -60</span></td>
+                <td>Finds all the files which are changed in the last 1 hour in current directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find . -mmin -60</span></td>
+                <td>Finds all the files which are modified in the last 1 hour in current directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find . -amin -60</span></td>
+                <td>Finds all the files which are accessed in the last 1 hour in current directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find . -size 1k</span></td>
+                <td>Finds all 1KB files in current directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">find / -size +50M -size -100M</span></td>
+                <td>Finds all the files which are greater than 50MB and less than 100MB in / directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">locate filename</span></td>
+                <td>Used to locate a word in linux (by default it will not locate, we need update db every time)</td>
+            </tr>
+            <tr>
+                <td><span class="command">sudo updatedb</span></td>
+                <td>Used to update linux db</td>
+            </tr>
+            <tr>
+                <td><span class="command">locate -i filename</span></td>
+                <td>Used to search for a file in case insensitive</td>
+            </tr>
+            <tr>
+                <td><span class="command">locate -n 5 "bxf"</span></td>
+                <td>Used to search top 5 text files (assuming "bxf" is a pattern)</td>
+            </tr>
+            <tr>
+                <td><span class="command">locate -c aws</span></td>
+                <td>Used to count no of aws files present in server</td>
+            </tr>
+            <tr>
+                <td><span class="command">grep "word" file</span></td>
+                <td>Used to search for a word in a file</td>
+            </tr>
+            <tr>
+                <td><span class="command">grep "word" file1 file2 file3</span></td>
+                <td>Used to search for a word in multiple files</td>
+            </tr>
+            <tr>
+                <td><span class="command">grep -l "word" file1 file2 file3</span></td>
+                <td>Prints the filename which contains the word</td>
+            </tr>
+            <tr>
+                <td><span class="command">grep -n "word" file</span></td>
+                <td>Used to search for a word in a file with line number</td>
+            </tr>
+            <tr>
+                <td><span class="command">grep -i "word" file</span></td>
+                <td>Searches the word in file with case-insensitive</td>
+            </tr>
+            <tr>
+                <td><span class="command">grep -c "word" file</span></td>
+                <td>Gives the count of words in a file</td>
+            </tr>
+            <tr>
+                <td><span class="command">grep -e &lt;pattern1&gt; -e &lt;pattern2&gt; &lt;file1&gt;</span></td>
+                <td>To search multiple patterns in file1</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>👤 User Commands</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="command">useradd</span></td>
+                <td>To add the user</td>
+            </tr>
+            <tr>
+                <td><span class="command">useradd -e 2024-01-31 username</span></td>
+                <td>Set Expiration date of the user. After the date the user will be no longer available</td>
+            </tr>
+            <tr>
+                <td><span class="command">useradd -U username</span></td>
+                <td>Create a group with the same name as the user and added the user into the group</td>
+            </tr>
+            <tr>
+                <td><span class="command">useradd -M username</span></td>
+                <td>Created username without home directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">useradd -D</span></td>
+                <td>Prints the default home directory, default shell, default expiration date, and other settings</td>
+            </tr>
+            <tr>
+                <td><span class="command">userdel username</span></td>
+                <td>To delete the user</td>
+            </tr>
+            <tr>
+                <td><span class="command">userdel -f username</span></td>
+                <td>Forcefully deleted the user</td>
+            </tr>
+            <tr>
+                <td><span class="command">userdel -r username</span></td>
+                <td>Deletes the user along with the directory</td>
+            </tr>
+            <tr>
+                <td><span class="command">chage -I username</span></td>
+                <td>Used to get user expiry details</td>
+            </tr>
+            <tr>
+                <td><span class="command">su - username</span></td>
+                <td>Login into the user</td>
+            </tr>
+            <tr>
+                <td><span class="command">passwd username</span></td>
+                <td>Used to set a password</td>
+            </tr>
+            <tr>
+                <td><span class="command">groupadd</span></td>
+                <td>Used to add a group</td>
+            </tr>
+            <tr>
+                <td><span class="command">groups</span></td>
+                <td>Displays the group where current user belongs to</td>
+            </tr>
+            <tr>
+                <td><span class="command">groupmod -n newgroup oldgroup</span></td>
+                <td>Used to change the group name</td>
+            </tr>
+            <tr>
+                <td><span class="command">groupdel groupname</span></td>
+                <td>Used to delete the group</td>
+            </tr>
+            <tr>
+                <td><span class="command">groupdel -f groupname</span></td>
+                <td>Used to delete the group forcefully</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>🔐 Permission Commands</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="command">chown username file/foldername</span></td>
+                <td>To change the user of a file/folder</td>
+            </tr>
+            <tr>
+                <td><span class="command">chown -R username foldername</span></td>
+                <td>To change the user of folder along with files (recursively)</td>
+            </tr>
+            <tr>
+                <td><span class="command">chown username foldername/*</span></td>
+                <td>To change the user of all files that are present in folder</td>
+            </tr>
+            <tr>
+                <td><span class="command">chgrp groupname file/foldername</span></td>
+                <td>To change the group of a file/folder</td>
+            </tr>
+            <tr>
+                <td><span class="command">chgrp -R groupname foldername</span></td>
+                <td>To change the group of folder along with files (recursively)</td>
+            </tr>
+            <tr>
+                <td><span class="command">chgrp groupname foldername/*</span></td>
+                <td>To change the group of all files that are present in folder</td>
+            </tr>
+            <tr>
+                <td><span class="command">chown username:groupname file/foldername</span></td>
+                <td>To change the user and group of a file/folder</td>
+            </tr>
+            <tr>
+                <td><span class="command">chown -R username:groupname foldername</span></td>
+                <td>To change the user group of folder along with files (recursively)</td>
+            </tr>
+            <tr>
+                <td><span class="command">chown username:groupname foldername/*</span></td>
+                <td>To change the user group of all files that are present in folder</td>
+            </tr>
+            <tr>
+                <td><span class="command">chmod 777 file/foldername</span></td>
+                <td>To change the permissions of a file/folder</td>
+            </tr>
+            <tr>
+                <td><span class="command">chmod -R 777 foldername</span></td>
+                <td>To change the permissions of folder along with files (recursively)</td>
+            </tr>
+            <tr>
+                <td><span class="command">chmod 567 foldername/*</span></td>
+                <td>To change the permissions of all files that are present in folder</td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>Vim Essential Commands</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="command">G</span></td>
+                <td class="description">Move to the last line of the document.</td>
+            </tr>
+            <tr>
+                <td><span class="command">gg</span></td>
+                <td class="description">Move to the first line of the document.</td>
+            </tr>
+            <tr>
+                <td><span class="command">M</span></td>
+                <td class="description">Move the cursor to the middle of the screen.</td>
+            </tr>
+            <tr>
+                <td><span class="command">12gg</span> (or <span class="command">:12</span>)</td>
+                <td class="description">Move to line number 12.</td>
+            </tr>
+            <tr>
+                <td><span class="command">25gg</span> (or <span class="command">:25</span>)</td>
+                <td class="description">Move to line number 25.</td>
+            </tr>
+            <tr>
+                <td><span class="command">:set number</span></td>
+                <td class="description">Display line numbers in the editor.</td>
+            </tr>
+            <tr>
+                <td><span class="command">i</span></td>
+                <td class="description">Enter Insert Mode before the cursor.</td>
+            </tr>
+            <tr>
+                <td><span class="command">A</span></td>
+                <td class="description">Enter Insert Mode by appending at the end of the current line.</td>
+            </tr>
+            <tr>
+                <td><span class="command">I</span></td>
+                <td class="description">Enter Insert Mode by inserting at the beginning of the current line.</td>
+            </tr>
+            <tr>
+                <td><span class="command">o</span></td>
+                <td class="description">Enter Insert Mode by opening a new line below the current line.</td>
+            </tr>
+            <tr>
+                <td><span class="command">O</span></td>
+                <td class="description">Enter Insert Mode by opening a new line above the current line.</td>
+            </tr>
+            <tr>
+                <td><span class="command">1yy</span> (or just <span class="command">yy</span>)</td>
+                <td class="description">Yank (copy) the current line.</td>
+            </tr>
+            <tr>
+                <td><span class="command">4yy</span></td>
+                <td class="description">Yank (copy) 4 lines, starting from the current line.</td>
+            </tr>
+            <tr>
+                <td><span class="command">p</span></td>
+                <td class="description">Paste the last yanked or deleted text after the cursor/line.</td>
+            </tr>
+            <tr>
+                <td><span class="command">10p</span></td>
+                <td class="description">Paste the last yanked or deleted text 10 times.</td>
+            </tr>
+            <tr>
+                <td><span class="command">5dd</span></td>
+                <td class="description">Delete (cut) 5 lines, starting from the current line.</td>
+            </tr>
+            <tr>
+                <td><span class="command">u</span></td>
+                <td class="description">Undo the last change.</td>
+            </tr>
+            <tr>
+                <td><span class="command">Ctrl + r</span></td>
+                <td class="description">Redo the last undo.</td>
+            </tr>
+            <tr>
+                <td><span class="command">/word</span> or <span class="command">?word</span></td>
+                <td class="description">Search forward (/) or backward (?) for "word".</td>
+            </tr>
+            <tr>
+                <td><span class="command">:%s/old_word/new_word</span></td>
+                <td class="description">Search and replace the first occurrence of 'old\_word' with 'new\_word' on every line in the file.</td>
+            </tr>
+            <tr>
+                <td><span class="command">Esc + :q!</span></td>
+                <td class="description">Quit Vim without saving (discards changes).</td>
+            </tr>
+            <tr>
+                <td><span class="command">Esc + :wq</span></td>
+                <td class="description">Write (save) the file and quit Vim.</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

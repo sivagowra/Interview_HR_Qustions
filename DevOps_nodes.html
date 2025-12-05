@@ -734,6 +734,41 @@ It works well for government or banking systems where stability is more importan
     In simple words, outbound rules decide what type of outgoing traffic is allowed.
   </p>
 </div>
+<div style="font-family: Arial, sans-serif; line-height: 1.6; margin-bottom: 30px;">
+  <h2>AWS DevOps Agent – Complete Guide</h2>
+  <p>
+    AWS DevOps Agent is a small software program that runs on your server, usually an EC2 instance. 
+    It connects your server to AWS DevOps services like CodeDeploy, CodePipeline, CodeBuild, and SSM. 
+    The agent’s main job is to receive tasks from AWS services and execute them on the server. 
+    For example, when a new version of your application is ready in CodeDeploy, the agent downloads 
+    the files, runs scripts to stop the old version, installs the new version, and starts the app. 
+    It can also send logs back to AWS so you can track what happened during deployment. 
+    AWS DevOps Agent starts automatically when your server starts, as it is enabled as a service. 
+    You can also manually start, stop, or check the agent using system commands. 
+    This agent is very useful for DevOps engineers because it automates repetitive tasks like deployment, 
+    updates, configuration, and testing. It ensures that deployments are consistent, reliable, and fast. 
+    Using AWS DevOps Agent saves time, reduces errors, and allows teams to implement continuous integration 
+    and continuous delivery efficiently. Overall, it is an essential tool for modern DevOps pipelines.
+  </p>
+</div>
+
+<div style="font-family: Arial, sans-serif; line-height: 1.6; margin-bottom: 30px;">
+  <h2>How to Start and Use AWS DevOps Agent</h2>
+  <p>
+    AWS DevOps Agent can be installed on Amazon Linux or other Linux servers. 
+    After installation, it is enabled as a service, so it starts automatically when the server boots. 
+    You can check its status using commands like <code>sudo systemctl status codedeploy-agent</code> or 
+    <code>sudo systemctl status amazon-ssm-agent</code>. To manually start the agent, use 
+    <code>sudo systemctl start codedeploy-agent</code>. DevOps engineers use the agent to connect the server 
+    to pipelines like CodePipeline or deployments via CodeDeploy. It can run deployment scripts, install 
+    updates, and configure applications automatically. Logs and status updates are sent back to AWS so the 
+    team can monitor progress. The agent also works with SSM to run commands or manage servers remotely. 
+    By using this agent, DevOps engineers can automate repetitive tasks, reduce human errors, and 
+    implement Continuous Integration and Continuous Deployment smoothly. It makes the whole software delivery 
+    process faster and more reliable, which is critical for production systems.
+  </p>
+</div>
+
 
 
    </body>

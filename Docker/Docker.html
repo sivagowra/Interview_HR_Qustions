@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Docker</title>
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                line-height: 1.6;
+                max-width: 900px;
+                margin: 40px auto;
+                padding: 0 20px;
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 24px;
+            }
+            section {
+                margin-bottom: 32px;
+            }
+            .paragraph {
+                white-space: pre-line;
+                background: #fafafa;
+                padding: 16px;
+                border-radius: 8px;
+                border: 1px solid #eee;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="margin-bottom: 30px; font-family: Arial; line-height: 1.6">
+            <h2>Monolithic Architecture</h2>
+            <p>
+                A monolithic architecture is a software design where the entire application is built as one single
+                unit.<br />
+                All features such as login, payment, database access, and UI run inside one big codebase.<br />
+                Every module depends on the other, so even a small change requires rebuilding and redeploying the entire
+                application.<br />
+                This makes development slower as the project grows in size and complexity.<br />
+                Testing becomes harder because everything is tightly connected and difficult to isolate.<br />
+                If one part fails, the entire application may stop working.<br />
+                Scaling is difficult because you must scale the whole app even if only one feature needs more
+                resources.<br />
+                Monolithic applications are simple to start and easy for small teams to manage.<br />
+                However, they become large and harder to maintain over time.<br />
+                They are suitable for small to medium-sized projects with stable requirements.
+            </p>
+        </div>
+
+        <div style="margin-bottom: 30px; font-family: Arial; line-height: 1.6">
+            <h2>Microservices Architecture</h2>
+            <p>
+                Microservices architecture is a modern approach where an application is divided into many small,
+                independent services.<br />
+                Each service focuses on a single function such as login, payment, search, or notifications.<br />
+                These services run separately and communicate with each other using APIs.<br />
+                If one service fails, the rest of the application continues to run normally.<br />
+                Developers can update, deploy, and scale each service independently.<br />
+                This makes scaling easier because only high-load services need extra resources.<br />
+                Different services can be written in different programming languages if needed.<br />
+                Testing becomes simpler as each service is small and isolated.<br />
+                Microservices allow fast development for large and complex systems.<br />
+                They are suitable for modern applications like e-commerce, cloud platforms, and banking systems.
+            </p>
+        </div>
+        <div>
+            <h2>Docker (Simple English Explanation)</h2>
+            <p>
+                Docker is a tool that helps you run applications in a clean and separate environment called a container.
+                Normally, when we install software on a computer, it may cause version problems or dependency issues.
+                Docker avoids these problems by packing everything an application needs—code, libraries, runtime—into
+                one container. This container works the same on any machine, so the application runs without errors
+                everywhere. Developers use Docker to move applications easily from their laptop to servers or cloud. It
+                also helps teams work faster because containers start quickly and need very little memory. Docker images
+                are like templates, and containers are the running versions of those images. Using Docker, we can run
+                many small apps separately on the same machine without conflict. It is one of the most important tools
+                in DevOps for CI/CD pipelines. Overall, Docker makes application deployment faster, easier, and more
+                reliable.
+            </p>
+        </div>
+        <div>
+            <h2>Docker Image</h2>
+            <p>
+                A Docker image is like a blueprint or template used to create containers. It contains everything an
+                application needs, such as code, libraries, and system files. You cannot change an image while it is
+                running; it is always read-only. Images are created only once and reused many times. You can store
+                images in Docker Hub or your private registry. When you run an image, Docker uses it to start a
+                container. Think of a Docker image like a cake recipe that tells how to make a cake. The recipe never
+                changes; it only describes how the cake should be. Developers use images to make sure their app runs the
+                same in all environments. In short, an image is the package that contains the app and all its
+                dependencies.
+            </p>
+        </div>
+        <div>
+            <h2>Docker Container</h2>
+            <p>
+                A Docker container is the running version of a Docker image. It is like the actual cake made from the
+                recipe. Containers run the application in a fully isolated environment. Each container has its own file
+                system, processes, and configuration. Containers are lightweight and start very fast. You can start,
+                stop, restart, and delete containers easily. Containers use the image as a base but can have changes
+                during runtime. Multiple containers can run from the same image at the same time. They do not affect
+                each other, making them safe and independent. In simple words, a container is an alive, working app
+                created from an image.
+            </p>
+        </div>
+        <div>
+            <h3>ec2 permisstion command</h3>
+            <h4>sudo usermod -aG docker ec2-user</h4>
+            <h3>How to Save a Running Container as a New Image</h3>
+            <p>Command Syntax</p>
+            Dock
+            <h4>docker commit container_name_or_id new_image_name</h4>
+            <p>example</p>
+            <h4>docker commit mynginx mynginx_custom</h4>
+        </div>
+
+        <section>
+            <h2>Web Servers</h2>
+            <div>
+                <h2>NGINX (Simple English Explanation)</h2>
+                <p>
+                    NGINX is a very fast and powerful web server used to host websites and applications. It can handle
+                    thousands of users at the same time without slowing down, which makes it one of the most popular
+                    servers in the world. NGINX receives requests from users and sends back web pages, images, or API
+                    responses. It is also used as a reverse proxy, meaning it sits in front of backend applications like
+                    Python, Java, PHP, or Node.js and forwards requests to them. Because it manages connections
+                    efficiently, it improves the performance, speed, and security of your application. NGINX can also
+                    balance traffic across multiple servers, helping avoid overload. Developers and DevOps teams
+                    commonly use it in production environments for hosting static websites, managing APIs, and
+                    protecting applications. Overall, NGINX makes websites faster, safer, and more reliable.
+                </p>
+            </div>
+            <div>
+                <h2>Apache2 (Simple English Explanation)</h2>
+                <p>
+                    Apache2 is a widely used web server that delivers web pages to users when they open a website. It
+                    works by receiving requests from a browser and sending back HTML, images, or application responses.
+                    Apache2 is very stable, easy to configure, and supports many modules that add extra features like
+                    security, authentication, and URL rewriting. It follows a process-based model, where each request
+                    can be handled by separate worker processes. This makes Apache reliable, especially for small and
+                    medium websites. Developers use Apache2 for hosting static sites, running PHP applications, and
+                    handling backend server tasks. It is also used with tools like WordPress, PHP, and MySQL. Apache2 is
+                    simple to install, works on any Linux server, and is widely used in DevOps and hosting environments.
+                    Overall, Apache2 is a powerful and trusted server for hosting web applications.
+                </p>
+            </div>
+            <div>
+                <h2>Apache Tomcat (Simple English Explanation)</h2>
+                <p>
+                    Apache Tomcat is a web server and application server mainly used to run Java applications. While
+                    normal web servers like Apache2 and NGINX can host simple websites, Tomcat is made specially for
+                    Java programs such as JSP pages, Servlets, and Spring Boot web apps. Tomcat receives user requests,
+                    processes the Java code, and sends back the response to the browser. It includes its own internal
+                    engine called Catalina, which manages Java web components. Developers use Tomcat because it is
+                    lightweight, easy to install, and works perfectly with Java-based applications. Tomcat is commonly
+                    used in companies for deploying enterprise Java projects, and it supports WAR file deployment. It
+                    runs on any Linux or Windows server and is widely used in DevOps pipelines. Overall, Tomcat is the
+                    best choice for hosting and running Java web applications in a simple and reliable way.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <div style="font-family: Arial, sans-serif; line-height: 1.6">
+                <h2>Step-by-step: Using Docker CLI</h2>
+                <p>
+                    1. <strong>Create a volume</strong> — this makes a persistent storage area managed by Docker:<br />
+                    <code>docker volume create myvolume</code><br />
+                    This creates a volume named <code>myvolume</code>. Docker stores its data under
+                    <code>/var/lib/docker/volumes/myvolume/_data</code> on the host.
+                </p>
+                <p>
+                    2. <strong>Run the first container and mount the volume</strong> — map the volume to a folder inside
+                    the container:<br />
+                    <code>docker run -d --name web1 -v myvolume:/usr/share/nginx/html nginx</code><br />
+                    This starts an NGINX container named <code>web1</code> and mounts the volume so NGINX serves files
+                    from it.
+                </p>
+                <p>
+                    3. <strong>Check the volume is mounted</strong> — inspect the container to confirm mount info:<br />
+                    <code>docker inspect web1 --format '{{json .Mounts}}' | jq</code><br />
+                    (If <code>jq</code> is missing, just run <code>docker inspect web1</code> and look under
+                    <code>Mounts</code>.)
+                </p>
+                <p>
+                    4. <strong>Add a file into the volume</strong> — write a test index.html using the running
+                    container:<br />
+                    <code
+                        >docker exec -it web1 /bin/sh -c "echo 'Hello from web1' >
+                        /usr/share/nginx/html/index.html"</code
+                    ><br />
+                    Visit the host IP or run <code>curl http://localhost</code> (if you published port) to see the file.
+                </p>
+                <p>
+                    5. <strong>Run a second container using the same volume</strong> — it will see the same files:<br />
+                    <code>docker run -d --name web2 -v myvolume:/usr/share/nginx/html nginx</code><br />
+                    Now <code>web2</code> serves the same <code>index.html</code> you created via <code>web1</code>.
+                </p>
+                <p>
+                    6. <strong>Verify sharing</strong> — check the file inside the second container:<br />
+                    <code>docker exec -it web2 cat /usr/share/nginx/html/index.html</code><br />
+                    You should see <code>Hello from web1</code>. Any change from one container is visible to the other.
+                </p>
+                <p>
+                    7. <strong>Stop / remove containers</strong> — volume stays after container removal:<br />
+                    <code>docker rm -f web1 web2</code><br />
+                    Then check the volume data on the host: <code>sudo ls /var/lib/docker/volumes/myvolume/_data</code>
+                </p>
+                <p>
+                    8. <strong>Remove the volume (when you no longer need data)</strong>:<br />
+                    <code>docker volume rm myvolume</code>
+                </p>
+            </div>
+            <div style="font-family: Arial, sans-serif; line-height: 1.6">
+                <h2>Step-by-step: Using Docker Compose</h2>
+                <p>
+                    1. <strong>Create a <code>docker-compose.yml</code> file</strong> (example below). This defines two
+                    services sharing one named volume.
+                </p>
+                <pre><code>version: '3.8' services: web1: image: nginx container_name: web1 volumes: - myvolume:/usr/share/nginx/html ports: - "8081:80" web2: image: nginx container_name: web2 volumes: - myvolume:/usr/share/nginx/html ports: - "8082:80" volumes: myvolume: </code></pre>
+                <p>
+                    2. <strong>Start both services</strong>:<br />
+                    <code>docker-compose up -d</code><br />
+                    This creates the named volume <code>myvolume</code> automatically and runs both containers.
+                </p>
+                <p>
+                    3. <strong>Add a test file</strong> via one container:<br />
+                    <code
+                        >docker exec -it web1 /bin/sh -c "echo 'Hello from compose web1' &gt;
+                        /usr/share/nginx/html/index.html"</code
+                    >
+                </p>
+                <p>
+                    4. <strong>Open in browser</strong>:<br />
+                    Go to <code>http://HOST_IP:8081</code> and <code>http://HOST_IP:8082</code>. Both should serve the
+                    same file.
+                </p>
+                <p>
+                    5. <strong>Stop and cleanup</strong>:<br />
+                    <code>docker-compose down</code> removes containers and networks but keeps the volume unless you run
+                    <code>docker-compose down -v</code> (which removes volumes too).
+                </p>
+            </div>
+            <div style="font-family: Arial, sans-serif; line-height: 1.6">
+                <h2>Best practices & important notes (simple)</h2>
+                <ul>
+                    <li>
+                        <strong>Concurrency:</strong> Multiple containers sharing the same volume can read/write files.
+                        For simple static files this is fine, but for databases or concurrent writes you must use a
+                        database service or a coordinated storage (not a plain shared volume).
+                    </li>
+                    <li>
+                        <strong>Permissions:</strong> If you see permission errors, make sure the UID/GID inside
+                        containers match the owner of files in the volume, or adjust permissions (e.g.
+                        <code>chown -R 1000:1000 /var/lib/docker/volumes/myvolume/_data</code> on host or use
+                        <code>user</code> in docker-compose).
+                    </li>
+                    <li>
+                        <strong>Use named volumes vs host bind-mounts:</strong> Named volumes are managed by Docker and
+                        are portable. Bind mounts (<code>-v /host/path:/container/path</code>) let you edit files on
+                        host directly and are useful for development.
+                    </li>
+                    <li>
+                        <strong>Backup:</strong> To back up a volume:
+                        <code
+                            >docker run --rm -v myvolume:/data -v $(pwd):/backup ubuntu tar czf /backup/myvolume.tar.gz
+                            -C /data .</code
+                        >
+                    </li>
+                    <li><strong>Inspect:</strong> See volume info: <code>docker volume inspect myvolume</code></li>
+                </ul>
+            </div>
+        </section>
+    </body>
+</html>

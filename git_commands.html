@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Commands Cheat Sheet</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
+        h1 { color: #333; text-align: center; border-bottom: 2px solid #ccc; padding-bottom: 10px; }
+        table { width: 90%; margin: 20px auto; border-collapse: collapse; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        th, td { border: 1px solid #ddd; padding: 12px 15px; text-align: left; vertical-align: top; }
+        th { background-color: #f0f0f0; color: #333; text-transform: uppercase; }
+        tr:nth-child(even) { background-color: #fafafa; }
+        .command { font-family: 'Courier New', Courier, monospace; font-weight: bold; color: #007bff; background-color: #e9f2ff; padding: 2px 4px; border-radius: 3px; white-space: nowrap; }
+    </style>
+</head>
+<body>
+    <h1>Git Commands Cheat Sheet</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="command">yum install git -y</span></td>
+                <td>To install git in linux machine[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git init.</span></td>
+                <td>To initialize empty repo in current directory[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git config user.name "username"</span></td>
+                <td>Used to configure user name for our git[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git config user.email "email"</span></td>
+                <td>Used to configure user email for our git[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git add filename</span></td>
+                <td>Used to track a file[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git add *</span></td>
+                <td>Used to track all files & folders[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git add.</span></td>
+                <td>Used to track all files in current directory (including hidden files)[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git add -f filename</span></td>
+                <td>To track files forcefully[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git rm-cached filename</span></td>
+                <td>Used to untrack the file[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git commit -m "message" filename</span></td>
+                <td>To commit a file[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git commit -m "message".</span></td>
+                <td>Used to commit all files which are present in staging area[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git log</span></td>
+                <td>To see the history of the git[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git log --oneline</span></td>
+                <td>To see only commit ID's and messages[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git log -1</span></td>
+                <td>Used to see the latest commit[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git log -3</span></td>
+                <td>Used to see latest 3 commits[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git log --follow --all filename</span></td>
+                <td>Used to see the no of commits for a single file[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git show commit_id --name-only</span></td>
+                <td>Used to see all the commit details along with the file name[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git show commit_id</span></td>
+                <td>See the history of a file (modifications, data add and deletion)[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git commit -amend</span></td>
+                <td>Used to change the commit message for a latest commit[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git commit -amend >"</span></td>
+                <td>Used to change the author of latest commit[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git reset --hard HEAD</span></td>
+                <td>Used to delete the latest commit along with the changes[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git reset --hard HEAD~3</span></td>
+                <td>Used to delete the latest 3 commits along with the changes[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git resert --soft HEAD~1</span></td>
+                <td>Used to delete only commits but not actions/changes[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git resert --soft HEAD~3</span></td>
+                <td>Used to delete only latest commits but not actions/changes[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git revert commit_id</span></td>
+                <td>Used to delete a particular commit action and add a new commit for the change[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git branch</span></td>
+                <td>Used to see the list of branches[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git branch branch-name</span></td>
+                <td>To create a branch[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git checkout branch-name</span></td>
+                <td>To switch one branch to another[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git checkout -b branch-name</span></td>
+                <td>Used to create and switch a branch at a time[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git branch -m old-branch new-branch</span></td>
+                <td>Used to rename a branch[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git branch -d branch-name</span></td>
+                <td>To delete a branch[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git branch -D branch-name</span></td>
+                <td>To delete a branch forcefully[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git merge branch</span></td>
+                <td>Copy the all commits from one branch to another[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git cherry-pick commit-id</span></td>
+                <td>Copy the single commits from one branch to another[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git merge -abort</span></td>
+                <td>Used to cancel the merge when conflicts arise[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git rebase branch</span></td>
+                <td>Copy the all commits from one branch to another[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git stash</span></td>
+                <td>To delete the changes permanently[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git stash save "message"</span></td>
+                <td>To save the stash along with the message[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git stash apply</span></td>
+                <td>To get back the data again[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git stash list</span></td>
+                <td>To get the list of stashes[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git stash clear</span></td>
+                <td>To clear all stashes[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git stash pop</span></td>
+                <td>To delete the first stash[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git stash drop</span></td>
+                <td>Used to delete the latest stash[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git stash drop stash@{2}</span></td>
+                <td>Used to delete a particular stash[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git remote add origin repo-url</span></td>
+                <td>Link local-repo to central-repo[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git remote -v</span></td>
+                <td>Used to get the linked repo in github[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git push -u origin branch-name</span></td>
+                <td>Push the code from local to central[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git push -u origin branch-1 branch-2</span></td>
+                <td>Used to push the code to multiple branches[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git push -u origin --all</span></td>
+                <td>Used to push the code to all branches at a time[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git clone repo-url</span></td>
+                <td>Used to get the code from central to local[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git pull origin branch</span></td>
+                <td>Used to get the changes from central to local[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git fetch branch-name</span></td>
+                <td>Used to fetch the data from central to local[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git fetch --all</span></td>
+                <td>Used to fetch the changes from all branches in github[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git merge origin/branch</span></td>
+                <td>Used to merge the changes from central to local[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git push -u origin --delete branch-name</span></td>
+                <td>Used to delete the github branch from local[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">git remote rm origin</span></td>
+                <td>Used to unlink the github-repo[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><span class="command">Git remote rename old-link new-link</span></td>
+                <td>Used to change the repo[cite: 2].</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Full Notes and Commands</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f8f9fa; color: #333; }
+        h1 { color: #007bff; text-align: center; border-bottom: 3px solid #007bff; padding-bottom: 10px; margin-bottom: 30px; }
+        h2 { color: #6c757d; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 25px; }
+        table { width: 100%; margin: 20px 0; border-collapse: collapse; box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1); }
+        th, td { border: 1px solid #ddd; padding: 12px 15px; text-align: left; vertical-align: top; }
+        th { background-color: #e9ecef; color: #495057; text-transform: uppercase; font-size: 0.9em; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .command { font-family: 'Courier New', Courier, monospace; color: #dc3545; padding: 2px 4px; border-radius: 3px; background-color: #ffebeb; white-space: pre-wrap; display: block; }
+        .concept-text { margin-bottom: 15px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <h1>DOCKER FULL NOTES</h1>
+
+    <h2>Core Concepts</h2>
+    <div class="concept-text">
+        <p><strong>MONOLITHIC:</strong> If an application contains N number of services (Let's take Paytm has Money Transactions, Movie Tickets, Train tickets, etc..) If all these services are included in one server then it will be called Monolithic Architecture. Every monolithic Architecture has only one database for all the services.</p>
+        <p><strong>MICRO SERVICES:</strong> If an application contains N number of services (Let's take Paytm has Money Transactions, Movie Tickets, Train tickets, etc..) if every service has its own individual servers then it is called microservices. Every microservice architecture has its own database for each service.</p>
+        <p><strong>WHY DOCKER:</strong> To overcome the hectic situation of maintaining multiple versions of the same tool (like Java, React, MongoDB) on one system, we use virtualization.</p>
+        <p><strong>VIRTUALISATION:</strong> It is used to create virtual machines inside our machine. In that virtual machines we can hots guest OS in our machine. Hypervisor is used to create the virtualisation. If we use multiple guest OS then the performance of the system is low.</p>
+        <p><strong>CONTAINERIZATION:</strong> It is used to pack the application along with its dependencies to run the application.</p>
+        <p><strong>CONTAINER:</strong> Container is a virtual machine which does not have any OS. Docker is used to create these containers. A container is a lightweight, standalone package that contains everything needed to run a piece of software, including the application code, runtime, system libraries, and dependencies.</p>
+        <p><strong>DOCKER:</strong> It is an open source centralized platform designed to create, deploy and run applications. Docker is written in the Go language. Docker uses containers on host O.S to run applications and performs O.S level Virtualization also known as Containerization.</p>
+    </div>
+
+    <h2>Docker Architecture and Components</h2>
+    <div class="concept-text">
+        <p><strong>DOCKER CLIENT:</strong> The primary way many Docker users interact with Docker. It sends commands (such as docker run) to the docker daemon.</p>
+        <p><strong>DOCKER HOST:</strong> The machine where you installed the docker engine.</p>
+        <p><strong>DOCKER DAEMON:</strong> Runs on the host operating system and is responsible for running containers to manage docker services.</p>
+        <p><strong>DOCKER REGISTRY:</strong> A place where Docker images are stored and can be easily shared.</p>
+        <p><strong>POINTS TO BE FOLLOWED:</strong> You cant use docker directly, you need to start/restart first. You need a base image for creating a Container. You cant enter directly to Container, you need to start first. If you run an image, By default one container will create.</p>
+    </div>
+
+    <h2>Docker Basic Commands and Lifecycle</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="command">yum install docker -y</span></td>
+                <td>To install docker in Linux.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker --version</span></td>
+                <td>To see the docker version.</td>
+            </tr>
+            <tr>
+                <td><span class="command">service docker start</span></td>
+                <td>To start the docker service.</td>
+            </tr>
+            <tr>
+                <td><span class="command">service docker status</span></td>
+                <td>To check service is start or not.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker info</span></td>
+                <td>To check the docker information.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker images</span></td>
+                <td>To see all images in local machine.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker search image name</span></td>
+                <td>To find images in docker hub.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker pull image name</span></td>
+                <td>To download image from docker hub to local.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker run -it image name /bin/bash</span></td>
+                <td>To download and run image at a time.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker run -it--name raham img-name/bin/bash</span></td>
+                <td>To give names of a container.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker start container name</span></td>
+                <td>To start container.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker attach container name</span></td>
+                <td>To go inside the container.</td>
+            </tr>
+            <tr>
+                <td><span class="command">cat /etc/os-release</span></td>
+                <td>To see all the details inside container.</td>
+            </tr>
+            <tr>
+                <td><span class="command">exit</span></td>
+                <td>To get outside of the container.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker ps -a</span></td>
+                <td>To see all containers.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker ps (ps: process status)</span></td>
+                <td>To see only running containers.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker ps-q-f "state exited"</span></td>
+                <td>To see only exited containers.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker stop container name</span></td>
+                <td>To stop the container.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker rm container name</span></td>
+                <td>To delete container.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker stop $(docker ps-a-q)</span></td>
+                <td>To stop all the containers.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker rm $(docker ps -a -q)</span></td>
+                <td>To delete all the stopped containers.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker rmi -f $(docker images-q)</span></td>
+                <td>To delete all images.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker rename old_container new_container</span></td>
+                <td>Used to rename the docker container (DOCKER RENAME).</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker export -o path container</span></td>
+                <td>Syntax to export a container as a tarball archive file (DOCKER EXPORT).</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Alternate Container Commands</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="command">docker container ls</span></td>
+                <td>To see list of containers.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker container ls -a</span></td>
+                <td>To see all containers.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker container ls -n 2</span></td>
+                <td>To see the latest 2 containers.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker container ls --latest</span></td>
+                <td>To see the latest container.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker ls -a-q</span></td>
+                <td>To see all container id's.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker container rm -f $(docker container ls -aq)</span></td>
+                <td>To remove all containers.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker container ls -a -s</span></td>
+                <td>To see containers with sizes.</td>
+            </tr>
+            <tr>
+                <td><span class="command">docker stop -t 60 cont_id</span></td>
+                <td>To stop container after some time.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Advanced Operations and Commands</h2>
+    <div class="concept-text">
+        <p><strong>HOW TO CHANGE DOCKER PORT NUMBER:</strong> Stop the container, go to path (var/lib/docker/container/container_id), open hostconfig.json, edit port number, then restart docker and start the container.</p>
+        <p><strong>RUNNING A CONTAINER (Port Mapping Example):</strong> <code><span class="command">docker run --name cont2 -d -p 8081(hostport): 80 (container port) nginx</span></code>.</p>
+        <p><strong>DOCKER EXEC:</strong> Used to run commands inside a running Docker container.</p>
+        <ul>
+            <li>Syntax: <code><span class="command">docker exec cont_name command</span></code></li>
+            <li>To enter container: <code><span class="command">docker exec-it cont_name/bin/bash</span></code> or <code><span class="command">docker exec-it cont_name bash</span></code></li>
+        </ul>
+        <p><strong>LIMITS TO CONTAINER:</strong> Used to set memory limits and CPU limits to containers.</p>
+        <ul>
+            <li>Example: <code><span class="command">docker run-dit--name cont_name --memory=250m-cpus ="0.25" image_name</span></code></li>
+        </ul>
+        <p><strong>CREATE IMAGE FROM CONTAINER:</strong></p>
+        <ul>
+            <li>Create container: <code><span class="command">docker run -it--name container_name image_name/bin/bash</span></code></li>
+            <li>Make changes and exit.</li>
+            <li>Create new image: <code><span class="command">docker commit container_name new_image_name</span></code></li>
+        </ul>
+    </div>
+
+    <h2>Dockerfile Components</h2>
+    <div class="concept-text">
+        <p>A Dockerfile is a text file which contains a set of instructions used for the automation of Docker image creation. The 'D' in Dockerfile is always a capital letter, and the start components are also capital letters.</p>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Component</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="command">FROM</span></td>
+                <td>For base image; this command must be on top of the file. Ex: ubuntu, Redis, Jenkins.</td>
+            </tr>
+            <tr>
+                <td><span class="command">LABEL</span></td>
+                <td>Labeling like EMAIL, AUTHOR, image description etc.</td>
+            </tr>
+            <tr>
+                <td><span class="command">RUN</span></td>
+                <td>To execute commands while we build the image.</td>
+            </tr>
+            <tr>
+                <td><span class="command">COPY</span></td>
+                <td>Copy files/folders from local system to container where need to provide Source and Destination.</td>
+            </tr>
+            <tr>
+                <td><span class="command">ADD</span></td>
+                <td>Used to copy the files, and it can also download files from the internet and extract them.</td>
+            </tr>
+            <tr>
+                <td><span class="command">EXPOSE</span></td>
+                <td>To expose ports such as 8080 for tomcat and port 80 for nginx etc.</td>
+            </tr>
+            <tr>
+                <td><span class="command">WORKDIR</span></td>
+                <td>To set working directory for the Container.</td>
+            </tr>
+            <tr>
+                <td><span class="command">CMD</span></td>
+                <td>Executes commands but during Container creation.</td>
+            </tr>
+            <tr>
+                <td><span class="command">ENTRYPOINT</span></td>
+                <td>The command that executes inside of a container, like running the services in a container.</td>
+            </tr>
+            <tr>
+                <td><span class="command">ENV</span></td>
+                <td>Environment Variables.</td>
+            </tr>
+            <tr>
+                <td><span class="command">ARG</span></td>
+                <td>Used to pass Environment variables.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Command Comparisons</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Comparison</th>
+                <th>Command/Concept</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ENV vs ARG</td>
+                <td>ARG argument</td>
+                <td>is not available inside the Docker containers.</td>
+            </tr>
+            <tr>
+                <td>ENV vs ARG</td>
+                <td>ENV argument</td>
+                <td>is accessible inside the container.</td>
+            </tr>
+            <tr>
+                <td>RUN vs CMD vs ENTRYPOINT</td>
+                <td>RUN</td>
+                <td>Used to execute the commands while we build the images and add a new layer into the image.</td>
+            </tr>
+            <tr>
+                <td>RUN vs CMD vs ENTRYPOINT</td>
+                <td>CMD</td>
+                <td>Used to execute the commands when we run the container; if multiple CMD's exist, only the last one will gets executed.</td>
+            </tr>
+            <tr>
+                <td>RUN vs CMD vs ENTRYPOINT</td>
+                <td>ENTRYPOINT</td>
+                <td>It overwrites the CMD when you pass additional parameters while running the container.</td>
+            </tr>
+            <tr>
+                <td>COPY vs ADD</td>
+                <td>COPY</td>
+                <td>Used to copy local files to containers.</td>
+            </tr>
+            <tr>
+                <td>COPY vs ADD</td>
+                <td>ADD</td>
+                <td>Used to copy files form internet and extract them.</td>
+            </tr>
+            <tr>
+                <td>STOP vs KILL</td>
+                <td>STOP</td>
+                <td>Attempts to gracefully shutdown container, issues a SIGTERM signal to the main process.</td>
+            </tr>
+            <tr>
+                <td>STOP vs KILL</td>
+                <td>KILL</td>
+                <td>Immediately stops/terminates them, while docker kill (by default) issues a SIGKILL signal.</td>
+            </tr>
+            <tr>
+                <td>PULL vs RUN</td>
+                <td>PULL</td>
+                <td>Used to download the images from docker registry.</td>
+            </tr>
+            <tr>
+                <td>PULL vs RUN</td>
+                <td>RUN</td>
+                <td>Used to create a container.</td>
+            </tr>
+            <tr>
+                <td>EXPOSE VS PUBLISH</td>
+                <td>EXPOSE</td>
+                <td>For internal access (e.g., in Dockerfile: EXPOSE &lt;Container PORT&gt;).</td>
+            </tr>
+            <tr>
+                <td>EXPOSE VS PUBLISH</td>
+                <td>Publish</td>
+                <td>For external access (e.g., in docker run: docker run -p &lt;HOST-PORT&gt;: &lt;Container PORT&gt;).</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

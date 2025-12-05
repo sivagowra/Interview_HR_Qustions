@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Full Notes and Advanced Concepts</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f0f2f5; color: #333; line-height: 1.6; }
+        h1 { color: #007bff; text-align: center; border-bottom: 4px solid #007bff; padding-bottom: 10px; margin-bottom: 30px; }
+        h2 { color: #28a745; border-bottom: 2px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        h3 { color: #6c757d; margin-top: 20px; }
+        p { margin-bottom: 15px; }
+        ul { list-style-type: disc; margin-left: 20px; margin-bottom: 15px; }
+        li { margin-bottom: 5px; }
+        table { width: 100%; margin: 20px 0; border-collapse: collapse; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+        th, td { border: 1px solid #ddd; padding: 12px 15px; text-align: left; vertical-align: top; }
+        th { background-color: #e9ecef; color: #495057; text-transform: uppercase; font-size: 0.9em; }
+        tr:nth-child(even) { background-color: #f8f8f8; }
+        .command { font-family: 'Courier New', Courier, monospace; color: #dc3545; padding: 2px 4px; border-radius: 3px; background-color: #fff0f0; white-space: pre-wrap; display: block; }
+        .concept-text strong { color: #007bff; }
+    </style>
+</head>
+<body>
+    <h1>DOCKER FULL NOTES AND ADVANCED CONCEPTS</h1>
+
+    <h2>Introduction and Need for Docker</h2>
+
+    <h3>Monolithic Architecture</h3>
+    <div class="concept-text">
+        <p>If an application contains <strong>N number of services</strong> (e.g., Paytm has Money Transactions, Movie Tickets, Train tickets, etc.) and all these services are <strong>included in one server</strong>, then it is called Monolithic Architecture. Every monolithic Architecture has <strong>only one database</strong> for all the services.</p>
+    </div>
+
+    <h3>Micro Services Architecture</h3>
+    <div class="concept-text">
+        <p>If an application contains <strong>N number of services</strong> and <strong>every service has its own individual servers</strong>, then it is called microservices. Every microservice architecture has its <strong>own database for each service</strong>. </p>
+    </div>
+
+    <h3>Why Docker (The Problem)</h3>
+    <div class="concept-text">
+        <p>When developing an application, we need to install dependencies (e.g., Java11, ReactJS, MongoDB) to run the code. If a developer later needs another version of Java, React, or MongoDB for a different application, it becomes a <strong>hectic situation to maintain multiple versions of the same tool</strong> in one system. To overcome this problem, we use virtualization/containerization.</p>
+    </div>
+
+    <h2>Virtualization vs. Containerization</h2>
+
+    <h3>Virtualization</h3>
+    <div class="concept-text">
+        <p>Used to create **Virtual Machines (VMs)** inside a machine. In these VMs, we can host **Guest OS** in our machine. **Hypervisor** is used to create the virtualization. By using a Guest OS, we can run multiple applications on the same machine. </p>
+        <p><strong>Drawbacks:</strong></p>
+        <ul>
+            <li>It is an old method.</li>
+            <li>If we use multiple Guest OS, the <strong>performance of the system is low</strong>.</li>
+        </ul>
+    </div>
+
+    <h3>Containerization and Container</h3>
+    <div class="concept-text">
+        <ul>
+            <li><strong>Containerization:</strong> Used to <strong>pack the application along with its dependencies</strong> to run the application.</li>
+            <li><strong>Container:</strong> It is a virtual machine which <strong>does not have any OS</strong>.</li>
+            <li><strong>Docker is used to create these containers.</strong> </li>
+        </ul>
+    </div>
+
+    <h3>Docker Definition</h3>
+    <div class="concept-text">
+        <ul>
+            <li>Docker is an <strong>open-source centralized platform</strong> designed to create, deploy, and run applications.</li>
+            <li>It is written in the <strong>Go language</strong>.</li>
+            <li>Docker uses containers on a host OS to run applications. It allows applications to use the <strong>same Linux kernel</strong> as the host, rather than creating a whole virtual OS.</li>
+            <li>Docker performs <strong>OS level Virtualization</strong>, also known as <strong>Containerization</strong>.</li>
+            <li>A key benefit: it solves the problem of "it works on my machine but not yours" by packaging the environment.</li>
+            <li>Containers have OS files, but their size is negligible compared to the original files of that OS.</li>
+        </ul>
+    </div>
+
+    <h2>Docker Architecture</h2>
+    <div class="concept-text">
+        <ul>
+            <li><strong>Docker Client:</strong> The primary way users interact with Docker. It sends commands (like `docker run`) to the Docker Daemon via the Docker API.</li>
+            <li><strong>Docker Host:</strong> The machine where the Docker engine is installed.</li>
+            <li><strong>Docker Daemon:</strong> Runs on the host OS. It is responsible for running containers and managing Docker services. It communicates with other daemons and manages Docker objects (images, containers, networking, storage).</li>
+            <li><strong>Docker Registry:</strong> A scalable open-source storage and distribution system for Docker images. (e.g., Docker Hub).</li>
+        </ul>
+    </div>
+
+    <h2>Basic Docker Commands (Lifecycle)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><span class="command">yum install docker -y</span></td><td>To install docker in Linux.</td></tr>
+            <tr><td><span class="command">docker --version</span></td><td>To see the docker version.</td></tr>
+            <tr><td><span class="command">service docker start</span></td><td>To start the docker service.</td></tr>
+            <tr><td><span class="command">service docker status</span></td><td>To check if the service is running.</td></tr>
+            <tr><td><span class="command">docker info</span></td><td>To check the docker information.</td></tr>
+            <tr><td><span class="command">docker images</span></td><td>To see all images in the local machine.</td></tr>
+            <tr><td><span class="command">docker search image name</span></td><td>To find images in Docker Hub.</td></tr>
+            <tr><td><span class="command">docker pull image name</span></td><td>To download an image from Docker Hub to local.</td></tr>
+            <tr><td><span class="command">docker run -it image name /bin/bash</span></td><td>To download and run an image at a time.</td></tr>
+            <tr><td><span class="command">docker run -it --name raham img-name /bin/bash</span></td><td>To give a name to a container.</td></tr>
+            <tr><td><span class="command">docker start container name</span></td><td>To start a container.</td></tr>
+            <tr><td><span class="command">docker attach container name</span></td><td>To go inside the container.</td></tr>
+            <tr><td><span class="command">cat /etc/os-release</span></td><td>To see all the details inside the container.</td></tr>
+            <tr><td><span class="command">exit</span></td><td>To get outside of the container.</td></tr>
+            <tr><td><span class="command">docker ps -a</span></td><td>To see all containers.</td></tr>
+            <tr><td><span class="command">docker ps (ps: process status)</span></td><td>To see only running containers.</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Alternate and Management Commands</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><span class="command">docker container ls</span></td><td>To see the list of containers.</td></tr>
+            <tr><td><span class="command">docker container ls -a</span></td><td>To see all containers.</td></tr>
+            <tr><td><span class="command">docker container ls -n 2</span></td><td>To see the latest 2 containers.</td></tr>
+            <tr><td><span class="command">docker container ls --latest</span></td><td>To see the latest container.</td></tr>
+            <tr><td><span class="command">docker ls -a -q</span></td><td>To see all container IDs.</td></tr>
+            <tr><td><span class="command">docker container rm -f $(docker container ls -aq)</span></td><td>To remove all containers.</td></tr>
+            <tr><td><span class="command">docker container ls -a -s</span></td><td>To see containers with sizes.</td></tr>
+            <tr><td><span class="command">docker stop -t 60 cont_id</span></td><td>To stop a container after some time (graceful shutdown timeout).</td></tr>
+            <tr><td><span class="command">docker rename old_container new_container</span></td><td>To rename a docker container.</td></tr>
+            <tr><td><span class="command">docker export -o path container</span></td><td>Used to save the docker container to a tar file.</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Advanced Container Operations</h2>
+
+    <h3>Run Container with Port Mapping and Limits</h3>
+    <div class="concept-text">
+        <p><strong>Port Mapping Example:</strong> To map host port 8081 to container port 80:</p>
+        <span class="command">docker run --name cont2 -d -p 8081(hostport):80(container port) nginx</span>
+        <p><strong>Setting Resource Limits:</strong> Used to set memory limits and CPU limits to containers.</p>
+        <span class="command">docker run -dit --name cont_name --memory=250m --cpus="0.25" image_name</span>
+        <p><strong>Docker Exec:</strong> Used to run commands inside a running container, or enter it:</p>
+        <span class="command">docker exec -it cont_name /bin/bash</span>
+    </div>
+
+    <h3>Creating an Image from a Container</h3>
+    <ol>
+        <li>Create a container from a base image: <span class="command">docker run -it --name container_name image_name /bin/bash</span></li>
+        <li>Make desired changes inside the container.</li>
+        <li>Exit the container.</li>
+        <li>Commit the changes to a new image: <span class="command">docker commit container_name new_image_name</span></li>
+    </ol>
+
+    <h2>Dockerfile Components</h2>
+    <div class="concept-text">
+        <p>A **Dockerfile** is a text file that contains a set of instructions used for the <strong>automation of Docker image creation</strong>. The 'D' in Dockerfile is always a capital letter, and the starting components are also capital letters.</p>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Component</th>
+                <th>Description / Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><span class="command">FROM</span></td><td>For the base image; this command must be on top of the file. (e.g., ubuntu, Redis, Jenkins)</td></tr>
+            <tr><td><span class="command">LABEL</span></td><td>Labeling like EMAIL, AUTHOR, etc.</td></tr>
+            <tr><td><span class="command">RUN</span></td><td>To <strong>execute commands while we build the image</strong> and adds a new layer into the image.</td></tr>
+            <tr><td><span class="command">COPY</span></td><td>Copy files/folders from the local system (Docker VM) to the container. Requires Source and Destination.</td></tr>
+            <tr><td><span class="command">ADD</span></td><td>Used to copy files, and it can also <strong>download files from the internet and extract them</strong> at the image side.</td></tr>
+            <tr><td><span class="command">EXPOSE</span></td><td>To expose ports (e.g., 8080 for tomcat, 80 for nginx). For internal access.</td></tr>
+            <tr><td><span class="command">WORKDIR</span></td><td>To set the working directory for the container.</td></tr>
+            <tr><td><span class="command">CMD</span></td><td><strong>Executes commands during container creation.</strong> If multiple CMDs exist, only the last one is executed.</td></tr>
+            <tr><td><span class="command">ENTRYPOINT</span></td><td>The command that executes inside a container. It overwrites the CMD when additional parameters are passed while running the container.</td></tr>
+            <tr><td><span class="command">ENV</span></td><td>Environment Variables (accessible inside the container).</td></tr>
+            <tr><td><span class="command">ARG</span></td><td>Used to pass build-time arguments (<strong>not available inside the container</strong>).</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Command Comparisons</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Comparison</th>
+                <th>Command/Concept</th>
+                <th>Key Difference</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>ENV vs ARG</strong></td>
+                <td>ARG</td>
+                <td>Argument is <strong>not available</strong> inside the Docker containers.</td>
+            </tr>
+            <tr>
+                <td><strong>ENV vs ARG</strong></td>
+                <td>ENV</td>
+                <td>Argument is <strong>accessible</strong> inside the container.</td>
+            </tr>
+            <tr>
+                <td><strong>RUN vs CMD vs ENTRYPOINT</strong></td>
+                <td>RUN</td>
+                <td>Used to execute commands <strong>while building the image</strong>.</td>
+            </tr>
+            <tr>
+                <td><strong>RUN vs CMD vs ENTRYPOINT</strong></td>
+                <td>CMD</td>
+                <td>Used to execute commands <strong>when running the container</strong> (default command).</td>
+            </tr>
+            <tr>
+                <td><strong>RUN vs CMD vs ENTRYPOINT</strong></td>
+                <td>ENTRYPOINT</td>
+                <td>Defines the main command; parameters passed during `docker run` are appended to it.</td>
+            </tr>
+            <tr>
+                <td><strong>COPY vs ADD</strong></td>
+                <td>COPY</td>
+                <td>Used to copy local files to containers.</td>
+            </tr>
+            <tr>
+                <td><strong>COPY vs ADD</strong></td>
+                <td>ADD</td>
+                <td>Used to copy files, can also <strong>download and extract</strong> files from the internet.</td>
+            </tr>
+            <tr>
+                <td><strong>STOP vs KILL</strong></td>
+                <td>STOP</td>
+                <td>Attempts to gracefully shutdown (issues a <strong>SIGTERM</strong> signal).</td>
+            </tr>
+            <tr>
+                <td><strong>STOP vs KILL</strong></td>
+                <td>KILL</td>
+                <td>Immediately stops/terminates (issues a <strong>SIGKILL</strong> signal).</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Docker Volumes</h2>
+    <div class="concept-text">
+        <p>Volumes are the preferred mechanism for persisting data generated by and used by Docker containers.</p>
+        <p><strong>Uses:</strong> Decoupling Container from storage, sharing volumes among different containers, and the volume <strong>will not be deleted</strong> when the container is deleted.</p>
+        <h3>Creating/Sharing Volumes (Command Line)</h3>
+        <ol>
+            <li>Create container with a volume: <span class="command">docker run -it --name container3 -v /volume2 ubuntu /bin/bash</span></li>
+            <li>Share the volume with a new container: <span class="command">docker run -it --name container4 --privileged=true --volumes-from container3 ubuntu</span> (Now `volume2` is visible in `container4`).</li>
+        </ol>
+        <h3>Mount Volumes</h3>
+        <ol>
+            <li>Create a volume: <span class="command">docker volume create volume99</span></li>
+            <li>Mount it to a container: <span class="command">docker run -it -v volume99:/my-volume --name container1 ubuntu</span></li>
+            <li>To remove a volume: <span class="command">docker volume rm volume_name</span></li>
+            <li>To remove all unused volumes: <span class="command">docker volume prune</span></li>
+        </ol>
+    </div>
+
+    <h2>Docker Registry and Hub</h2>
+    <div class="concept-text">
+        <p>A Docker Registry is used to <strong>store the images</strong>. Docker Hub is the default public registry. Other registries include:</p>
+        <ul>
+            <li>Cloud based registries (GCR, Amazon ECR)</li>
+            <li>Local registry, Nexus, Jfrog, DTR (Docker Trusted Registry)</li>
+        </ul>
+        <p><strong>Docker Push Steps:</strong></p>
+        <ol>
+            <li>Log in: <span class="command">docker login</span></li>
+            <li>Tag the image (required for push): <span class="command">docker tag image1 rahamshaik007/image1:latest</span></li>
+            <li>Push the image: <span class="command">docker push rahamshaik007/image1:latest</span></li>
+        </ol>
+    </div>
+
+    <h2>Docker Networking</h2>
+    <div class="concept-text">
+        <p>The IP address of a container is <strong>not permanent</strong>. If a container is removed and recreated, it gets a new IP, causing connection issues. To resolve this, **Docker Networks** are used to create custom networks, allowing containers to communicate using their names instead of IPs.</p>
+        <ul>
+            <li>To create a network: <span class="command">docker network create network_name</span></li>
+            <li>To connect a container: <span class="command">docker network connect network_name container_id/name</span></li>
+        </ul>
+    </div>
+
+    <h2>Docker Swarm (Orchestration)</h2>
+    <div class="concept-text">
+        <p>Docker Swarm is an orchestration service within Docker that allows managing and handling multiple containers across a **cluster of servers** at the same time. </p>
+        <ul>
+            <li>The cluster's activities are controlled by a **Swarm Manager**.</li>
+            <li>Machines that join the cluster are called **Swarm Workers**.</li>
+            <li>To initialize the manager: <span class="command">docker swarm init --advertise-addr (private ip)</span></li>
+            <li>To see nodes: <span class="command">docker node ls</span></li>
+        </ul>
+        <h3>Services and Scaling in Swarm</h3>
+        <p>The **Docker Service** command is used to run a specific container (or replica set) on all nodes.</p>
+        <ul>
+            <li>Create a service (3 replicas): <span class="command">docker service create --name raham --replicas 3 --publish 80:80 httpd</span></li>
+            <li>Scale a service: <span class="command">docker service scale service_name=5</span></li>
+            <li>Remove a service: <span class="command">docker service rm service_name</span></li>
+        </ul>
+    </div>
+
+    <h2>Docker Compose (Multi-Container Management)</h2>
+    <div class="concept-text">
+        <p>Docker Compose is a tool used to build, run, and ship <strong>multiple containers for an application on a single host</strong>.</p>
+        <ul>
+            <li>It uses a **YAML file** (`docker-compose.yml`) to manage multi-containers as a single service, defining services, networks, and volumes.</li>
+            <li>Start all services: <span class="command">docker-compose up</span></li>
+            <li>Run in detached mode: <span class="command">docker-compose up -d</span></li>
+            <li>Stop and remove all containers: <span class="command">docker-compose down</span></li>
+            <li>Run a file with a non-default name: <span class="command">docker-compose -f docker-compose1.yml up -d</span></li>
+        </ul>
+        <p><strong>Docker Stack</strong> is used to deploy multi-container applications (defined in a Compose file) across <strong>multiple hosts</strong> within a Docker Swarm cluster.</p>
+    </div>
+</body>
+</html>
