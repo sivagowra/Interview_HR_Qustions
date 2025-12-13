@@ -131,6 +131,53 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 <pre><code>
 http://your-ec2-public-ip:8080
 </code></pre>
+ <h1>How to Increase Free Temp Space in Jenkins</h1>
 
+    <p>Jenkins uses <code>/tmp</code> for temporary files. If the Free Temp Space is too low, the Built-In Node may stay offline. Follow these steps to increase it:</p>
+
+    <h2>Step 1: Check Current Temp Space</h2>
+    <pre>
+df -h | grep /tmp
+    </pre>
+    <p>This shows how much space is currently available in <code>/tmp</code>. If it is low (e.g., 481MB), Jenkins may mark the node offline.</p>
+
+    <h2>Step 2: Increase /tmp Temporarily</h2>
+    <p>To increase <code>/tmp</code> until the next reboot, run:</p>
+    <pre>
+sudo mount -o remount,size=4G /tmp
+df -h | grep /tmp
+    </pre>
+    <p>This temporarily increases /tmp to 4GB.</p>
+
+    <h2>Step 3: Increase /tmp Permanently</h2>
+    <ol>
+        <li>Edit <code>/etc/fstab</code>:</li>
+        <pre>
+sudo nano /etc/fstab
+        </pre>
+        <li>Add the following line at the end of the file:</li>
+        <pre>
+tmpfs /tmp tmpfs defaults,noatime,size=4G 0 0
+        </pre>
+        <li>Remount /tmp to apply changes:</li>
+        <pre>
+sudo mount -o remount /tmp
+        </pre>
+        <li>Verify the new size:</li>
+        <pre>
+df -h | grep /tmp
+        </pre>
+    </ol>
+
+    <h2>Step 4: Restart Jenkins</h2>
+    <pre>
+sudo systemctl restart jenkins
+    </pre>
+
+    <h2>Step 5: Bring Built-In Node Online</h2>
+    <p>Go to Jenkins UI → <strong>Manage Jenkins → Nodes → Built-In Node</strong> → Click <strong>Bring this node back online</strong>. The node should now stay online and builds will execute normally.</p>
+
+    <h2>Recommendation</h2>
+    <p>Since your root partition has plenty of space, you can safely move Jenkins temp folder to a directory on root instead of using tmpfs if you want a permanent solution without using memory.</p>
 </body>
 </html>
