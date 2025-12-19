@@ -651,6 +651,71 @@
             <p>It solves the IPv4 address shortage problem.</p>
          </div>
       </div>
+      <p>
+        A CDN, or Content Delivery Network, is used to make websites load faster and work smoothly.
+        It stores website content like images, videos, CSS, and JavaScript files on many servers
+        located in different places around the world. When a user opens a website, the CDN delivers
+        the content from the nearest server instead of a far-away main server. This reduces loading
+        time and improves website speed. Amazon CloudFront is AWS’s CDN service that delivers content
+        securely with low latency and high performance. CloudFront works with services like S3, EC2,
+        and Load Balancer to distribute content globally. Overall, CDN and CloudFront improve
+        performance, reliability, and user experience.
+    </p>
+    <h4>1.  Elastic Compute Cloud (EC2)</h4>
+
+<p>Amazon EC2 is a virtual server service that allows you to run applications in the cloud. You can choose different operating systems like Linux or Windows and select the size of your server depending on your needs. EC2 gives flexibility to start, stop, or resize instances at any time, and you only pay for what you use. Storage can be attached using EBS, and networking is secured with security groups. It supports Auto Scaling and Load Balancing to handle traffic changes. Custom machine images (AMIs) can be created for faster deployments. EC2 is widely used for hosting applications, websites, and backend services.</p>
+
+<h4>2. Simple Storage Service (S3)</h4> 
+
+<p>Amazon S3 is an object storage service that allows you to store unlimited amounts of data in buckets. It is highly durable with eleven nines (99.999999999%) of data protection, making it reliable for critical files. S3 supports versioning, so you can keep older versions of files, and lifecycle rules to automatically move or delete data. Files stored in S3 can be accessed via URLs and can also be encrypted for security. It is commonly used for storing backups, logs, images, and videos, and it can even host static websites. S3 integrates well with CloudFront for global content delivery.</p>
+
+<h4>3. Identity and Access Management (IAM)</h4>
+
+<p>AWS IAM helps you manage who can access AWS services and resources. With IAM, you can create users, groups, and roles, and then attach policies to give them specific permissions. Multi-Factor Authentication (MFA) can be added for better security. Instead of using the root account, it is always recommended to create IAM users with least privilege access. IAM is free and works with all AWS services. It also supports federated access, meaning you can integrate external login systems like Active Directory or Google. IAM plays a key role in securing your AWS environment.</p>
+
+<h4>4. Elastic Load Balancer (ELB)</h4>
+
+  <p>Elastic Load Balancer automatically distributes incoming traffic across multiple EC2 instances. This improves both availability and fault tolerance. AWS offers three types of load balancers: Application Load Balancer for Layer 7 traffic (HTTP/HTTPS), Network Load Balancer for high-performance Layer 4 traffic (TCP/UDP), and Classic Load Balancer, which is the older version. ELB performs health checks to ensure traffic only goes to healthy servers. It supports SSL/TLS for secure connections, sticky sessions for user consistency, and integrates with Auto Scaling to handle traffic spikes.</p>
+
+<h4> 5. Elastic Beanstalk</h4>
+
+<p>Elastic Beanstalk is a Platform as a Service (PaaS) that makes it easy to deploy and manage applications without worrying about infrastructure. Developers just upload their code, and Beanstalk automatically handles EC2, load balancers, Auto Scaling, and RDS if required. It supports multiple programming languages such as Java, Python, PHP, and Node.js. Beanstalk provides monitoring via CloudWatch and makes deployments easier with blue/green strategies. It is widely used for quick application hosting where developers want to focus only on code, not on servers.</p>
+
+<h4> 6. Auto Scaling Group (ASG)</h4>
+
+<p>Auto Scaling Groups ensure that the right number of EC2 instances are running at any time. They automatically add instances when demand increases and remove them when demand decreases, saving costs. ASGs improve availability by replacing unhealthy instances and maintaining minimum numbers of servers. You can define scaling policies based on CPU usage, memory, or custom CloudWatch metrics. They work closely with load balancers to distribute traffic and provide a reliable, cost-efficient infrastructure setup.</p>
+
+<h4> 7. Elastic Block Storage (EBS)</h4>
+
+<p>Amazon EBS provides block-level storage volumes that can be attached to EC2 instances. It acts like a hard drive in the cloud and stores data persistently, even if the EC2 instance is stopped. Different volume types are available such as SSDs for performance and HDDs for cost-efficient storage. You can resize volumes, take snapshots for backup, and enable encryption for data security. EBS is commonly used for operating systems, databases, and any workload that requires fast, persistent storage.</p>
+
+<h4> 8. Virtual Private Cloud (VPC)</h4>
+
+<p>Amazon VPC allows you to create a private network within AWS. You can define subnets as public or private, attach Internet Gateways for public access, and use NAT Gateways for controlled internet access from private subnets. Security is managed using Security Groups and Network ACLs. Route tables define how traffic flows inside the VPC. You can also connect your VPC to on-premises networks using VPN or Direct Connect. Each AWS account comes with a default VPC, but you can create custom VPCs for better security and control.</p>
+
+<h4> 9. Amazon Machine Images (AMI)</h4>
+
+<p>An Amazon Machine Image is a template used to create EC2 instances. An AMI contains the operating system, application server, and custom software if needed. AWS provides public AMIs, but you can also create your own for standardizing deployments. AMIs can be copied between regions and shared with other accounts. The main benefit of AMIs is faster and consistent server launches. They are essential when deploying multiple servers with the same configuration.</p>
+
+<h4> 10. Simple Notification Service (SNS)</h4>
+
+<p>Amazon SNS is a messaging service that uses a publish/subscribe model. Applications or users can publish messages to a topic, and subscribers such as email, SMS, SQS, or Lambda functions receive those messages. SNS is scalable, reliable, and cost-effective. It is widely used for sending alerts, notifications, and automated messages. For example, CloudWatch alarms can use SNS to notify admins about system issues. SNS ensures fast and reliable message delivery across applications.</p>
+
+<h4> 11. AWS CodePipeline</h4>
+
+<p>AWS CodePipeline is a continuous integration and continuous delivery (CI/CD) service. It automates the process of building, testing, and deploying applications. A pipeline consists of stages such as source, build, test, and deploy. CodePipeline integrates with AWS services like CodeCommit, CodeBuild, CodeDeploy, and third-party tools like GitHub and Jenkins. It also supports manual approvals for production releases. CodePipeline helps organizations deliver software quickly and reliably, following DevOps practices.</p>
+
+<h4> 12. Relational Database Service (RDS)</h4>
+
+<p>Amazon RDS is a managed database service that supports popular engines like MySQL, PostgreSQL, Oracle, SQL Server, and MariaDB. AWS handles backups, patching, and updates, reducing admin work. RDS provides high availability with Multi-AZ deployments and scaling with read replicas. Databases can be encrypted, monitored with CloudWatch, and integrated with IAM for security. It is commonly used for web and enterprise applications needing relational databases without manual maintenance.</p>
+
+<h4> 13. CloudWatch</h4>
+
+<p>Amazon CloudWatch is a monitoring and observability service for AWS resources and applications. It collects metrics such as CPU usage, memory, and disk I/O, as well as logs from applications. You can create alarms to notify or trigger actions when thresholds are crossed. CloudWatch integrates with SNS for alerts and with Auto Scaling for automated adjustments. It also provides dashboards for visualization. CloudWatch is essential for monitoring system health and performance in AWS.</p>
+
+<h4> 14. Route 53</h4>
+
+<p>Amazon Route 53 is a scalable Domain Name System (DNS) service. It can register domain names, route internet traffic to applications, and check the health of resources. Route 53 supports routing policies like weighted, latency-based, failover, and geolocation routing. It integrates with other AWS services like S3, ELB, and CloudFront. Route 53 is highly available, secure, and widely used for managing website traffic globally.</p>
       <div style="font-family: Arial; line-height:1.5; color:#111;">
          <h2>🔑 Authentication</h2>
          <p>
