@@ -1,0 +1,31 @@
+#!/bin/bash
+
+echo "Updating system..."
+sudo yum update -y
+
+echo "Installing Git..."
+sudo yum install git -y
+
+echo "Installing Docker..."
+sudo yum install docker -y
+
+echo "Starting Docker service..."
+sudo systemctl start docker
+sudo systemctl enable docker
+
+echo "Adding ec2-user to docker group..."
+sudo usermod -aG docker ec2-user
+
+echo "Installing Docker Compose plugin..."
+sudo mkdir -p /usr/local/lib/docker/cli-plugins
+sudo curl -SL https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-linux-x86_64 \
+  -o /usr/local/lib/docker/cli-plugins/docker-compose
+sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+
+echo "Verifying installations..."
+docker --version
+docker compose version
+git --version
+
+echo "Installation completed successfully 🎉"
+echo "⚠️ Logout and login again to use docker without sudo"
