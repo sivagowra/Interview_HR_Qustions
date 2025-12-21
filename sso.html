@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Single Sign-On (SSO) – Complete Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.08);
+        }
+        h1, h2, h3 {
+            color: #1f2937;
+        }
+        h1 {
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 10px;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .box {
+            background: #eef2ff;
+            border-left: 5px solid #2563eb;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .warning {
+            background: #fff7ed;
+            border-left: 5px solid #ea580c;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .success {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        code {
+            background: #f1f5f9;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+        .diagram {
+            margin: 30px 0;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Single Sign-On (SSO) – Complete Guide</h1>
+
+<h2>1. What is SSO?</h2>
+<p>
+Single Sign-On (SSO) is a modern authentication method that allows a user to log in once and access
+multiple applications without logging in again and again. Instead of remembering many usernames
+and passwords, the user signs in one time using a trusted system called an Identity Provider such as
+Google, Microsoft, or Okta. After successful login, the Identity Provider generates a secure
+authentication token and shares it with connected applications. These applications trust the token
+and allow access without asking for credentials again. SSO is commonly used in personal services
+like Google and Microsoft accounts and in organizations to access tools such as AWS, GitHub, Jira,
+and internal systems. It improves user experience, saves time, reduces password problems, and
+supports strong security features like Multi-Factor Authentication. Overall, SSO makes access
+management simpler, faster, and more secure.
+</p>
+
+<div class="box">
+    One login → Multiple applications
+</div>
+
+<h2>2. How SSO Works (High Level)</h2>
+<ol>
+    <li>User accesses an application</li>
+    <li>Application redirects to Identity Provider (IdP)</li>
+    <li>User authenticates once</li>
+    <li>IdP issues an authentication token</li>
+    <li>User accesses all connected applications</li>
+</ol>
+
+<h2>3. SSO Architecture Diagram</h2>
+
+<div class="diagram">
+<svg width="900" height="420" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- User -->
+    <rect x="40" y="160" width="150" height="60" rx="10" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+    <text x="115" y="195" text-anchor="middle" font-size="14" font-weight="bold">User</text>
+
+    <!-- Application -->
+    <rect x="260" y="60" width="180" height="70" rx="10" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+    <text x="350" y="95" text-anchor="middle" font-size="14" font-weight="bold">Application (SP)</text>
+
+    <!-- Identity Provider -->
+    <rect x="260" y="200" width="180" height="80" rx="10" fill="#eef2ff" stroke="#4338ca" stroke-width="2"/>
+    <text x="350" y="235" text-anchor="middle" font-size="14" font-weight="bold">Identity Provider</text>
+    <text x="350" y="255" text-anchor="middle" font-size="12">(Google / Okta / Azure AD)</text>
+
+    <!-- Token -->
+    <rect x="520" y="180" width="200" height="60" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+    <text x="620" y="215" text-anchor="middle" font-size="14" font-weight="bold">Auth Token</text>
+
+    <!-- Apps -->
+    <rect x="760" y="60" width="120" height="60" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="820" y="95" text-anchor="middle">App 1</text>
+
+    <rect x="760" y="160" width="120" height="60" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="820" y="195" text-anchor="middle">App 2</text>
+
+    <rect x="760" y="260" width="120" height="60" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+    <text x="820" y="295" text-anchor="middle">App 3</text>
+
+    <!-- Arrows -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#000"/>
+        </marker>
+    </defs>
+
+    <line x1="190" y1="190" x2="260" y2="95" stroke="#000" marker-end="url(#arrow)"/>
+    <line x1="190" y1="190" x2="260" y2="240" stroke="#000" marker-end="url(#arrow)"/>
+    <line x1="440" y1="240" x2="520" y2="210" stroke="#000" marker-end="url(#arrow)"/>
+    <line x1="720" y1="210" x2="760" y2="90" stroke="#000" marker-end="url(#arrow)"/>
+    <line x1="720" y1="210" x2="760" y2="190" stroke="#000" marker-end="url(#arrow)"/>
+    <line x1="720" y1="210" x2="760" y2="290" stroke="#000" marker-end="url(#arrow)"/>
+
+</svg>
+</div>
+
+<div class="success">
+    User authenticates once → Receives token → Accesses all applications
+</div>
+
+<h2>4. Advantages of SSO</h2>
+<ul>
+    <li>Single login experience</li>
+    <li>Better security control</li>
+    <li>Centralized identity management</li>
+    <li>Reduced password fatigue</li>
+</ul>
+
+<h2>5. Security Best Practices</h2>
+<ul>
+    <li>Enable Multi-Factor Authentication (MFA)</li>
+    <li>Use short-lived tokens</li>
+    <li>Monitor authentication activity</li>
+    <li>Apply least privilege access</li>
+</ul>
+
+<footer>
+    © 2025 | Single Sign-On (SSO) – Complete Reference
+</footer>
+
+</div>
+
+</body>
+</html>
