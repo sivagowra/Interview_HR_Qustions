@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Docker – Complete Overview</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #0b5ed7;
+            text-align: center;
+        }
+        h2 {
+            color: #198754;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #6f42c1;
+            margin-top: 20px;
+        }
+        p {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.05);
+        }
+        ul {
+            background: #ffffff;
+            padding: 15px 30px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Docker – Containerization Platform</h1>
+
+<p>
+Docker is a containerization platform used to build, package, and run applications in lightweight containers.
+A container includes application code, runtime, libraries, and dependencies, ensuring the application runs
+the same in development, testing, and production environments.
+</p>
+
+<h2>Resource Isolation in Docker</h2>
+<p>
+Docker provides resource isolation using Linux kernel features such as namespaces and cgroups.
+Each container runs in its own isolated environment with separate process space, network stack,
+and file system view. CPU, memory, and disk usage can be limited per container to avoid one container
+consuming all host resources.
+</p>
+
+<h2>Docker Networking</h2>
+
+<h3>Bridge Network</h3>
+<p>
+The bridge network is the default Docker network. Containers connected to a bridge network can
+communicate with each other using container names. It provides isolation from the host network.
+</p>
+
+<h3>Host Network</h3>
+<p>
+In host networking, the container shares the host’s network stack and uses the same IP address
+as the host. This provides high performance but reduces isolation.
+</p>
+
+<h3>Overlay Network</h3>
+<p>
+Overlay networks are used in Docker Swarm to enable communication between containers running
+on different Docker hosts over a virtual network.
+</p>
+
+<h2>Docker Volumes – Data Persistence</h2>
+
+<h3>Volumes</h3>
+<p>
+Docker volumes are managed by Docker and stored outside the container filesystem.
+They are the preferred method for persisting data and are reusable across containers.
+</p>
+
+<h3>Bind Mounts</h3>
+<p>
+Bind mounts map a host directory directly into a container.
+They allow direct access to host files but tightly couple the container to the host system.
+</p>
+
+<h3>tmpfs Mounts</h3>
+<p>
+tmpfs mounts store data in memory only and are removed when the container stops.
+They are commonly used for temporary or sensitive data.
+</p>
+
+<h2>Docker Health Checks</h2>
+<p>
+Docker supports health checks to monitor the state of running containers.
+Health checks periodically execute commands inside the container to verify application health.
+If a check fails, the container is marked as unhealthy.
+</p>
+
+<h2>Configuration Management in Docker</h2>
+<p>
+Docker applications can be configured using environment variables, .env files, and mounted
+configuration files. This approach separates configuration from application code and enables
+reusability across different environments.
+</p>
+
+<h2>Secrets Management in Docker</h2>
+<p>
+Docker provides secret management (especially in Docker Swarm) to securely store sensitive data
+such as passwords, API keys, and tokens. Secrets are encrypted and accessible only to authorized containers.
+</p>
+
+<h2>Docker Jobs and One-Time Tasks</h2>
+<p>
+Docker containers can run one-time tasks such as database migrations, backups, and batch processing.
+Once the task completes, the container exits automatically.
+</p>
+
+<h2>Container Lifecycle in Docker</h2>
+<p>
+The Docker container lifecycle includes states such as created, running, paused, stopped, and deleted.
+A container starts from an image and stops when its main process exits or fails.
+</p>
+
+<h2>Resource Limits in Docker</h2>
+<p>
+Docker allows setting CPU and memory limits for containers to ensure fair resource usage.
+These limits help maintain system stability and prevent resource exhaustion.
+</p>
+
+<h2>Summary</h2>
+<p>
+Docker simplifies application deployment by providing lightweight, isolated, and portable containers.
+It ensures consistent environments, efficient resource utilization, and fast scalability, making it
+a core technology in modern DevOps practices.
+</p>
+
+</body>
+</html>

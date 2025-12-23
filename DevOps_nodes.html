@@ -909,6 +909,79 @@ It works well for government or banking systems where stability is more importan
   </p>
 </div>
 
+<div>
+  <h2>AWS SQS (Simple Queue Service)</h2>
+  <p>
+    AWS SQS is a fully managed message queue service that helps different parts of an application communicate without waiting for each other.
+    It stores messages safely until the receiving service is ready to process them.
+    This makes applications reliable and scalable, especially during high traffic.
+    For example, in an e-commerce application, when a user places an order, the order details are sent to SQS.
+    Later, the email service and delivery service read the message from SQS and complete their tasks independently.
+  </p>
+
+  <h2>AWS SNS (Simple Notification Service)</h2>
+  <p>
+    AWS SNS is a fully managed messaging service used to send messages or notifications to many users or systems at the same time.
+    It works on a publish and subscribe model, where one service sends a message and many subscribers receive it instantly.
+    SNS is mainly used for alerts and notifications.
+    For example, if a server goes down, SNS can send an alert message to email, SMS, or another application.
+    This helps teams take quick action and keep systems running smoothly.
+  </p>
+</div>
+<div>
+  <h2>AWS SNS vs AWS SQS Comparison</h2>
+
+  <table border="1" cellpadding="10" cellspacing="0">
+    <tr>
+      <th>Feature</th>
+      <th>AWS SNS (Simple Notification Service)</th>
+      <th>AWS SQS (Simple Queue Service)</th>
+    </tr>
+
+    <tr>
+      <td>Type</td>
+      <td>Notification service</td>
+      <td>Message queue service</td>
+    </tr>
+
+    <tr>
+      <td>Communication Model</td>
+      <td>Publish and Subscribe</td>
+      <td>Producer and Consumer</td>
+    </tr>
+
+    <tr>
+      <td>Message Delivery</td>
+      <td>Push-based (sent immediately)</td>
+      <td>Pull-based (read when ready)</td>
+    </tr>
+
+    <tr>
+      <td>Message Order</td>
+      <td>Not guaranteed</td>
+      <td>FIFO supported (FIFO queue)</td>
+    </tr>
+
+    <tr>
+      <td>Message Storage</td>
+      <td>Short-term (temporary)</td>
+      <td>Stored until consumed</td>
+    </tr>
+
+    <tr>
+      <td>Main Use</td>
+      <td>Alerts and notifications</td>
+      <td>Background processing</td>
+    </tr>
+
+    <tr>
+      <td>Example</td>
+      <td>Send server down alerts via SMS or email</td>
+      <td>Process orders, emails, or payments</td>
+    </tr>
+  </table>
+</div>
+
 
 
    </body>
