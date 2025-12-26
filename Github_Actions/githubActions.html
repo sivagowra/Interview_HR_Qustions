@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub Actions Explained</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+}
+h1, h2, h3 {
+    color: #2c3e50;
+}
+.box {
+    background: #eef2f7;
+    border-left: 6px solid #3498db;
+    padding: 15px;
+    margin: 15px 0;
+}
+.code {
+    background: #1e1e1e;
+    color: #dcdcdc;
+    padding: 10px;
+    font-family: monospace;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+.table-box {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+.table-box th, .table-box td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.table-box th {
+    background-color: #3498db;
+    color: white;
+}
+.highlight {
+    background: #fff3cd;
+    padding: 10px;
+    border-left: 6px solid #f39c12;
+    margin: 15px 0;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🚀 GitHub Actions Explained</h1>
+
+<h2>🧠 What is GitHub Actions?</h2>
+<div class="box">
+<p>GitHub Actions is a CI/CD tool built into GitHub.</p>
+<p>When you push code to GitHub, GitHub can automatically run tasks like build, test, package, create Docker images, and deploy to servers.</p>
+<p>No separate Jenkins installation is needed.</p>
+</div>
+
+<h2>🧠 One-Line Memory Trick</h2>
+<div class="highlight">
+<p>Code push → GitHub Actions runs → build/test/deploy automatically</p>
+</div>
+
+<h2>🏠 Real-Life Example</h2>
+<div class="box">
+<p><strong>Factory Example:</strong></p>
+<ul>
+<li>Workers = Developers</li>
+<li>Machine = GitHub Actions</li>
+<li>Button = Git push</li>
+</ul>
+<p>Press button → machine works automatically</p>
+</div>
+
+<h2>🔁 What GitHub Actions Can Do</h2>
+<div class="box">
+<ul>
+<li>Build Java / Node / Python projects</li>
+<li>Run tests</li>
+<li>Create JAR / WAR files</li>
+<li>Build Docker images</li>
+<li>Deploy to AWS / EC2 / Kubernetes</li>
+<li>Run scripts automatically</li>
+</ul>
+</div>
+
+<h2>📂 Where GitHub Actions Code is Written</h2>
+<div class="box">
+<p>GitHub Actions uses YAML files stored in:</p>
+<code>.github/workflows/ci-cd.yml</code>
+</div>
+
+<h2>📄 Workflow</h2>
+<div class="box">
+<p>A workflow is a set of steps that GitHub runs automatically when certain events occur.</p>
+</div>
+
+<h2>🧩 Main Parts of GitHub Actions</h2>
+<div class="box">
+<table class="table-box">
+<tr>
+<th>Part</th>
+<th>Meaning</th>
+</tr>
+<tr>
+<td>Workflow</td>
+<td>Full automation process</td>
+</tr>
+<tr>
+<td>Job</td>
+<td>One machine / environment</td>
+</tr>
+<tr>
+<td>Step</td>
+<td>One command inside a job</td>
+</tr>
+<tr>
+<td>Action</td>
+<td>Ready-made reusable task</td>
+</tr>
+<tr>
+<td>Runner</td>
+<td>Server that executes the workflow</td>
+</tr>
+</table>
+</div>
+
+<h2>🧠 Step-by-Step Flow</h2>
+<div class="box">
+<ol>
+<li>Developer pushes code</li>
+<li>GitHub detects the event</li>
+<li>Runner starts (Ubuntu server)</li>
+<li>Steps execute one by one</li>
+<li>Build created</li>
+<li>Result shown in GitHub</li>
+</ol>
+</div>
+
+<h2>✍️ How to Write GitHub Actions</h2>
+<h3>Example 1: Java Build (Maven → JAR)</h3>
+<div class="code">
+name: Java Build Pipeline<br>
+on:<br>
+&nbsp;&nbsp;push:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;branches:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- main<br>
+jobs:<br>
+&nbsp;&nbsp;build:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;runs-on: ubuntu-latest<br>
+&nbsp;&nbsp;&nbsp;&nbsp;steps:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- name: Checkout Code<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uses: actions/checkout@v4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- name: Setup Java<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uses: actions/setup-java@v4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java-version: '17'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;distribution: 'temurin'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- name: Build with Maven<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;run: mvn clean package
+</div>
+
+<h3>Example 2: Node.js / React Build</h3>
+<div class="code">
+name: Node Build<br>
+on: push<br>
+jobs:<br>
+&nbsp;&nbsp;build:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;runs-on: ubuntu-latest<br>
+&nbsp;&nbsp;&nbsp;&nbsp;steps:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- uses: actions/checkout@v4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- uses: actions/setup-node@v4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node-version: '18'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- run: npm install<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- run: npm run build
+</div>
+
+<h3>Example 3: Python Script</h3>
+<div class="code">
+name: Python Job<br>
+on: push<br>
+jobs:<br>
+&nbsp;&nbsp;run-python:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;runs-on: ubuntu-latest<br>
+&nbsp;&nbsp;&nbsp;&nbsp;steps:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- uses: actions/checkout@v4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- uses: actions/setup-python@v5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;python-version: '3.10'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- run: python app.py
+</div>
+
+<h3>Example 4: Docker Image Build</h3>
+<div class="code">
+name: Docker Build<br>
+on: push<br>
+jobs:<br>
+&nbsp;&nbsp;docker:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;runs-on: ubuntu-latest<br>
+&nbsp;&nbsp;&nbsp;&nbsp;steps:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- uses: actions/checkout@v4<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- run: docker build -t myapp:1.0 .
+</div>
+
+<h2>🔐 Secrets in GitHub Actions</h2>
+<div class="box">
+<p>Never hardcode passwords. Use GitHub Secrets:</p>
+<code>${{ secrets.AWS_KEY }}</code>
+</div>
+
+<h2>⚔️ GitHub Actions vs Jenkins</h2>
+<div class="box">
+<table class="table-box">
+<tr>
+<th>Feature</th>
+<th>GitHub Actions</th>
+<th>Jenkins</th>
+</tr>
+<tr>
+<td>Setup</td>
+<td>Easy</td>
+<td>Hard</td>
+</tr>
+<tr>
+<td>UI</td>
+<td>Simple</td>
+<td>Old</td>
+</tr>
+<tr>
+<td>Hosting</td>
+<td>Built-in</td>
+<td>Separate server</td>
+</tr>
+<tr>
+<td>YAML Support</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Best For</td>
+<td>GitHub users / Beginners</td>
+<td>Big Enterprises</td>
+</tr>
+</table>
+</div>
+
+<h2>🎯 Interview One-Line Answer</h2>
+<div class="highlight">
+<p>GitHub Actions is a CI/CD tool that automates build, test, and deployment using YAML workflows when code changes occur in GitHub.</p>
+</div>
+
+<h2>🧠 Final Memory Shortcut</h2>
+<div class="box">
+<pre>
+Git push
+↓
+.github/workflows/*.yml
+↓
+Runner starts
+↓
+Steps run
+↓
+Build created
+</pre>
+</div>
+
+</div>
+</body>
+</html>
