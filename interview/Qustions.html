@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DevOps Hands-On Interview Questions & Answers</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #333;
+    padding: 20px;
+    line-height: 1.7;
+}
+h1 {
+    text-align: center;
+    color: #0b5fff;
+}
+h2 {
+    color: #0b5fff;
+    margin-top: 30px;
+}
+.section {
+    background: #ffffff;
+    padding: 16px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+pre {
+    background: #111;
+    color: #00ff7f;
+    padding: 15px;
+    overflow-x: auto;
+}
+.note {
+    background: #e8f1ff;
+    padding: 15px;
+    border-left: 5px solid #0b5fff;
+}
+</style>
+</head>
+
+<body>
+
+<h1>DevOps Hands-On Interview – AWS, Docker, Git, Jenkins, Kubernetes, Terraform</h1>
+
+<div class="section">
+<h2>1) Dockerfile for Basic Python App (Private Repo)</h2>
+<p>Dockerfile is used to build Docker images.</p>
+<p>Python base image is selected.</p>
+<p>Application file is copied.</p>
+<p>CMD runs python app.</p>
+<p>Docker build creates image.</p>
+<p>Docker login authenticates Docker Hub.</p>
+<p>Image pushed to private repository.</p>
+<p>Container runs in detached mode.</p>
+
+<pre>
+FROM python:3.9
+WORKDIR /app
+COPY app.py .
+CMD ["python", "app.py"]
+
+docker build -t username/python-app .
+docker login
+docker push username/python-app
+docker run -d --name python-container username/python-app
+docker ps
+</pre>
+</div>
+
+<div class="section">
+<h2>2) Jenkins File (Basic Pipeline)</h2>
+<p>Jenkinsfile defines CI/CD pipeline.</p>
+<p>Pipeline uses declarative syntax.</p>
+<p>Agent defines execution node.</p>
+<p>Stages organize pipeline steps.</p>
+<p>Build stage compiles code.</p>
+<p>Test stage runs validations.</p>
+<p>Deploy stage deploys application.</p>
+<p>Automation reduces manual work.</p>
+
+<pre>
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building application'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing application'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application'
+            }
+        }
+    }
+}
+</pre>
+</div>
+
+<div class="section">
+<h2>3) Git Install, Repo Create, Commit</h2>
+<p>Git tracks source code changes.</p>
+<p>Install git using package manager.</p>
+<p>Create a directory and initialize git.</p>
+<p>Create file and add content.</p>
+<p>git add moves file to staging.</p>
+<p>git commit saves changes.</p>
+<p>Each commit has unique ID.</p>
+<p>Helps track project history.</p>
+
+<pre>
+sudo apt install git -y
+mkdir demo && cd demo
+git init
+echo "First line" > file.txt
+git add file.txt
+git commit -m "First commit"
+</pre>
+</div>
+
+<div class="section">
+<h2>4) New Branch, Commit & Delete First Commit</h2>
+<p>Branch allows parallel development.</p>
+<p>Create and switch to new branch.</p>
+<p>Modify same file.</p>
+<p>Commit changes.</p>
+<p>Git log shows history.</p>
+<p>Reset removes commit and data.</p>
+<p>Hard reset deletes permanently.</p>
+<p>Use carefully.</p>
+
+<pre>
+git checkout -b feature
+echo "Second change" >> file.txt
+git add file.txt
+git commit -m "Second commit"
+git reset --hard HEAD~1
+</pre>
+</div>
+
+<div class="section">
+<h2>5) Terraform Code for EC2</h2>
+<p>Terraform is Infrastructure as Code.</p>
+<p>Provider defines AWS.</p>
+<p>Resource block creates EC2.</p>
+<p>AMI defines OS.</p>
+<p>Instance type defines size.</p>
+<p>Key pair enables SSH.</p>
+<p>terraform apply creates EC2.</p>
+<p>State file tracks resources.</p>
+
+<pre>
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "ec2" {
+  ami           = "ami-0abcd1234"
+  instance_type = "t2.micro"
+  key_name      = "mykey"
+}
+</pre>
+</div>
+
+<div class="section">
+<h2>6) Kubernetes Deployment File</h2>
+<p>Deployment manages pods.</p>
+<p>Replica defines pod count.</p>
+<p>Labels connect pods.</p>
+<p>Image pulled from registry.</p>
+<p>Self-healing enabled.</p>
+<p>Scaling supported.</p>
+<p>Used in production.</p>
+<p>Declarative approach.</p>
+
+<pre>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: python
+  template:
+    metadata:
+      labels:
+        app: python
+    spec:
+      containers:
+      - name: python
+        image: username/python-app
+</pre>
+</div>
+
+<div class="section">
+<h2>7) Docker vs Kubernetes</h2>
+<p>Docker runs containers.</p>
+<p>Kubernetes orchestrates containers.</p>
+<p>Docker is single-host focused.</p>
+<p>Kubernetes is multi-node.</p>
+<p>Kubernetes supports auto-scaling.</p>
+<p>Self-healing available.</p>
+<p>Advanced networking.</p>
+<p>Used for large systems.</p>
+</div>
+
+<div class="section">
+<h2>8) Pod vs Container</h2>
+<p>Container runs application.</p>
+<p>Pod is Kubernetes abstraction.</p>
+<p>Pod can hold multiple containers.</p>
+<p>Containers share network in pod.</p>
+<p>Pod is smallest K8s unit.</p>
+<p>Container is runtime.</p>
+<p>Pod manages lifecycle.</p>
+<p>Pod replaces container in K8s.</p>
+</div>
+
+<div class="section">
+<h2>9) Dockerfile Components</h2>
+<p>FROM defines base image.</p>
+<p>WORKDIR sets directory.</p>
+<p>COPY copies files.</p>
+<p>RUN executes commands.</p>
+<p>CMD runs app.</p>
+<p>Each instruction creates layer.</p>
+<p>Layers cached.</p>
+<p>Optimized build.</p>
+</div>
+
+<div class="section">
+<h2>10) Kubernetes Namespace, Components & Services</h2>
+<p>Namespace isolates resources.</p>
+<p>API Server handles requests.</p>
+<p>Scheduler assigns pods.</p>
+<p>Controller manages state.</p>
+<p>etcd stores cluster data.</p>
+<p>Service exposes pods.</p>
+<p>ClusterIP internal access.</p>
+<p>NodePort external access.</p>
+</div>
+
+<div class="section">
+<h2>11) Ingress vs Deployment</h2>
+<p>Deployment manages pods.</p>
+<p>Ingress manages traffic.</p>
+<p>Ingress works with services.</p>
+<p>Deployment handles scaling.</p>
+<p>Ingress provides routing.</p>
+<p>Ingress supports SSL.</p>
+<p>Both work together.</p>
+<p>Ingress is entry point.</p>
+</div>
+
+<div class="section">
+<h2>12) Jenkins Challenges</h2>
+<p>Plugin dependency issues.</p>
+<p>Pipeline failures.</p>
+<p>Node availability.</p>
+<p>Security management.</p>
+<p>Credential handling.</p>
+<p>Scaling Jenkins.</p>
+<p>Maintenance overhead.</p>
+<p>Performance tuning.</p>
+</div>
+
+<div class="section">
+<h2>13) Git Merge Conflict Resolution</h2>
+<p>Conflict happens on same file.</p>
+<p>Git marks conflict areas.</p>
+<p>Open file manually.</p>
+<p>Choose correct code.</p>
+<p>Remove markers.</p>
+<p>Save file.</p>
+<p>git add file.</p>
+<p>git commit.</p>
+</div>
+
+<div class="section">
+<h2>14) Git Branching Strategy</h2>
+<p>Main branch for production.</p>
+<p>Develop branch for integration.</p>
+<p>Feature branches.</p>
+<p>Release branches.</p>
+<p>Hotfix branches.</p>
+<p>Git Flow common.</p>
+<p>Trunk based simple.</p>
+<p>Depends on team.</p>
+</div>
+
+<div class="section">
+<h2>15) Terraform Backend, Locking & Import</h2>
+<p>Backend stores state remotely.</p>
+<p>S3 backend common.</p>
+<p>DynamoDB locks state.</p>
+<p>Prevents concurrent runs.</p>
+<p>Import maps existing infra.</p>
+<p>Used when state lost.</p>
+<p>Manual recovery.</p>
+<p>Best practice remote backend.</p>
+</div>
+
+<div class="section">
+<h2>16) Terraform Drift & State Recovery</h2>
+<p>Drift means manual cloud changes.</p>
+<p>terraform plan detects drift.</p>
+<p>Ensures IaC control.</p>
+<p>If state lost, cannot auto recover.</p>
+<p>terraform import used.</p>
+<p>Resources imported one by one.</p>
+<p>Time consuming.</p>
+<p>Always enable backup.</p>
+</div>
+
+<div class="note">
+<h2>📌 Softility Interview – Real Hands-On</h2>
+<p>These questions were asked in Softility interview.</p>
+<p>Interview focused on real-time DevOps tasks.</p>
+<p>AWS EC2 setup was done live.</p>
+<p>Docker, Git, Jenkins, Terraform executed.</p>
+<p>Kubernetes YAML explained.</p>
+<p>Terraform EC2 created in front of interviewer.</p>
+<p>Screen sharing was used.</p>
+<p>Hands-on knowledge was tested deeply.</p>
+</div>
+<div class="section">
+<h2>1) Difference between CMD vs ENTRYPOINT</h2>
+<p>CMD provides default command for container.</p>
+<p>ENTRYPOINT defines main executable.</p>
+<p>CMD can be overridden easily.</p>
+<p>ENTRYPOINT is not overridden by default.</p>
+<p>CMD is flexible.</p>
+<p>ENTRYPOINT is strict.</p>
+<p>Both are used together often.</p>
+<p>ENTRYPOINT + CMD gives best control.</p>
+</div>
+
+<div class="section">
+<h2>2) Difference between COPY vs ADD</h2>
+<p>COPY copies files from local system.</p>
+<p>ADD can copy and extract archives.</p>
+<p>ADD supports remote URLs.</p>
+<p>COPY is simple and preferred.</p>
+<p>ADD has extra features.</p>
+<p>COPY is predictable.</p>
+<p>ADD may cause confusion.</p>
+<p>Best practice is use COPY.</p>
+</div>
+
+<div class="section">
+<h2>3) Write a Dockerfile and explain components</h2>
+<p>Dockerfile is blueprint of image.</p>
+<p>FROM defines base image.</p>
+<p>WORKDIR sets working directory.</p>
+<p>COPY moves files into image.</p>
+<p>RUN executes commands.</p>
+<p>CMD runs application.</p>
+<p>Each line creates a layer.</p>
+<p>Layers improve caching.</p>
+
+<pre>
+FROM python:3.9
+WORKDIR /app
+COPY app.py .
+CMD ["python", "app.py"]
+</pre>
+</div>
+
+<div class="section">
+<h2>4) What is Docker Daemon</h2>
+<p>Docker daemon runs in background.</p>
+<p>It manages containers and images.</p>
+<p>It listens to Docker CLI.</p>
+<p>Daemon builds images.</p>
+<p>Daemon starts containers.</p>
+<p>It handles networking.</p>
+<p>It manages volumes.</p>
+<p>Without daemon Docker won’t work.</p>
+</div>
+
+<div class="section">
+<h2>5) How do you reduce Docker image size</h2>
+<p>Use lightweight base images.</p>
+<p>Use multi-stage builds.</p>
+<p>Remove unused packages.</p>
+<p>Combine RUN commands.</p>
+<p>Avoid unnecessary files.</p>
+<p>Use .dockerignore file.</p>
+<p>Clear cache after install.</p>
+<p>Smaller images deploy faster.</p>
+</div>
+
+<div class="section">
+<h2>6) Docker Compose vs Docker Swarm</h2>
+<p>Compose is for single host.</p>
+<p>Swarm is for multi-host.</p>
+<p>Compose used in development.</p>
+<p>Swarm used in production.</p>
+<p>Compose uses docker-compose.yml.</p>
+<p>Swarm uses service model.</p>
+<p>Swarm supports scaling.</p>
+<p>Compose is simpler.</p>
+</div>
+
+<div class="section">
+<h2>7) Why Kubernetes instead of Docker Swarm</h2>
+<p>Kubernetes is more powerful.</p>
+<p>It has large community support.</p>
+<p>Better auto-scaling.</p>
+<p>Advanced networking.</p>
+<p>Self-healing features.</p>
+<p>Supports cloud providers.</p>
+<p>More enterprise ready.</p>
+<p>Swarm is limited.</p>
+</div>
+
+<div class="section">
+<h2>8) Check CPU and memory usage of containers</h2>
+<p>Docker provides stats command.</p>
+<p>Shows live resource usage.</p>
+<p>CPU usage displayed.</p>
+<p>Memory usage displayed.</p>
+<p>Useful for monitoring.</p>
+<p>Helps in troubleshooting.</p>
+<p>Works per container.</p>
+<p>No extra tools required.</p>
+
+<pre>
+docker stats
+</pre>
+</div>
+
+<div class="section">
+<h2>9) Git branching strategies</h2>
+<p>Git Flow is popular strategy.</p>
+<p>Main branch for production.</p>
+<p>Develop branch for development.</p>
+<p>Feature branches for features.</p>
+<p>Release branches for release.</p>
+<p>Hotfix branches for urgent fixes.</p>
+<p>Trunk-based development is simple.</p>
+<p>Strategy depends on team.</p>
+</div>
+
+<div class="section">
+<h2>10) Git merge vs Git rebase</h2>
+<p>Merge keeps commit history.</p>
+<p>Rebase rewrites history.</p>
+<p>Merge creates merge commit.</p>
+<p>Rebase creates linear history.</p>
+<p>Merge is safe.</p>
+<p>Rebase is clean.</p>
+<p>Rebase not recommended on shared branches.</p>
+<p>Merge preferred in teams.</p>
+</div>
+
+<div class="section">
+<h2>11) Git stages</h2>
+<p>Working directory is first stage.</p>
+<p>Staging area is second stage.</p>
+<p>Repository is final stage.</p>
+<p>git add moves to staging.</p>
+<p>git commit moves to repo.</p>
+<p>Stages control changes.</p>
+<p>Helps review before commit.</p>
+<p>Improves code quality.</p>
+</div>
+
+<div class="section">
+<h2>12) How do you resolve merge conflicts</h2>
+<p>Conflict occurs when same file edited.</p>
+<p>Git marks conflict sections.</p>
+<p>Manually edit files.</p>
+<p>Remove conflict markers.</p>
+<p>Choose correct code.</p>
+<p>Save file.</p>
+<p>Add file again.</p>
+<p>Commit changes.</p>
+</div>
+
+<div class="section">
+<h2>13) Challenges faced in Kubernetes</h2>
+<p>Complex networking.</p>
+<p>Debugging pods is difficult.</p>
+<p>Managing YAML files.</p>
+<p>Resource management.</p>
+<p>Storage configuration.</p>
+<p>Security policies.</p>
+<p>Monitoring setup.</p>
+<p>Learning curve is high.</p>
+</div>
+
+<div class="section">
+<h2>14) Image vs Container vs Pod</h2>
+<p>Image is a blueprint.</p>
+<p>Container is running image.</p>
+<p>Pod is Kubernetes concept.</p>
+<p>Pod can have multiple containers.</p>
+<p>Image is static.</p>
+<p>Container is dynamic.</p>
+<p>Pod shares network.</p>
+<p>Pod is smallest K8s unit.</p>
+</div>
+
+<div class="section">
+<h2>15) Kubernetes architecture</h2>
+<p>Kubernetes has master and worker nodes.</p>
+<p>API server is entry point.</p>
+<p>Scheduler assigns pods.</p>
+<p>Controller manages state.</p>
+<p>etcd stores cluster data.</p>
+<p>Worker nodes run pods.</p>
+<p>Kubelet manages containers.</p>
+<p>Kube-proxy handles networking.</p>
+</div>
+
+<div class="section">
+<h2>1) Install Git, create repo, add file and commit</h2>
+<p>Git is a version control system used to track code changes.</p>
+<p>First, install Git on your system using package manager.</p>
+<p>Create a directory and initialize it as a Git repository.</p>
+<p>Create a file and add some text content inside it.</p>
+<p>Git add command moves file to staging area.</p>
+<p>Git commit saves changes permanently to repository.</p>
+<p>Each commit has a unique commit ID.</p>
+<p>This helps in tracking project history.</p>
+
+<pre>
+sudo apt install git -y
+mkdir demo-repo && cd demo-repo
+git init
+echo "Hello Git" > app.txt
+git add app.txt
+git commit -m "First commit"
+</pre>
+</div>
+
+<div class="section">
+<h2>2) Create new branch, switch, modify file, commit</h2>
+<p>Branch allows parallel development without affecting main code.</p>
+<p>Create a new branch using git branch command.</p>
+<p>Switch to new branch using git checkout.</p>
+<p>Open same file and update content.</p>
+<p>Add modified file again to staging.</p>
+<p>Commit changes to the new branch.</p>
+<p>Main branch remains unchanged.</p>
+<p>This is useful for feature development.</p>
+
+<pre>
+git branch feature1
+git checkout feature1
+echo "Feature update" >> app.txt
+git add app.txt
+git commit -m "Feature branch update"
+</pre>
+</div>
+
+<div class="section">
+<h2>3) Show logs and delete recent commit with data</h2>
+<p>Git log shows commit history.</p>
+<p>Each log contains commit ID, author, and message.</p>
+<p>You can see short logs using --oneline.</p>
+<p>To remove last commit completely use reset.</p>
+<p>Hard reset removes commit and file changes.</p>
+<p>Use carefully because data is lost.</p>
+<p>This is useful when wrong code is committed.</p>
+<p>Reset updates HEAD pointer.</p>
+
+<pre>
+git log --oneline
+git reset --hard HEAD~1
+</pre>
+</div>
+
+<div class="section">
+<h2>4) Git Cherry Pick</h2>
+<p>Cherry-pick is used to copy one specific commit.</p>
+<p>It works across branches.</p>
+<p>Only selected commit is applied.</p>
+<p>It does not merge entire branch.</p>
+<p>Useful for hotfixes.</p>
+<p>Commit ID is required.</p>
+<p>Target branch must be checked out.</p>
+<p>New commit is created.</p>
+
+<pre>
+git checkout main
+git cherry-pick &lt;commit-id&gt;
+</pre>
+</div>
+
+<div class="section">
+<h2>5) Dockerfile for Python app & push to private repo</h2>
+<p>Dockerfile is used to create Docker images.</p>
+<p>Python base image is used.</p>
+<p>App code is copied into container.</p>
+<p>CMD runs the application.</p>
+<p>Docker build creates image.</p>
+<p>Docker login authenticates Docker Hub.</p>
+<p>Private repo stores secure images.</p>
+<p>Container runs in detached mode.</p>
+
+<pre>
+FROM python:3.9
+WORKDIR /app
+COPY app.py .
+CMD ["python", "app.py"]
+
+docker build -t username/python-app .
+docker login
+docker push username/python-app
+docker run -d --name pyapp username/python-app
+docker ps
+</pre>
+</div>
+
+<div class="section">
+<h2>6) Kubernetes Deployment YAML</h2>
+<p>Deployment manages Pods in Kubernetes.</p>
+<p>It supports scaling and self-healing.</p>
+<p>Replica count defines number of pods.</p>
+<p>Labels connect pods and services.</p>
+<p>Container image is pulled from registry.</p>
+<p>Port defines application port.</p>
+<p>Deployment ensures high availability.</p>
+<p>Used in production environments.</p>
+
+<pre>
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: python
+  template:
+    metadata:
+      labels:
+        app: python
+    spec:
+      containers:
+      - name: python
+        image: username/python-app
+        ports:
+        - containerPort: 80
+</pre>
+</div>
+
+<div class="section">
+<h2>7) Terraform code for EC2 instance</h2>
+<p>Terraform is Infrastructure as Code tool.</p>
+<p>Provider defines cloud platform.</p>
+<p>Resource block creates EC2 instance.</p>
+<p>AMI defines OS image.</p>
+<p>Instance type defines hardware.</p>
+<p>Key pair allows SSH access.</p>
+<p>Terraform apply creates resource.</p>
+<p>State file tracks infrastructure.</p>
+
+<pre>
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "ec2" {
+  ami           = "ami-0abcd1234"
+  instance_type = "t2.micro"
+  key_name      = "mykey"
+}
+</pre>
+</div>
+
+<div class="section">
+<h2>8) What is Terraform Module</h2>
+<p>Module is reusable Terraform code.</p>
+<p>It avoids duplicate configurations.</p>
+<p>Modules improve code readability.</p>
+<p>Root module is main project.</p>
+<p>Child modules are reusable blocks.</p>
+<p>Used for EC2, VPC, S3 etc.</p>
+<p>Modules support versioning.</p>
+<p>Helps in standardization.</p>
+</div>
+
+<div class="section">
+<h2>9) Terraform Workspace</h2>
+<p>Workspace manages multiple environments.</p>
+<p>Same code used for dev, test, prod.</p>
+<p>Each workspace has separate state.</p>
+<p>Default workspace is created automatically.</p>
+<p>Switch workspace easily.</p>
+<p>Reduces code duplication.</p>
+<p>Useful for environment isolation.</p>
+<p>Common in DevOps pipelines.</p>
+
+<pre>
+terraform workspace new dev
+terraform workspace select prod
+terraform workspace list
+</pre>
+</div>
+
+<div class="section">
+<h2>10) How do you lock Terraform</h2>
+<p>Terraform locks state automatically.</p>
+<p>Lock prevents parallel execution.</p>
+<p>Remote backend is recommended.</p>
+<p>S3 backend stores state.</p>
+<p>DynamoDB provides state locking.</p>
+<p>Lock avoids corruption.</p>
+<p>Unlock happens after apply.</p>
+<p>Safe for team usage.</p>
+</div>
+
+<div class="section">
+<h2>11) Restore Terraform state without backup</h2>
+<p>If state file is lost, Terraform cannot auto recover.</p>
+<p>Manual import is required.</p>
+<p>terraform import maps resources.</p>
+<p>Each resource imported one by one.</p>
+<p>Infrastructure must already exist.</p>
+<p>Time consuming process.</p>
+<p>Remote backend avoids this issue.</p>
+<p>Always enable versioning.</p>
+</div>
+
+<div class="section">
+<h2>12) Terraform Drift</h2>
+<p>Drift means manual changes in cloud.</p>
+<p>Terraform detects difference.</p>
+<p>terraform plan shows drift.</p>
+<p>Helps maintain consistency.</p>
+<p>Prevents unexpected issues.</p>
+<p>Common in shared environments.</p>
+<p>Important for audits.</p>
+<p>Ensures IaC control.</p>
+</div>
+
+<div class="section">
+<h2>13) Restore AWS PEM file</h2>
+<p>PEM file cannot be downloaded again.</p>
+<p>If lost, access is blocked.</p>
+<p>Create new key pair.</p>
+<p>Stop EC2 instance.</p>
+<p>Attach root volume to another EC2.</p>
+<p>Update authorized_keys file.</p>
+<p>Reattach volume back.</p>
+<p>Best practice is backup PEM.</p>
+</div>
+</body>
+</html>

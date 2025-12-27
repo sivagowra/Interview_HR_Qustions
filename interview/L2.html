@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>L2 Technical Support Engineer (Linux) – Interview Q&A</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #333;
+    line-height: 1.7;
+    padding: 20px;
+}
+h1 {
+    text-align: center;
+    color: #0b5fff;
+}
+h2 {
+    color: #0b5fff;
+    margin-top: 25px;
+}
+.section {
+    background: #ffffff;
+    padding: 16px;
+    margin-bottom: 18px;
+    border-radius: 6px;
+}
+pre {
+    background: #111;
+    color: #00ff7f;
+    padding: 12px;
+    overflow-x: auto;
+}
+</style>
+</head>
+
+<body>
+
+<h1>L2 Technical Support Engineer (Linux) – Interview Q&A</h1>
+
+<div class="section">
+<h2>1) Explain your general troubleshooting process</h2>
+<p>First, I understand the issue clearly from the user.</p>
+<p>I reproduce the issue if possible.</p>
+<p>I check application, system, and service logs.</p>
+<p>I isolate the affected component.</p>
+<p>I form hypotheses based on symptoms.</p>
+<p>I apply the fix carefully.</p>
+<p>I validate the solution.</p>
+<p>Finally, I document the RCA and resolution.</p>
+</div>
+
+<div class="section">
+<h2>2) How do you check disk usage?</h2>
+<p><b>df -h</b> shows overall disk usage.</p>
+<p><b>du -sh /path/*</b> shows folder size.</p>
+<p><b>find</b> command finds large files.</p>
+<p>Useful for cleanup and troubleshooting.</p>
+
+<pre>
+df -h
+du -sh /var/*
+find / -type f -size +500M
+</pre>
+</div>
+
+<div class="section">
+<h2>3) Commands for system performance</h2>
+<p><b>top</b> shows real-time CPU usage.</p>
+<p><b>htop</b> gives interactive view.</p>
+<p><b>free -m</b> checks memory.</p>
+<p><b>uptime</b> shows load average.</p>
+
+<pre>
+top
+htop
+free -m
+uptime
+</pre>
+</div>
+
+<div class="section">
+<h2>4) Explain rwx permissions</h2>
+<p>r = read (4)</p>
+<p>w = write (2)</p>
+<p>x = execute (1)</p>
+<p>Permissions apply to user, group, others.</p>
+<p><b>chmod</b> changes permissions.</p>
+<p><b>chown</b> changes ownership.</p>
+</div>
+
+<div class="section">
+<h2>5) How do you restart Linux services?</h2>
+<p>Using systemctl on systemd systems.</p>
+
+<pre>
+systemctl restart service_name
+systemctl status service_name
+</pre>
+</div>
+
+<div class="section">
+<h2>6) How do you handle kernel issues?</h2>
+<p>Check kernel logs using dmesg.</p>
+<p>Review /var/log/messages.</p>
+<p>Check disk health using smartctl.</p>
+<p>Run memory tests if required.</p>
+<p>Identify hardware or driver issues.</p>
+</div>
+
+<div class="section">
+<h2>7) TCP vs UDP</h2>
+<p>TCP is reliable and connection-oriented.</p>
+<p>It ensures data delivery.</p>
+<p>UDP is faster but unreliable.</p>
+<p>No handshake or retransmission.</p>
+<p>TCP used for HTTP, SSH.</p>
+<p>UDP used for DNS, streaming.</p>
+</div>
+
+<div class="section">
+<h2>8) How do you diagnose DNS issues?</h2>
+<p>Ping checks connectivity.</p>
+<p>nslookup resolves DNS.</p>
+<p>dig gives detailed DNS info.</p>
+<p>Check /etc/resolv.conf.</p>
+
+<pre>
+ping google.com
+nslookup google.com
+dig google.com
+cat /etc/resolv.conf
+</pre>
+</div>
+
+<div class="section">
+<h2>9) How do you troubleshoot latency?</h2>
+<p>Ping checks latency.</p>
+<p>Traceroute finds network hops.</p>
+<p>Check bandwidth usage.</p>
+<p>Analyze server load.</p>
+<p>Check network congestion.</p>
+</div>
+
+<div class="section">
+<h2>10) How do you check DB connectivity?</h2>
+<p>Test port connectivity.</p>
+<p>Login using DB client.</p>
+<p>Check firewall rules.</p>
+
+<pre>
+telnet db_host 3306
+mysql -h db_host -u user -p
+</pre>
+</div>
+
+<div class="section">
+<h2>11) Ticketing tools used</h2>
+<p>ServiceNow</p>
+<p>Jira (Internal)</p>
+<p>Freshservice</p>
+</div>
+
+<div class="section">
+<h2>12) Incident vs Problem vs Change</h2>
+<p><b>Incident:</b> Service interruption.</p>
+<p><b>Problem:</b> Root cause of incidents.</p>
+<p><b>Change:</b> Planned modification.</p>
+</div>
+
+<div class="section">
+<h2>13) Handling multiple high-severity issues</h2>
+<p>Prioritize based on SLA.</p>
+<p>Check business impact.</p>
+<p>Create war room.</p>
+<p>Assign parallel tasks.</p>
+<p>Communicate regularly.</p>
+</div>
+
+<div class="section">
+<h2>14) How do you prepare RCA?</h2>
+<p>Describe the issue.</p>
+<p>Explain business impact.</p>
+<p>Identify root cause.</p>
+<p>Explain fix.</p>
+<p>List preventive actions.</p>
+</div>
+
+<div class="section">
+<h2>15) Handling frustrated customers</h2>
+<p>Listen carefully.</p>
+<p>Show empathy.</p>
+<p>Provide clear ETA.</p>
+<p>Give regular updates.</p>
+<p>Remain calm and professional.</p>
+</div>
+
+<div class="section">
+<h2>16) Service running but slow – what do you check?</h2>
+<p>CPU and memory usage.</p>
+<p>Disk I/O.</p>
+<p>Network latency.</p>
+<p>Application logs.</p>
+<p>Database performance.</p>
+<p>Recent deployments.</p>
+</div>
+
+<div class="section">
+<h2>17) What is Grafana?</h2>
+<p>Grafana is a monitoring and visualization tool.</p>
+<p>It displays metrics and logs.</p>
+<p>Supports real-time dashboards.</p>
+<p>Used for performance monitoring.</p>
+<p>Helps in troubleshooting.</p>
+</div>
+
+<div class="section">
+<h2>18) Grafana Data Sources</h2>
+<p>Prometheus</p>
+<p>InfluxDB</p>
+<p>Elasticsearch</p>
+<p>Loki</p>
+<p>MySQL / PostgreSQL</p>
+</div>
+
+<div class="section">
+<h2>19) What is Loki?</h2>
+<p>Loki is a log aggregation system.</p>
+<p>Developed by Grafana Labs.</p>
+<p>Uses labels instead of indexing full logs.</p>
+<p>Integrated with Grafana dashboards.</p>
+<p>Correlates logs with metrics.</p>
+</div>
+
+<div class="section">
+<h2>20) Basic Linux Commands</h2>
+<p><b>pwd</b> – current directory</p>
+<p><b>ls</b> – list files</p>
+<p><b>cat, less, head, tail</b> – view files</p>
+<p><b>uptime</b> – system running time</p>
+<p><b>cd</b> – change directory</p>
+<p><b>touch / mkdir</b> – create files/folders</p>
+</div>
+
+<div class="section">
+<h2>21) AWS Basics</h2>
+<p>AWS is a cloud computing platform.</p>
+<p>EC2 – virtual servers.</p>
+<p>S3 – object storage.</p>
+<p>VPC – private network.</p>
+<p>RDS – managed databases.</p>
+<p>CloudWatch – monitoring.</p>
+<p>Auto Scaling – automatic scaling.</p>
+<p>ELB – load balancing.</p>
+</div>
+
+<div class="section">
+<h2>22) AWS Session Manager</h2>
+<p>Secure EC2 access without SSH.</p>
+<p>No key pairs required.</p>
+<p>No inbound ports needed.</p>
+<p>Audited and logged.</p>
+<p>More secure than SSH.</p>
+</div>
+
+<div class="section">
+<h2>23) Jira Ticket Status Stages</h2>
+<p>To Do / Open</p>
+<p>In Progress</p>
+<p>In Review</p>
+<p>In Testing</p>
+<p>Resolved / Fixed</p>
+<p>Done / Closed</p>
+</div>
+
+</body>
+</html>
