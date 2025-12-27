@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interview Question – EC2 Private IP Communication</title>
+
+  <style>
+    :root {
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --border: #e5e7eb;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      margin: 0;
+      padding: 32px;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+
+    .question {
+      background: #eef2ff;
+      border-left: 5px solid var(--accent);
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .answer h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .answer ul {
+      padding-left: 20px;
+    }
+
+    .answer li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .note {
+      margin-top: 16px;
+      padding: 12px;
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
+      border-radius: 6px;
+      color: #065f46;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+
+      <h1>AWS Interview Question</h1>
+
+      <div class="question">
+        How can two EC2 instances communicate using private IP addresses without a VPC peering connection?
+      </div>
+
+      <div class="answer">
+        <h2>Answer</h2>
+        <ul>
+          <li>I have two EC2 instances launched.</li>
+          <li>The first EC2 instance has a public IP enabled.</li>
+          <li>The second EC2 instance has the public IP disabled.</li>
+          <li>I copied the private IP address of the second EC2 instance.</li>
+          <li>I connected to the first EC2 instance using a browser-based terminal.</li>
+          <li>From the first EC2 instance, I pinged the private IP of the second EC2 instance.</li>
+          <li>The ping works successfully without a VPC peering connection.</li>
+        </ul>
+      </div>
+  </div>
+  <div style="font-family: Arial, sans-serif; background:#f4f6f8; padding:20px;">
+
+  <div style="max-width:1200px; margin:auto; background:#ffffff; padding:20px;">
+
+    <div>
+      <h1 style="color:#2c3e50;">🚀 AWS EC2 User Data – Complete Guide</h1>
+    </div>
+
+    <!-- What is User Data -->
+    <div style="background:#eef2f7; padding:15px; border-left:6px solid #3498db; margin-top:15px;">
+      <h2>🧠 What is User Data?</h2>
+      <p>
+        User Data is a startup script that runs automatically when an EC2 instance starts.
+        It is mainly used to install software, configure services, and prepare the server
+        without manual login.
+      </p>
+      <p>
+        User Data runs as the <strong>root user</strong> and is executed during the boot
+        process using a service called <strong>cloud-init</strong>.
+      </p>
+    </div>
+
+    <!-- How to Use User Data -->
+    <div style="background:#eef2f7; padding:15px; border-left:6px solid #2ecc71; margin-top:15px;">
+      <h2>⚙️ How to Use User Data</h2>
+      <p>
+        You add User Data while launching an EC2 instance or by editing it after stopping
+        the instance. The script is written in <strong>bash shell format</strong>.
+      </p>
+      <p>
+        Example use cases include installing Docker, Git, Nginx, Java, or starting
+        applications automatically.
+      </p>
+    </div>
+
+    <!-- Benefits -->
+    <div style="background:#fff3cd; padding:15px; border-left:6px solid #f39c12; margin-top:15px;">
+      <h2>🌟 Benefits of User Data</h2>
+      <p>✔ Fully automated server setup</p>
+      <p>✔ Saves manual installation time</p>
+      <p>✔ Same configuration for all servers</p>
+      <p>✔ Useful for auto scaling environments</p>
+    </div>
+
+    <!-- Can we modify -->
+    <div style="margin-top:20px;">
+      <h2>❓ Can We Modify User Data After Launch?</h2>
+      <p>
+        Yes, User Data can be modified, but it does NOT run automatically again.
+        We must force it to run using cloud-init commands.
+      </p>
+    </div>
+
+    <!-- Step by Step -->
+    <div style="background:#eef2f7; padding:15px; border-left:6px solid #9b59b6; margin-top:15px;">
+      <h2>🔁 Step-by-Step: Modify and Run User Data</h2>
+
+      <p><strong>Step 1:</strong> Stop the EC2 instance</p>
+      <p><strong>Step 2:</strong> Edit User Data from AWS Console</p>
+      <p><strong>Step 3:</strong> Start the instance</p>
+      <p><strong>Step 4:</strong> Force user data to run again</p>
+    </div>
+
+    <!-- Commands Amazon Linux -->
+    <div style="margin-top:15px;">
+      <h3>🔹 Amazon Linux / RHEL Commands</h3>
+      <div style="background:#1e1e1e; color:#dcdcdc; padding:10px; font-family:monospace;">
+        sudo rm -f /var/lib/cloud/instances/*/sem/config_scripts_user <br>
+        sudo cloud-init clean <br>
+        sudo reboot
+      </div>
+    </div>
+
+    <!-- Commands Ubuntu -->
+    <div style="margin-top:15px;">
+      <h3>🔹 Ubuntu Commands</h3>
+      <div style="background:#1e1e1e; color:#dcdcdc; padding:10px; font-family:monospace;">
+        sudo cloud-init clean <br>
+        sudo reboot
+      </div>
+    </div>
+
+    <!-- Example -->
+    <div style="background:#eef2f7; padding:15px; border-left:6px solid #e74c3c; margin-top:20px;">
+      <h2>✍️ Example User Data Script</h2>
+      <div style="background:#1e1e1e; color:#dcdcdc; padding:10px; font-family:monospace;">
+        #!/bin/bash <br>
+        yum update -y <br>
+        yum install docker -y <br>
+        systemctl start docker <br>
+        systemctl enable docker
+      </div>
+    </div>
+
+    <!-- Logs -->
+    <div style="margin-top:20px;">
+      <h2>📂 Where to Check User Data Logs</h2>
+      <p><strong>Amazon Linux:</strong> /var/log/cloud-init-output.log</p>
+      <p><strong>Ubuntu:</strong> /var/log/cloud-init.log</p>
+    </div>
+
+    <!-- Memory Trick -->
+    <div style="background:#fff3cd; padding:15px; border-left:6px solid #16a085; margin-top:20px;">
+      <h2>🧠 Easy Memory Trick</h2>
+      <pre>
+Stop EC2
+↓
+Edit User Data
+↓
+Start EC2
+↓
+cloud-init clean
+↓
+Reboot
+      </pre>
+    </div>
+
+    <!-- Interview -->
+    <div style="margin-top:20px;">
+      <h2>🎯 Interview Answer</h2>
+      <p>
+        EC2 User Data is a startup script that runs during instance boot. We can modify it
+        by stopping the instance, editing the user data, and forcing it to rerun using
+        cloud-init commands.
+      </p>
+    </div>
+
+  </div>
+</div>
+<div style="font-family: Arial, sans-serif; background:#f4f6f8; padding:20px;">
+
+  <div style="max-width:1200px; margin:auto; background:#ffffff; padding:20px;">
+
+    <div>
+      <h1 style="color:#2c3e50;">🐳 Docker Storage Types Explained</h1>
+      <p>
+        Docker containers are temporary by default. When a container is removed, its data is also removed.
+        Docker storage helps us save data outside the container so that it is not lost.
+        Docker provides three main types of storage to handle different use cases.
+      </p>
+    </div>
+
+    <!-- Volumes -->
+    <div style="background:#eef2f7; padding:15px; border-left:6px solid #3498db; margin-top:20px;">
+      <h2>1️⃣ Docker Volumes</h2>
+      <p>
+        Docker volumes are the most commonly used and recommended storage type in Docker.
+        A volume is created and managed directly by Docker and stored in a special Docker directory.
+        When a container writes data to a volume, the data is stored safely outside the container.
+        Even if the container stops or is deleted, the data inside the volume is not lost.
+        First, a volume is created using a Docker command or automatically during container creation.
+        Next, the volume is attached to a directory inside the container.
+        The container then reads and writes data to that directory normally.
+        Docker volumes work the same on any machine, which makes them reliable.
+        They are easy to back up and restore when needed.
+        Docker volumes are best suited for production applications and databases.
+      </p>
+    </div>
+
+    <!-- Bind Mounts -->
+    <div style="background:#eef2f7; padding:15px; border-left:6px solid #2ecc71; margin-top:20px;">
+      <h2>2️⃣ Bind Mounts</h2>
+      <p>
+        Bind mounts directly connect a folder on the host machine to a folder inside the container.
+        In this method, Docker does not manage the storage location.
+        The developer chooses an existing directory on the host system.
+        When the container starts, that directory is mounted inside the container.
+        Any changes made inside the container are immediately reflected on the host.
+        This is very useful during development because code changes appear instantly.
+        Bind mounts make it easy to edit files using local tools.
+        However, they depend heavily on the host file system structure.
+        This makes them less portable between different machines.
+        Bind mounts are mainly used in development environments.
+      </p>
+    </div>
+
+    <!-- tmpfs -->
+    <div style="background:#eef2f7; padding:15px; border-left:6px solid #e67e22; margin-top:20px;">
+      <h2>3️⃣ tmpfs Mounts</h2>
+      <p>
+        tmpfs mounts store data directly in the system memory instead of on disk.
+        When a container writes data to a tmpfs mount, it is stored in RAM.
+        This data is very fast to access because it does not involve disk operations.
+        tmpfs storage is temporary and exists only while the container is running.
+        Once the container stops or restarts, all data in tmpfs is removed.
+        This type of storage is useful for sensitive information.
+        It is often used for temporary cache data or secret files.
+        Since data is never written to disk, security is improved.
+        tmpfs mounts reduce disk usage on the host system.
+        They are best used when data does not need to be saved.
+      </p>
+    </div>
+
+    <!-- Memory Trick -->
+    <div style="background:#fff3cd; padding:15px; border-left:6px solid #16a085; margin-top:25px;">
+      <h2>🧠 Easy Memory Trick</h2>
+      <p>
+        Docker volumes are managed by Docker and used in production.
+        Bind mounts connect host folders and are mainly used in development.
+        tmpfs mounts store data in memory and are used for temporary data.
+      </p>
+    </div>
+
+    <!-- Interview -->
+    <div style="margin-top:25px;">
+      <h2>🎯 Interview Answer</h2>
+      <p>
+        Docker provides three types of storage: volumes, bind mounts, and tmpfs mounts.
+        Volumes are managed by Docker and used for persistent data.
+        Bind mounts link host directories to containers.
+        tmpfs mounts store temporary data in memory.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+
+</body>
+</html>
