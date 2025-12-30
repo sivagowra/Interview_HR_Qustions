@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>What is Docker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+            background-color: #f5f7fa;
+            color: #222;
+            padding: 20px;
+        }
+        h1, h2, h3, h4, h5 {
+            color: #0d6efd;
+            margin-top: 30px;
+        }
+        p {
+            margin: 12px 0;
+        }
+        ul, ol {
+            margin-left: 30px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #212529;
+            color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        section {
+            margin-bottom: 35px;
+        }
+        img {
+            max-width: 100%;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>What is Docker?</h1>
+
+<section>
+    <p>
+        Docker is an open platform for developing, shipping, and running applications.
+        Docker enables you to separate your applications from your infrastructure so
+        you can deliver software quickly.
+    </p>
+
+    <p>
+        With Docker, you can manage your infrastructure in the same ways you manage
+        your applications. By taking advantage of Docker's methodologies for shipping,
+        testing, and deploying code, you can significantly reduce the delay between
+        writing code and running it in production.
+    </p>
+</section>
+
+<section>
+    <h2>The Docker Platform</h2>
+
+    <p>
+        Docker provides the ability to package and run an application in a loosely isolated
+        environment called a container. The isolation and security lets you run many
+        containers simultaneously on a given host.
+    </p>
+
+    <p>
+        Containers are lightweight and contain everything needed to run the application,
+        so you don't need to rely on what's installed on the host. You can share containers
+        while you work, and be sure that everyone you share with gets the same container
+        that works in the same way.
+    </p>
+
+    <p>
+        Docker provides tooling and a platform to manage the lifecycle of your containers:
+    </p>
+
+    <ul>
+        <li>Develop your application and its supporting components using containers.</li>
+        <li>The container becomes the unit for distributing and testing your application.</li>
+        <li>
+            When you're ready, deploy your application into your production environment,
+            as a container or an orchestrated service. This works the same whether your
+            production environment is a local data center, a cloud provider, or a hybrid
+            of the two.
+        </li>
+    </ul>
+</section>
+
+<section>
+    <h2>What Can I Use Docker For?</h2>
+
+    <h3>Fast, Consistent Delivery of Your Applications</h3>
+
+    <p>
+        Docker streamlines the development lifecycle by allowing developers to work in
+        standardized environments using local containers which provide your applications
+        and services. Containers are great for continuous integration and continuous
+        delivery (CI/CD) workflows.
+    </p>
+
+    <p>Consider the following example scenario:</p>
+
+    <ul>
+        <li>
+            Your developers write code locally and share their work with their colleagues
+            using Docker containers.
+        </li>
+        <li>
+            They use Docker to push their applications into a test environment and run
+            automated and manual tests.
+        </li>
+        <li>
+            When developers find bugs, they can fix them in the development environment
+            and redeploy them to the test environment for testing and validation.
+        </li>
+        <li>
+            When testing is complete, getting the fix to the customer is as simple as
+            pushing the updated image to the production environment.
+        </li>
+    </ul>
+
+    <h3>Responsive Deployment and Scaling</h3>
+
+    <p>
+        Docker's container-based platform allows for highly portable workloads. Docker
+        containers can run on a developer's local laptop, on physical or virtual machines
+        in a data center, on cloud providers, or in a mixture of environments.
+    </p>
+
+    <p>
+        Docker's portability and lightweight nature also make it easy to dynamically
+        manage workloads, scaling up or tearing down applications and services as
+        business needs dictate, in near real time.
+    </p>
+
+    <h3>Running More Workloads on the Same Hardware</h3>
+
+    <p>
+        Docker is lightweight and fast. It provides a viable, cost-effective alternative
+        to hypervisor-based virtual machines, so you can use more of your server capacity
+        to achieve your business goals.
+    </p>
+
+    <p>
+        Docker is perfect for high density environments and for small and medium
+        deployments where you need to do more with fewer resources.
+    </p>
+</section>
+
+<section>
+    <h2>Docker Architecture</h2>
+
+    <p>
+        Docker uses a client-server architecture. The Docker client talks to the
+        Docker daemon, which does the heavy lifting of building, running, and
+        distributing your Docker containers.
+    </p>
+
+    <p>
+        The Docker client and daemon can run on the same system, or you can connect a
+        Docker client to a remote Docker daemon.
+    </p>
+
+    <p>
+        The Docker client and daemon communicate using a REST API, over UNIX sockets
+        or a network interface.
+    </p>
+
+    <p>
+        Another Docker client is Docker Compose, that lets you work with applications
+        consisting of a set of containers.
+    </p>
+
+    <img src="image.png" alt="Docker Architecture Diagram">
+</section>
+
+<section>
+    <h3>The Docker Daemon</h3>
+
+    <p>
+        The Docker daemon (<code>dockerd</code>) listens for Docker API requests and manages
+        Docker objects such as images, containers, networks, and volumes.
+    </p>
+
+    <p>
+        A daemon can also communicate with other daemons to manage Docker services.
+    </p>
+</section>
+
+<section>
+    <h3>The Docker Client</h3>
+
+    <p>
+        The Docker client (<code>docker</code>) is the primary way that many Docker users
+        interact with Docker.
+    </p>
+
+    <p>
+        When you use commands such as <code>docker run</code>, the client sends these
+        commands to <code>dockerd</code>, which carries them out.
+    </p>
+
+    <p>
+        The <code>docker</code> command uses the Docker API. The Docker client can
+        communicate with more than one daemon.
+    </p>
+</section>
+
+<section>
+    <h3>Docker Desktop</h3>
+
+    <p>
+        Docker Desktop is an easy-to-install application for your Mac, Windows, or Linux
+        environment that enables you to build and share containerized applications and
+        microservices.
+    </p>
+
+    <p>
+        Docker Desktop includes the Docker daemon (<code>dockerd</code>), the Docker client
+        (<code>docker</code>), Docker Compose, Docker Content Trust, Kubernetes, and
+        Credential Helper.
+    </p>
+</section>
+
+<section>
+    <h3>Docker Registries</h3>
+
+    <p>
+        A Docker registry stores Docker images. Docker Hub is a public registry that
+        anyone can use, and Docker looks for images on Docker Hub by default.
+    </p>
+
+    <p>
+        You can even run your own private registry.
+    </p>
+
+    <p>
+        When you use the <code>docker pull</code> or <code>docker run</code> commands,
+        Docker pulls the required images from your configured registry.
+    </p>
+
+    <p>
+        When you use the <code>docker push</code> command, Docker pushes your image to
+        your configured registry.
+    </p>
+</section>
+
+<section>
+    <h3>Docker Objects</h3>
+
+    <p>
+        When you use Docker, you are creating and using images, containers, networks,
+        volumes, plugins, and other objects.
+    </p>
+
+    <h4>Images</h4>
+
+
+
+    <p>
+       An image is a read-only template with instructions for creating a Docker
+container. Often, an image is based on another image, with some additional
+customization. For example, you may build an image that is based on the Ubuntu image 
+but includes the Apache web server and your application, as well as the
+configuration details needed to make your application run.
+
+    </p>
+
+    <p>
+       You might create your own images or you might only use those created by others
+and published in a registry. To build your own image, you create a Dockerfile
+with a simple syntax for defining the steps needed to create the image and run
+it. Each instruction in a Dockerfile creates a layer in the image. When you
+change the Dockerfile and rebuild the image, only those layers which have
+changed are rebuilt. This is part of what makes images so lightweight, small,
+and fast, when compared to other virtualization technologies.
+    </p>
+
+    <h4>Containers</h4>
+<p>
+A container is a runnable instance of an image. You can create, start, stop,
+move, or delete a container using the Docker API or CLI. You can connect a
+container to one or more networks, attach storage to it, or even create a new
+image based on its current state.</p>
+ <p>By default, a container is relatively well isolated from other containers and
+its host machine. You can control how isolated a container's network, storage,
+or other underlying subsystems are from other containers or from the host
+machine.</p>
+    <p>
+     A container is defined by its image as well as any configuration options you
+provide to it when you create or start it. When a container is removed, any changes to
+its state that aren't stored in persistent storage disappear.
+    </p>
+   
+
+    <h5>Example docker run command</h5>
+
+    <pre>
+docker run -i -t ubuntu /bin/bash
+    </pre>
+
+    <ol>
+        <li>Docker pulls the Ubuntu image if it is not present locally.</li>
+        <li>Docker creates a new container.</li>
+        <li>Docker allocates a read-write filesystem.</li>
+        <li>Docker creates a network interface and assigns an IP address.</li>
+        <li>Docker starts the container and runs /bin/bash.</li>
+        <li>Exiting stops the container but does not remove it.</li>
+    </ol>
+</section>
+
+<section>
+    <h2>The Underlying Technology</h2>
+
+    <p>
+        Docker is written in the Go programming language and uses Linux kernel features
+        such as namespaces to provide isolation.
+    </p>
+
+    <p>
+        Each aspect of a container runs in a separate namespace and its access is limited
+        to that namespace.
+    </p>
+</section>
+
+<section>
+    <h2>Next Steps</h2>
+
+    <ul>
+        <li>Install Docker</li>
+        <li>Get started with Docker</li>
+    </ul>
+</section>
+
+</body>
+</html>
