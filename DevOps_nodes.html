@@ -481,50 +481,71 @@
     <!-- Right column: Summary & Tables -->
     </main>
     </div>
-    <div style="background:#ffffff; color:#0b1726; padding:28px; line-height:1.6; font-family:Inter, Arial, sans-serif;">
-        <h1 style="font-size:24px; margin:0 0 10px;">REST API Methods — Quick Reference</h1>
-        <p style="color:#334155; margin:6px 0 18px;">
-            Simple, one-page reference describing the common HTTP methods used with REST APIs and short examples.
-        </p>
-        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
-            <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
-                <h3 style="margin:0 0 6px; font-size:16px;">GET</h3>
-                <p><strong>Meaning:</strong> Read or fetch data. Does not change server state.</p>
-                <p><strong>Usage:</strong> Get user details, download file, list S3 buckets.</p>
-                <p><strong>Example:</strong> <code>GET /users/123</code></p>
-            </div>
-            <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
-                <h3 style="margin:0 0 6px; font-size:16px;">POST</h3>
-                <p><strong>Meaning:</strong> Create new data (with body).</p>
-                <p><strong>Usage:</strong> Create user, login, submit form.</p>
-                <p><strong>Example:</strong> <code>POST /users</code></p>
-            </div>
-            <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
-                <h3 style="margin:0 0 6px; font-size:16px;">PUT</h3>
-                <p><strong>Meaning:</strong> Create or update a resource.</p>
-                <p><strong>Usage:</strong> Upload file, update record.</p>
-                <p><strong>Example:</strong> <code>PUT /users/123</code></p>
-            </div>
-            <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
-                <h3 style="margin:0 0 6px; font-size:16px;">DELETE</h3>
-                <p><strong>Meaning:</strong> Remove a resource.</p>
-                <p><strong>Usage:</strong> Delete file, delete user.</p>
-                <p><strong>Example:</strong> <code>DELETE /users/123</code></p>
-            </div>
-            <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
-                <h3 style="margin:0 0 6px; font-size:16px;">PATCH</h3>
-                <p><strong>Meaning:</strong> Update partial data.</p>
-                <p><strong>Usage:</strong> Update only name/email.</p>
-                <p><strong>Example:</strong> <code>PATCH /users/123</code></p>
-            </div>
-            <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
-                <h3 style="margin:0 0 6px; font-size:16px;">HEAD</h3>
-                <p><strong>Meaning:</strong> Same as GET but returns only headers.</p>
-                <p><strong>Usage:</strong> Check file exists, get metadata.</p>
-                <p><strong>Example:</strong> <code>HEAD /users/123</code></p>
-            </div>
+   <div style="background:#ffffff; color:#0b1726; padding:28px; line-height:1.6; font-family:Inter, Arial, sans-serif;">
+    <h1 style="font-size:24px; margin:0 0 10px;">REST API Methods — Quick Reference</h1>
+    <p style="color:#334155; margin:6px 0 18px;">
+        Simple, one-page reference describing the common HTTP methods used with REST APIs and short examples.
+    </p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+
+        <!-- GET -->
+        <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
+            <h3 style="margin:0 0 6px; font-size:16px;">GET</h3>
+            <p><strong>Meaning:</strong> Used to read or fetch data from the server.</p>
+            <p><strong>Explanation:</strong> GET requests only retrieve information and do not change any data on the server.</p>
+            <p><strong>Usage:</strong> View user profile, list products, fetch AWS resources.</p>
+            <p><strong>Example:</strong> <code>GET /users/123</code></p>
         </div>
+
+        <!-- POST -->
+        <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
+            <h3 style="margin:0 0 6px; font-size:16px;">POST</h3>
+            <p><strong>Meaning:</strong> Used to create new data on the server.</p>
+            <p><strong>Explanation:</strong> POST sends data in the request body to create a new resource.</p>
+            <p><strong>Usage:</strong> Create account, submit form, user login.</p>
+            <p><strong>Example:</strong> <code>POST /users</code></p>
+        </div>
+
+        <!-- PUT -->
+        <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
+            <h3 style="margin:0 0 6px; font-size:16px;">PUT</h3>
+            <p><strong>Meaning:</strong> Used to update or replace existing data.</p>
+            <p><strong>Explanation:</strong> PUT replaces the full resource with new data.</p>
+            <p><strong>Usage:</strong> Update user details, upload or replace a file.</p>
+            <p><strong>Example:</strong> <code>PUT /users/123</code></p>
+        </div>
+
+        <!-- DELETE -->
+        <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
+            <h3 style="margin:0 0 6px; font-size:16px;">DELETE</h3>
+            <p><strong>Meaning:</strong> Used to remove data from the server.</p>
+            <p><strong>Explanation:</strong> DELETE permanently removes a resource.</p>
+            <p><strong>Usage:</strong> Remove user account, delete files or records.</p>
+            <p><strong>Example:</strong> <code>DELETE /users/123</code></p>
+        </div>
+
+        <!-- PATCH -->
+        <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
+            <h3 style="margin:0 0 6px; font-size:16px;">PATCH</h3>
+            <p><strong>Meaning:</strong> Used to update part of the data.</p>
+            <p><strong>Explanation:</strong> PATCH changes only specific fields, not the entire resource.</p>
+            <p><strong>Usage:</strong> Update email, change status, edit profile name.</p>
+            <p><strong>Example:</strong> <code>PATCH /users/123</code></p>
+        </div>
+
+        <!-- HEAD -->
+        <div style="background:#fbfdff; padding:12px; border-radius:8px; border:1px solid #eef2f6;">
+            <h3 style="margin:0 0 6px; font-size:16px;">HEAD</h3>
+            <p><strong>Meaning:</strong> Same as GET but returns headers only.</p>
+            <p><strong>Explanation:</strong> HEAD is used to check resource info without downloading data.</p>
+            <p><strong>Usage:</strong> Check file exists, verify API response.</p>
+            <p><strong>Example:</strong> <code>HEAD /users/123</code></p>
+        </div>
+
     </div>
+</div>
+
     <div style="display: flex; gap: 20px;">
         <div style="flex: 1; border: 1px solid #ccc; padding: 10px; border-radius: 8px;">
             <h2>HTTP</h2>
