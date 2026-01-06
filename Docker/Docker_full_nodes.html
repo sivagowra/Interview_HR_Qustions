@@ -309,5 +309,37 @@
         </ul>
         <p><strong>Docker Stack</strong> is used to deploy multi-container applications (defined in a Compose file) across <strong>multiple hosts</strong> within a Docker Swarm cluster.</p>
     </div>
+
+
+
+    <h1>Docker Volume & Container Sharing</h1>
+
+<div class="box">
+    <h2>1️⃣ Volume to Containers Share</h2>
+    <pre><code>docker volume create myvolume
+docker volume ls
+
+docker run -d --name website1 -p 8001:80 \
+-v myvolume:/usr/share/nginx/html sivagowra/web
+
+docker run -d --name website2 -p 8002:80 \
+--privileged --volumes-from website1 sivagowra/web
+</code></pre>
+</div>
+
+<div class="box">
+    <h2>2️⃣ Host to Container Share</h2>
+    <pre><code>(pwd mandatory)
+docker run -d --name website1 -p 8011:80 \
+-v $(pwd):/usr/share/nginx/html nginx
+</code></pre>
+</div>
+
+<div class="box">
+    <h2>3️⃣ Volume to Container (Using --mount)</h2>
+    <pre><code>docker run -d --name web -p 8012:80 \
+--mount source=myvolume,destination=/usr/share/nginx/html nginx
+</code></pre>
+</div>
 </body>
 </html>
