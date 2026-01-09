@@ -468,6 +468,421 @@ vector_db = Pinecone.from_documents(chunks, embeddings, index_name="rag-prod")
         </div>
     </div>
 </div>
+<div class="vector-db-comparison">
+
+  <h2>Vector Database Comparison (Text → Vector DB)</h2>
+
+  <div class="table-section">
+    <table border="1" cellpadding="8" cellspacing="0">
+      <thead>
+        <tr>
+          <th>DB Name</th>
+          <th>Type</th>
+          <th>Best Use Case</th>
+          <th>Cost</th>
+          <th>Performance</th>
+          <th>Accuracy / Features</th>
+          <th>Free / Paid</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pinecone</td>
+          <td>Managed Cloud</td>
+          <td>Production AI Search</td>
+          <td>$50–$300+/month</td>
+          <td>Fast (&lt;80ms)</td>
+          <td>High accuracy, metadata filtering, namespaces</td>
+          <td>Free + Paid</td>
+        </tr>
+        <tr>
+          <td>Weaviate</td>
+          <td>OSS + Cloud</td>
+          <td>Hybrid Search (Text + Vector)</td>
+          <td>$25–$300+/month</td>
+          <td>Good (30–100ms)</td>
+          <td>GraphQL, hybrid search, filters</td>
+          <td>Free + Paid</td>
+        </tr>
+        <tr>
+          <td>Milvus</td>
+          <td>Open Source</td>
+          <td>Large Scale (100M+ vectors)</td>
+          <td>$100–$500 infra</td>
+          <td>Excellent at scale</td>
+          <td>Enterprise-grade, high throughput</td>
+          <td>Free + Paid</td>
+        </tr>
+        <tr>
+          <td>FAISS</td>
+          <td>Library</td>
+          <td>High-speed local search</td>
+          <td>Free</td>
+          <td>Very Fast (GPU support)</td>
+          <td>Custom indexing, high recall</td>
+          <td>Free</td>
+        </tr>
+        <tr>
+          <td>ChromaDB</td>
+          <td>Open Source</td>
+          <td>MVP & Prototypes</td>
+          <td>Free</td>
+          <td>Good (small datasets)</td>
+          <td>Easy Python API, LangChain support</td>
+          <td>Free</td>
+        </tr>
+        <tr>
+          <td>Qdrant</td>
+          <td>OSS + Cloud</td>
+          <td>Fast Search + Filters</td>
+          <td>$100–$250/month</td>
+          <td>Very Fast (Rust-based)</td>
+          <td>Quantization, strong filtering</td>
+          <td>Free + Paid</td>
+        </tr>
+        <tr>
+          <td>pgvector</td>
+          <td>Postgres Extension</td>
+          <td>Apps using PostgreSQL</td>
+          <td>Infra cost only</td>
+          <td>Moderate</td>
+          <td>Simple vector search inside DB</td>
+          <td>Free</td>
+        </tr>
+        <tr>
+          <td>Redis Vector</td>
+          <td>In-memory DB</td>
+          <td>Real-time search</td>
+          <td>Depends on infra</td>
+          <td>Ultra Fast (&lt;1ms)</td>
+          <td>Vector + caching combined</td>
+          <td>Free + Paid</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Quick Ratings (Out of 5)</h2>
+
+  <div class="table-section">
+    <table border="1" cellpadding="8" cellspacing="0">
+      <thead>
+        <tr>
+          <th>DB Name</th>
+          <th>Performance</th>
+          <th>Scalability</th>
+          <th>Ease of Use</th>
+          <th>Features</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pinecone</td>
+          <td>★★★★☆</td>
+          <td>★★★★☆</td>
+          <td>★★★★☆</td>
+          <td>★★★★☆</td>
+        </tr>
+        <tr>
+          <td>Weaviate</td>
+          <td>★★★☆☆</td>
+          <td>★★★★☆</td>
+          <td>★★★☆☆</td>
+          <td>★★★★☆</td>
+        </tr>
+        <tr>
+          <td>Milvus</td>
+          <td>★★★★☆</td>
+          <td>★★★★★</td>
+          <td>★★☆☆☆</td>
+          <td>★★★★☆</td>
+        </tr>
+        <tr>
+          <td>FAISS</td>
+          <td>★★★★★</td>
+          <td>★★★☆☆</td>
+          <td>★★☆☆☆</td>
+          <td>★★★★☆</td>
+        </tr>
+        <tr>
+          <td>ChromaDB</td>
+          <td>★★★☆☆</td>
+          <td>★★☆☆☆</td>
+          <td>★★★★☆</td>
+          <td>★★★☆☆</td>
+        </tr>
+        <tr>
+          <td>Qdrant</td>
+          <td>★★★★☆</td>
+          <td>★★★★☆</td>
+          <td>★★★★☆</td>
+          <td>★★★★☆</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Best Choice by Use Case</h2>
+
+  <div class="use-cases">
+    <p><strong>AI Chatbots / Search:</strong> Pinecone, Weaviate</p>
+    <p><strong>Large Scale Enterprise:</strong> Milvus</p>
+    <p><strong>Free / MVP Projects:</strong> ChromaDB, Qdrant</p>
+    <p><strong>High-Speed Custom Systems:</strong> FAISS</p>
+    <p><strong>PostgreSQL Apps:</strong> pgvector</p>
+  </div>
+
+  <h2>Key Notes on Accuracy</h2>
+
+  <div class="notes">
+    <p>
+      Accuracy depends mainly on the <strong>embedding model</strong> (OpenAI, HuggingFace, etc.),
+      not just the vector database. All databases store vectors, but better embeddings = better results.
+    </p>
+  </div>
+
+</div>
+
+
+<div class="aws-vector-db">
+  <h2>AWS Vector Database Options</h2>
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Type</th>
+        <th>Managed</th>
+        <th>Cost</th>
+        <th>Performance</th>
+        <th>Accuracy</th>
+        <th>Best Use Case</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Amazon OpenSearch (Vector Engine)</td>
+        <td>Native AWS</td>
+        <td>Yes</td>
+        <td>Pay EC2 + storage</td>
+        <td>High</td>
+        <td>Very Good</td>
+        <td>Production AI Search, RAG</td>
+      </tr>
+      <tr>
+        <td>Aurora PostgreSQL (pgvector)</td>
+        <td>Relational + Vector</td>
+        <td>Yes</td>
+        <td>Low–Medium</td>
+        <td>Medium</td>
+        <td>Good</td>
+        <td>Small/Medium Apps</td>
+      </tr>
+      <tr>
+        <td>DynamoDB + Vector Plugin</td>
+        <td>NoSQL Hybrid</td>
+        <td>Yes</td>
+        <td>Medium</td>
+        <td>Medium</td>
+        <td>Moderate</td>
+        <td>Experimental / Custom</td>
+      </tr>
+      <tr>
+        <td>Self-Hosted (FAISS / Milvus / Qdrant)</td>
+        <td>Open Source</td>
+        <td>No</td>
+        <td>Lowest</td>
+        <td>Very High</td>
+        <td>Excellent</td>
+        <td>Full Control, Low Cost</td>
+      </tr>
+      <tr>
+        <td>Pinecone (AWS Marketplace)</td>
+        <td>Managed SaaS</td>
+        <td>Yes</td>
+        <td>High</td>
+        <td>Very High</td>
+        <td>Excellent</td>
+        <td>Zero Ops, Enterprise</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="aws-vector-db-guide">
+
+  <h2>Best AWS-Native Option (Recommended)</h2>
+  <h3>🥇 Amazon OpenSearch Vector Engine</h3>
+
+  <div class="features">
+    <ul>
+      <li>✅ Fully managed</li>
+      <li>✅ Integrated with AWS IAM and VPC</li>
+      <li>✅ Supports KNN / ANN vector search</li>
+      <li>✅ Best for RAG and Chatbots</li>
+    </ul>
+  </div>
+
+  <h4>Architecture</h4>
+  <div class="architecture">
+    <p>Text → Embeddings → OpenSearch (Vector Index) → RAG → LLM</p>
+  </div>
+
+  <h4>Cost</h4>
+  <div class="cost">
+    <ul>
+      <li>Small cluster: ~$20–40/month</li>
+      <li>Large scale: Based on EC2 instance size</li>
+    </ul>
+  </div>
+
+  <h4>Example Mapping (Vector Index)</h4>
+  <div class="code-block">
+    <pre>
+{
+  "mappings": {
+    "properties": {
+      "embedding": {
+        "type": "knn_vector",
+        "dimension": 384
+      },
+      "text": {
+        "type": "text"
+      }
+    }
+  }
+}
+    </pre>
+  </div>
+
+  <hr/>
+
+  <h2>Cheapest AWS Option 💰</h2>
+  <h3>🥈 Aurora PostgreSQL + pgvector</h3>
+
+  <div class="features">
+    <ul>
+      <li>✅ Simple</li>
+      <li>✅ Cheap</li>
+      <li>✅ Works well for less than 1 million vectors</li>
+      <li>❌ Not ideal for large-scale systems</li>
+    </ul>
+  </div>
+
+  <h4>Good For</h4>
+  <div class="use-cases">
+    <ul>
+      <li>Student projects</li>
+      <li>Internal tools</li>
+      <li>MVP applications</li>
+    </ul>
+  </div>
+
+  <hr/>
+
+  <h2>High-Performance (Self-Hosted on EC2)</h2>
+
+  <div class="table-section">
+    <table border="1" cellpadding="8" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Why Use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>FAISS</td>
+          <td>Fastest similarity search, GPU support</td>
+        </tr>
+        <tr>
+          <td>Milvus</td>
+          <td>Billion-scale vector storage</td>
+        </tr>
+        <tr>
+          <td>Qdrant</td>
+          <td>Best filtering and speed combination</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">
+    <p>💡 Run on EC2 + EBS for the lowest long-term cost.</p>
+  </div>
+
+  <hr/>
+
+  <h2>AWS Bedrock + Vector DB (BEST AI STACK)</h2>
+
+  <div class="architecture">
+    <p>Text</p>
+    <p>↓</p>
+    <p>Amazon Bedrock (Titan / Cohere Embeddings)</p>
+    <p>↓</p>
+    <p>OpenSearch / pgvector</p>
+    <p>↓</p>
+    <p>Claude / Llama via Bedrock</p>
+  </div>
+
+  <div class="highlight">
+    <p>🔥 This is an enterprise-grade RAG architecture.</p>
+  </div>
+
+  <hr/>
+
+  <h2>Azure Comparison (Short)</h2>
+
+  <div class="table-section">
+    <table border="1" cellpadding="8" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Azure Service</th>
+          <th>AWS Equivalent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Azure AI Search (Vector)</td>
+          <td>Amazon OpenSearch</td>
+        </tr>
+        <tr>
+          <td>Cosmos DB Vector</td>
+          <td>DynamoDB</td>
+        </tr>
+        <tr>
+          <td>Azure PostgreSQL + pgvector</td>
+          <td>Aurora PostgreSQL</td>
+        </tr>
+        <tr>
+          <td>Azure OpenAI</td>
+          <td>Amazon Bedrock</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr/>
+
+  <h2>My Recommendation for You (DevOps + Cloud)</h2>
+
+  <div class="recommendation">
+    <p>Since you:</p>
+    <ul>
+      <li>Use AWS</li>
+      <li>Work with Docker, EC2, and Kubernetes</li>
+      <li>Want a cost-effective and scalable solution</li>
+    </ul>
+
+    <p><strong>Start with:</strong></p>
+    <ul>
+      <li>Aurora PostgreSQL + pgvector (learning)</li>
+      <li>➡️ Move to OpenSearch Vector Engine (production)</li>
+    </ul>
+  </div>
+
+</div>
+
+
 
 </body>
 </html>
