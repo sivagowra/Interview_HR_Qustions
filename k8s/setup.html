@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KOPS Cluster Setup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #dce2f7;
+      padding: 20px;
+    }
+    h2 {
+      color: #333;
+    }
+    .chat, .terminal {
+      background: #faf7f7;
+      color: #0b0b0b;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin-bottom: 20px;
+      font-family: "Courier New", monospace;
+      font-size: 14px;
+    }
+    .chat span {
+      color: #4fc3f7;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Commands</h2>
+<h2>EC2 Terminal History</h2>
+<pre class="terminal">
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+ll -a
+vim .bashrc
+source .bashrc
+aws --version
+curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+chmod +x kops
+sudo mv kops /usr/local/bin/kops
+kops version
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+mv kubectl /usr/local/bin
+kubectl version
+aws s3 ls
+aws s3 mb s3://kops.flm.k8s
+export KOPS_STATE_STORE=s3://kops.flm.k8s
+kops create cluster --name kops.flm.k8s.local --zones us-east-1a,us-east-1b --master-size t2.medium --master-count 1 --node-size t2.micro --node-count 2
+kops update cluster --name kops.flm.k8s.local --yes --admin
+kubectl get nodes
+kops delete cluster --name kops.flm.k8s.local --yes
+</pre>
+<pre class="chat">
+<h4>Restart cluster</h4>    
+sudo su
+export KOPS_STATE_STORE=s3://kops.flm.k8s
+kops create cluster --name kops.flm.k8s.local \
+--zones us-east-1a,us-east-1b \
+--master-size t2.medium \
+--master-count 1 \
+--node-size t2.micro \
+--node-count 2
+</pre>
+</body>
+</html>
