@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Topics – API Gateway</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            line-height: 1.7;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #0d6efd;
+            border-bottom: 4px solid #0d6efd;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        h2 {
+            color: #198754;
+            border-left: 6px solid #198754;
+            padding-left: 12px;
+            margin-top: 35px;
+        }
+
+        h3 {
+            color: #6f42c1;
+            margin-top: 25px;
+        }
+
+        p {
+            background: #ffffff;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        ul {
+            background: #ffffff;
+            padding: 15px 40px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            margin: 20px auto;
+            border: 3px solid #ccc;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th {
+            background: #212529;
+            color: #ffffff;
+            padding: 12px;
+            border: 1px solid #444;
+            text-align: center;
+        }
+
+        td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .note {
+            background: #e7f1ff;
+            border-left: 6px solid #0d6efd;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        code {
+            background: #212529;
+            color: #ffffff;
+            padding: 6px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+
+<body>
+<h1>What is API Gateway?</h1>
+
+<p>
+An API Gateway is a key component in system design, particularly in microservices architectures and modern web applications.
+It serves as a centralized entry point for managing and routing requests from clients to the appropriate microservices or
+backend services within a system.
+</p>
+
+<h2>API-Gateway</h2>
+    <img src="apigateway.png" alt="API-Gateway Architecture Diagram">
+
+
+<p>An API Gateway serves as a reverse proxy between clients and backend services.</p>
+
+<p>
+After receiving incoming client requests, it manages a number of responsibilities, including rate limitation,<br> routing,
+and authentication, before forwarding the requests to the appropriate backend services.
+</p>
+
+<p>Offers a consistent interface and hiding the complexity of the underlying architecture</p>
+
+
+<h2>Working of API Gateway</h2>
+
+<p>In the above diagram:</p>
+
+<ul>
+  <li>User will send the request from mobile or web application.</li>
+  <li>API Gateway will determine which request is coming.</li>
+  <li>
+    Authentication means the user need to proof there identity to the server or client,
+    by providing there User_Id and Password. For example: Login or Signup page.
+  </li>
+  <li>
+    SSL full form Secure Socket Layer, it is used to establish an encrypted link between a server and a client.
+  </li>
+  <li>
+    It provides the ability to perform protocol translation, where incoming requests are translated from one channel to another.
+  </li>
+  <li>
+    When requests are aggregated, a request received by an API gateway will trigger requests to different endpoints,
+    and return response to the client.
+  </li>
+</ul>
+
+<p>
+The primary purpose of an API Gateway is to simplify the client's interaction with the underlying services,
+enhance security, and provide various features for managing and monitoring API traffic.
+</p>
+
+<h2>How does API Gateway work?</h2>
+
+<p>Let us see how API Gateway works:</p>
+
+<ul>
+  <li>Routing – Directs client requests to the appropriate service based on URL, method, or headers.</li>
+  <li>Protocol Translation – Converts requests between protocols (e.g., HTTP → gRPC/WebSocket).</li>
+  <li>Request Aggregation – Combines multiple backend calls into one to reduce round trips.</li>
+  <li>Authentication & Authorization – Verifies client identity and access permissions.</li>
+  <li>Rate Limiting & Throttling – Controls request rates to prevent abuse and ensure resource balance.</li>
+  <li>Load Balancing – Distributes requests across service instances for scalability and availability.</li>
+  <li>Caching – Stores backend responses to speed up repeated requests.</li>
+  <li>Monitoring & Logging – Tracks metrics and logs for performance and usage insights.</li>
+</ul>
+
+<h2>How differently API Gateway works with Microservices and Monolith Architecture?</h2>
+
+<p>
+The way an API Gateway works with microservices differs from how it works with a monolithic architecture in several key aspects:
+</p>
+
+<p><strong>Aspect</strong></p>
+<p><strong>Monolithic Architecture</strong></p>
+<p><strong>Microservices Architecture</strong></p>
+
+<h3>Request routing</h3>
+
+<p>
+In a monolithic architecture, the API Gateway typically routes requests to different parts of the monolith
+based on the request URL or other criteria
+</p>
+
+<p>
+In a microservices architecture, the API Gateway routes requests to different microservices
+based on the request URL or other criteria, acting as a kind of "front door" to the microservices ecosystem.
+</p>
+
+<h3>Service discovery</h3>
+
+<p>
+In a monolithic architecture, service discovery is not typically a concern,
+as all parts of the application are contained within the same codebase.
+</p>
+
+<p>
+In a microservices architecture, the API Gateway may need to use service discovery mechanisms
+to dynamically locate and route requests to the appropriate microservices.
+</p>
+
+<h3>Authentication and authorization</h3>
+
+<p>
+In both architectures, the API Gateway can handle authentication and authorization.
+</p>
+
+<p>
+However, in a microservices architecture, there may be more complex authorization scenarios,
+as requests may need to be authorized by multiple microservices.
+</p>
+
+<h3>Load balancing</h3>
+
+<p>
+In both architectures, the API Gateway can perform load balancing.
+</p>
+
+<p>
+However, in a microservices architecture, load balancing may be more complex,
+as requests may need to be load balanced across multiple instances of multiple microservices.
+</p>
+
+<h3>Fault tolerance</h3>
+
+<p>
+In both architectures, the API Gateway can provide fault tolerance by retrying failed requests
+and routing requests to healthy instances of services.
+</p>
+
+<p>
+However, fault tolerance may be more critical in a microservices architecture,
+where the failure of a single microservice should not bring down the entire system.
+</p>
+
+<h2>API Gateway with Microservices Example</h2>
+
+<p><strong>Example Scenario:</strong></p>
+
+<p>
+Let's consider a hypothetical e-commerce system with microservices.
+The system has services for user management, product catalog, shopping cart, and order processing.
+Clients interact with the system through a web application.
+</p>
+
+<p>API-Gateway-with-Microservices</p>
+
+<h3>Explanation of the above diagram</h3>
+
+<ul>
+  <li>The web application communicates with the API Gateway.</li>
+  <li>
+    The API Gateway routes requests to the appropriate microservices
+    (e.g., user-related requests to the Users service).
+  </li>
+  <li>It handles authentication, rate limiting, caching, and other functions.</li>
+  <li>Error responses are also standardized by the API Gateway.</li>
+</ul>
+
+<h2>API Gateway with Monolith Example</h2>
+
+<p><strong>Example Scenario:</strong></p>
+
+<p>
+Consider a traditional e-commerce monolithic application.
+The API Gateway can still serve as a central entry point and manage authentication,
+request transformation, caching, and other features.
+</p>
+
+<p>API-Gateway-with-Monolith</p>
+
+<h3>Explanation of the above the diagram</h3>
+
+<ul>
+  <li>The web application communicates with the API Gateway.</li>
+  <li>The API Gateway simplifies client interactions and provides security and caching and other features.</li>
+  <li>It also manages API versioning and error handling.</li>
+</ul>
+
+<h2>Best practices for implementing API Gateway</h2>
+
+<p>Below are the best practices for API Gateway:</p>
+
+<ul>
+  <li>
+    Security: To prevent abuse, utilize SSL/TLS for encryption,
+    implement strong authentication and authorization methods,
+    and use IP whitelisting and rate limiting.
+  </li>
+  <li>
+    Performance Optimization: Reduce latency and speed up response times
+    by utilizing caching, request/response compression, and effective routing.
+  </li>
+  <li>
+    Scalability: Design for horizontal scalability, use load balancing,
+    and monitor performance metrics to scale resources as needed.
+  </li>
+  <li>
+    Monitoring and Logging: Use monitoring tools to track performance indicators,
+    interface with logging and monitoring systems for centralized management,
+    and implement extensive logging.
+  </li>
+  <li>
+    Error Handling: Implement robust error handling mechanisms
+    and use standardized error codes and messages for consistency.
+  </li>
+  <li>
+    Versioning and Documentation: Maintain backward compatibility
+    and manage changes with versioning.
+    Also, keep documentation updated so developers can learn how to use the API.
+  </li>
+</ul>
+
+<h2>Benefits of using an API Gateway</h2>
+
+<ul>
+  <li>Centralized Entry Point – Clients interact with a single gateway to access multiple microservices.</li>
+  <li>Routing & Load Balancing – Directs requests to the appropriate service and distributes load across instances.</li>
+  <li>Authentication & Authorization – Verifies identity and enforces access control using JWTs, OAuth, or API keys.</li>
+  <li>Request & Response Transformation – Converts data formats (e.g., JSON ↔ XML) for compatibility between services.</li>
+</ul>
+
+<h2>Challenges of using an API Gateway</h2>
+
+<p>
+API Gateways can introduce several challenges, especially in complex environments or when not properly configured.
+Some common challenges include:
+</p>
+
+<ul>
+  <li>
+    Performance bottlenecks: When managing a high volume of requests,
+    API gateways may become a performance bottleneck or a single point of failure.
+    To make sure they can support the load, careful configuration and design are needed.
+  </li>
+  <li>
+    Increased latency: Requests may experience increased latency if an API gateway is introduced,
+    particularly if complicated routing, authentication, or other processes must be carried out.
+    This problem can be reduced by using caching and optimizing the Gateway's configuration.
+  </li>
+  <li>
+    Complexity: Managing and configuring an API Gateway can be complex,
+    especially in environments with a large number of services and endpoints.
+    Proper documentation and automation tools can help reduce this complexity.
+  </li>
+  <li>
+    Security risks: Security flaws including incorrect permission, authentication,
+    or the disclosure of private data can be brought about by improperly designed API gateways.
+    To reduce these threats, regular security assessments and updates are crucial.
+  </li>
+  <li>
+    Scalability challenges: It can be difficult to scale an API gateway,
+    particularly in dynamic environments with varying demand.
+    To guarantee scalability, load balancing and horizontal scaling techniques are important.
+  </li>
+</ul>
+
+<h2>Popular API Gateway Solution</h2>
+
+<p>Below are some API Gateway Solution:</p>
+
+<h3>1. Amazon API Gateway</h3>
+<p>
+It is a fully managed service that makes it easy for developers to create,
+publish, maintain, monitor, and secure APIs at any scale.
+It supports RESTful APIs as well as WebSocket APIs for real-time communication.
+</p>
+
+<h3>2. Apigee</h3>
+<p>
+It now part of Google Cloud, is a platform that enables organizations to design,
+secure, deploy, monitor, and scale APIs.
+It offers features like API analytics, API monetization, and developer portal management.
+</p>
+
+<h3>3. Kong</h3>
+<p>
+It is an open-source API Gateway and microservices management layer.
+It is built on top of Nginx and provides features like request routing,
+authentication, rate limiting, and logging.
+</p>
+
+<h3>4. Microsoft Azure API Management</h3>
+<p>
+It is a fully managed service that helps organizations publish, secure, and manage APIs.
+It offers features like API gateway functionality, developer portal management, and API versioning.
+</p>
+
+<h3>5. Apache APISIX</h3>
+<p>
+Apache APISIX is a top-level project of the Apache Software Foundation,
+with 15K+ stars on GitHub and over 460 contributors.
+Known for its high performance, cloud-native architecture,
+and rich plugin ecosystem, APISIX has become one of the leading API gateways.
+</p>
+
+<h1>EC2 Instance Types vs Docker Container Capacity</h1>
+
+<div class="note">
+    <strong>Note:</strong> The container counts are approximate values assuming Linux OS, 
+    lightweight containers, and proper CPU & memory limits.
+</div>
+
+<h2>General Purpose Instances</h2>
+<table>
+    <tr>
+        <th>Instance Type</th>
+        <th>vCPU</th>
+        <th>RAM</th>
+        <th>Approx Containers</th>
+    </tr>
+    <tr>
+        <td>t2.micro</td>
+        <td>1</td>
+        <td>1 GB</td>
+        <td>5 – 8</td>
+    </tr>
+    <tr>
+        <td>t2.small</td>
+        <td>1</td>
+        <td>2 GB</td>
+        <td>10 – 15</td>
+    </tr>
+    <tr>
+        <td>t2.medium</td>
+        <td>2</td>
+        <td>4 GB</td>
+        <td>20 – 30</td>
+    </tr>
+    <tr>
+        <td>t3.micro</td>
+        <td>2</td>
+        <td>1 GB</td>
+        <td>8 – 12</td>
+    </tr>
+    <tr>
+        <td>t3.small</td>
+        <td>2</td>
+        <td>2 GB</td>
+        <td>15 – 25</td>
+    </tr>
+    <tr>
+        <td>t3.medium</td>
+        <td>2</td>
+        <td>4 GB</td>
+        <td>25 – 40</td>
+    </tr>
+    <tr>
+        <td>t3.large</td>
+        <td>2</td>
+        <td>8 GB</td>
+        <td>50 – 80</td>
+    </tr>
+</table>
+
+<h2>Compute Optimized Instances</h2>
+<table>
+    <tr>
+        <th>Instance Type</th>
+        <th>vCPU</th>
+        <th>RAM</th>
+        <th>Approx Containers</th>
+    </tr>
+    <tr>
+        <td>c5.large</td>
+        <td>2</td>
+        <td>4 GB</td>
+        <td>25 – 35</td>
+    </tr>
+    <tr>
+        <td>c5.xlarge</td>
+        <td>4</td>
+        <td>8 GB</td>
+        <td>50 – 80</td>
+    </tr>
+    <tr>
+        <td>c5.2xlarge</td>
+        <td>8</td>
+        <td>16 GB</td>
+        <td>100 – 150</td>
+    </tr>
+</table>
+
+<h2>Memory Optimized Instances</h2>
+<table>
+    <tr>
+        <th>Instance Type</th>
+        <th>vCPU</th>
+        <th>RAM</th>
+        <th>Approx Containers</th>
+    </tr>
+    <tr>
+        <td>r5.large</td>
+        <td>2</td>
+        <td>16 GB</td>
+        <td>60 – 90</td>
+    </tr>
+    <tr>
+        <td>r5.xlarge</td>
+        <td>4</td>
+        <td>32 GB</td>
+        <td>120 – 180</td>
+    </tr>
+    <tr>
+        <td>r5.2xlarge</td>
+        <td>8</td>
+        <td>64 GB</td>
+        <td>250 – 350</td>
+    </tr>
+</table>
+
+<h2>Container Type Impact</h2>
+<table>
+    <tr>
+        <th>Container Type</th>
+        <th>Average Memory</th>
+        <th>Container Count Impact</th>
+    </tr>
+    <tr>
+        <td>Nginx / Alpine</td>
+        <td>~50 MB</td>
+        <td>High</td>
+    </tr>
+    <tr>
+        <td>Node / Python</td>
+        <td>~150 MB</td>
+        <td>Medium</td>
+    </tr>
+    <tr>
+        <td>Java / Spring Boot</td>
+        <td>500 MB – 1 GB</td>
+        <td>Low</td>
+    </tr>
+    <tr>
+        <td>MySQL / MongoDB</td>
+        <td>1 – 2 GB</td>
+        <td>Very Low</td>
+    </tr>
+</table>
+
+<h2>Best Practice Formula</h2>
+<div class="note">
+    <code>Available RAM / Avg Container RAM = Max Containers</code><br><br>
+    Example: <br>
+    <code>8 GB / 200 MB ≈ 40 containers</code>
+</div>
+
+</body>
+</html>

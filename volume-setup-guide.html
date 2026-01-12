@@ -1,74 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>AWS EC2 Volume Partition & Mount Guide</title>
-<meta charset="UTF-8">
+    <title>AWS EC2 Volume Partition & Mount Guide</title>
+    <meta charset="UTF-8">
 
-<!-- Full-screen styling applied (content not modified) -->
-<style>
-    body {
-        font-family: "Segoe UI", Arial, sans-serif;
-        line-height: 1.7;
-        padding: 30px;
-        background: #fafafa;
-        color: #222;
-        width: 100%;
-        margin: 0;
-    }
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            line-height: 1.7;
+            padding: 30px;
+            background: #fafafa;
+            color: #222;
+            margin: 0;
+        }
 
-    h1, h2, h3 {
-        font-weight: 600;
-        margin-top: 30px;
-        color: #0a3d62;
-    }
+        h1, h2, h3 {
+            font-weight: 600;
+            margin-top: 30px;
+            color: #0a3d62;
+        }
 
-    h1 {
-        margin-bottom: 20px;
-        font-size: 32px;
-        text-align: left;
-    }
+        h1 {
+            font-size: 32px;
+        }
 
-    pre {
-        background: #f0f0f0;
-        padding: 16px;
-        border-left: 5px solid #0a3d62;
-        border-radius: 6px;
-        font-size: 15px;
-        overflow-x: auto;
-        white-space: pre-wrap;
-    }
+        pre {
+            background: #f0f0f0;
+            padding: 16px;
+            border-left: 5px solid #0a3d62;
+            border-radius: 6px;
+            font-size: 15px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
 
-    code {
-        background: #f0f0f0;
-        padding: 3px 6px;
-        border-radius: 4px;
-        font-size: 15px;
-    }
+        code {
+            background: #f0f0f0;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
 
-    ul {
-        background: #f0f0f0;
-        padding: 12px 18px;
-        border-radius: 6px;
-        border-left: 5px solid #0a3d62;
-        list-style: square;
-    }
+        ul {
+            background: #f0f0f0;
+            padding: 12px 18px;
+            border-radius: 6px;
+            border-left: 5px solid #0a3d62;
+            list-style: square;
+        }
 
-    p {
-        margin: 12px 0;
-        font-size: 16px;
-    }
+        p {
+            font-size: 16px;
+        }
 
-    div {
-        background: #ffffff;
-        padding: 20px;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        margin-top: 25px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        width: 100%;
-    }
-</style>
+        div {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-top: 25px;
+        }
+
+        .note {
+            background: #e8f4ff;
+            border-left: 6px solid #0d6efd;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        .success {
+            background: #e6fffa;
+            border-left: 6px solid #198754;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
+
 <body>
 
 <h1>EC2 Ubuntu — Volume Partition, Format & Mount Guide</h1>
@@ -76,8 +85,7 @@
 <h2>1. Create Partition on /dev/xvdf</h2>
 <pre>
 sudo fdisk /dev/xvdf
-
-Command (m for help): n
+n
 p
 1
 &lt;enter&gt;
@@ -93,300 +101,119 @@ sudo mount /dev/xvdf1 /mnt/vol1
 </pre>
 
 <h2>3. Check Mounted Volumes</h2>
-<pre>
-df -h
-</pre>
+<pre>df -h</pre>
 
 <div>
-
-<h3>✅ PART 1 — How to UNMOUNT & DETACH VOLUME (OLD INSTANCE)</h3>
-
-<p><strong>1️⃣ Unmount the volume</strong></p>
-<p>If your volume is mounted at <code>/mnt/vol1</code>:</p>
+<h3>PART 1 — How to UNMOUNT & DETACH VOLUME</h3>
 
 <pre>sudo umount /mnt/vol1</pre>
-
-<p><strong>2️⃣ Confirm unmount</strong></p>
 <pre>df -h</pre>
 
-<p>The volume should NOT appear in the output.</p>
-
-<p><strong>3️⃣ Detach from EC2</strong></p>
-<p>Go to <strong>AWS Console → EC2 → Volumes → Select Volume → Actions → Detach Volume</strong></p>
-
-<p>Wait until the state becomes <strong>available</strong>.</p>
-
+<p>AWS Console → EC2 → Volumes → Detach Volume</p>
 </div>
 
-<h2>✔️ STEP 1 — Attach the Volume to the New EC2 Instance (RedHat)</h2>
-<p>In <strong>AWS Console → EC2 → Volumes</strong>:</p>
+<h2>Attach Volume to New Instance</h2>
 <ul>
-  <li>Select your volume</li>
-  <li>Click <strong>Actions → Attach volume</strong></li>
-  <li>Choose the new EC2 instance</li>
-  <li>Set device name: <code>/dev/sdf</code></li>
+    <li>Attach volume as <code>/dev/sdf</code></li>
+    <li>Linux detects as <code>/dev/xvdf</code></li>
 </ul>
 
-<p>Linux will detect it as:</p>
-<pre>/dev/xvdf</pre>
-
-<h2>✔️ STEP 2 — Check Attached Disks</h2>
-<p>Run this on the new EC2 instance:</p>
 <pre>lsblk</pre>
 
-<p>You should see output similar to:</p>
 <pre>
-xvdf    202:80   0   10G  0 disk
-└─xvdf1 202:81   0   10G  0 part
+xvdf
+└─xvdf1
 </pre>
 
-<p>Your actual data is inside <strong>xvdf1</strong> (not xvdf).</p>
+<h2>Mount Existing Partition</h2>
+<pre>
+sudo mkdir -p /mnt/vol1
+sudo mount /dev/xvdf1 /mnt/vol1
+</pre>
 
-<h2>✔️ STEP 3 — Create a Mount Point</h2>
-<p>Use the same folder:</p>
-<pre>sudo mkdir -p /mnt/vol1</pre>
-
-<h2>✔️ STEP 4 — Mount the Partition (IMPORTANT)</h2>
-<p>Mount the partition:</p>
-<pre>sudo mount /dev/xvdf1 /mnt/vol1</pre>
-
-<p><strong>⚠️ Do NOT mount <code>/dev/xvdf</code></strong> — it contains no file system.  
-Always use <strong><code>/dev/xvdf1</code></strong> (the partition).</p>
-
-<h2>✔️ STEP 5 — Check Your Data</h2>
-<p>Run:</p>
+<h2>Verify Data</h2>
 <pre>ls /mnt/vol1</pre>
 
-<h2>6. Check Mounted Volumes</h2>
+<h2>Make EBS Volume Permanent</h2>
+
+<h2>OR</h2>
+<h2>Auto Mount /dev/xvdp1 & /dev/xvdp2 on Reboot</h2>
+
+<pre>sudo blkid</pre>
+
 <pre>
-df -h
+/dev/xvdp1 UUID="UUID-1"
+/dev/xvdp2 UUID="UUID-2"
 </pre>
 
-<p><strong>Now both volumes /mnt/vol1 and /mnt/vol2 are ready for storing data.</strong></p>
-
-
-<!-- ⭐ NEW SECTION ADDED BELOW ⭐ -->
-<h2>✔️ EBS Volume is Permanently Mounted</h2>
-    
-
-<p>After adding the entry in <code>/etc/fstab</code> and running the commands:</p>
-    <h1>or</h1>
-    <h1>Make <code>/dev/xvdp1</code> and <code>/dev/xvdp2</code> Mount Automatically on Reboot</h1>
-
-  <p>This short guide converts your instructions into an easy-to-read HTML format. Follow the steps below on your EC2 instance.</p>
-
-  <h2>Step 1 — Get UUIDs</h2>
-  <p>Run:</p>
-  <pre><code>sudo blkid</code></pre>
-  <p>Example output:</p>
-  <pre><code>/dev/xvdp2: UUID="4a851adb-d88f-430a-b6a5-a817f4e76d1b" TYPE="ext4"
-/dev/xvdp1: UUID="d9a2a857-9c6c-4c00-a97c-bcccbc700d49" TYPE="ext4"</code></pre>
-
-  <h2>Step 2 — Open <code>/etc/fstab</code></h2>
-  <p>Use your favourite editor (example uses <code>nano</code>):</p>
-  <pre><code>sudo nano /etc/fstab</code></pre>
-
-  <h2>Step 3 — Add fstab lines</h2>
-  <p>Paste these two lines at the bottom of <code>/etc/fstab</code>. Replace <strong>UUID</strong> values if different.</p>
-  <pre><code>UUID=d9a2a857-9c6c-4c00-a97c-bcccbc700d49   /mnt/vol2   ext4   defaults,nofail   0  0
-UUID=4a851adb-d88f-430a-b6a5-a817f4e76d1b   /mnt/vol3   ext4   defaults,nofail   0  0</code></pre>
-
-  <div class="note">
-    <strong>If filesystem is XFS:</strong>
-    <pre><code>UUID=d9a2a857-9c6c-4c00-a97c-bcccbc700d49   /mnt/vol2   xfs   defaults,nofail   0  0
-UUID=4a851adb-d88f-430a-b6a5-a817f4e76d1b   /mnt/vol3   xfs   defaults,nofail   0  0</code></pre>
-  </div>
-
-  <h2>Step 4 — Test the fstab (IMPORTANT)</h2>
-  <p>Run this before rebooting to ensure there are no errors:</p>
-  <pre><code>sudo mount -a</code></pre>
-  <p>If this command finishes without errors, your fstab lines are valid.</p>
-
-  <h2>Step 5 — Reboot and verify</h2>
-  <pre><code>sudo reboot
-
-# After the instance boots, verify:
-df -h</code></pre>
-  <div class="success">
-    <strong>Expected result:</strong>
-    <pre><code>/dev/xvdp1   /mnt/vol2
-/dev/xvdp2   /mnt/vol3</code></pre>
-  </div>
-
-  <h2>Notes & Tips</h2>
-  <ul>
-    <li>Use <code>nofail</code> so the instance still boots if the volume is detached.</li>
-    <li>If <code>/etc/fstab</code> is not writable because <code>/</code> is read-only, remount it first:
-      <pre class="cmd"><code>sudo mount -o remount,rw /</code></pre>
-    </li>
-    <li>Always run <code>sudo mount -a</code> after editing <code>/etc/fstab</code> to validate your entries.</li>
-  </ul>
-
-  <hr />
+<pre>
+sudo nano /etc/fstab
+</pre>
 
 <pre>
-sudo systemctl daemon-reload
+UUID=UUID-1 /mnt/vol2 ext4 defaults,nofail 0 0
+UUID=UUID-2 /mnt/vol3 ext4 defaults,nofail 0 0
+</pre>
+
+<div class="note">
+<strong>XFS Filesystem:</strong>
+<pre>
+UUID=UUID-1 /mnt/vol2 xfs defaults,nofail 0 0
+UUID=UUID-2 /mnt/vol3 xfs defaults,nofail 0 0
+</pre>
+</div>
+
+<pre>
 sudo mount -a
+sudo reboot
 </pre>
 
-<p>Your EBS volume will mount automatically every time the instance starts.  
-To verify, reboot the instance:</p>
-
-<pre>sudo reboot</pre>
-
-<p>After reboot, check:</p>
-
+<div class="success">
+<strong>After reboot:</strong>
 <pre>df -h</pre>
+</div>
 
-<p><strong>If /mnt/vol1 is listed → Your EBS volume is permanently mounted.</strong></p>
-<div>
+<h2>Create New EBS Volume with 2 Partitions</h2>
 
-<h2>FULL COMMANDS — Create New EBS Volume With 2 Partitions</h2>
-
-<h3>STEP 1 — Attach New EBS Volume to EC2</h3>
-<ul>
-  <li>Go to AWS Console → EC2 → Volumes</li>
-  <li>Create Volume (example: 2 GB)</li>
-  <li>Attach to instance as <code>/dev/sdf</code></li>
-</ul>
-
-<p>Linux will show it as:</p>
-<pre>/dev/xvdp</pre>
-
-<hr>
-
-<h3>STEP 2 — Create 2 partitions on /dev/xvdp</h3>
 <pre>
 sudo fdisk /dev/xvdp
-
-# Inside fdisk:
-d            ← (only if old partitions exist)
 n
 p
 1
-&lt;enter&gt;
-+1G         ← First partition size = 1 GB
-
++1G
 n
 p
 2
-&lt;enter&gt;
-&lt;enter&gt;     ← Use remaining space for partition 2
-
-w            ← Write changes & exit
+w
 </pre>
 
-<hr>
-
-<h3>STEP 3 — Verify partitions</h3>
-<pre>
-lsblk
-</pre>
-
-Expected output:
-<pre>
-xvdp
- ├─xvdp1   1G
- └─xvdp2   1G
-</pre>
-
-<hr>
-
-<h3>STEP 4 — Format the partitions (ext4)</h3>
 <pre>
 sudo mkfs.ext4 /dev/xvdp1
 sudo mkfs.ext4 /dev/xvdp2
 </pre>
 
-<hr>
-
-<h3>STEP 5 — Create mount folders</h3>
 <pre>
-sudo mkdir -p /mnt/vol2
-sudo mkdir -p /mnt/vol3
-</pre>
-
-<hr>
-
-<h3>STEP 6 — Mount both partitions</h3>
-<pre>
+sudo mkdir -p /mnt/vol2 /mnt/vol3
 sudo mount /dev/xvdp1 /mnt/vol2
 sudo mount /dev/xvdp2 /mnt/vol3
 </pre>
 
-<hr>
+<pre>df -h</pre>
 
-<h3>STEP 7 — Check mounts</h3>
+<h2>Unmount Error Fix (target is busy)</h2>
+
 <pre>
-df -h
-lsblk
-</pre>
-
-<hr>
-
-<h3>STEP 8 — Make permanent using /etc/fstab</h3>
-<p>Get UUIDs:</p>
-<pre>
-sudo blkid /dev/xvdp1
-sudo blkid /dev/xvdp2
-</pre>
-
-<p>Then edit fstab:</p>
-<pre>
-sudo vi /etc/fstab
-</pre>
-
-<p>Add the following lines (replace YOUR-UUID-1 / YOUR-UUID-2):</p>
-<pre>
-UUID=YOUR-UUID-1   /mnt/vol2   ext4   defaults,nofail   0  2
-UUID=YOUR-UUID-2   /mnt/vol3   ext4   defaults,nofail   0  2
-</pre>
-
-<p>Reload systemd and test:</p>
-<pre>
-sudo systemctl daemon-reload
-sudo mount -a
-</pre>
-
-<p>If no errors → Reboot:</p>
-<pre>
-sudo reboot
-</pre>
-
-<h3>🎉 Done — Your EBS volume now has 2 partitions mounted permanently.</h3>
-
-</div>
-
-<div style="background:#ffffff; padding:20px; font-family:Arial, sans-serif; line-height:1.6;">
-
-  <h2>Unmount Error Fix (target is busy)</h2>
-  <p>You are getting the “target is busy” error because some process is using the mount point. Use the steps below:</p>
-
-  <h3>Step 1 — Find the process using /mnt/vol1</h3>
-  <pre><code>sudo lsof +f -- /mnt/vol1
+sudo lsof +f -- /mnt/vol1
 sudo fuser -m /mnt/vol1
-</code></pre>
-
-  <h3>Step 2 — Kill the blocking processes</h3>
-  <pre><code>sudo kill -9 &lt;PID&gt;
 sudo fuser -k /mnt/vol1
-</code></pre>
+sudo umount /mnt/vol1
+</pre>
 
-  <h3>Step 3 — Unmount safely</h3>
-  <pre><code>sudo umount /mnt/vol1
-</code></pre>
+<h3>Lazy Unmount</h3>
+<pre>sudo umount -l /mnt/vol1</pre>
 
-  <h3>Lazy Unmount (safe)</h3>
-  <pre><code>sudo umount -l /mnt/vol1
-</code></pre>
-
-  <h3>Force Unmount (not recommended)</h3>
-  <pre><code>sudo umount -f /mnt/vol1
-</code></pre>
-
-  <p><strong>Best Order:</strong> lsof → kill → umount → lazy → force (last option)</p>
-
-</div>
+<h3>Force Unmount (Last Option)</h3>
+<pre>sudo umount -f /mnt/vol1</pre>
 
 </body>
 </html>
