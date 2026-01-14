@@ -736,85 +736,495 @@
         the CDN delivers the content from the nearest server instead of a far-away main server. This reduces loading time and improves website speed. Amazon CloudFront is AWS’s CDN service that delivers content securely with low latency and high performance.
         CloudFront works with services like S3, EC2, and Load Balancer to distribute content globally. Overall, CDN and CloudFront improve performance, reliability, and user experience.
     </p>
-    <h4>1.  Elastic Compute Cloud (EC2)</h4>
+   
 
-    <p>Amazon EC2 is a virtual server service that allows you to run applications in the cloud. You can choose different operating systems like Linux or Windows and select the size of your server depending on your needs. EC2 gives flexibility to start, stop,
-        or resize instances at any time, and you only pay for what you use. Storage can be attached using EBS, and networking is secured with security groups. It supports Auto Scaling and Load Balancing to handle traffic changes. Custom machine images
-        (AMIs) can be created for faster deployments. EC2 is widely used for hosting applications, websites, and backend services.</p>
+  <div class="rds-content">
+<p>Amazon Relational Database Service (RDS</p>
+  <p>
+    Amazon Relational Database Service (RDS) is a fully managed web service that makes it easy to
+    set up, operate, and scale a relational database in the cloud. It provides cost-efficient,
+    resizable capacity for an industry-standard relational database and manages common database
+    administration tasks.
+  </p>
 
-    <h4>2. Simple Storage Service (S3)</h4>
+  <p>
+    Instead of buying servers, installing the OS, and managing database software manually,
+    RDS automates the heavy lifting provisioning, patching, backup, recovery, failure detection,
+    and repair.
+  </p>
 
-    <p>Amazon S3 is an object storage service that allows you to store unlimited amounts of data in buckets. It is highly durable with eleven nines (99.999999999%) of data protection, making it reliable for critical files. S3 supports versioning, so you
-        can keep older versions of files, and lifecycle rules to automatically move or delete data. Files stored in S3 can be accessed via URLs and can also be encrypted for security. It is commonly used for storing backups, logs, images, and videos,
-        and it can even host static websites. S3 integrates well with CloudFront for global content delivery.</p>
+  <h3>Supported Database Engines</h3>
+  <p>RDS supports six popular database engines:</p>
 
-    <h4>3. Identity and Access Management (IAM)</h4>
+  <div class="db-engines">
+    <p>Amazon Aurora (AWS-built, high performance)</p>
+    <p>PostgreSQL</p>
+    <p>MySQL</p>
+    <p>MariaDB</p>
+    <p>Oracle Database</p>
+    <p>Microsoft SQL Server</p>
+  </div>
 
-    <p>AWS IAM helps you manage who can access AWS services and resources. With IAM, you can create users, groups, and roles, and then attach policies to give them specific permissions. Multi-Factor Authentication (MFA) can be added for better security.
-        Instead of using the root account, it is always recommended to create IAM users with least privilege access. IAM is free and works with all AWS services. It also supports federated access, meaning you can integrate external login systems like
-        Active Directory or Google. IAM plays a key role in securing your AWS environment.</p>
+  <h3>Amazon RDS</h3>
+  <h3>Core Architecture: Multi-AZ vs. Read Replicas</h3>
 
-    <h4>4. Elastic Load Balancer (ELB)</h4>
+  <p>
+    One of the most critical concepts in RDS is the difference between High Availability (Multi-AZ)
+    and Scalability (Read Replicas).
+  </p>
 
-    <p>Elastic Load Balancer automatically distributes incoming traffic across multiple EC2 instances. This improves both availability and fault tolerance. AWS offers three types of load balancers: Application Load Balancer for Layer 7 traffic (HTTP/HTTPS),
-        Network Load Balancer for high-performance Layer 4 traffic (TCP/UDP), and Classic Load Balancer, which is the older version. ELB performs health checks to ensure traffic only goes to healthy servers. It supports SSL/TLS for secure connections,
-        sticky sessions for user consistency, and integrates with Auto Scaling to handle traffic spikes.</p>
+  <div class="multi-az">
 
-    <h4> 5. Elastic Beanstalk</h4>
+    <h4>1. Multi-AZ Deployment (High Availability)</h4>
+    <p><strong>Purpose:</strong> Disaster Recovery (DR) and High Availability.</p>
+    <p>
+      <strong>How it works:</strong> RDS automatically provisions a Standby Replica in a different
+      Availability Zone (AZ). Data is synchronously replicated to the standby.
+    </p>
+    <p>
+      <strong>Failover:</strong> If the primary DB fails, RDS automatically fails over to the
+      standby. The endpoint remains the same, so your application doesn't need configuration
+      changes.
+    </p>
+    <p>
+      <strong>Access:</strong> The standby cannot be used for read or write traffic. It is idle
+      until a failure occurs.
+    </p>
 
-    <p>Elastic Beanstalk is a Platform as a Service (PaaS) that makes it easy to deploy and manage applications without worrying about infrastructure. Developers just upload their code, and Beanstalk automatically handles EC2, load balancers, Auto Scaling,
-        and RDS if required. It supports multiple programming languages such as Java, Python, PHP, and Node.js. Beanstalk provides monitoring via CloudWatch and makes deployments easier with blue/green strategies. It is widely used for quick application
-        hosting where developers want to focus only on code, not on servers.</p>
+  </div>
 
-    <h4> 6. Auto Scaling Group (ASG)</h4>
+  <div class="read-replicas">
 
-    <p>Auto Scaling Groups ensure that the right number of EC2 instances are running at any time. They automatically add instances when demand increases and remove them when demand decreases, saving costs. ASGs improve availability by replacing unhealthy
-        instances and maintaining minimum numbers of servers. You can define scaling policies based on CPU usage, memory, or custom CloudWatch metrics. They work closely with load balancers to distribute traffic and provide a reliable, cost-efficient
-        infrastructure setup.</p>
+    <h4>2. Read Replicas (Scalability)</h4>
+    <p><strong>Purpose:</strong> Improve performance by offloading read traffic.</p>
+    <p>
+      <strong>How it works:</strong> You create a read-only copy of your database. Data is
+      asynchronously replicated from the primary.
+    </p>
+    <p>
+      <strong>Access:</strong> You can connect to a Read Replica to run queries (e.g., analytics,
+      reporting) to reduce the load on the primary DB.
+    </p>
+    <p>
+      <strong>Promotion:</strong> A Read Replica can be promoted to a standalone database if
+      needed.
+    </p>
 
-    <h4> 7. Elastic Block Storage (EBS)</h4>
+  </div>
 
-    <p>Amazon EBS provides block-level storage volumes that can be attached to EC2 instances. It acts like a hard drive in the cloud and stores data persistently, even if the EC2 instance is stopped. Different volume types are available such as SSDs for
-        performance and HDDs for cost-efficient storage. You can resize volumes, take snapshots for backup, and enable encryption for data security. EBS is commonly used for operating systems, databases, and any workload that requires fast, persistent
-        storage.</p>
+  <h3>The Shared Responsibility Model for RDS</h3>
+  <p>
+    Security and management in RDS are a partnership between you and AWS.
+  </p>
 
-    <h4> 8. Virtual Private Cloud (VPC)</h4>
+  <div class="aws-responsibility">
 
-    <p>Amazon VPC allows you to create a private network within AWS. You can define subnets as public or private, attach Internet Gateways for public access, and use NAT Gateways for controlled internet access from private subnets. Security is managed using
-        Security Groups and Network ACLs. Route tables define how traffic flows inside the VPC. You can also connect your VPC to on-premises networks using VPN or Direct Connect. Each AWS account comes with a default VPC, but you can create custom VPCs
-        for better security and control.</p>
+    <h4>AWS Responsibility (Security OF the Cloud):</h4>
+    <p>Physical security of data centers.</p>
+    <p>Managing the underlying host infrastructure (EC2, EBS).</p>
+    <p>Patching the OS and the database software engine.</p>
+    <p>Automated backups and snapshots.</p>
 
-    <h4> 9. Amazon Machine Images (AMI)</h4>
+  </div>
 
-    <p>An Amazon Machine Image is a template used to create EC2 instances. An AMI contains the operating system, application server, and custom software if needed. AWS provides public AMIs, but you can also create your own for standardizing deployments.
-        AMIs can be copied between regions and shared with other accounts. The main benefit of AMIs is faster and consistent server launches. They are essential when deploying multiple servers with the same configuration.</p>
+  <div class="customer-responsibility">
 
-    <h4> 10. Simple Notification Service (SNS)</h4>
+    <h4>Customer Responsibility (Security IN the Cloud):</h4>
+    <p>Data: Managing the actual data inside the database.</p>
+    <p>Encryption: Enabling encryption at rest (KMS) and in transit (SSL).</p>
+    <p>
+      Network: Configuring Security Groups (firewalls) to restrict access
+      (e.g., only allow traffic from your App Server on port 3306).
+    </p>
+    <p>IAM: Managing who can access the RDS service API.</p>
+    <p>
+      Database Users: Creating and managing database users and permissions within the DB
+      engine itself.
+    </p>
 
-    <p>Amazon SNS is a messaging service that uses a publish/subscribe model. Applications or users can publish messages to a topic, and subscribers such as email, SMS, SQS, or Lambda functions receive those messages. SNS is scalable, reliable, and cost-effective.
-        It is widely used for sending alerts, notifications, and automated messages. For example, CloudWatch alarms can use SNS to notify admins about system issues. SNS ensures fast and reliable message delivery across applications.</p>
+  </div>
 
-    <h4> 11. AWS CodePipeline</h4>
+  <h3>Advanced Features</h3>
 
-    <p>AWS CodePipeline is a continuous integration and continuous delivery (CI/CD) service. It automates the process of building, testing, and deploying applications. A pipeline consists of stages such as source, build, test, and deploy. CodePipeline integrates
-        with AWS services like CodeCommit, CodeBuild, CodeDeploy, and third-party tools like GitHub and Jenkins. It also supports manual approvals for production releases. CodePipeline helps organizations deliver software quickly and reliably, following
-        DevOps practices.</p>
+  <div class="advanced-features">
 
-    <h4> 12. Relational Database Service (RDS)</h4>
+    <h4>1. RDS Proxy</h4>
+    <p>
+      Many modern applications (especially serverless apps using Lambda) open thousands of
+      database connections, which can crash a traditional database.
+    </p>
+    <p>
+      <strong>Solution:</strong> RDS Proxy sits between your app and the database. It pools and
+      shares established connections, making your database more efficient and resilient to
+      connection surges.
+    </p>
 
-    <p>Amazon RDS is a managed database service that supports popular engines like MySQL, PostgreSQL, Oracle, SQL Server, and MariaDB. AWS handles backups, patching, and updates, reducing admin work. RDS provides high availability with Multi-AZ deployments
-        and scaling with read replicas. Databases can be encrypted, monitored with CloudWatch, and integrated with IAM for security. It is commonly used for web and enterprise applications needing relational databases without manual maintenance.</p>
+    <h4>2. Blue/Green Deployments</h4>
+    <p>
+      Updating a database schema or engine version can be risky.
+    </p>
+    <p>
+      <strong>Solution:</strong> RDS Blue/Green Deployments create a staging environment (Green)
+      that mirrors your production environment (Blue). You can upgrade and test the Green
+      environment safely. When ready, you switch over traffic in typically under a minute with
+      no data loss.
+    </p>
 
-    <h4> 13. CloudWatch</h4>
+    <h4>3. Storage Auto-Scaling</h4>
+    <p>
+      You don't need to over-provision storage "just in case." RDS can automatically detect
+      when you are running out of free space and increase your storage volume size on the fly
+      with zero downtime.
+    </p>
 
-    <p>Amazon CloudWatch is a monitoring and observability service for AWS resources and applications. It collects metrics such as CPU usage, memory, and disk I/O, as well as logs from applications. You can create alarms to notify or trigger actions when
-        thresholds are crossed. CloudWatch integrates with SNS for alerts and with Auto Scaling for automated adjustments. It also provides dashboards for visualization. CloudWatch is essential for monitoring system health and performance in AWS.</p>
+  </div>
+  <div class="cloudtrail-content">
 
-    <h4> 14. Route 53</h4>
+  <p>
+    AWS With the help of a tool called Cloud Trail, offered by Amazon Web Services (AWS),
+    you can keep track of and document activities that take place inside your AWS infrastructure.
+    It gives you a thorough event history of every activity users, services, and resources took
+    while using your AWS account. By recording and archiving event logs, Cloud Trail assists
+    with security, compliance, operational auditing, and troubleshooting.
+  </p>
 
-    <p>Amazon Route 53 is a scalable Domain Name System (DNS) service. It can register domain names, route internet traffic to applications, and check the health of resources. Route 53 supports routing policies like weighted, latency-based, failover, and
-        geolocation routing. It integrates with other AWS services like S3, ELB, and CloudFront. Route 53 is highly available, secure, and widely used for managing website traffic globally.</p>
-    <div style="font-family: Arial; line-height:1.5; color:#111;">
+  <p>
+    When you create a cloud trail, it is already operational in your AWS account and doesn't
+    need to be manually set up. A Cloud Trail event is created each time something happens
+    in your AWS account.
+  </p>
+
+  <h3>What is AWS CloudTrail?</h3>
+
+  <p>
+    AWS CloudTrail is a service that enables governance, compliance, and operational and risk
+    auditing of your AWS account. It records and logs every API call made on your AWS account,
+    capturing details such as the identity of the API caller, the time of the API call, the source
+    IP address, the request parameters, and the response elements returned by the AWS service.
+  </p>
+
+  <p>
+    This comprehensive logging allows you to track changes and activities across your AWS
+    infrastructure, helping with security analysis, resource change tracking, troubleshooting,
+    and meeting compliance requirements.
+  </p>
+
+  <h3>CloudTrail provides three ways to record events:</h3>
+
+  <div class="event-history">
+
+    <h4>Event History</h4>
+    <p>
+      Your AWS account has Cloud Trail activated by default, and you have immediate access
+      to the Cloud Trail event history.
+    </p>
+    <p>
+      A viewable, searchable, printable, and immutable record of the last 90 days' worth of
+      management events in an AWS Region is available in the Event history.
+    </p>
+    <p>
+      The AWS Management Console, AWS Command Line Interface, and AWS SDKs and APIs are all
+      used to perform the activities that these events record.
+    </p>
+    <p>
+      The AWS Region where the event occurred is documented in the Event history.
+    </p>
+    <p>
+      The Event history can be seen for free on Cloud Trail.
+    </p>
+
+  </div>
+
+  <div class="cloudtrail-lake">
+
+    <h4>Cloud Trail Lake</h4>
+    <p>
+      A managed data lake called AWS Cloud Trail Lake is used to record, store, access, and
+      analyze user and API activity on AWS for audit and security reasons.
+    </p>
+    <p>
+      Existing events in row-based json format are converted to Apache ORC format by
+      Cloud Trail Lake. A columnar storage format called ORC is designed for quick data retrieval.
+    </p>
+    <p>
+      Event data stores, which are immutable collections of events based on criteria you choose
+      by using sophisticated event selectors, aggregate events into immutable collections.
+    </p>
+    <p>
+      The event data can be kept in an event data storage for a maximum of seven years
+      (2557 days).
+    </p>
+    <p>
+      Using AWS Organizations, you may construct an event data store for a single AWS account
+      or for a number of AWS accounts.
+    </p>
+    <p>
+      Any Cloud Trail logs that you currently have can be imported into an existing or new
+      event data store from your S3 buckets.
+    </p>
+    <p>
+      With Lake dashboards, you can also see the top Cloud Trail event trends.
+      See Creating event data storage and working with AWS Cloud Trail Lake for further details.
+    </p>
+
+  </div>
+
+  <div class="trails">
+
+    <h4>Trails</h4>
+    <p>
+      In addition to delivering and storing events in an Amazon S3 bucket, Trails can also
+      deliver events to Amazon Cloud Watch Logs and the Amazon Event Bridge.
+    </p>
+    <p>
+      These occurrences can be entered into your security monitoring programs.
+    </p>
+    <p>
+      You may also search and examine your Cloud Trail logs using custom third-party programs
+      or programs like Amazon Athena.
+    </p>
+    <p>
+      Using AWS Organizations, you can
+
+
+</div>
+
+    <div class="cloudwatch-content">
+
+  <p>
+    Amazon CloudWatch is a monitoring and observability service built for DevOps engineers,
+    developers, site reliability engineers (SREs), and IT managers. It provides data and
+    actionable insights to monitor your applications, respond to system-wide performance
+    changes, optimize resource utilization, and get a unified view of operational health.
+  </p>
+
+  <h3>Core Architecture: The Three Pillars</h3>
+  <p>
+    CloudWatch is built around three fundamental data types.
+  </p>
+
+  <div class="pillars">
+
+    <h4>1. Metrics</h4>
+    <p>Numerical data points measured over time.</p>
+    <p><strong>Example:</strong> "CPU Utilization is 85% at 10:00 AM."</p>
+    <p>
+      <strong>Source:</strong> AWS services send metrics automatically (e.g., EC2, RDS, Lambda).
+      You can also send Custom Metrics from your own applications (e.g., "Number of items in cart").
+    </p>
+
+    <h4>2. Logs</h4>
+    <p>Text files containing detailed records of events.</p>
+    <p><strong>Example:</strong> An Apache access log or a Lambda function error trace.</p>
+    <p>
+      <strong>Storage:</strong> Logs are organized into Log Groups (e.g., /aws/lambda/my-function)
+      and Log Streams (individual instances).
+    </p>
+
+    <h4>3. Events (now EventBridge)</h4>
+    <p>
+      A stream of system events that describe changes in AWS resources.
+    </p>
+    <p><strong>Example:</strong> "EC2 Instance State changed from Running to Stopped."</p>
+
+  </div>
+
+  <h3>Amazon CloudWatch Features</h3>
+
+  <div class="features">
+
+    <h4>Metrics</h4>
+    <p>
+      It represents a time-ordered set of data points that are published to Amazon CloudWatch.
+    </p>
+    <p>
+      All data point is marked with a timestamp.
+    </p>
+    <p>
+      Metric is a variable that is monitored and data points are the value of that variable over time.
+    </p>
+    <p>
+      They are uniquely defined by a name, namespace, and zero or more dimensions.
+    </p>
+    <p>
+      Metric math is used to query multiple CloudWatch metrics and use math expressions to create
+      new time series based on these metrics.
+    </p>
+
+    <h4>Dimensions</h4>
+    <p>
+      A dimension is a name/value pair which uniquely identifies a metric.
+    </p>
+    <p>
+      Dimensions are the unique identifiers for a metric, so whenever you add a unique name/value
+      pair to one of the metrics, you are creating a new variation of that metric.
+    </p>
+
+    <h4>Statistics</h4>
+    <p>
+      Statistics are metric data aggregations over specified periods of time.
+    </p>
+    <p>
+      The few available statistics on CloudWatch are maximum, minimum, sum, average,
+      and sample count.
+    </p>
+
+    <h4>Alarm</h4>
+    <p>
+      It is used to automatically initiate actions on our behalf.
+    </p>
+    <p>
+      It watches a single metric over a specified time period and performs one or more specified
+      actions based on the value of the metric.
+    </p>
+    <p>
+      The estimated AWS charges can also be monitored using the alarm.
+    </p>
+
+    <h4>Percentiles</h4>
+    <p>
+      It represents the relative weightage of the data in a dataset.
+    </p>
+    <p>
+      It helps the user to get a better understanding of the distribution of metric data.
+    </p>
+
+    <h4>CloudWatch Dashboard</h4>
+    <p>
+      A user-friendly CloudWatch console is available which is used for monitoring resources
+      in a single view.
+    </p>
+    <p>
+      There is no limit on the number of CloudWatch dashboards you can create.
+    </p>
+    <p>
+      These dashboards are global and not region-specific.
+    </p>
+
+    <h4>CloudWatch Agent</h4>
+    <p>
+      It is required to be installed.
+    </p>
+    <p>
+      It collects logs and system-level metrics from EC2 instances and on-premises servers.
+    </p>
+
+    <h4>CloudWatch Events</h4>
+    <p>
+      CloudWatch events help you to create a set of rules that match with any event
+      (i.e. stopping of EC2 instance).
+    </p>
+    <p>
+      These events can be routed to one or more targets like AWS Lambda functions,
+      Amazon SNS Topics, Amazon SQS queues, and other target types.
+    </p>
+    <p>
+      CloudWatch Events observes the operational events continuously and whenever there is any
+      change in the state of the event, it performs the action by sending notifications,
+      activating lambda, etc.
+    </p>
+    <p>
+      An event indicates a change in the AWS environment. Whenever there is a change in the
+      state of AWS resources, events are generated.
+    </p>
+    <p>
+      Rules are used for matching events and routing to targets.
+    </p>
+    <p>
+      Target process events. They include Amazon EC2 instances, AWS Lambda functions, etc.
+      A target receives the events in JSON format.
+    </p>
+
+    <h4>CloudWatch Logs</h4>
+    <p>
+      Amazon CloudWatch logs enable you to store, monitor, and access files from AWS resources
+      like Amazon EC2 instances, Route53, etc.
+    </p>
+    <p>
+      It also helps you to troubleshoot your system errors and maintain the logs in highly
+      durable storage.
+    </p>
+    <p>
+      It also creates log of information about the DNS queries that Route 53 receives.
+    </p>
+
+  </div>
+
+</div>
+
+
+<div class="route53-content">
+
+  <p>
+    Amazon Route 53 is a highly available and scalable cloud Domain Name System (DNS) web service.
+    In simplest terms, it acts as the phone book of the internet, translating human-readable domain names,
+    such as www.google.com, into the numeric IP addresses (like 192.0.2.1) that computers use to connect
+    to each other.
+  </p>
+
+  <p>
+    Beyond standard DNS, Route 53 is a powerful traffic management tool that can route users to the best
+    endpoint based on latency, health, or geography.
+  </p>
+
+  <h2>aws route53</h2>
+
+  <h3>Core Concepts of Route 53</h3>
+  <p>
+    To understand Route 53, you need to know a few key terms:
+  </p>
+
+  <div class="core-concepts">
+    <p><strong>Hosted Zone:</strong> A container for records that define how you want to route traffic for a specific domain (e.g., example.com) and its subdomains.</p>
+
+    <p><strong>Public Hosted Zone:</strong> Routes internet traffic to your resources.</p>
+
+    <p><strong>Private Hosted Zone:</strong> Routes internal traffic within an Amazon VPC.</p>
+
+    <p><strong>Records (Resource Record Sets):</strong> The actual instructions in a hosted zone.</p>
+  </div>
+
+  <div class="record-types">
+    <p><strong>A Record:</strong> Points a hostname to an IPv4 address.</p>
+
+    <p><strong>AAAA Record:</strong> Points a hostname to an IPv6 address.</p>
+
+    <p><strong>CNAME Record:</strong> Points a hostname to another hostname.</p>
+
+    <p>
+      <strong>Alias Record:</strong> An AWS-specific pointer that maps a hostname to an AWS resource
+      (like an ELB or S3 bucket) for free and with better performance than CNAME.
+    </p>
+  </div>
+
+  <h3>How Route 53 Works: The Traffic Flow</h3>
+  <p>
+    When a user visits your website, Route 53 facilitates the connection in milliseconds:
+  </p>
+
+  <div class="traffic-flow">
+    <p><strong>User Query:</strong> A user types www.example.com into their browser.</p>
+
+    <p>
+      <strong>DNS Resolution:</strong> The request travels to a DNS Resolver (ISP), which queries the
+      Root and TLD servers to find the authoritative nameserver.
+    </p>
+
+    <p>
+      <strong>Route 53 Response:</strong> The request hits Amazon Route 53, which looks up the IP
+      address based on your routing policy.
+    </p>
+
+    <p>
+      <strong>Traffic Routing:</strong> Route 53 returns the IP address (e.g., of your Load Balancer),
+      and the user's browser connects to your application.
+    </p>
+  </div>
+
+</div>
+
+   
+        <div style="font-family: Arial; line-height:1.5; color:#111;">
         <h2>🔑 Authentication</h2>
         <p>
             Authentication is the process of verifying who a person is before allowing access to a system. It checks identity using methods like passwords, fingerprints, or OTP codes. This step is always done first when a user tries to log in. If authentication fails,
@@ -890,32 +1300,6 @@
             <br> They are suitable for modern applications like e-commerce, cloud platforms, and banking systems.
         </p>
     </div>
-    <div>
-        <h2>Docker (Simple English Explanation)</h2>
-        <p>
-            Docker is a tool that helps you run applications in a clean and separate environment called a container. Normally, when we install software on a computer, it may cause version problems or dependency issues. Docker avoids these problems by packing everything
-            an application needs—code, libraries, runtime—into one container. This container works the same on any machine, so the application runs without errors everywhere. Developers use Docker to move applications easily from their laptop to servers
-            or cloud. It also helps teams work faster because containers start quickly and need very little memory. Docker images are like templates, and containers are the running versions of those images. Using Docker, we can run many small apps separately
-            on the same machine without conflict. It is one of the most important tools in DevOps for CI/CD pipelines. Overall, Docker makes application deployment faster, easier, and more reliable.
-        </p>
-    </div>
-    <div>
-        <h2>Docker Image</h2>
-        <p>
-            A Docker image is like a blueprint or template used to create containers. It contains everything an application needs, such as code, libraries, and system files. You cannot change an image while it is running; it is always read-only. Images are created
-            only once and reused many times. You can store images in Docker Hub or your private registry. When you run an image, Docker uses it to start a container. Think of a Docker image like a cake recipe that tells how to make a cake. The recipe
-            never changes; it only describes how the cake should be. Developers use images to make sure their app runs the same in all environments. In short, an image is the package that contains the app and all its dependencies.
-        </p>
-    </div>
-    <div>
-        <h2>Docker Container</h2>
-        <p>
-            A Docker container is the running version of a Docker image. It is like the actual cake made from the recipe. Containers run the application in a fully isolated environment. Each container has its own file system, processes, and configuration. Containers
-            are lightweight and start very fast. You can start, stop, restart, and delete containers easily. Containers use the image as a base but can have changes during runtime. Multiple containers can run from the same image at the same time. They
-            do not affect each other, making them safe and independent. In simple words, a container is an alive, working app created from an image.
-        </p>
-    </div>
-
     <div>
         <h2>Inbound Rules</h2>
         <p>
