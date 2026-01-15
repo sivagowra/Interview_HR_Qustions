@@ -1,0 +1,44 @@
+version: "3.8"
+services:
+  nginx-app:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "8000:80"   
+  zomato:
+    image: sivagowra/zomato
+    container_name: zomato
+    ports:
+      - "8001:80"
+
+  db:
+    image: sivagowra/app-db
+    container_name: devopsdb
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: devopspassword
+
+  web-app:
+    image: sivagowra/app-web
+    container_name: web
+    ports:
+      - "8002:8080"
+    depends_on:
+      - db
+
+  contact:
+    image: sivagowra/mycontact
+    container_name: contact
+    ports:
+      - "8003:8080"
+  website:
+    image: sivagowra/web
+    container_name: website
+    ports:
+      - "8004:80"
+  vue:
+    image: sivagowra/vue-app
+    container_name: vue
+    ports: 
+      - "8005:80"    
