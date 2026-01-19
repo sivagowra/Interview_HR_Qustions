@@ -731,12 +731,6 @@
             <p>It solves the IPv4 address shortage problem.</p>
         </div>
     </div>
-    <p>
-        A CDN, or Content Delivery Network, is used to make websites load faster and work smoothly. It stores website content like images, videos, CSS, and JavaScript files on many servers located in different places around the world. When a user opens a website,
-        the CDN delivers the content from the nearest server instead of a far-away main server. This reduces loading time and improves website speed. Amazon CloudFront is AWS’s CDN service that delivers content securely with low latency and high performance.
-        CloudFront works with services like S3, EC2, and Load Balancer to distribute content globally. Overall, CDN and CloudFront improve performance, reliability, and user experience.
-    </p>
-   
 
   <div class="rds-content">
 <p>Amazon Relational Database Service (RDS</p>
@@ -983,14 +977,10 @@
       You may also search and examine your Cloud Trail logs using custom third-party programs
       or programs like Amazon Athena.
     </p>
-    <p>
-      Using AWS Organizations, you can
-
-
 </div>
 
     <div class="cloudwatch-content">
-
+<h2>Amazon CloudWatch</h2>
   <p>
     Amazon CloudWatch is a monitoring and observability service built for DevOps engineers,
     developers, site reliability engineers (SREs), and IT managers. It provides data and
@@ -1345,12 +1335,378 @@
             and scalable, especially during high traffic. For example, in an e-commerce application, when a user places an order, the order details are sent to SQS. Later, the email service and delivery service read the message from SQS and complete their
             tasks independently.
         </p>
+        <div>
+
+  <h2>Use Cases Of AWS SQS (Amazon Simple Queue Service)</h2>
+
+  <p>
+    <strong>Batch Processing:</strong> SQS is typically used to manage workloads that require data processing.
+    The queue can be used for scenarios like data transfer, image processing, and report production since
+    producers can add tasks to it, and consumers can retrieve and process them concurrently.
+  </p>
+
+  <p>
+    <strong>Decoupled Microservices:</strong> In micro-services architectures, services need to communicate
+    with each other asynchronously. SQS allows services to send messages to each other without needing to
+    know the details of the recipient, enabling loose coupling between services.
+  </p>
+
+  <p>
+    <strong>Order Processing:</strong> For e-commerce platforms, SQS can be used to manage order processing.
+    When an order is placed, it can be added to a queue, and multiple workers can process orders in parallel,
+    ensuring timely order fulfillment.
+  </p>
+
+  <p>
+    <strong>Notifications:</strong> SQS can be used to send notifications or alerts to various parts of an
+    application. For example, an event occurring in one component can publish a message to an SQS queue,
+    which can then be processed by other components for notifications, logging, or real-time updates.
+  </p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>AWS SQS Queue Types</h2>
+
+  <p>There are only two types of queues in SQS:</p>
+
+  <ul>
+    <li>First-in-first-out(FIFO)</li>
+    <li>Standard Queue</li>
+  </ul>
+
+  <p>AWS-SQS-Queue-Types</p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h3>1. First-in-first-out(FIFO)</h3>
+
+  <p>
+    First-in-first-out(FIFO) queue the order of messages is preserved. So if you receive a message from the
+    queue you will get the oldest message. This queue also guarantees that the message will be delivered
+    only once.
+  </p>
+
+  <h4>Key Features of FIFO Queue</h4>
+  <ul>
+    <li>Ordered Processing: Messages are always processed in the exact sequence in which they were sent.</li>
+    <li>Exactly-Once Delivery: Each message is delivered exactly once, preventing duplicates.</li>
+    <li>
+      Message Grouping: FIFO queues allow you to define message groups, ensuring that related messages are
+      processed in order, while different groups can be processed simultaneously.
+    </li>
+  </ul>
+
+  <h4>Use Case Examples</h4>
+  <ul>
+    <li>Banking Transactions: Ensuring that debits and credits are processed in the right order.</li>
+    <li>Inventory Systems: Where stock levels need to be updated in sequence.</li>
+    <li>
+      Workflows: Where tasks must be completed in a specific order, such as video rendering pipelines.
+    </li>
+  </ul>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h3>2. Standard Queue</h3>
+
+  <p>
+    Standard queue this queue messages are delivered randomly. Also, a message can be delivered multiple
+    times. So you shouldn't rely on order and only one-time delivery in this type of queues.
+  </p>
+
+  <h4>Key Features of Standard Queue</h4>
+  <ul>
+    <li>High Throughput: Standard queues can process a virtually unlimited number of transactions per second.</li>
+    <li>
+      Best-Effort Ordering: While SQS attempts to preserve order, messages may be delivered out of order.
+    </li>
+    <li>
+      At Least Once Delivery: Messages might be delivered more than once, so it's essential to have
+      idempotent message processing logic.
+    </li>
+  </ul>
+
+  <h4>Use Case Examples</h4>
+  <ul>
+    <li>Real-Time Data Ingestion: High-velocity logging or metrics collection.</li>
+    <li>
+      Task Processing: Such as image processing jobs, where the order of tasks doesn’t affect the outcome.
+    </li>
+    <li>
+      Notification Systems: Where notifications can be sent in any order without affecting user experience.
+    </li>
+  </ul>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>Features of AWS SQS (Amazon Simple Queue Service)</h2>
+
+  <ul>
+    <li>SQS is not push-based, it is basically on pull-based.</li>
+    <li>The size of messages in SQS are 256 KB.</li>
+    <li>There is default retention period in SQS. The default retention period is of 4 days.</li>
+    <li>Messages in SQS of a queue is kept from 1 minute to 14 days.</li>
+    <li>SQS also guarantees that the messages will only be processed at least once.</li>
+  </ul>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>AWS SQS Pricing</h2>
+
+  <p>AWS SQS follows two pricing models</p>
+
+  <ul>
+    <li>
+      <strong>Standard:</strong> You will be charged for the number of messages that you have sent or receive
+      regardless size of the message. And also it is default pricing of the SQS
+    </li>
+    <li>
+      <strong>Brust:</strong> This Pricing model is specially designed for the applications which have brusty
+      traffic patterns. You will be charged on monthly bases.
+    </li>
+  </ul>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>AWS SQS API</h2>
+
+  <p>
+    AWS SQS API allows developers to programmatically interact with Amazon Simple Queue Service to create,
+    manage, send, and receive messages from queues. It supports both standard and FIFO queues, offering
+    flexibility for various use cases. With the API, you can automate tasks like sending and receiving
+    messages, batch processing, and setting queue attributes.
+  </p>
+
+  <h4>Some Key API Functions</h4>
+  <ul>
+    <li>CreateQueue: To Set up a new queue.</li>
+    <li>SendMessage: To Send a message to the queue.</li>
+    <li>ReceiveMessage: To Retrieve messages from the queue.</li>
+    <li>DeleteMessage: To Remove processed messages.</li>
+    <li>Batch Operations: To Perform multiple actions (send, delete) in a single call.</li>
+  </ul>
+
+</div>
+
 
         <h2>AWS SNS (Simple Notification Service)</h2>
         <p>
             AWS SNS is a fully managed messaging service used to send messages or notifications to many users or systems at the same time. It works on a publish and subscribe model, where one service sends a message and many subscribers receive it instantly. SNS
             is mainly used for alerts and notifications. For example, if a server goes down, SNS can send an alert message to email, SMS, or another application. This helps teams take quick action and keep systems running smoothly.
         </p>
+        <div>
+
+  <h2>How Does (AWS) Amazon Simple Notification Service (SNS) Work?</h2>
+
+  <p>
+    Simple Notification Service (SNS) sends the notifications through SMS or email to an Amazon Simple Queue
+    Service (SQS), AWS lambda functions, or an HTTP endpoint. When the CPU utilization of an instance goes
+    above 80%, the AWS cloudwatch alarm is triggered. This cloudwatch alarm activates the SNS topic hence
+    notifying the subscribers about the high CPU utilization of the instance.
+  </p>
+
+  <p>
+    SNS service has a topic that has a unique name. It acts as a logical access point and a communication
+    channel between publishers and subscribers.
+  </p>
+
+  <p>aws-sqs</p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>Use cases Of (AWS) Amazon Simple Notification Services (SNS)</h2>
+
+  <p>
+    <strong>Decoupling microservices and distributed systems:</strong> SNS is mostly to decouple microservices
+    and distributed systems by providing that will allow them to communicate with each other asynchronously.
+    Helps in improving the scalability and reliability of the systems.
+  </p>
+
+  <p>
+    <strong>Sending notifications to users:</strong> SNS can be used to send notifications to users about
+    events that occur in your applications. For example, you can use SNS to send users notifications when
+    they receive a new message, when their account is updated, or when an event occurs that they have
+    subscribed to.
+  </p>
+
+  <p>
+    <strong>Sending alerts to operators:</strong> SNS can be used to send alerts to operators about problems
+    that occur in your applications. For example, you can use SNS to send operators alerts when a server
+    goes down or when an error occurs.
+  </p>
+
+  <p>
+    <strong>Building serverless applications:</strong> SNS can be used to build serverless applications by
+    providing a way for them to communicate with each other and to send and receive notifications.
+  </p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>Benefits Of Using (AWS) Amazon Simple Notification Service (SNS) SNS</h2>
+
+  <ul>
+    <li>
+      <strong>Scalability:</strong> AWS SNS is designed to handle a large number of messages, making it ideal
+      for applications that need to send millions of notifications simultaneously.
+    </li>
+    <li>
+      <strong>Real-time notifications:</strong> SNS ensures that messages are delivered in real-time to the
+      subscribed endpoints, which is crucial for time-sensitive applications.
+    </li>
+    <li>
+      <strong>Multiple protocols support:</strong> SNS supports various protocols such as HTTP, HTTPS,
+      email, SMS, and even AWS Lambda functions, allowing flexibility in how messages are delivered.
+    </li>
+    <li>
+      <strong>High availability and durability:</strong> Being a part of AWS infrastructure, SNS offers
+      high availability and fault tolerance, ensuring message delivery even in the event of an
+      infrastructure issue.
+    </li>
+    <li>
+      <strong>Easy integration with other AWS services:</strong> SNS integrates seamlessly with other AWS
+      services like S3, EC2, Lambda, and CloudWatch, enabling automation and alerting across the AWS
+      ecosystem.
+    </li>
+    <li>
+      <strong>Cost-effective:</strong> SNS follows a pay-as-you-go model, making it a cost-effective
+      solution for sending notifications, with no upfront costs or long-term commitments.
+    </li>
+  </ul>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>Features (AWS) Amazon Simple Notification Service (SNS)</h2>
+
+  <ul>
+    <li>
+      Scalability: Simple Notification Service (SNS) had a capacity to handle millions of messages per
+      second from thedifferent sources.
+    </li>
+    <li>
+      Security: Simple Notification Service (SNS) is very secured and it also offers wide range of security
+      offers.
+    </li>
+    <li>
+      High Avalibility: Simple Notification Service (SNS) is designed to have more durability which ensures
+      the message are delivered without any latency.
+    </li>
+    <li>
+      Flexibily To Use: SNS supports a variety of transport protocols and can be used to send notifications
+      to a variety of applications.
+    </li>
+  </ul>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>Amazon Simple Notification Service (SNS) Publishers And Subscribers</h2>
+
+  <h3>1. Publishers: Initiating Communication</h3>
+
+  <p>
+    They communicate with subscribers asynchronously by producing and sending a message to a topic (i.e.
+    a logical access point and communication channel). They do not include a specific destination (e.g. -
+    email ID) in each message instead, send a message to the topic. They only send messages to topics they
+    have permission to publish. They simply publish messages to an SNS topic, and Amazon SNS handles the
+    distribution to the appropriate subscribers.
+  </p>
+
+  <p>
+    <strong>Topic:</strong> The topic acts as a communication channel that publishers send messages to.
+  </p>
+
+  <p>
+    <strong>Seamless Distribution:</strong> Publishers can produce messages asynchronously without worrying
+    about where or how the message is delivered.
+  </p>
+
+  <p>
+    <strong>Examples of Publishers:</strong> Microservices, EC2 instances, or application components that
+    need to send real-time updates or notifications.
+  </p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h3>2.Subscribers:Receiving and Acting on Messages</h3>
+
+  <p>
+    Subscribers like web servers, email addresses, Amazon SQS queues, and AWS Lambda functions receive the
+    notification over one of the supported protocols like Amazon SQS, HTTP/S, email, SMS, Lambda) when
+    they are subscribed to the topic. Amazon SNS matches the topic to a list of subscribers who have
+    subscribed to that topic and delivers the message to each of those subscribers. Amazon SNS categorized
+    into Application-to-application (A2A) or Application-to-person (A2P) subscribers.
+  </p>
+
+  <h4>A2A Subscribers</h4>
+  <ul>
+    <li>
+      These are services like Amazon SQS, AWS Lambda, and HTTPS endpoints that subscribe to a topic and
+      process incoming messages automatically.
+    </li>
+    <li>
+      Amazon SQS: Acts as a message queue, enabling decoupled and durable message storage.
+    </li>
+    <li>
+      AWS Lambda: Processes events in real-time, executing code based on incoming messages.
+    </li>
+    <li>
+      HTTPS: Web servers or services that receive messages through HTTP/S endpoints.
+    </li>
+  </ul>
+
+  <h4>A2P Subscribers</h4>
+  <ul>
+    <li>These include individual users who receive notifications via email, SMS, or push notifications.</li>
+    <li>Email: Sends notifications via email to subscribers.</li>
+    <li>Mobile text (SMS): Sends text alerts directly to users.</li>
+    <li>Mobile push: Pushes notifications to mobile devices.</li>
+  </ul>
+
+</div>
+
     </div>
     <div>
         <h2>AWS SNS vs AWS SQS Comparison</h2>
@@ -1405,7 +1761,655 @@
             </tr>
         </table>
     </div>
+<div>
 
+  <h2>Cloud Key Management Service (KMS)</h2>
+
+  <p>
+    Cloud Key Management Service (KMS) is emerging as the key to protecting your secrets, encryption keys,
+    and personal data. This article will walk you through how to use Cloud KMS to strengthen the security
+    of your packages and services.
+  </p>
+
+  <p>
+    Let’s imagine that your database server was hacked, hackers got get right of entry to all the sensitive
+    information about your consumer and the business. If your records are closing as plain text hackers
+    can do what they want with this information. But your information is encrypted already hackers will have
+    a difficult time decrypting your database statistics.
+  </p>
+
+  <p>
+    ThereAnd there are main techniques of encryption purchaser-aspect encryption and server-aspect encryption.
+    In client-side encryption, you may encrypt your information and manage your keys. You can use KMS for it
+    if required. Next in the server-aspect encryption your server Amazon Web Services(AWS) will encrypt your
+    information and manage the key for you. Most of the AWS services like EBS, and S3 offer this server-side
+    encryption with the help of KMS.
+  </p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>Amazon Elastic Container Service (ECS)</h2>
+
+  <p>
+    Amazon Elastic Container Service (ECS) is a fully managed service that enables users to run Docker-based
+    applications in containers across a cluster of EC2 instances. ECS simplifies container orchestration,
+    allowing you to deploy, manage, and scale containerized applications efficiently.
+  </p>
+
+  <p>
+    The service supports multiple launch types, including the AWS Fargate launch type, which abstracts the
+    underlying EC2 infrastructure, enabling you to run containers without needing to manage or provision
+    the EC2 instances. This allows developers to focus on building and deploying applications while AWS
+    handles the cluster management and resource provisioning.
+  </p>
+
+  <h3>The Core Components</h3>
+  <p>
+    To understand ECS, you must first understand its four fundamental building blocks.
+  </p>
+
+  <h4>1. Task Definition</h4>
+  <p>
+    A Task Definition is the blueprint for your application. It's a JSON file that describes how to run a
+    Docker container. It specifies crucial parameters like:
+  </p>
+  <ul>
+    <li>The Docker image to use (e.g., nginx:latest from Docker Hub or your own image in Amazon ECR).</li>
+    <li>The CPU and memory to allocate to the container.</li>
+    <li>The ports to open on the container.</li>
+    <li>Environment variables, logging configurations, and the IAM Role the task will use.</li>
+  </ul>
+
+  <h4>2. Task</h4>
+  <p>
+    A Task is a single, running instance of a Task Definition. If the Task Definition is the blueprint,
+    the Task is the actual house built from that blueprint.
+  </p>
+
+  <h4>3. Service</h4>
+  <p>
+    While you can run individual Tasks, for any long-running application, you'll use a Service. The ECS
+    Service is responsible for maintaining a specified number of Tasks running continuously.
+  </p>
+
+  <p>Its key responsibilities include:</p>
+  <ul>
+    <li>
+      Maintaining the "Desired Count": If a Task fails or stops for any reason, the Service scheduler will
+      automatically launch a new one to replace it, ensuring your application is self-healing.
+    </li>
+    <li>
+      Load Balancing: It can integrate with an Application Load Balancer (ALB) to distribute traffic evenly
+      across all the Tasks in the Service.
+    </li>
+    <li>
+      Auto Scaling: It can automatically increase or decrease the number of Tasks based on metrics like
+      CPU usage or the number of requests.
+    </li>
+  </ul>
+
+  <h4>4. Cluster</h4>
+  <p>
+    A Cluster is a logical grouping of resources where your Tasks are run. It's the underlying infrastructure
+    that provides the CPU, memory, and networking for your containers.
+  </p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>What is AWS Cloudformation?</h2>
+  <p><strong>Last Updated :</strong> 17 Dec, 2025</p>
+
+  <p>
+    AWS CloudFormation is a powerful Infrastructure as Code (IaC) service that allows you to model,
+    provision, and manage AWS resources by treating infrastructure as code. instead of manually clicking
+    through the AWS Console to create servers and databases, you write a template file (in JSON or YAML),
+    and CloudFormation builds the entire environment for you automatically.
+  </p>
+
+  <p>
+    This approach ensures consistency, repeatability, and version control for your infrastructure.
+  </p>
+
+  <h3>Templates and Stacks</h3>
+  <p>CloudFormation revolves around two core concepts:</p>
+
+  <ul>
+    <li>
+      <strong>The Template:</strong> A text file (JSON or YAML) that acts as a blueprint. It describes what
+      you want to build (e.g., "I want one EC2 instance and one S3 bucket").
+    </li>
+    <li>
+      <strong>The Stack:</strong> The actual collection of resources created from that template. When you
+      "deploy a stack," CloudFormation reads your template and makes the API calls to AWS to build the resources.
+    </li>
+  </ul>
+
+  <h3>How Does AWS CloudFormation Work?</h3>
+  <p>
+    Amazon Web Services (AWS) is the service offered by the AWS cloud it is mainly used to provision the
+    service in the AWS like EC2, S3, Autoscaling, load balancing and so on you can provision all the service
+    automation with the Infrastructure as a code (IAC), instead of managing all of them manually you can
+    manage with the help of AWS Cloudformation.
+  </p>
+
+  <h3>Benefits of AWS CloudFormation</h3>
+  <ol>
+    <li>
+      <strong>Automation</strong><br />
+      AWS CloudFormation helps to automate the process of creating, configuring, and managing AWS resources.
+      This allows for the infrastructure to be deployed quickly, reliably, and repeatedly.
+    </li>
+    <li>
+      <strong>Consistency and standardization</strong><br />
+      With AWS CloudFormation, it is possible to create standard templates of infrastructure stacks that can
+      be used to create identical copies of the same infrastructure.
+    </li>
+    <li>
+      <strong>Cost savings</strong><br />
+      AWS CloudFormation helps to reduce costs by allowing customers to use existing infrastructure templates
+      and reuse them across multiple environments.
+    </li>
+    <li>
+      <strong>Security</strong><br />
+      AWS CloudFormation helps to ensure that all AWS resources are configured securely by using security
+      policies and rules.
+    </li>
+    <li>
+      <strong>Scalability</strong><br />
+      AWS CloudFormation allows for the quick and easy scaling of resources on demand.
+    </li>
+  </ol>
+
+  <p>
+    Amazon Web Services is a subsidiary of Amazon.com that provides on-demand cloud computing platforms to
+    individuals, companies, and governments, on a paid subscription basis.
+  </p>
+
+  <h3>Getting Started with AWS CloudFormation</h3>
+  <p>
+    Our template is created in JSON or YAML script. We will be discussing the JSON script in this article.
+    JSON is a text-based format that represents structured data based onresource JavaScript object syntax.
+    It carries the AWS resources details in the structured format according to which AWS infrastructure
+    is created.
+  </p>
+
+  <h3>Structure of CloudFormation JSON Template</h3>
+  <ul>
+    <li>Format version: It defines the version of a template.</li>
+    <li>Description: Any extra description or comments about your template are written in the description.</li>
+    <li>Metadata: It can be used to provide further information using JSON objects.</li>
+    <li>Parameters: Parameters are used when you want to provide custom or dynamic values to the stack.</li>
+    <li>Mappings: Mapping in the JSON template helps you to map keys to a corresponding named value.</li>
+    <li>Conditions: Conditions are used to define if certain resources are created.</li>
+    <li>Transform: Transform helps in reusing the template components.</li>
+    <li>Resources: You can specify the properties of AWS resources you want in your stack.</li>
+    <li>Output: The output defines the value which is generated as an output.</li>
+  </ul>
+
+</div>
+<div>
+
+  <h2>AWS CloudFront: CDN Cloud Service</h2>
+
+  <p><strong>Last Updated :</strong> 17 Dec, 2025</p>
+
+  <p>
+    AWS CloudFront is Amazon's high-performance Content Delivery Network (CDN) service. Think of it as a
+    super-fast global delivery service for your website. It accelerates the delivery of your static and
+    dynamic web content—such as images, videos, APIs, and applications—by caching copies of it in data
+    centers (or "Edge Locations") around the world.
+  </p>
+
+  <p>
+    When a user visits your site, CloudFront delivers the content from the nearest edge location,
+    dramatically reducing latency, speeding up load times, and improving the user experience. This guide
+    covers everything from its core concepts and features to advanced configurations and use cases.
+  </p>
+
+  <p>Amazon-CLoudFront-file</p>
+  <p>AWS CloudFront</p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>How CloudFront Works: Core Concepts</h2>
+
+  <p>
+    To understand CloudFront, you need to know three key components:
+  </p>
+
+  <p>
+    <strong>Origin:</strong> This is the "source of truth" for your content. It's the server where the
+    original version of your files is stored. An origin can be an Amazon S3 bucket, an Elastic Load
+    Balancer, an EC2 instance, or any custom HTTP/S server (even one on-premises).
+  </p>
+
+  <p>
+    <strong>Edge Location:</strong> This is a data center in a global network, strategically located in
+    major cities around the world (e.g., Tokyo, London, New York, Sydney). CloudFront has hundreds of
+    these. Edge Locations cache (store) copies of your content.
+  </p>
+
+  <p>
+    <strong>Distribution:</strong> This is the core configuration that tells CloudFront how to deliver
+    your content. When you create a distribution, you specify your origin(s), set cache rules (like how
+    long to store files), and configure security settings. CloudFront gives you a unique domain name
+    (e.g., d12345.cloudfront.net) for your distribution
+  </p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>The Content Delivery Workflow</h2>
+
+  <p>
+    Here is the step-by-step process of how CloudFront delivers your content:
+  </p>
+
+  <ol>
+    <li>
+      <strong>User Request:</strong> A user in London visits your website and their browser requests an
+      image (e.g., logo.jpg).
+    </li>
+    <li>
+      <strong>DNS Routing:</strong> The request is routed by DNS to the nearest CloudFront Edge Location,
+      which in this case is the London data center.
+    </li>
+    <li>
+      <strong>CloudFront Checks Cache:</strong> The London Edge Location checks its local cache for
+      logo.jpg.
+    </li>
+    <li>
+      <strong>Cache Hit (Fast):</strong> If the file is in the cache (a "cache hit"), CloudFront
+      immediately delivers it to the user. This is extremely fast.
+    </li>
+    <li>
+      <strong>Cache Miss (Slower):</strong> If the file is not in the cache (a "cache miss"), the Edge
+      Location forwards the request back to your Origin server (e.g., your S3 bucket in the US).
+    </li>
+    <li>
+      <strong>Origin Response:</strong> The Origin server sends the logo.jpg file back to the Edge
+      Location.
+    </li>
+    <li>
+      <strong>Cache & Deliver:</strong> The London Edge Location caches the new file (so the next user in
+      London gets a cache hit) and then delivers it to the original user.
+    </li>
+  </ol>
+
+  <p>Amazon-CLoudFront</p>
+  <p>CloudFront: Step by Step Process</p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>Key Features for Performance, Security, and Cost</h2>
+
+  <h3>Performance Features</h3>
+
+  <p>
+    <strong>Global Edge Network:</strong> With hundreds of Edge Locations and Regional Edge Caches (a
+    "mid-tier" cache), CloudFront ensures your content is always physically close to your users.
+  </p>
+
+  <p>
+    <strong>Cache Invalidation:</strong> By default, objects stay in the cache until their Time-To-Live
+    (TTL) expires. If you need to force an update now (e.g., you uploaded a new version of style.css), you
+    can run an invalidation. This tells CloudFront to "evict" the old file from all edge locations,
+    forcing it to retrieve the new version from the origin on the next request.
+  </p>
+
+  <p>
+    <strong>Origin Groups for High Availability:</strong> You can configure CloudFront with a primary
+    origin (e.g., S3 bucket) and a secondary origin (e.g., another S3 bucket in a different region). If
+    the primary origin fails or returns an error, CloudFront automatically fails over and requests the
+    content from the secondary origin.
+  </p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h3>Security Features</h3>
+
+  <p>
+    <strong>AWS WAF & Shield Integration:</strong> CloudFront integrates seamlessly with AWS WAF (Web
+    Application Firewall) to protect your application at the edge from common exploits like SQL injection
+    and XSS. All distributions are also protected by AWS Shield Standard against DDoS attacks for free.
+  </p>
+
+  <p>
+    <strong>Origin Access Control (OAC):</strong> This is the modern, secure way to connect CloudFront to
+    an S3 origin. OAC locks down your S3 bucket so that it only accepts connections from CloudFront, not
+    the public internet. This prevents users from bypassing the CDN and accessing your files directly,
+    which saves on costs and enhances security.
+  </p>
+
+  <p>
+    <strong>Field-Level Encryption:</strong> A powerful security feature that allows you to encrypt
+    specific form fields (like a credit card number) at the edge before the request is forwarded to your
+    origin. This ensures sensitive data is never visible in plaintext to your backend application.
+  </p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>Edge Computing: Lambda@Edge vs. CloudFront Functions</h2>
+
+  <p>
+    You can run custom logic at the edge to modify requests and responses before they hit your origin.
+  </p>
+
+  <h3>CloudFront Functions:</h3>
+  <ul>
+    <li>
+      <strong>Best for:</strong> Lightweight, high-volume, low-latency tasks (e.g., cache-key
+      manipulation, URL rewrites, HTTP header modifications).
+    </li>
+    <li><strong>Speed:</strong> Runs in &lt; 1ms.</li>
+    <li><strong>Language:</strong> JavaScript (ES 5.1).</li>
+    <li><strong>Cost:</strong> Extremely cheap, billed per-request.</li>
+  </ul>
+
+  <h3>Lambda@Edge:</h3>
+  <ul>
+    <li>
+      <strong>Best for:</strong> More complex, compute-intensive tasks (e.g., advanced request
+      authentication, image resizing on the fly, A/B testing logic).
+    </li>
+    <li><strong>Speed:</strong> Can run for up to 30 seconds.</li>
+    <li><strong>Language:</strong> Node.js, Python.</li>
+    <li>
+      <strong>Cost:</strong> More expensive, billed per-request and duration (like regular Lambda).
+    </li>
+  </ul>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>AWS CloudFront and Web Application Firewall (WAF) Integration</h2>
+
+  <p>
+    AWS CloudFront, Amazon's Content Delivery Network (CDN), pairs seamlessly with AWS Web Application
+    Firewall (WAF) to add an extra layer of security to your web applications. This combination helps
+    protect your apps from common attacks like SQL injection and cross-site scripting by blocking harmful
+    traffic at edge locations before it reaches your main servers.
+  </p>
+
+  <h3>What is AWS WAF?</h3>
+
+  <p>
+    AWS WAF is a security service that acts as a barrier to protect your web applications from online
+    threats. It blocks malicious traffic like SQL injections and cross-site scripting attacks, filtering
+    requests that could harm your application. AWS WAF allows you to define custom security rules, so it
+    can adapt to your specific needs and help keep your application secure.
+  </p>
+
+</div>
+<div>
+
+  <h2>AWS Elastic File System(EFS)</h2>
+
+  <p><strong>Last Updated :</strong> 17 Dec, 2025</p>
+
+  <p>
+    Amazon Elastic File System (EFS) is a serverless, fully managed, elastic file system that lets you share
+    file data without provisioning or managing storage. It can be used with AWS Cloud services and
+    on-premises resources, and is built to scale on demand to petabytes without disrupting applications.
+  </p>
+
+  <p>
+    Unlike EBS (which is like a local hard drive for one server), EFS is a Network File System (NFS). This
+    means hundreds or thousands of EC2 instances, Lambda functions, and Containers can access the same
+    files at the same time.
+  </p>
+
+  <p>AWS-EFS</p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>How Does EFS Work?</h2>
+
+  <p>
+    EFS can be created using the EC2-Instance where it will be created in a specific region and distributed
+    across multiple availability zones for the purpose of high availability and durability. You can
+    choose the EFS based on the I/Ops you are going to perform.
+  </p>
+
+  <ul>
+    <li>
+      <strong>File System:</strong> The top-level resource.
+    </li>
+    <li>
+      <strong>Mount Targets:</strong> To access EFS, you create "Mount Targets" in your VPC subnets. These
+      provide an IP address for your resources to connect to.
+    </li>
+    <li>
+      <strong>NFS Protocol:</strong> Your EC2 instances use the standard NFSv4 protocol to mount the file
+      system, making it look like a standard local directory (e.g., /mnt/efs).
+    </li>
+    <li>
+      <strong>Regional Availability:</strong> Data written to EFS is automatically replicated across
+      multiple Availability Zones (AZs) in a Region (unless you choose One Zone storage). This makes it
+      highly durable.
+    </li>
+  </ul>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>Use Cases Of EFS</h2>
+
+  <p>
+    <strong>Secured file sharing:</strong> You can share your files in every secured manner and in a faster
+    and easier way and also ensures consistency across the system.
+  </p>
+
+  <p>
+    <strong>Web Hosting:</strong> Well suited for web servers where multiple web servers can access the
+    file system and can store the data EFS also scales whenever the data incoming is increased.
+  </p>
+
+  <p>
+    <strong>Modernize application development:</strong> You can share the data from the AWS resources like
+    ECS, EKS, and any serverless web applications in an efficient manner and without more management
+    required.
+  </p>
+
+  <p>
+    <strong>Machine Learning and AI Workloads:</strong> EFS is well suited for large data AI applications
+    where multiple instances and containers will access the same data improving collaboration and
+    reducing data duplication.
+  </p>
+
+  <p>
+    Above are some of the use cases of AWS EFS widely used for handling larger datasets type applications.
+  </p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>Performance & Throughput Modes</h2>
+
+  <p>
+    Configuring performance correctly is the most important part of setting up EFS.
+  </p>
+
+  <h3>1. Performance Modes</h3>
+
+  <p>
+    <strong>General Purpose:</strong> The default. Low latency. Best for web serving, CMS, and general file
+    sharing.
+  </p>
+
+  <p>
+    <strong>Max I/O:</strong> Higher latency, but massive throughput. Best for Big Data analytics and media
+    processing with hundreds of parallel threads.
+  </p>
+
+  <h3>2. Throughput Modes</h3>
+
+  <p>
+    <strong>Elastic (Recommended):</strong> The modern default. Throughput scales automatically with your
+    workload. You pay for what you use. No guessing required.
+  </p>
+
+  <p>
+    <strong>Bursting:</strong> Throughput is tied to your storage size. You earn "burst credits" when idle
+    and spend them when active. Good for small, spiky workloads.
+  </p>
+
+  <p>
+    <strong>Provisioned:</strong> You pay for a fixed amount of throughput (MB/s) regardless of your
+    storage size. Useful if you have a tiny dataset that needs massive speed.
+  </p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>Comparison: EFS vs. EBS vs. S3</h2>
+
+  <p>This table clarifies when to use which service.</p>
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+      <th>Feature</th>
+      <th>Amazon EFS</th>
+      <th>Amazon EBS</th>
+      <th>Amazon S3</th>
+    </tr>
+    <tr>
+      <td>Type</td>
+      <td>File Storage (NFS)</td>
+      <td>Block Storage (Hard Drive)</td>
+      <td>Object Storage (API)</td>
+    </tr>
+    <tr>
+      <td>Access</td>
+      <td>Multi-Attach (Thousands of instances)</td>
+      <td>Single-Attach (One instance at a time*)</td>
+      <td>API Access (Anywhere via HTTP)</td>
+    </tr>
+    <tr>
+      <td>Latency</td>
+      <td>Low (ms)</td>
+      <td>Lowest (sub-ms)</td>
+      <td>Variable (ms)</td>
+    </tr>
+    <tr>
+      <td>OS Boot</td>
+      <td>No</td>
+      <td>Yes (Boot Volumes)</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Storage Limit</td>
+      <td>Elastic (Petabytes)</td>
+      <td>Provisioned (up to 64TB)</td>
+      <td>Unlimited</td>
+    </tr>
+    <tr>
+      <td>Pricing</td>
+      <td>Expensive ($0.30/GB)</td>
+      <td>Moderate ($0.10/GB)</td>
+      <td>Cheap ($0.023/GB)</td>
+    </tr>
+  </table>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>Storage Classes & Lifecycle Management</h2>
+
+  <p>
+    EFS offers four storage classes to optimize costs. You typically don't select these manually; you use
+    Lifecycle Management to move files automatically.
+  </p>
+
+  <ul>
+    <li>EFS Standard: SSD-backed. High performance for active data.</li>
+    <li>
+      EFS Standard-IA (Infrequent Access): Lower cost storage for files not accessed every day. First byte
+      latency is slightly higher.
+    </li>
+    <li>
+      EFS One Zone: Stores data in only one AZ. ~47% cheaper, but if that AZ fails, data is unavailable.
+    </li>
+    <li>EFS One Zone-IA: The cheapest option. One AZ, infrequent access.</li>
+  </ul>
+
+  <p>
+    <strong>Lifecycle Policy:</strong> You can set a rule: "Move files that haven't been accessed in 30
+    days to Infrequent Access." This creates massive cost savings without changing how your application
+    accesses files.
+  </p>
+
+</div>
+
+<hr />
+
+<div>
+
+  <h2>Storage class</h2>
+
+  <h3>Different Performance Modes in EFS</h3>
+
+  <p>
+    <strong>General-purpose</strong><br />
+    Offers low latency.<br />
+    Supports a maximum of 7000 IOPS.<br />
+    As a cloud watch metric, you can view the amount of IOPS your architecture uses and can switch to Max
+    IOPS if required.
+  </p>
+
+  <p>
+    <strong>Max I/O</strong><br />
+    This is recommended when EFS needs over 7000 IOPS<br />
+    Theoretically, this mode has an unlimited I/O speed.
+  </p>
+
+</div>
 
 
 </body>
