@@ -1172,415 +1172,7 @@
         </div>
     </div>
 
-  <div class="rds-content">
-<p>Amazon Relational Database Service (RDS</p>
-  <p>
-    Amazon Relational Database Service (RDS) is a fully managed web service that makes it easy to
-    set up, operate, and scale a relational database in the cloud. It provides cost-efficient,
-    resizable capacity for an industry-standard relational database and manages common database
-    administration tasks.
-  </p>
-
-  <p>
-    Instead of buying servers, installing the OS, and managing database software manually,
-    RDS automates the heavy lifting provisioning, patching, backup, recovery, failure detection,
-    and repair.
-  </p>
-
-  <h3>Supported Database Engines</h3>
-  <p>RDS supports six popular database engines:</p>
-
-  <div class="db-engines">
-    <p>Amazon Aurora (AWS-built, high performance)</p>
-    <p>PostgreSQL</p>
-    <p>MySQL</p>
-    <p>MariaDB</p>
-    <p>Oracle Database</p>
-    <p>Microsoft SQL Server</p>
-  </div>
-
-  <h3>Amazon RDS</h3>
-  <h3>Core Architecture: Multi-AZ vs. Read Replicas</h3>
-
-  <p>
-    One of the most critical concepts in RDS is the difference between High Availability (Multi-AZ)
-    and Scalability (Read Replicas).
-  </p>
-
-  <div class="multi-az">
-
-    <h4>1. Multi-AZ Deployment (High Availability)</h4>
-    <p><strong>Purpose:</strong> Disaster Recovery (DR) and High Availability.</p>
-    <p>
-      <strong>How it works:</strong> RDS automatically provisions a Standby Replica in a different
-      Availability Zone (AZ). Data is synchronously replicated to the standby.
-    </p>
-    <p>
-      <strong>Failover:</strong> If the primary DB fails, RDS automatically fails over to the
-      standby. The endpoint remains the same, so your application doesn't need configuration
-      changes.
-    </p>
-    <p>
-      <strong>Access:</strong> The standby cannot be used for read or write traffic. It is idle
-      until a failure occurs.
-    </p>
-
-  </div>
-
-  <div class="read-replicas">
-
-    <h4>2. Read Replicas (Scalability)</h4>
-    <p><strong>Purpose:</strong> Improve performance by offloading read traffic.</p>
-    <p>
-      <strong>How it works:</strong> You create a read-only copy of your database. Data is
-      asynchronously replicated from the primary.
-    </p>
-    <p>
-      <strong>Access:</strong> You can connect to a Read Replica to run queries (e.g., analytics,
-      reporting) to reduce the load on the primary DB.
-    </p>
-    <p>
-      <strong>Promotion:</strong> A Read Replica can be promoted to a standalone database if
-      needed.
-    </p>
-
-  </div>
-
-  <h3>The Shared Responsibility Model for RDS</h3>
-  <p>
-    Security and management in RDS are a partnership between you and AWS.
-  </p>
-
-  <div class="aws-responsibility">
-
-    <h4>AWS Responsibility (Security OF the Cloud):</h4>
-    <p>Physical security of data centers.</p>
-    <p>Managing the underlying host infrastructure (EC2, EBS).</p>
-    <p>Patching the OS and the database software engine.</p>
-    <p>Automated backups and snapshots.</p>
-
-  </div>
-
-  <div class="customer-responsibility">
-
-    <h4>Customer Responsibility (Security IN the Cloud):</h4>
-    <p>Data: Managing the actual data inside the database.</p>
-    <p>Encryption: Enabling encryption at rest (KMS) and in transit (SSL).</p>
-    <p>
-      Network: Configuring Security Groups (firewalls) to restrict access
-      (e.g., only allow traffic from your App Server on port 3306).
-    </p>
-    <p>IAM: Managing who can access the RDS service API.</p>
-    <p>
-      Database Users: Creating and managing database users and permissions within the DB
-      engine itself.
-    </p>
-
-  </div>
-
-  <h3>Advanced Features</h3>
-
-  <div class="advanced-features">
-
-    <h4>1. RDS Proxy</h4>
-    <p>
-      Many modern applications (especially serverless apps using Lambda) open thousands of
-      database connections, which can crash a traditional database.
-    </p>
-    <p>
-      <strong>Solution:</strong> RDS Proxy sits between your app and the database. It pools and
-      shares established connections, making your database more efficient and resilient to
-      connection surges.
-    </p>
-
-    <h4>2. Blue/Green Deployments</h4>
-    <p>
-      Updating a database schema or engine version can be risky.
-    </p>
-    <p>
-      <strong>Solution:</strong> RDS Blue/Green Deployments create a staging environment (Green)
-      that mirrors your production environment (Blue). You can upgrade and test the Green
-      environment safely. When ready, you switch over traffic in typically under a minute with
-      no data loss.
-    </p>
-
-    <h4>3. Storage Auto-Scaling</h4>
-    <p>
-      You don't need to over-provision storage "just in case." RDS can automatically detect
-      when you are running out of free space and increase your storage volume size on the fly
-      with zero downtime.
-    </p>
-
-  </div>
-  <div class="cloudtrail-content">
-
-  <p>
-    AWS With the help of a tool called Cloud Trail, offered by Amazon Web Services (AWS),
-    you can keep track of and document activities that take place inside your AWS infrastructure.
-    It gives you a thorough event history of every activity users, services, and resources took
-    while using your AWS account. By recording and archiving event logs, Cloud Trail assists
-    with security, compliance, operational auditing, and troubleshooting.
-  </p>
-
-  <p>
-    When you create a cloud trail, it is already operational in your AWS account and doesn't
-    need to be manually set up. A Cloud Trail event is created each time something happens
-    in your AWS account.
-  </p>
-
-  <h3>What is AWS CloudTrail?</h3>
-
-  <p>
-    AWS CloudTrail is a service that enables governance, compliance, and operational and risk
-    auditing of your AWS account. It records and logs every API call made on your AWS account,
-    capturing details such as the identity of the API caller, the time of the API call, the source
-    IP address, the request parameters, and the response elements returned by the AWS service.
-  </p>
-
-  <p>
-    This comprehensive logging allows you to track changes and activities across your AWS
-    infrastructure, helping with security analysis, resource change tracking, troubleshooting,
-    and meeting compliance requirements.
-  </p>
-
-  <h3>CloudTrail provides three ways to record events:</h3>
-
-  <div class="event-history">
-
-    <h4>Event History</h4>
-    <p>
-      Your AWS account has Cloud Trail activated by default, and you have immediate access
-      to the Cloud Trail event history.
-    </p>
-    <p>
-      A viewable, searchable, printable, and immutable record of the last 90 days' worth of
-      management events in an AWS Region is available in the Event history.
-    </p>
-    <p>
-      The AWS Management Console, AWS Command Line Interface, and AWS SDKs and APIs are all
-      used to perform the activities that these events record.
-    </p>
-    <p>
-      The AWS Region where the event occurred is documented in the Event history.
-    </p>
-    <p>
-      The Event history can be seen for free on Cloud Trail.
-    </p>
-
-  </div>
-
-  <div class="cloudtrail-lake">
-
-    <h4>Cloud Trail Lake</h4>
-    <p>
-      A managed data lake called AWS Cloud Trail Lake is used to record, store, access, and
-      analyze user and API activity on AWS for audit and security reasons.
-    </p>
-    <p>
-      Existing events in row-based json format are converted to Apache ORC format by
-      Cloud Trail Lake. A columnar storage format called ORC is designed for quick data retrieval.
-    </p>
-    <p>
-      Event data stores, which are immutable collections of events based on criteria you choose
-      by using sophisticated event selectors, aggregate events into immutable collections.
-    </p>
-    <p>
-      The event data can be kept in an event data storage for a maximum of seven years
-      (2557 days).
-    </p>
-    <p>
-      Using AWS Organizations, you may construct an event data store for a single AWS account
-      or for a number of AWS accounts.
-    </p>
-    <p>
-      Any Cloud Trail logs that you currently have can be imported into an existing or new
-      event data store from your S3 buckets.
-    </p>
-    <p>
-      With Lake dashboards, you can also see the top Cloud Trail event trends.
-      See Creating event data storage and working with AWS Cloud Trail Lake for further details.
-    </p>
-
-  </div>
-
-  <div class="trails">
-
-    <h4>Trails</h4>
-    <p>
-      In addition to delivering and storing events in an Amazon S3 bucket, Trails can also
-      deliver events to Amazon Cloud Watch Logs and the Amazon Event Bridge.
-    </p>
-    <p>
-      These occurrences can be entered into your security monitoring programs.
-    </p>
-    <p>
-      You may also search and examine your Cloud Trail logs using custom third-party programs
-      or programs like Amazon Athena.
-    </p>
-</div>
-
-    <div class="cloudwatch-content">
-<h2>Amazon CloudWatch</h2>
-  <p>
-    Amazon CloudWatch is a monitoring and observability service built for DevOps engineers,
-    developers, site reliability engineers (SREs), and IT managers. It provides data and
-    actionable insights to monitor your applications, respond to system-wide performance
-    changes, optimize resource utilization, and get a unified view of operational health.
-  </p>
-
-  <h3>Core Architecture: The Three Pillars</h3>
-  <p>
-    CloudWatch is built around three fundamental data types.
-  </p>
-
-  <div class="pillars">
-
-    <h4>1. Metrics</h4>
-    <p>Numerical data points measured over time.</p>
-    <p><strong>Example:</strong> "CPU Utilization is 85% at 10:00 AM."</p>
-    <p>
-      <strong>Source:</strong> AWS services send metrics automatically (e.g., EC2, RDS, Lambda).
-      You can also send Custom Metrics from your own applications (e.g., "Number of items in cart").
-    </p>
-
-    <h4>2. Logs</h4>
-    <p>Text files containing detailed records of events.</p>
-    <p><strong>Example:</strong> An Apache access log or a Lambda function error trace.</p>
-    <p>
-      <strong>Storage:</strong> Logs are organized into Log Groups (e.g., /aws/lambda/my-function)
-      and Log Streams (individual instances).
-    </p>
-
-    <h4>3. Events (now EventBridge)</h4>
-    <p>
-      A stream of system events that describe changes in AWS resources.
-    </p>
-    <p><strong>Example:</strong> "EC2 Instance State changed from Running to Stopped."</p>
-
-  </div>
-
-  <h3>Amazon CloudWatch Features</h3>
-
-  <div class="features">
-
-    <h4>Metrics</h4>
-    <p>
-      It represents a time-ordered set of data points that are published to Amazon CloudWatch.
-    </p>
-    <p>
-      All data point is marked with a timestamp.
-    </p>
-    <p>
-      Metric is a variable that is monitored and data points are the value of that variable over time.
-    </p>
-    <p>
-      They are uniquely defined by a name, namespace, and zero or more dimensions.
-    </p>
-    <p>
-      Metric math is used to query multiple CloudWatch metrics and use math expressions to create
-      new time series based on these metrics.
-    </p>
-
-    <h4>Dimensions</h4>
-    <p>
-      A dimension is a name/value pair which uniquely identifies a metric.
-    </p>
-    <p>
-      Dimensions are the unique identifiers for a metric, so whenever you add a unique name/value
-      pair to one of the metrics, you are creating a new variation of that metric.
-    </p>
-
-    <h4>Statistics</h4>
-    <p>
-      Statistics are metric data aggregations over specified periods of time.
-    </p>
-    <p>
-      The few available statistics on CloudWatch are maximum, minimum, sum, average,
-      and sample count.
-    </p>
-
-    <h4>Alarm</h4>
-    <p>
-      It is used to automatically initiate actions on our behalf.
-    </p>
-    <p>
-      It watches a single metric over a specified time period and performs one or more specified
-      actions based on the value of the metric.
-    </p>
-    <p>
-      The estimated AWS charges can also be monitored using the alarm.
-    </p>
-
-    <h4>Percentiles</h4>
-    <p>
-      It represents the relative weightage of the data in a dataset.
-    </p>
-    <p>
-      It helps the user to get a better understanding of the distribution of metric data.
-    </p>
-
-    <h4>CloudWatch Dashboard</h4>
-    <p>
-      A user-friendly CloudWatch console is available which is used for monitoring resources
-      in a single view.
-    </p>
-    <p>
-      There is no limit on the number of CloudWatch dashboards you can create.
-    </p>
-    <p>
-      These dashboards are global and not region-specific.
-    </p>
-
-    <h4>CloudWatch Agent</h4>
-    <p>
-      It is required to be installed.
-    </p>
-    <p>
-      It collects logs and system-level metrics from EC2 instances and on-premises servers.
-    </p>
-
-    <h4>CloudWatch Events</h4>
-    <p>
-      CloudWatch events help you to create a set of rules that match with any event
-      (i.e. stopping of EC2 instance).
-    </p>
-    <p>
-      These events can be routed to one or more targets like AWS Lambda functions,
-      Amazon SNS Topics, Amazon SQS queues, and other target types.
-    </p>
-    <p>
-      CloudWatch Events observes the operational events continuously and whenever there is any
-      change in the state of the event, it performs the action by sending notifications,
-      activating lambda, etc.
-    </p>
-    <p>
-      An event indicates a change in the AWS environment. Whenever there is a change in the
-      state of AWS resources, events are generated.
-    </p>
-    <p>
-      Rules are used for matching events and routing to targets.
-    </p>
-    <p>
-      Target process events. They include Amazon EC2 instances, AWS Lambda functions, etc.
-      A target receives the events in JSON format.
-    </p>
-
-    <h4>CloudWatch Logs</h4>
-    <p>
-      Amazon CloudWatch logs enable you to store, monitor, and access files from AWS resources
-      like Amazon EC2 instances, Route53, etc.
-    </p>
-    <p>
-      It also helps you to troubleshoot your system errors and maintain the logs in highly
-      durable storage.
-    </p>
-    <p>
-      It also creates log of information about the DNS queries that Route 53 receives.
-    </p>
-
-  </div>
-
-</div>
+ 
 
 
 <div class="route53-content">
@@ -2851,7 +2443,416 @@
 
 </div>
 
+ <div class="rds-content">
+<p>Amazon Relational Database Service (RDS</p>
+  <p>
+    Amazon Relational Database Service (RDS) is a fully managed web service that makes it easy to
+    set up, operate, and scale a relational database in the cloud. It provides cost-efficient,
+    resizable capacity for an industry-standard relational database and manages common database
+    administration tasks.
+  </p>
 
+  <p>
+    Instead of buying servers, installing the OS, and managing database software manually,
+    RDS automates the heavy lifting provisioning, patching, backup, recovery, failure detection,
+    and repair.
+  </p>
+
+  <h3>Supported Database Engines</h3>
+  <p>RDS supports six popular database engines:</p>
+
+  <div class="db-engines">
+    <p>Amazon Aurora (AWS-built, high performance)</p>
+    <p>PostgreSQL</p>
+    <p>MySQL</p>
+    <p>MariaDB</p>
+    <p>Oracle Database</p>
+    <p>Microsoft SQL Server</p>
+  </div>
+
+  <h3>Amazon RDS</h3>
+  <h3>Core Architecture: Multi-AZ vs. Read Replicas</h3>
+
+  <p>
+    One of the most critical concepts in RDS is the difference between High Availability (Multi-AZ)
+    and Scalability (Read Replicas).
+  </p>
+
+  <div class="multi-az">
+
+    <h4>1. Multi-AZ Deployment (High Availability)</h4>
+    <p><strong>Purpose:</strong> Disaster Recovery (DR) and High Availability.</p>
+    <p>
+      <strong>How it works:</strong> RDS automatically provisions a Standby Replica in a different
+      Availability Zone (AZ). Data is synchronously replicated to the standby.
+    </p>
+    <p>
+      <strong>Failover:</strong> If the primary DB fails, RDS automatically fails over to the
+      standby. The endpoint remains the same, so your application doesn't need configuration
+      changes.
+    </p>
+    <p>
+      <strong>Access:</strong> The standby cannot be used for read or write traffic. It is idle
+      until a failure occurs.
+    </p>
+
+  </div>
+
+  <div class="read-replicas">
+
+    <h4>2. Read Replicas (Scalability)</h4>
+    <p><strong>Purpose:</strong> Improve performance by offloading read traffic.</p>
+    <p>
+      <strong>How it works:</strong> You create a read-only copy of your database. Data is
+      asynchronously replicated from the primary.
+    </p>
+    <p>
+      <strong>Access:</strong> You can connect to a Read Replica to run queries (e.g., analytics,
+      reporting) to reduce the load on the primary DB.
+    </p>
+    <p>
+      <strong>Promotion:</strong> A Read Replica can be promoted to a standalone database if
+      needed.
+    </p>
+
+  </div>
+
+  <h3>The Shared Responsibility Model for RDS</h3>
+  <p>
+    Security and management in RDS are a partnership between you and AWS.
+  </p>
+
+  <div class="aws-responsibility">
+
+    <h4>AWS Responsibility (Security OF the Cloud):</h4>
+    <p>Physical security of data centers.</p>
+    <p>Managing the underlying host infrastructure (EC2, EBS).</p>
+    <p>Patching the OS and the database software engine.</p>
+    <p>Automated backups and snapshots.</p>
+
+  </div>
+
+  <div class="customer-responsibility">
+
+    <h4>Customer Responsibility (Security IN the Cloud):</h4>
+    <p>Data: Managing the actual data inside the database.</p>
+    <p>Encryption: Enabling encryption at rest (KMS) and in transit (SSL).</p>
+    <p>
+      Network: Configuring Security Groups (firewalls) to restrict access
+      (e.g., only allow traffic from your App Server on port 3306).
+    </p>
+    <p>IAM: Managing who can access the RDS service API.</p>
+    <p>
+      Database Users: Creating and managing database users and permissions within the DB
+      engine itself.
+    </p>
+
+  </div>
+
+  <h3>Advanced Features</h3>
+
+  <div class="advanced-features">
+
+    <h4>1. RDS Proxy</h4>
+    <p>
+      Many modern applications (especially serverless apps using Lambda) open thousands of
+      database connections, which can crash a traditional database.
+    </p>
+    <p>
+      <strong>Solution:</strong> RDS Proxy sits between your app and the database. It pools and
+      shares established connections, making your database more efficient and resilient to
+      connection surges.
+    </p>
+
+    <h4>2. Blue/Green Deployments</h4>
+    <p>
+      Updating a database schema or engine version can be risky.
+    </p>
+    <p>
+      <strong>Solution:</strong> RDS Blue/Green Deployments create a staging environment (Green)
+      that mirrors your production environment (Blue). You can upgrade and test the Green
+      environment safely. When ready, you switch over traffic in typically under a minute with
+      no data loss.
+    </p>
+
+    <h4>3. Storage Auto-Scaling</h4>
+    <p>
+      You don't need to over-provision storage "just in case." RDS can automatically detect
+      when you are running out of free space and increase your storage volume size on the fly
+      with zero downtime.
+    </p>
+
+  </div>
+
+  <div class="cloudtrail-content">
+
+  <p>
+    AWS With the help of a tool called Cloud Trail, offered by Amazon Web Services (AWS),
+    you can keep track of and document activities that take place inside your AWS infrastructure.
+    It gives you a thorough event history of every activity users, services, and resources took
+    while using your AWS account. By recording and archiving event logs, Cloud Trail assists
+    with security, compliance, operational auditing, and troubleshooting.
+  </p>
+
+  <p>
+    When you create a cloud trail, it is already operational in your AWS account and doesn't
+    need to be manually set up. A Cloud Trail event is created each time something happens
+    in your AWS account.
+  </p>
+
+  <h3>What is AWS CloudTrail?</h3>
+
+  <p>
+    AWS CloudTrail is a service that enables governance, compliance, and operational and risk
+    auditing of your AWS account. It records and logs every API call made on your AWS account,
+    capturing details such as the identity of the API caller, the time of the API call, the source
+    IP address, the request parameters, and the response elements returned by the AWS service.
+  </p>
+
+  <p>
+    This comprehensive logging allows you to track changes and activities across your AWS
+    infrastructure, helping with security analysis, resource change tracking, troubleshooting,
+    and meeting compliance requirements.
+  </p>
+
+  <h3>CloudTrail provides three ways to record events:</h3>
+
+  <div class="event-history">
+
+    <h4>Event History</h4>
+    <p>
+      Your AWS account has Cloud Trail activated by default, and you have immediate access
+      to the Cloud Trail event history.
+    </p>
+    <p>
+      A viewable, searchable, printable, and immutable record of the last 90 days' worth of
+      management events in an AWS Region is available in the Event history.
+    </p>
+    <p>
+      The AWS Management Console, AWS Command Line Interface, and AWS SDKs and APIs are all
+      used to perform the activities that these events record.
+    </p>
+    <p>
+      The AWS Region where the event occurred is documented in the Event history.
+    </p>
+    <p>
+      The Event history can be seen for free on Cloud Trail.
+    </p>
+
+  </div>
+
+  <div class="cloudtrail-lake">
+
+    <h4>Cloud Trail Lake</h4>
+    <p>
+      A managed data lake called AWS Cloud Trail Lake is used to record, store, access, and
+      analyze user and API activity on AWS for audit and security reasons.
+    </p>
+    <p>
+      Existing events in row-based json format are converted to Apache ORC format by
+      Cloud Trail Lake. A columnar storage format called ORC is designed for quick data retrieval.
+    </p>
+    <p>
+      Event data stores, which are immutable collections of events based on criteria you choose
+      by using sophisticated event selectors, aggregate events into immutable collections.
+    </p>
+    <p>
+      The event data can be kept in an event data storage for a maximum of seven years
+      (2557 days).
+    </p>
+    <p>
+      Using AWS Organizations, you may construct an event data store for a single AWS account
+      or for a number of AWS accounts.
+    </p>
+    <p>
+      Any Cloud Trail logs that you currently have can be imported into an existing or new
+      event data store from your S3 buckets.
+    </p>
+    <p>
+      With Lake dashboards, you can also see the top Cloud Trail event trends.
+      See Creating event data storage and working with AWS Cloud Trail Lake for further details.
+    </p>
+
+  </div>
+
+  <div class="trails">
+
+    <h4>Trails</h4>
+    <p>
+      In addition to delivering and storing events in an Amazon S3 bucket, Trails can also
+      deliver events to Amazon Cloud Watch Logs and the Amazon Event Bridge.
+    </p>
+    <p>
+      These occurrences can be entered into your security monitoring programs.
+    </p>
+    <p>
+      You may also search and examine your Cloud Trail logs using custom third-party programs
+      or programs like Amazon Athena.
+    </p>
+</div>
+
+    <div class="cloudwatch-content">
+<h2>Amazon CloudWatch</h2>
+  <p>
+    Amazon CloudWatch is a monitoring and observability service built for DevOps engineers,
+    developers, site reliability engineers (SREs), and IT managers. It provides data and
+    actionable insights to monitor your applications, respond to system-wide performance
+    changes, optimize resource utilization, and get a unified view of operational health.
+  </p>
+
+  <h3>Core Architecture: The Three Pillars</h3>
+  <p>
+    CloudWatch is built around three fundamental data types.
+  </p>
+
+  <div class="pillars">
+
+    <h4>1. Metrics</h4>
+    <p>Numerical data points measured over time.</p>
+    <p><strong>Example:</strong> "CPU Utilization is 85% at 10:00 AM."</p>
+    <p>
+      <strong>Source:</strong> AWS services send metrics automatically (e.g., EC2, RDS, Lambda).
+      You can also send Custom Metrics from your own applications (e.g., "Number of items in cart").
+    </p>
+
+    <h4>2. Logs</h4>
+    <p>Text files containing detailed records of events.</p>
+    <p><strong>Example:</strong> An Apache access log or a Lambda function error trace.</p>
+    <p>
+      <strong>Storage:</strong> Logs are organized into Log Groups (e.g., /aws/lambda/my-function)
+      and Log Streams (individual instances).
+    </p>
+
+    <h4>3. Events (now EventBridge)</h4>
+    <p>
+      A stream of system events that describe changes in AWS resources.
+    </p>
+    <p><strong>Example:</strong> "EC2 Instance State changed from Running to Stopped."</p>
+
+  </div>
+
+  <h3>Amazon CloudWatch Features</h3>
+
+  <div class="features">
+
+    <h4>Metrics</h4>
+    <p>
+      It represents a time-ordered set of data points that are published to Amazon CloudWatch.
+    </p>
+    <p>
+      All data point is marked with a timestamp.
+    </p>
+    <p>
+      Metric is a variable that is monitored and data points are the value of that variable over time.
+    </p>
+    <p>
+      They are uniquely defined by a name, namespace, and zero or more dimensions.
+    </p>
+    <p>
+      Metric math is used to query multiple CloudWatch metrics and use math expressions to create
+      new time series based on these metrics.
+    </p>
+
+    <h4>Dimensions</h4>
+    <p>
+      A dimension is a name/value pair which uniquely identifies a metric.
+    </p>
+    <p>
+      Dimensions are the unique identifiers for a metric, so whenever you add a unique name/value
+      pair to one of the metrics, you are creating a new variation of that metric.
+    </p>
+
+    <h4>Statistics</h4>
+    <p>
+      Statistics are metric data aggregations over specified periods of time.
+    </p>
+    <p>
+      The few available statistics on CloudWatch are maximum, minimum, sum, average,
+      and sample count.
+    </p>
+
+    <h4>Alarm</h4>
+    <p>
+      It is used to automatically initiate actions on our behalf.
+    </p>
+    <p>
+      It watches a single metric over a specified time period and performs one or more specified
+      actions based on the value of the metric.
+    </p>
+    <p>
+      The estimated AWS charges can also be monitored using the alarm.
+    </p>
+
+    <h4>Percentiles</h4>
+    <p>
+      It represents the relative weightage of the data in a dataset.
+    </p>
+    <p>
+      It helps the user to get a better understanding of the distribution of metric data.
+    </p>
+
+    <h4>CloudWatch Dashboard</h4>
+    <p>
+      A user-friendly CloudWatch console is available which is used for monitoring resources
+      in a single view.
+    </p>
+    <p>
+      There is no limit on the number of CloudWatch dashboards you can create.
+    </p>
+    <p>
+      These dashboards are global and not region-specific.
+    </p>
+
+    <h4>CloudWatch Agent</h4>
+    <p>
+      It is required to be installed.
+    </p>
+    <p>
+      It collects logs and system-level metrics from EC2 instances and on-premises servers.
+    </p>
+
+    <h4>CloudWatch Events</h4>
+    <p>
+      CloudWatch events help you to create a set of rules that match with any event
+      (i.e. stopping of EC2 instance).
+    </p>
+    <p>
+      These events can be routed to one or more targets like AWS Lambda functions,
+      Amazon SNS Topics, Amazon SQS queues, and other target types.
+    </p>
+    <p>
+      CloudWatch Events observes the operational events continuously and whenever there is any
+      change in the state of the event, it performs the action by sending notifications,
+      activating lambda, etc.
+    </p>
+    <p>
+      An event indicates a change in the AWS environment. Whenever there is a change in the
+      state of AWS resources, events are generated.
+    </p>
+    <p>
+      Rules are used for matching events and routing to targets.
+    </p>
+    <p>
+      Target process events. They include Amazon EC2 instances, AWS Lambda functions, etc.
+      A target receives the events in JSON format.
+    </p>
+
+    <h4>CloudWatch Logs</h4>
+    <p>
+      Amazon CloudWatch logs enable you to store, monitor, and access files from AWS resources
+      like Amazon EC2 instances, Route53, etc.
+    </p>
+    <p>
+      It also helps you to troubleshoot your system errors and maintain the logs in highly
+      durable storage.
+    </p>
+    <p>
+      It also creates log of information about the DNS queries that Route 53 receives.
+    </p>
+
+  </div>
+
+</div>
 </body>
 
 </html>
