@@ -58,8 +58,8 @@ kops create cluster \
   --master-size t2.medium \
   --master-count 1 \
   --node-size t2.micro \
-  --node-count 2 \
-  --master-volume-size 20 \
+  --node-count 1 \
+  --master-volume-size 25 \
   --node-volume-size 20
 
 kops update cluster --name kops.flm.k8s.local --yes --admin
@@ -72,12 +72,15 @@ kops delete cluster --name kops.flm.k8s.local --yes
 <h4>Restart cluster</h4>    
 sudo su
 export KOPS_STATE_STORE=s3://kops.flm.k8s
-kops create cluster --name kops.flm.k8s.local \
---zones us-east-1a,us-east-1b \
---master-size t2.medium \
---master-count 1 \
---node-size t2.micro \
---node-count 2
+kops create cluster \
+  --name kops.flm.k8s.local \
+  --zones us-east-1a,us-east-1b \
+  --master-size t2.medium \
+  --master-count 1 \
+  --node-size t2.micro \
+  --node-count 1 \
+  --master-volume-size 25 \
+  --node-volume-size 20
 </pre>
 </body>
 </html>
