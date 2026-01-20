@@ -59,8 +59,8 @@ kops create cluster \
   --master-count 1 \
   --node-size t2.micro \
   --node-count 1 \
-  --master-volume-size 25 \
-  --node-volume-size 20
+  --master-volume-size 8 \
+  --node-volume-size 8
 
 kops update cluster --name kops.flm.k8s.local --yes --admin
 kubectl get nodes
@@ -79,8 +79,8 @@ kops create cluster \
   --master-count 1 \
   --node-size t2.micro \
   --node-count 1 \
-  --master-volume-size 25 \
-  --node-volume-size 20
+  --master-volume-size 8 \
+  --node-volume-size 8
 </pre>
 </body>
 </html>
