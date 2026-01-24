@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Introduction to Apache Maven</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        p {
+            color: #333;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        table, th, td {
+            border: 1px solid #aaa;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #eaeaea;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Introduction to Apache Maven</h1>
+    <p><strong>Last Updated :</strong> 24 Jan, 2026</p>
+
+    <p>
+        Apache Maven is the industry-standard build automation and project management tool for Java.
+        While it is often seen as just a dependency manager, Maven is actually a complete project
+        management framework. Unlike procedural tools like Ant or Make, Maven is declarative;
+        you describe what your project is through the POM, and Maven automatically knows how to
+        build it using predefined lifecycles.
+    </p>
+
+    <h2>Installing and Setting Up Maven</h2>
+    <ol>
+        <li><strong>Download Maven:</strong> Visit the official Maven website and download the latest version.</li>
+        <li><strong>Extract the Archive:</strong> Extract the downloaded archive to a suitable location.</li>
+        <li><strong>Set Environment Variables:</strong> Add the <code>bin</code> directory to the PATH variable.</li>
+        <li><strong>Verify Installation:</strong> Run <code>mvn -version</code> in terminal.</li>
+    </ol>
+
+    <h2>Core Concepts: The Maven Architecture</h2>
+
+    <h3>1. The POM (Project Object Model)</h3>
+    <p>The <code>pom.xml</code> is the brain of a Maven project. It contains:</p>
+    <ul>
+        <li><strong>Identity:</strong> groupId, artifactId, version</li>
+        <li><strong>Dependencies:</strong> External libraries like JUnit, Log4j</li>
+        <li><strong>Plugins:</strong> Tools to compile, test, and package code</li>
+    </ul>
+
+    <h3>2. Repositories (Where the JARs Live)</h3>
+
+    <p><strong>Local Repository:</strong> Stores downloaded dependencies locally.</p>
+    <p>Example: <code>C:\Users\asingh\.m2</code></p>
+
+    <p><strong>Central Repository:</strong> Maintained by the Maven community.</p>
+    <p>Example: JUnit downloaded from repo.maven.apache.org</p>
+
+    <p><strong>Remote Repository:</strong> Organization-specific repositories.</p>
+    <p>Example: <code>http://nexus.company.com/repository/maven-releases</code></p>
+
+    <h2>Key Terminologies</h2>
+    <ul>
+        <li><strong>POM Files:</strong> XML files containing project configuration.</li>
+        <li><strong>Dependencies and Repositories:</strong> External libraries stored in repositories.</li>
+        <li><strong>Build Lifecycles:</strong> Ordered phases executed during build.</li>
+        <li><strong>Build Profiles:</strong> Environment-specific configurations.</li>
+        <li><strong>Build Plugins:</strong> Tools to perform specific tasks.</li>
+    </ul>
+
+    <h2>The Build Lifecycle: Phases and Goals</h2>
+
+    <h3>Default Lifecycle Phases</h3>
+    <ul>
+        <li><strong>validate:</strong> Checks project configuration</li>
+        <li><strong>compile:</strong> Compiles source code</li>
+        <li><strong>test:</strong> Runs unit tests</li>
+        <li><strong>package:</strong> Creates JAR/WAR</li>
+        <li><strong>verify:</strong> Runs integration tests</li>
+        <li><strong>install:</strong> Installs to local repository</li>
+        <li><strong>deploy:</strong> Uploads to remote repository</li>
+    </ul>
+
+    <p><strong>Key Rule:</strong> Running a phase executes all previous phases automatically.</p>
+
+    <h2>Dependency Management</h2>
+    <p>
+        Maven supports transitive dependency management. Adding one dependency
+        automatically pulls all required dependent libraries.
+    </p>
+
+    <h3>Snapshot vs Release</h3>
+    <ul>
+        <li><strong>Release:</strong> Stable and fixed version (e.g., 1.0.0)</li>
+        <li><strong>Snapshot:</strong> Development version (e.g., 1.0.0-SNAPSHOT)</li>
+    </ul>
+
+    <h2>Build Profiles</h2>
+    <p>
+        Profiles allow different configurations for environments like Dev, Test, and Prod.
+    </p>
+    <p>Example command: <code>mvn package -P prod</code></p>
+
+    <h2>Maven Directory Structure</h2>
+    <ul>
+        <li><code>src/main/java</code> – Application code</li>
+        <li><code>src/main/resources</code> – Configuration files</li>
+        <li><code>src/test/java</code> – Unit tests</li>
+        <li><code>target</code> – Build output</li>
+    </ul>
+
+    <h2>Use Cases of Maven</h2>
+    <ul>
+        <li>Java project builds</li>
+        <li>Dependency management</li>
+        <li>CI/CD integration</li>
+        <li>Automated testing</li>
+        <li>Project standardization and documentation</li>
+    </ul>
+
+    <h2>Maven in Test Automation</h2>
+    <p>
+        Maven helps manage test dependencies, execute tests automatically,
+        and generate reports, ensuring consistent test execution.
+    </p>
+
+    <h2>Best Practices</h2>
+    <ul>
+        <li>Keep pom.xml clean</li>
+        <li>Use dependency management</li>
+        <li>Follow standard directory structure</li>
+        <li>Use profiles wisely</li>
+    </ul>
+
+    <h2>Essential Commands Cheat Sheet</h2>
+    <table>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>mvn clean</td>
+            <td>Deletes the target folder</td>
+        </tr>
+        <tr>
+            <td>mvn compile</td>
+            <td>Compiles source code</td>
+        </tr>
+        <tr>
+            <td>mvn test</td>
+            <td>Runs unit tests</td>
+        </tr>
+        <tr>
+            <td>mvn package</td>
+            <td>Creates JAR/WAR</td>
+        </tr>
+        <tr>
+            <td>mvn install</td>
+            <td>Installs artifact to local repository</td>
+        </tr>
+        <tr>
+            <td>mvn dependency:tree</td>
+            <td>Displays dependency hierarchy</td>
+        </tr>
+    </table>
+
+</body>
+</html>
