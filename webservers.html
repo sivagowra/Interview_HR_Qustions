@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NGINX Overview and Default Paths</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        code, pre {
+            background-color: #f9f9f9;
+            padding: 10px;
+            display: block;
+            border-left: 4px solid #3498db;
+            overflow-x: auto;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>What is NGINX?</h2>
+<p>
+NGINX (pronounced <strong>"engine x"</strong>) is a high-performance, open-source web server and reverse proxy server.
+It is also used as a load balancer, HTTP cache, TCP/UDP proxy, and mail proxy server (IMAP, POP3, SMTP).
+</p>
+
+<p>
+Originally developed by <strong>Igor Sysoev</strong>, NGINX is distributed under the
+<strong>2-clause BSD License</strong>. Enterprise support, training, and commercial versions
+are provided by <strong>F5, Inc.</strong>
+</p>
+
+<h2>Key Features of NGINX</h2>
+<ul>
+    <li><strong>Web Server:</strong> Optimized for fast delivery of static content</li>
+    <li><strong>Reverse Proxy:</strong> Forwards client requests to backend servers (Node.js, Python, Java, etc.)</li>
+    <li><strong>Load Balancing:</strong> Supports multiple algorithms to distribute traffic</li>
+    <li><strong>Caching:</strong> Reduces backend server load by caching responses</li>
+    <li><strong>Architecture:</strong> Event-driven, non-blocking model for high concurrency</li>
+    <li><strong>Security:</strong> SSL/TLS support and API gateway capabilities</li>
+    <li><strong>Cloud-Friendly:</strong> Widely used in Docker and Kubernetes environments</li>
+</ul>
+
+<h2>Default NGINX Installation Paths (Linux)</h2>
+<p>
+NGINX default paths depend on the operating system and installation method
+(package manager or source build).
+</p>
+
+<h3>Main Configuration Files</h3>
+<ul>
+    <li><strong>Main Configuration File:</strong> <code>/etc/nginx/nginx.conf</code></li>
+</ul>
+
+<h3>Site Configuration Directories (Debian / Ubuntu)</h3>
+<ul>
+    <li><code>/etc/nginx/sites-available/</code> – Available site configurations</li>
+    <li><code>/etc/nginx/sites-enabled/</code> – Enabled site configurations (symbolic links)</li>
+</ul>
+
+<h3>Default Web Root Directory</h3>
+<ul>
+    <li><code>/var/www/html</code> (common on many Linux distributions)</li>
+    <li><code>html/</code> directory relative to installation path (source install)</li>
+</ul>
+
+<h3>Default Installation Prefix</h3>
+<ul>
+    <li><strong>Source build:</strong> <code>/usr/local/nginx</code></li>
+</ul>
+
+<h2>Default NGINX Log File Locations</h2>
+<p>
+NGINX primarily uses two types of logs, configurable using
+<code>access_log</code> and <code>error_log</code> directives.
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Log Type</th>
+            <th>Default File Name</th>
+            <th>Common Default Path</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Access Log</td>
+            <td>access.log</td>
+            <td>/var/log/nginx/access.log</td>
+            <td>
+                Records all client requests including client IP,
+                request time, HTTP status code, and user agent.
+            </td>
+        </tr>
+        <tr>
+            <td>Error Log</td>
+            <td>error.log</td>
+            <td>/var/log/nginx/error.log</td>
+            <td>
+                Records warnings, errors, and debug information
+                with configurable severity levels.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Customizing NGINX Log Paths</h2>
+<p>
+You can customize log file locations in the NGINX configuration file
+(<code>/etc/nginx/nginx.conf</code>) or inside individual server blocks.
+</p>
+
+<h3>Example: Custom Logs for a Specific Website</h3>
+<pre><code>
+http {
+    server {
+        listen 80;
+        server_name domain1.com;
+
+        access_log /var/log/nginx/domain1.access.log;
+        error_log  /var/log/nginx/domain1.error.log warn;
+
+        # Other configurations
+    }
+}
+</code></pre>
+
+<p>
+After modifying the configuration, reload NGINX to apply changes:
+</p>
+
+<pre><code>
+sudo systemctl reload nginx
+</code></pre>
+
+<h2>Conclusion</h2>
+<p>
+NGINX is a lightweight yet powerful web server widely used in modern
+cloud-native and containerized environments. Its flexibility, performance,
+and scalability make it a core component of DevOps and production infrastructures.
+</p>
+<h1>NGINX Command Manual</h1>
+
+<h2>NAME</h2>
+<p>
+<strong>nginx</strong> — HTTP and reverse proxy server, mail proxy server,
+and generic TCP/UDP proxy server.
+</p>
+
+<h2>SYNOPSIS</h2>
+<pre><code>
+nginx [-?hqTtVv] [-c file] [-e file] [-g directives] [-p prefix] [-s signal]
+</code></pre>
+
+<h2>DESCRIPTION</h2>
+<p>
+NGINX (pronounced <strong>“engine x”</strong>) is a high-performance HTTP and reverse
+proxy server. It can also function as a mail proxy server and a generic
+TCP/UDP proxy server.
+</p>
+
+<p>
+NGINX is well known for its:
+</p>
+<ul>
+    <li>High performance</li>
+    <li>Stability</li>
+    <li>Rich feature set</li>
+    <li>Simple configuration</li>
+    <li>Low resource consumption</li>
+</ul>
+
+<h2>COMMAND OPTIONS</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Option</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>-?, -h</td>
+            <td>Print help information</td>
+        </tr>
+        <tr>
+            <td>-c file</td>
+            <td>Use an alternative configuration file</td>
+        </tr>
+        <tr>
+            <td>-e file</td>
+            <td>
+                Use an alternative error log file.
+                Special value <code>stderr</code> sends logs to standard error.
+            </td>
+        </tr>
+        <tr>
+            <td>-g directives</td>
+            <td>Set global configuration directives</td>
+        </tr>
+        <tr>
+            <td>-p prefix</td>
+            <td>Set prefix path (default: <code>/usr/share/nginx</code>)</td>
+        </tr>
+        <tr>
+            <td>-q</td>
+            <td>Suppress non-error messages during configuration testing</td>
+        </tr>
+        <tr>
+            <td>-s signal</td>
+            <td>
+                Send a signal to the master process:
+                <ul>
+                    <li><strong>stop</strong> → SIGTERM</li>
+                    <li><strong>quit</strong> → SIGQUIT</li>
+                    <li><strong>reopen</strong> → SIGUSR1</li>
+                    <li><strong>reload</strong> → SIGHUP</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>-T</td>
+            <td>Same as <code>-t</code>, but also dumps configuration files</td>
+        </tr>
+        <tr>
+            <td>-t</td>
+            <td>Test configuration file without starting NGINX</td>
+        </tr>
+        <tr>
+            <td>-V</td>
+            <td>Print version, compiler version, and configure arguments</td>
+        </tr>
+        <tr>
+            <td>-v</td>
+            <td>Print NGINX version</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>SIGNALS</h2>
+
+<h3>Master Process Signals</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Signal</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>SIGINT, SIGTERM</td>
+            <td>Shut down quickly</td>
+        </tr>
+        <tr>
+            <td>SIGHUP</td>
+            <td>Reload configuration and gracefully restart workers</td>
+        </tr>
+        <tr>
+            <td>SIGQUIT</td>
+            <td>Graceful shutdown</td>
+        </tr>
+        <tr>
+            <td>SIGUSR1</td>
+            <td>Reopen log files</td>
+        </tr>
+        <tr>
+            <td>SIGUSR2</td>
+            <td>Upgrade NGINX binary without downtime</td>
+        </tr>
+        <tr>
+            <td>SIGWINCH</td>
+            <td>Gracefully shut down worker processes</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Worker Process Signals</h3>
+<ul>
+    <li><strong>SIGTERM</strong> – Quick shutdown</li>
+    <li><strong>SIGQUIT</strong> – Graceful shutdown</li>
+    <li><strong>SIGUSR1</strong> – Reopen log files</li>
+</ul>
+
+<h2>DEBUGGING LOG</h2>
+<p>
+To enable debugging logs, rebuild NGINX with debug support:
+</p>
+
+<pre><code>
+./configure --with-debug
+</code></pre>
+
+<p>
+Then enable debug logging in the configuration:
+</p>
+
+<pre><code>
+error_log /path/to/log debug;
+</code></pre>
+
+<p>
+Enable debugging for a specific IP:
+</p>
+
+<pre><code>
+events {
+    debug_connection 127.0.0.1;
+}
+</code></pre>
+
+<h2>ENVIRONMENT</h2>
+<p>
+The <strong>NGINX</strong> environment variable is used internally and should
+not be set manually by users.
+</p>
+
+<h2>FILES</h2>
+<table>
+    <thead>
+        <tr>
+            <th>File</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>/run/nginx.pid</td>
+            <td>Contains the NGINX master process ID</td>
+        </tr>
+        <tr>
+            <td>/etc/nginx/nginx.conf</td>
+            <td>Main configuration file</td>
+        </tr>
+        <tr>
+            <td>stderr</td>
+            <td>Error log output</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>EXIT STATUS</h2>
+<ul>
+    <li><strong>0</strong> – Success</li>
+    <li><strong>1</strong> – Failure</li>
+</ul>
+
+<h2>EXAMPLES</h2>
+<p>Test a custom configuration file with global directives:</p>
+
+<pre><code>
+nginx -t -c /mynginx.conf \
+-g "pid /var/run/mynginx.pid; worker_processes 2;"
+</code></pre>
+
+<h2>SEE ALSO</h2>
+<ul>
+    <li>Official Documentation: http://nginx.org/en/docs/</li>
+    <li>Support: http://nginx.org/en/support.html</li>
+</ul>
+
+<h2>HISTORY</h2>
+<p>
+NGINX development began in 2002, with the first public release on
+October 4, 2004.
+</p>
+
+<h2>AUTHORS</h2>
+<p>
+Created by <strong>Igor Sysoev</strong> &lt;igor@sysoev.ru&gt;.
+</p>
+<p>
+This manual page was originally written by
+<strong>Sergey A. Osokin</strong>.
+</p>
+
+
+
+
+<h1>Apache HTTP Server – Complete Guide</h1>
+
+<h2>Introduction</h2>
+<p>
+Apache HTTP Server, commonly referred to as <strong>Apache</strong>, is one of the most popular
+web servers in the world. It is widely used for hosting websites and web applications due to
+its <strong>open-source nature, reliability, security, and high customizability</strong>.
+</p>
+
+<p>
+Developed and maintained by the <strong>Apache Software Foundation (ASF)</strong>,
+Apache runs on multiple platforms including Linux, Windows, and macOS.
+It is a core component of the popular <strong>LAMP stack</strong>.
+</p>
+
+<h2>What is Apache HTTP Server?</h2>
+<p>
+Apache HTTP Server is a free and open-source web server software that handles
+HTTP and HTTPS requests from clients (browsers) and delivers web content.
+It serves millions of websites globally and supports both static and dynamic content.
+</p>
+
+<h2>Uses and Features of Apache Web Server</h2>
+<ul>
+    <li><strong>Cross-platform support:</strong> Runs on Linux, Windows, and macOS</li>
+    <li><strong>Modular architecture:</strong> Extend functionality using modules</li>
+    <li><strong>Dynamic content support:</strong> PHP, Python, Perl, and more</li>
+    <li><strong>Virtual hosting:</strong> Host multiple websites on a single server</li>
+    <li><strong>Security features:</strong> SSL/TLS, authentication, access control</li>
+    <li><strong>Custom configuration:</strong> Uses <code>.htaccess</code> files</li>
+</ul>
+
+<h2>Apache Web Application Architecture</h2>
+<p>
+Apache is a core component of the <strong>LAMP stack</strong>, which is one of the most widely
+used architectures for web development.
+</p>
+
+<h3>LAMP Stack Components</h3>
+<ul>
+    <li><strong>Linux:</strong> Operating system that manages hardware and system resources</li>
+    <li><strong>Apache:</strong> Web server that processes and responds to HTTP requests</li>
+    <li><strong>MySQL:</strong> Relational database for storing structured data</li>
+    <li><strong>PHP:</strong> Server-side scripting language for dynamic content</li>
+</ul>
+
+<p>
+Apache serves as the foundation for many popular CMS platforms such as
+<strong>WordPress, Joomla, and Drupal</strong>.
+</p>
+
+<h2>How Does Apache Work?</h2>
+<p>
+Apache follows a <strong>client-server model</strong> to handle HTTP and HTTPS requests.
+</p>
+
+<ol>
+    <li>User enters a website URL in a browser</li>
+    <li>The browser sends an HTTP/HTTPS request to the server</li>
+    <li>Apache processes the request</li>
+    <li>Requested resources (HTML, CSS, images) are fetched</li>
+    <li>Apache sends the response back to the browser</li>
+    <li>The browser renders the webpage</li>
+</ol>
+
+<p>
+Apache listens on:
+</p>
+<ul>
+    <li><strong>Port 80</strong> for HTTP</li>
+    <li><strong>Port 443</strong> for HTTPS</li>
+</ul>
+
+<h2>Apache Default Paths (Linux – Ubuntu/Debian)</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Component</th>
+            <th>Default Path</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Configuration Directory</td>
+            <td>/etc/apache2/</td>
+        </tr>
+        <tr>
+            <td>Main Configuration File</td>
+            <td>/etc/apache2/apache2.conf</td>
+        </tr>
+        <tr>
+            <td>Virtual Hosts</td>
+            <td>/etc/apache2/sites-available/ and /etc/apache2/sites-enabled/</td>
+        </tr>
+        <tr>
+            <td>Web Root (DocumentRoot)</td>
+            <td>/var/www/html/</td>
+        </tr>
+        <tr>
+            <td>Logs</td>
+            <td>/var/log/apache2/</td>
+        </tr>
+        <tr>
+            <td>Modules</td>
+            <td>/etc/apache2/mods-available/</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Apache Paths on RHEL / CentOS</h2>
+<ul>
+    <li><strong>Main Config File:</strong> <code>/etc/httpd/conf/httpd.conf</code></li>
+</ul>
+
+<h2>Custom Installation Path</h2>
+<ul>
+    <li><strong>Source installation:</strong> <code>/usr/local/apache2/</code></li>
+</ul>
+
+<h2>Useful Commands to Find Apache Paths</h2>
+
+<h3>Find Apache Configuration File</h3>
+<pre><code>
+apache2ctl -V
+# or
+httpd -V
+</code></pre>
+
+<h3>Find Document Root</h3>
+<pre><code>
+grep -i "DocumentRoot" /etc/apache2/sites-enabled/000-default.conf
+</code></pre>
+
+<h2>Conclusion</h2>
+<p>
+Apache HTTP Server remains one of the most trusted and widely deployed web servers.
+Its flexibility, modular design, and strong community support make it an excellent choice
+for hosting both static and dynamic websites.
+</p>
+
+
+<h1>Apache Tomcat – Complete Overview</h1>
+
+<h2>Introduction to Apache Tomcat</h2>
+<p>
+Apache Tomcat is an <strong>open-source, lightweight Java Servlet Container</strong>
+and web server developed by the <strong>Apache Software Foundation</strong>.
+It is designed to execute <strong>Java Servlets, JSP (JavaServer Pages), and WebSocket</strong>
+technologies.
+</p>
+
+<p>
+Tomcat is widely used for hosting <strong>Java web applications</strong> and
+<strong>Spring Boot microservices</strong>, making it a standard runtime environment
+for Java-based web solutions.
+</p>
+
+<h2>Key Aspects of Apache Tomcat</h2>
+
+<ul>
+    <li>
+        <strong>Functionality:</strong> Implements Jakarta EE (formerly Java EE)
+        specifications, providing a pure Java environment for server-side applications.
+    </li>
+    <li>
+        <strong>Core Components:</strong>
+        <ul>
+            <li><strong>Catalina:</strong> Servlet container that handles request processing</li>
+            <li><strong>Coyote:</strong> HTTP connector that listens for client requests</li>
+            <li><strong>Jasper 2:</strong> JSP engine that compiles JSP files into servlets</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Deployment:</strong> Applications are packaged as <code>.war</code> files
+        and deployed into the <code>webapps</code> directory.
+    </li>
+    <li>
+        <strong>Requirements:</strong> Requires a Java Virtual Machine (JVM) to run.
+    </li>
+    <li>
+        <strong>Use Cases:</strong> Web applications, RESTful APIs, microservices,
+        and embedded server for Spring Boot.
+    </li>
+</ul>
+
+<h2>Tomcat Versions</h2>
+<ul>
+    <li><strong>Tomcat 10 and later:</strong> Supports Jakarta EE specifications</li>
+    <li><strong>Tomcat 9 and earlier:</strong> Supports Java EE specifications</li>
+</ul>
+
+<p>
+Tomcat is popular due to its <strong>lightweight nature, ease of configuration</strong>,
+and suitability for both <strong>development and production</strong> environments.
+</p>
+
+<h2>Understanding Tomcat Paths</h2>
+<p>
+The term <strong>"Tomcat path"</strong> can refer to either:
+</p>
+<ul>
+    <li>The <strong>file system installation path</strong></li>
+    <li>The <strong>web application context (URL) path</strong></li>
+</ul>
+
+<h2>1. Tomcat Installation Path (CATALINA_HOME)</h2>
+<p>
+The Tomcat installation directory is referenced by the environment variable
+<code>CATALINA_HOME</code>.
+</p>
+
+<h3>Default Installation Locations</h3>
+<ul>
+    <li><strong>Windows:</strong> 
+        <code>C:\Program Files\Apache Software Foundation\Tomcat</code> or
+        <code>C:\Tomcat</code>
+    </li>
+    <li><strong>Linux / Unix:</strong> 
+        <code>/usr/local/tomcat</code>, <code>/opt/tomcat</code>,
+        or <code>/var/lib/tomcat</code> (package manager install)
+    </li>
+</ul>
+
+<h3>Important Tomcat Directories</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Directory</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>/bin</td>
+            <td>Startup and shutdown scripts (startup.sh/.bat, shutdown.sh/.bat)</td>
+        </tr>
+        <tr>
+            <td>/conf</td>
+            <td>Configuration files such as <code>server.xml</code> and <code>web.xml</code></td>
+        </tr>
+        <tr>
+            <td>/webapps</td>
+            <td>Default directory for deploying web applications</td>
+        </tr>
+        <tr>
+            <td>/logs</td>
+            <td>Contains Tomcat log files</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>2. Web Application Context Path</h2>
+<p>
+The <strong>context path</strong> is the part of the URL used to access a specific
+web application deployed on Tomcat.
+</p>
+
+<p>
+Example:
+</p>
+<pre><code>
+http://localhost:8080/myapp
+</code></pre>
+
+<p>
+In the above URL, the context path is:
+</p>
+<pre><code>
+/myapp
+</code></pre>
+
+<h3>How Context Path Is Defined</h3>
+<ul>
+    <li>
+        <strong>WAR or directory name:</strong>
+        A file named <code>myapp.war</code> or a folder <code>myapp</code>
+        inside <code>webapps</code> maps to <code>/myapp</code>
+    </li>
+    <li>
+        <strong>Configuration files:</strong>
+        Defined using a <code>&lt;Context&gt;</code> element in:
+        <ul>
+            <li><code>conf/server.xml</code> (not recommended)</li>
+            <li><code>conf/Catalina/localhost/myapp.xml</code> (recommended)</li>
+        </ul>
+    </li>
+</ul>
+
+<h2>Conclusion</h2>
+<p>
+Apache Tomcat is a reliable and lightweight servlet container that powers
+millions of Java applications worldwide. Its simplicity, strong Java integration,
+and compatibility with modern frameworks like Spring Boot make it an essential
+tool in Java-based web development.
+</p>
+<h1>Introduction to Apache Maven</h1>
+<p><strong>Last Updated:</strong> 24 Jan, 2026</p>
+
+<h2>What is Apache Maven?</h2>
+<p>
+Apache Maven is the <strong>industry-standard build automation and project management tool</strong>
+for Java. While it is often considered just a dependency manager, Maven is actually a
+<strong>complete project management framework</strong>.
+</p>
+
+<p>
+Unlike procedural tools such as Ant or Make, Maven is <strong>declarative</strong>.
+You describe what your project is using a configuration file called the
+<strong>POM (Project Object Model)</strong>, and Maven automatically determines
+how to build the project using predefined lifecycles.
+</p>
+
+<h2>Installing and Setting Up Maven</h2>
+<ol>
+    <li><strong>Download Maven:</strong> Download the latest version from the official Apache Maven website.</li>
+    <li><strong>Extract the Archive:</strong> Extract it to a suitable directory.</li>
+    <li><strong>Set Environment Variables:</strong> Add the <code>bin</code> directory to your system PATH.</li>
+    <li><strong>Verify Installation:</strong> Run the command below:</li>
+</ol>
+
+<pre><code>
+mvn -version
+</code></pre>
+
+<h2>Core Concepts: Maven Architecture</h2>
+
+<h3>1. POM (Project Object Model)</h3>
+<p>
+The <code>pom.xml</code> file is the heart of a Maven project. It defines everything Maven
+needs to know about the project.
+</p>
+
+<ul>
+    <li><strong>Identity:</strong> groupId, artifactId, version</li>
+    <li><strong>Dependencies:</strong> External libraries such as JUnit, Log4j</li>
+    <li><strong>Plugins:</strong> Tools to compile code, run tests, and package applications</li>
+</ul>
+
+<h3>2. Repositories (Where JARs Live)</h3>
+<p>
+Maven does not store libraries inside the project. Instead, it downloads dependencies
+and stores them in repositories.
+</p>
+
+<h4>Local Repository</h4>
+<ul>
+    <li>Located on the developer machine</li>
+    <li>Default path: <code>~/.m2</code></li>
+    <li>Example: <code>C:\Users\asingh\.m2</code></li>
+</ul>
+
+<h4>Central Repository</h4>
+<ul>
+    <li>Maintained by the Maven community</li>
+    <li>Used when dependencies are not found locally</li>
+    <li>Example: JUnit from <code>repo.maven.apache.org</code></li>
+</ul>
+
+<h4>Remote Repository</h4>
+<ul>
+    <li>Hosted on a web server</li>
+    <li>Commonly used for internal organizational artifacts</li>
+    <li>Example: <code>http://nexus.company.com/repository/maven-releases</code></li>
+</ul>
+
+<h2>Key Maven Terminologies</h2>
+
+<ul>
+    <li>
+        <strong>POM Files:</strong> XML files containing project configuration, dependencies,
+        plugins, goals, and directories.
+    </li>
+    <li>
+        <strong>Dependencies & Repositories:</strong> External libraries stored in repositories
+        and automatically downloaded by Maven.
+    </li>
+    <li>
+        <strong>Build Lifecycles, Phases, Goals:</strong> A lifecycle consists of phases,
+        and each phase executes one or more goals.
+    </li>
+    <li>
+        <strong>Build Profiles:</strong> Allow different configurations for environments
+        like development, testing, and production.
+    </li>
+    <li>
+        <strong>Build Plugins:</strong> Perform tasks such as compilation, testing,
+        packaging, and deployment.
+    </li>
+</ul>
+
+<h2>The Maven Build Lifecycle</h2>
+<p>
+Maven follows a strict sequence of build phases known as the <strong>Default Lifecycle</strong>.
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Phase</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>validate</td>
+            <td>Checks if the project is correct and all required information is available</td>
+        </tr>
+        <tr>
+            <td>compile</td>
+            <td>Compiles Java source code into .class files</td>
+        </tr>
+        <tr>
+            <td>test</td>
+            <td>Runs unit tests using frameworks like JUnit</td>
+        </tr>
+        <tr>
+            <td>package</td>
+            <td>Packages compiled code into JAR or WAR files</td>
+        </tr>
+        <tr>
+            <td>verify</td>
+            <td>Runs integration tests to ensure quality</td>
+        </tr>
+        <tr>
+            <td>install</td>
+            <td>Installs the package into the local repository</td>
+        </tr>
+        <tr>
+            <td>deploy</td>
+            <td>Deploys the package to a remote repository</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+<strong>Key Rule:</strong> When you run a phase, Maven automatically executes
+all previous phases in order.
+</p>
+
+<h2>Dependency Management</h2>
+<p>
+Maven supports <strong>transitive dependency management</strong>.
+If one dependency depends on others, Maven automatically resolves and downloads
+the entire dependency tree.
+</p>
+
+<h2>Snapshot vs Release Versions</h2>
+<ul>
+    <li><strong>Release (1.0.0):</strong> Stable and immutable version</li>
+    <li><strong>Snapshot (1.0.0-SNAPSHOT):</strong> Development version that can change frequently</li>
+</ul>
+
+<h2>Build Profiles</h2>
+<p>
+Profiles allow environment-specific configurations.
+</p>
+
+<pre><code>
+mvn package -P prod
+</code></pre>
+
+<h2>Maven Standard Directory Structure</h2>
+<ul>
+    <li><code>src/main/java</code> – Application source code</li>
+    <li><code>src/main/resources</code> – Configuration files</li>
+    <li><code>src/test/java</code> – Unit tests</li>
+    <li><code>target</code> – Compiled output and packaged files</li>
+</ul>
+
+<h2>Use Cases of Maven</h2>
+<ul>
+    <li>Java project build automation</li>
+    <li>Dependency management</li>
+    <li>CI/CD integration with Jenkins, GitLab CI</li>
+    <li>Automated testing</li>
+    <li>Project standardization and documentation</li>
+</ul>
+
+<h2>Maven in Test Automation</h2>
+<p>
+Maven plays a key role in test automation by managing test dependencies,
+executing tests during builds, and generating reports consistently.
+</p>
+
+<h2>Best Practices</h2>
+<ul>
+    <li>Keep <code>pom.xml</code> clean and readable</li>
+    <li>Use dependency management sections</li>
+    <li>Follow Maven’s standard directory structure</li>
+    <li>Leverage build profiles wisely</li>
+</ul>
+
+<h2>Essential Maven Commands Cheat Sheet</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>mvn clean</td>
+            <td>Deletes the target directory</td>
+        </tr>
+        <tr>
+            <td>mvn compile</td>
+            <td>Compiles source code</td>
+        </tr>
+        <tr>
+            <td>mvn test</td>
+            <td>Runs unit tests</td>
+        </tr>
+        <tr>
+            <td>mvn package</td>
+            <td>Creates JAR/WAR files</td>
+        </tr>
+        <tr>
+            <td>mvn install</td>
+            <td>Installs package into local repository</td>
+        </tr>
+        <tr>
+            <td>mvn dependency:tree</td>
+            <td>Displays dependency hierarchy</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Conclusion</h2>
+<p>
+Apache Maven is an essential tool for managing modern Java projects.
+Its standardized approach, powerful dependency management, and strong
+CI/CD integration make it indispensable for scalable and maintainable
+software development.
+</p>
+</body>
+</html>
