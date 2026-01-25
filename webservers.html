@@ -400,6 +400,105 @@ This manual page was originally written by
 <strong>Sergey A. Osokin</strong>.
 </p>
 
+<div class="nginx-logs-guide">
+
+  <div class="section">
+    <h2>1️⃣ Default NGINX Log Location</h2>
+    <p>Most of the time, NGINX logs are located at:</p>
+    <pre>/var/log/nginx/</pre>
+
+    <p>List log files:</p>
+    <pre>ls /var/log/nginx/</pre>
+
+    <ul>
+      <li><b>access.log</b> – Records all incoming requests</li>
+      <li><b>error.log</b> – Records errors, warnings, and failures</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>2️⃣ View Access Logs</h2>
+    <p>Access logs show IP address, request URL, status code, and response time.</p>
+
+    <pre>cat /var/log/nginx/access.log</pre>
+    <pre>less /var/log/nginx/access.log</pre>
+
+    <p>Live monitoring:</p>
+    <pre>tail -f /var/log/nginx/access.log</pre>
+  </div>
+
+  <div class="section">
+    <h2>3️⃣ View Error Logs</h2>
+    <p>Error logs help in debugging server issues.</p>
+
+    <pre>cat /var/log/nginx/error.log</pre>
+
+    <p>Live error monitoring:</p>
+    <pre>tail -f /var/log/nginx/error.log</pre>
+  </div>
+
+  <div class="section">
+    <h2>4️⃣ Search for Specific Errors</h2>
+
+    <p>Find 404 errors:</p>
+    <pre>grep "404" /var/log/nginx/access.log</pre>
+
+    <p>Find permission-related issues:</p>
+    <pre>grep "permission" /var/log/nginx/error.log</pre>
+  </div>
+
+  <div class="section">
+    <h2>5️⃣ Logs for a Specific Virtual Host</h2>
+    <p>Check site configuration:</p>
+
+    <pre>cat /etc/nginx/sites-available/default</pre>
+
+    <p>Example configuration:</p>
+    <pre>
+access_log /var/log/nginx/myapp_access.log;
+error_log  /var/log/nginx/myapp_error.log;
+    </pre>
+
+    <p>Check custom log:</p>
+    <pre>tail -f /var/log/nginx/myapp_error.log</pre>
+  </div>
+
+  <div class="section">
+    <h2>6️⃣ Check Logs Using systemd</h2>
+
+    <pre>journalctl -u nginx</pre>
+
+    <p>Live logs:</p>
+    <pre>journalctl -u nginx -f</pre>
+  </div>
+
+  <div class="section">
+    <h2>7️⃣ Common Real-World Scenarios</h2>
+
+    <ul>
+      <li>
+        <b>NGINX not starting:</b>
+        <pre>tail -50 /var/log/nginx/error.log</pre>
+      </li>
+
+      <li>
+        <b>502 Bad Gateway:</b>
+        <p>Check error.log and backend service logs</p>
+      </li>
+
+      <li>
+        <b>High traffic debugging:</b>
+        <pre>tail -f /var/log/nginx/access.log</pre>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>8️⃣ Bonus: Check Log Format</h2>
+    <pre>nginx -T | grep log_format</pre>
+  </div>
+
+</div>
 
 
 
