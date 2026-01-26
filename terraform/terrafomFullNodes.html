@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Terraform Full Tutorial</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      background-color: #f9fafb;
+      color: #111827;
+    }
+    h1, h2, h3 {
+      color: #1d4ed8;
+    }
+    h1 { font-size: 28px; }
+    h2 { font-size: 22px; margin-top: 30px; }
+    h3 { font-size: 18px; margin-top: 20px; }
+    pre {
+      background-color: #e5e7eb;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 15px 0;
+    }
+    table, th, td {
+      border: 1px solid #d1d5db;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #2563eb;
+      color: white;
+    }
+    tr:nth-child(even) { background-color: #f3f4f6; }
+    .box {
+      background-color: #eef2ff;
+      border-left: 5px solid #1d4ed8;
+      padding: 12px;
+      margin: 10px 0;
+    }
+    code { background-color: #e5e7eb; padding: 2px 4px; border-radius: 4px; }
+    ul { margin-left: 20px; }
+    li { margin-bottom: 6px; }
+    .important { color: #dc2626; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h1>Terraform Full Tutorial</h1>
+
+  <div class="box">
+    <strong>Purpose:</strong> Complete Terraform guide for learning, interviews, and practical usage.
+  </div>
+
+  <h2>1️⃣ What is Terraform?</h2>
+  <ul>
+    <li>Terraform is an <strong>Infrastructure as Code (IaC)</strong> tool by HashiCorp.</li>
+    <li>Allows you to <strong>provision, manage, and version cloud infrastructure</strong> using code.</li>
+    <li>Supports AWS, Azure, GCP, Kubernetes, VMware, etc.</li>
+    <li><strong>Declarative configuration:</strong> Define <em>what</em> you want, Terraform figures out <em>how</em> to create it.</li>
+  </ul>
+  <div class="box">
+    Interview line: <br>
+    <em>“Terraform is a tool to manage infrastructure in code, making deployments repeatable, versionable, and auditable.”</em>
+  </div>
+
+  <h2>2️⃣ Terraform Installation</h2>
+  <h3>Linux / Ubuntu</h3>
+  <pre>
+sudo apt update && sudo apt install -y wget unzip
+wget https://releases.hashicorp.com/terraform/1.14.3/terraform_1.14.3_linux_amd64.zip
+unzip terraform_1.14.3_linux_amd64.zip
+sudo mv terraform /usr/local/bin/
+terraform -v
+  </pre>
+
+  <h3>Windows</h3>
+  <ul>
+    <li>Download Terraform zip from <a href="https://www.terraform.io/downloads.html">Terraform Releases</a></li>
+    <li>Extract and add to PATH</li>
+    <li>Run <code>terraform -v</code></li>
+  </ul>
+
+  <h3>Mac (brew)</h3>
+  <pre>
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
+terraform -v
+  </pre>
+
+  <h2>3️⃣ Terraform Basic Workflow</h2>
+  <h3>Step 1: Create Configuration</h3>
+  <pre>
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_security_group" "sg" {
+  name        = "terraform-sg"
+  description = "Allow SSH traffic"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_instance" "web" {
+  ami                    = "ami-0532be01f26a3de55"
+  instance_type          = "t2.micro"
+  key_name               = "docker"
+  vpc_security_group_ids = [aws_security_group.sg.id]
+
+  root_block_device {
+    volume_size = 8
+  }
+
+  tags = {
+    Name = "Terraform-EC2"
+  }
+}
+  </pre>
+
+  <h3>Step 2: Initialize Terraform</h3>
+  <pre>terraform init</pre>
+
+  <h3>Step 3: Validate Configuration</h3>
+  <pre>terraform validate</pre>
+
+  <h3>Step 4: Plan Infrastructure</h3>
+  <pre>terraform plan</pre>
+
+  <h3>Step 5: Apply Changes</h3>
+  <pre>terraform apply
+# Or skip prompt
+terraform apply -auto-approve</pre>
+
+  <h3>Step 6: Destroy Infrastructure</h3>
+  <pre>terraform destroy</pre>
+
+  <h2>4️⃣ Terraform State</h2>
+  <ul>
+    <li>Tracks resources in <code>terraform.tfstate</code></li>
+    <li>Backup: <code>terraform.tfstate.backup</code></li>
+  </ul>
+  <pre>
+terraform show       # View resources
+terraform state list # List resources
+terraform state show aws_instance.web
+  </pre>
+
+  <h2>5️⃣ Terraform Import</h2>
+  <pre>
+terraform import aws_instance.web i-085e2b9d6c4aa298d
+terraform import aws_security_group.sg sg-0f46eb9dd97a2ec7c
+terraform plan
+  </pre>
+
+  <h2>6️⃣ Terraform Remote Backend (Backup + Collaboration)</h2>
+  <pre>
+terraform {
+  backend "s3" {
+    bucket         = "my-terraform-state"
+    key            = "project/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-lock"
+    encrypt        = true
+  }
+}
+  </pre>
+
+  <h2>7️⃣ Terraform Features</h2>
+  <table>
+    <tr>
+      <th>Feature</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>Infrastructure as Code</td>
+      <td>Define infra in code files</td>
+    </tr>
+    <tr>
+      <td>Immutable Infrastructure</td>
+      <td>Changes create new resources instead of editing existing</td>
+    </tr>
+    <tr>
+      <td>Multi-Cloud Support</td>
+      <td>AWS, Azure, GCP, etc.</td>
+    </tr>
+    <tr>
+      <td>State Management</td>
+      <td>Tracks real infrastructure</td>
+    </tr>
+    <tr>
+      <td>Dependency Graph</td>
+      <td>Creates resources in correct order</td>
+    </tr>
+    <tr>
+      <td>Modules</td>
+      <td>Reusable templates for infra</td>
+    </tr>
+    <tr>
+      <td>Plan & Apply</td>
+      <td>Preview changes before applying</td>
+    </tr>
+    <tr>
+      <td>Provisioners</td>
+      <td>Run scripts on instances</td>
+    </tr>
+    <tr>
+      <td>Workspaces</td>
+      <td>Manage multiple environments (dev/stage/prod)</td>
+    </tr>
+  </table>
+
+  <h2>8️⃣ Terraform Best Practices</h2>
+  <ul>
+    <li>Always use <strong>remote backend</strong> (S3 + DynamoDB)</li>
+    <li>Keep state files secure</li>
+    <li>Use modules for reusable infrastructure</li>
+    <li>Consistent naming (no hyphens in resource names)</li>
+    <li>Tag all resources</li>
+    <li>Always run <code>terraform plan</code> before apply</li>
+    <li>Backup <code>tfstate</code> before major changes</li>
+  </ul>
+
+  <h2>9️⃣ Common Interview Questions</h2>
+  <table>
+    <tr>
+      <th>Question</th>
+      <th>Sample Answer</th>
+    </tr>
+    <tr>
+      <td>What is Terraform?</td>
+      <td>Tool for infrastructure as code, supports multiple clouds</td>
+    </tr>
+    <tr>
+      <td>What is tfstate?</td>
+      <td>File mapping Terraform code to real resources</td>
+    </tr>
+    <tr>
+      <td>How to recover lost state?</td>
+      <td>Use <code>terraform.tfstate.backup</code> or import resources</td>
+    </tr>
+    <tr>
+      <td>What is a provider?</td>
+      <td>Defines cloud platform, e.g., AWS, Azure</td>
+    </tr>
+    <tr>
+      <td>What is a module?</td>
+      <td>Reusable Terraform code block for resources</td>
+    </tr>
+    <tr>
+      <td>Difference: plan vs apply?</td>
+      <td>Plan previews changes, apply executes them</td>
+    </tr>
+    <tr>
+      <td>How to manage multiple environments?</td>
+      <td>Use workspaces or separate directories</td>
+    </tr>
+  </table>
+
+  <div class="box">
+    🔥 Summary: This tutorial covers Terraform setup, usage, state management, backup, remote backend, features, best practices, and interview preparation.
+  </div>
+
+</body>
+</html>

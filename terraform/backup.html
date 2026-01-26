@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Terraform State File Explanation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      margin: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #1f2937;
+    }
+    h2 {
+      color: #2563eb;
+      margin-top: 25px;
+    }
+    h3 {
+      color: #111827;
+      margin-top: 20px;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    .box {
+      background: #eef2ff;
+      border-left: 4px solid #2563eb;
+      padding: 12px;
+      margin: 15px 0;
+    }
+    .important {
+      color: #dc2626;
+      font-weight: bold;
+    }
+    code {
+      background: #e5e7eb;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Terraform <code>terraform.tfstate.backup</code> Explanation</h1>
+
+  <div class="box">
+    <strong>Purpose:</strong> This document explains the Terraform state backup file in a simple,
+    interview-ready format.
+  </div>
+
+  <h2>What is <code>terraform.tfstate.backup</code>?</h2>
+  <ul>
+    <li>Backup copy of Terraform state file</li>
+    <li>Used to track real AWS infrastructure</li>
+    <li>Helps recover if main state file is corrupted</li>
+    <li class="important">Never edit this file manually</li>
+  </ul>
+
+  <h2>Top-Level Fields</h2>
+
+  <h3>Version</h3>
+  <ul>
+    <li>State format version: <code>4</code></li>
+  </ul>
+
+  <h3>Terraform Version</h3>
+  <ul>
+    <li>Terraform used: <code>1.14.3</code></li>
+  </ul>
+
+  <h3>Serial</h3>
+  <ul>
+    <li>Number of updates applied to infrastructure</li>
+    <li>Higher serial = more changes</li>
+  </ul>
+
+  <h3>Lineage</h3>
+  <ul>
+    <li>Unique identifier for the state file</li>
+    <li>Prevents accidental state replacement</li>
+  </ul>
+
+  <h2>Managed Resources</h2>
+  <ul>
+    <li>AWS EC2 Instance</li>
+    <li>AWS Security Group</li>
+  </ul>
+
+  <h2>Resource 1: EC2 Instance (<code>aws_instance.terraform</code>)</h2>
+
+  <h3>Identity</h3>
+  <ul>
+    <li>Instance ID: <code>i-085e2b9d6c4aa298d</code></li>
+  </ul>
+
+  <h3>Instance Configuration</h3>
+  <ul>
+    <li>AMI: <code>ami-0532be01f26a3de55</code></li>
+    <li>Instance Type: <code>t2.micro</code></li>
+    <li>Region: <code>us-east-1</code></li>
+    <li>Availability Zone: <code>us-east-1a</code></li>
+    <li>Key Pair: <code>docker</code></li>
+    <li>Status: Running</li>
+  </ul>
+
+  <h3>Networking</h3>
+  <ul>
+    <li>Private IP: <code>172.31.43.97</code></li>
+    <li>Public IP: <code>98.83.156.13</code></li>
+    <li>Subnet ID: <code>subnet-0a064bf028e192d4d</code></li>
+    <li>Security Group ID: <code>sg-0f46eb9dd97a2ec7c</code></li>
+  </ul>
+
+  <h3>Root Block Device</h3>
+  <ul>
+    <li>Volume Size: 8 GB</li>
+    <li>Volume Type: gp3</li>
+    <li>Delete on Termination: Yes</li>
+  </ul>
+
+  <h3>Tags</h3>
+  <ul>
+    <li>Name: <code>EC1</code></li>
+  </ul>
+
+  <h3>Dependencies</h3>
+  <ul>
+    <li>Depends on: <code>aws_security_group.sg</code></li>
+    <li>Security Group is created before EC2</li>
+  </ul>
+
+  <h2>Resource 2: Security Group (<code>aws_security_group.sg</code>)</h2>
+
+  <h3>Identity</h3>
+  <ul>
+    <li>Security Group ID: <code>sg-0f46eb9dd97a2ec7c</code></li>
+  </ul>
+
+  <h3>VPC</h3>
+  <ul>
+    <li>VPC ID: <code>vpc-0b78e535604b5f40d</code></li>
+  </ul>
+
+  <h3>Ingress Rule</h3>
+  <ul>
+    <li>Allows all inbound traffic</li>
+    <li>Ports: 0–0</li>
+    <li>Protocol: All (<code>-1</code>)</li>
+    <li>CIDR: <code>0.0.0.0/0</code></li>
+  </ul>
+
+  <h3>Egress Rule</h3>
+  <ul>
+    <li>Allows all outbound traffic</li>
+  </ul>
+
+  <h3>Tags</h3>
+  <ul>
+    <li>Name: <code>terraform-sg</code></li>
+  </ul>
+
+  <h2>Important Interview Questions</h2>
+  <ul>
+    <li><strong>What is Terraform state?</strong> – Maps configuration to real resources</li>
+    <li><strong>Why tfstate.backup?</strong> – Recovery from corruption</li>
+    <li><strong>Can we edit state manually?</strong> – No, it may corrupt infra</li>
+    <li><strong>How are dependencies tracked?</strong> – Stored inside state file</li>
+  </ul>
+
+  <h2>Best Practice</h2>
+  <div class="box">
+    Store Terraform state remotely using <strong>S3 + DynamoDB</strong>
+    to enable locking and team collaboration.
+  </div>
+
+  <h2>Final Summary</h2>
+  <p>
+    This Terraform state backup confirms that the EC2 instance and Security Group
+    were successfully created, linked, and managed by Terraform.
+  </p>
+
+</body>
+</html>
