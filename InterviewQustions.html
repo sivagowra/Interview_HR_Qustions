@@ -2,134 +2,2604 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interview Qustions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DevOps Interview Questions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #f8fafc;
+            --color-surface: #ffffff;
+            --color-text: #1e293b;
+            --color-text-muted: #64748b;
+            --color-primary: #0f172a;
+            --color-accent: #2563eb;
+            --color-border: #e2e8f0;
+            --color-code-bg: #f1f5f9;
+            --color-table-header: #0f172a;
+            --color-table-stripe: #f8fafc;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            --radius: 8px;
+            --radius-sm: 6px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-text);
+            background: var(--color-bg);
+            margin: 0;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent);
+            margin-top: 2.5rem;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: var(--color-text);
+        }
+
+        h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin: 0.75rem 0;
+            text-align: left;
+        }
+
+        p:first-child {
+            margin-top: 0;
+        }
+
+        ul {
+            margin: 0.75rem 0;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin: 0.35rem 0;
+        }
+
+        pre {
+            font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            background: var(--color-code-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.25rem;
+            overflow-x: auto;
+            margin: 0.75rem 0;
+            line-height: 1.5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: var(--color-surface);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border: 1px solid var(--color-border);
+        }
+
+        th {
+            background: var(--color-table-header);
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        tr:nth-child(even) {
+            background: var(--color-table-stripe);
+        }
+
+        tr:hover {
+            background: #f1f5f9;
+        }
+
+        td {
+            vertical-align: top;
+        }
+
+        hr {
+            margin: 2.5rem 0;
+            border: none;
+            border-top: 1px solid var(--color-border);
+        }
+
+        div {
+            margin-bottom: 0.5rem;
+        }
+
+        .section {
+            margin-bottom: 1.5rem;
+        }
+
+        strong {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.75rem;
+            color: var(--color-primary);
+        }
+
+        header p {
+            margin: 0.5rem 0 0;
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <h3>Tell me About Your Family</h3>
-        <p>WE ARE A NUCLEAR FAMILY OF 3 MEMBERS. MY MOTHER IS A HOME MAKER.<br>
-             I HAVE AN ENGER BROTHER, RECENTLY COMPLETE DEGREE BSE COMPUTERS.<br>
-            WE ARE A VERY CLOSE-KNIT FAMILY WHO SHARES A GREAT BOND WITH EACH OTHER.</p>
-    </div>
-    <div>
-        <h3>What is Your Strengths/ weakness</h3>
-        <p>Strengths: Easy collaboration new persons and Right time complate my works.</p>
-           <p> Weaknesses: Spending too much time on perfecting designs, but I am learning to balance efficiency
-            with quality</p>
+<div class="container">
+<header>
+    <h1>DevOps Interview Questions</h1>
+    <p>Technical reference & interview preparation</p>
+</header>
+<div>
 
-    </div>
-    <div>
-        <h3>What Do You Like to do outside of work</h3>
-        Nice question! Outside of work, I enjoy:
+  <h3>🔹 Process vs Thread</h3>
 
-<p>Chatting with people like you—seriously, every convo is different and fun.</p>
+  <table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+      <th>Feature</th>
+      <th>Process</th>
+      <th>Thread</th>
+    </tr>
+    <tr>
+      <td>Definition</td>
+      <td>A process is an independent program in execution</td>
+      <td>A thread is a small unit of execution inside a process</td>
+    </tr>
+    <tr>
+      <td>Memory</td>
+      <td>Each process has separate memory space</td>
+      <td>Threads share the same memory of the process</td>
+    </tr>
+    <tr>
+      <td>Communication</td>
+      <td>Inter-process communication (IPC) is complex</td>
+      <td>Thread communication is easy (shared memory)</td>
+    </tr>
+    <tr>
+      <td>Creation Time</td>
+      <td>Process creation is slow</td>
+      <td>Thread creation is fast</td>
+    </tr>
+    <tr>
+      <td>Context Switching</td>
+      <td>Heavy (more overhead)</td>
+      <td>Lightweight</td>
+    </tr>
+    <tr>
+      <td>Failure Impact</td>
+      <td>If one process crashes, others are not affected</td>
+      <td>If one thread crashes, the entire process may crash</td>
+    </tr>
+    <tr>
+      <td>Resource Usage</td>
+      <td>Uses more system resources</td>
+      <td>Uses less resources</td>
+    </tr>
+    <tr>
+      <td>Example</td>
+      <td>Running Chrome and VS Code</td>
+      <td>Multiple tabs in Chrome</td>
+    </tr>
+  </table>
 
-<p>Learning new stuff—tech trends, languages, random trivia.</p>
+  <h3>🔹 Simple Explanation</h3>
 
-<p>Listening to music—lofi, instrumental, sometimes old-school vibes.</p>
+  <p><strong>Process 👉 A full running application</strong></p>
+  <p>Example: Opening Google Chrome</p>
 
-<p>Helping out with coding projects—especially UI-related ones.</p>
-    </div>
-    
-    <div>
-        <h3>Why do you want to join this role at Ikyam Solutions?</h3>
-        <p>I'm really excited about the chance to join Ikyam Solutions because it has a dynamic work<br>
-            environment and focuses on creating smart IT solutions. I like that Ikyam uses technology to <br>
-            solve real business problems — that matches my interest in building useful and meaningful digital experiences.<br>
+  <p><strong>Thread 👉 A task inside that application</strong></p>
+  <p>Example: Each tab in Chrome runs as a thread</p>
 
-With my skills in UI development and experience using Vue.js, JavaScript, and Tailwind CSS, I believe<br>
-        I can help design clean and easy-to-use interfaces. I also see this job as a great opportunity to improve my <br>
-            skills and grow professionally by working with a talented team on important projects.
+  <h3>🔹 Real-World Example</h3>
 
-What I like most about Ikyam is its culture of learning and teamwork, which fits well with my own values as a developer who always wants to improve and grow.</p>
-    </div>
+  <p>Imagine a restaurant 🍽️</p>
 
-    <div>
-        <h3>Are you comfortable working in a team? </h3>
-        <p>Yes, I enjoy working in a team environment. Collaboration with designers and developers leads to
-            innovative solutions.
-            </p>
-    </div>
-    <div>
-        <h3>Why should we hire you for a UI Developer position?</h3>
-        <p>
-          I am a passionate UI Developer with strong skills in HTML, CSS, Tailwind CSS,<br>
-          and JavaScript. I specialize in creating responsive and visually appealing user<br>
-          interfaces. I have experience using Git and GitHub for version control and smooth<br>
-          team collaboration. I'm also comfortable working with JSON and integrating APIs into<br>
-          web applications. With a strong desire to learn and grow, I’m always eager to take on<br>
-          new challenges and contribute effectively to any project.
-        </p>
-      </div>
-      <div>
-        <h3>have you applied anywhere else?</h3>
-        <p>Yes, I’ve applied to a few other companies where I believe I can grow as a UI Developer<br>
-         and contribute meaningfully to frontend projects. However, I’m particularly interested in<br>
-          your company because of the work culture, the tech stack, and the kind of projects you handle.<br>
-           I'm looking for a role where I can continue learning and make a real impact, and this opportunity<br>
-            really stands out to me.</p>
-      </div>
+  <p><strong>Process → The restaurant itself</strong></p>
 
-      <div>
-        <h3>Where do you see yourself in five years?
+  <p><strong>Thread → Waiters working inside the restaurant</strong></p>
+
+  <p>All waiters share the same kitchen (memory)</p>
+
+</div>
+
+<hr>
+
+<h2>2. Disk Space, Process, and Storage Specs Commands</h2>
+<div>
+
+  <h3>🔹 1. Disk Space Commands</h3>
+
+  <p>✅ Check total disk usage</p>
+  <pre>df -h</pre>
+
+  <p>Shows disk size, used, available (human readable)</p>
+
+  <p>✅ Check disk usage of a folder</p>
+  <pre>du -sh /var/log</pre>
+
+  <p>✅ Top disk-consuming directories</p>
+  <pre>du -h / | sort -hr | head -10</pre>
+
+  <p>✅ Check disk partitions</p>
+  <pre>lsblk</pre>
+
+  <h3>🔹 2. Process Commands</h3>
+
+  <p>✅ Show running processes</p>
+  <pre>ps -ef</pre>
+
+  <p>✅ Process tree</p>
+  <pre>pstree</pre>
+
+  <p>✅ Real-time process monitoring</p>
+  <pre>top</pre>
+
+  <p>or (better)</p>
+  <pre>htop</pre>
+
+  <p>✅ Find process by name</p>
+  <pre>ps -ef | grep nginx</pre>
+
+  <p>✅ Kill a process</p>
+  <pre>kill &lt;PID&gt;</pre>
+
+  <p>Force kill:</p>
+  <pre>kill -9 &lt;PID&gt;</pre>
+
+  <h3>🔹 3. Storage / System Specs Commands</h3>
+
+  <p>✅ CPU information</p>
+  <pre>lscpu</pre>
+
+  <p>✅ Memory (RAM) usage</p>
+  <pre>free -h</pre>
+
+  <p>✅ Detailed memory info</p>
+  <pre>cat /proc/meminfo</pre>
+
+  <p>✅ Disk hardware info</p>
+  <pre>lsblk -f</pre>
+
+  <p>✅ Mounted filesystems</p>
+  <pre>mount | column -t</pre>
+
+  <h3>🔹 4. AWS / Server Specific (Very Common)</h3>
+
+  <p>✅ Check instance storage size</p>
+  <pre>df -h /</pre>
+
+  <p>✅ Check EBS volume</p>
+  <pre>lsblk</pre>
+
+  <p>✅ Check system uptime</p>
+  <pre>uptime</pre>
+
+  <h3>🔹 5. One-Shot Health Check Command 💡</h3>
+  <pre>df -h && free -h && top</pre>
+
+  <h3>🔹 Interview Quick Lines</h3>
+
+  <p>df -h → Disk free space</p>
+  <p>du -sh → Folder size</p>
+  <p>ps -ef → Running processes</p>
+  <p>top → CPU &amp; memory usage</p>
+  <p>free -h → RAM usage</p>
+  <p>lsblk → Disk &amp; partitions</p>
+
+</div>
 
 
-        </h3><p>
-        In five years, I see myself growing into a senior UI Developer role, where I not only build clean and<br>
-         responsive user interfaces but also contribute to design decisions and mentor junior developers. <br> 
-         I want to stay updated with the latest frontend trends and frameworks, and work on impactful projects<br> 
-          that improve user experience. Ultimately, I aim to be a valuable asset to my team and take on more responsibilities in both development and leadership.
-      </p></div>
+<hr>
 
-      <div>
-        <h3>describe your ability to work under pressure?</h3>
-        <p>I stay calm and focused under pressure. When deadlines are tight or unexpected issues arise,<br>
-         I break the task into smaller parts and prioritize effectively. I’ve learned to manage my time,<br> 
-          communicate clearly with the team, and stay solution-oriented. Pressure actually motivates me to stay<br> 
-         sharp and deliver high-quality work, even in challenging situations</p>
-      </div>
-      <div>
-        <h3>do you haev any qustions for us? </h3>
-        <p>1. "Can you tell me more about the team I’d be working with and how the UI/UX design process works here?"<br>
+<h2>3. Docker Server Down – How to Troubleshoot</h2>
+<div>
 
-            2. "What are the biggest challenges your frontend team is currently facing?"<br>
-            
-            3. "Are there opportunities for me to grow into a senior role or explore new technologies over time?"<br>
-            
-            4. "How is feedback typically given during projects?"<br>
-            
-            5. "What does success look like in this role during the first 6 months?"</p>
-      </div>
+  <h3>🐳 Docker Server Down – How to Troubleshoot</h3>
 
-      <div>
-        <h3>how do you handle conflict </h3>
-        <p>When there is a conflict, I stay calm and listen carefully. I talk to the person to understand their<br>
-             point of view. Then, we try to find a good solution together. I always stay respectful and focus on solving the problem.<br>
-              I believe teamwork is important.</p>
-      </div>
-      
-      <div>
-        <h3>why do you want to work with us</h3>
-        <p>I want to work with your company because I like the kind of work you do and the projects you build.<br>
-        I believe I can learn a lot here and grow as a UI Developer. Your team and work culture seem very good.<br>
-        I’m excited to use my skills and also improve by working with experienced people. I want to be a part of your success</p>
+  <h4>🔹 Step 1: Check Docker service status</h4>
+  <pre>systemctl status docker</pre>
+
+  <p>Look for:</p>
+  <ul>
+    <li>active (running) ❌ or failed ❌</li>
+    <li>Error messages in red</li>
+  </ul>
+
+  <p>If stopped:</p>
+  <pre>systemctl start docker</pre>
+  <pre>systemctl enable docker</pre>
+
+  <h4>🔹 Step 2: Check Docker service logs</h4>
+  <pre>journalctl -u docker -xe</pre>
+
+  <p>Common errors:</p>
+  <ul>
+    <li>Disk full</li>
+    <li>Permission denied</li>
+    <li>cgroup / storage driver issues</li>
+  </ul>
+
+  <h4>🔹 Step 3: Check disk space (VERY COMMON ISSUE)</h4>
+  <pre>df -h</pre>
+
+  <p>If disk is 100% full, Docker will not start.</p>
+
+  <p>Clean unused Docker data:</p>
+  <pre>docker system prune -af</pre>
+
+  <h4>🔹 Step 4: Check Docker daemon manually</h4>
+  <pre>dockerd</pre>
+
+  <p>This will show exact startup error (useful for root cause).</p>
+
+  <h4>🔹 Step 5: Verify Docker configuration</h4>
+  <pre>cat /etc/docker/daemon.json</pre>
+
+  <p>Check for:</p>
+  <ul>
+    <li>Invalid JSON</li>
+    <li>Wrong storage driver</li>
+    <li>Wrong log driver</li>
+  </ul>
+
+  <p>After changes:</p>
+  <pre>systemctl restart docker</pre>
+
+  <h4>🔹 Step 6: Check kernel &amp; cgroup compatibility</h4>
+  <pre>docker info</pre>
+
+  <p>Look for:</p>
+  <ul>
+    <li>cgroup driver mismatch</li>
+    <li>storage driver errors</li>
+  </ul>
+
+  <h4>🔹 Step 7: Check OS &amp; Docker version</h4>
+  <pre>docker version</pre>
+
+  <p>Version mismatch can break Docker after OS updates.</p>
+
+  <h4>🔹 Step 8: Check running containers (if Docker is up)</h4>
+  <pre>docker ps -a</pre>
+
+  <p>Check container logs:</p>
+  <pre>docker logs &lt;container_id&gt;</pre>
+
+  <h4>🔹 Step 9: Restart Docker &amp; system (if needed)</h4>
+  <pre>systemctl restart docker</pre>
+  <pre>reboot</pre>
+
+  <h4>🔹 Common Real-Time Issues &amp; Fixes</h4>
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+      <th>Issue</th>
+      <th>Cause</th>
+      <th>Fix</th>
+    </tr>
+    <tr>
+      <td>Docker not starting</td>
+      <td>Disk full</td>
+      <td>docker system prune -af</td>
+    </tr>
+    <tr>
+      <td>Permission denied</td>
+      <td>User not in docker group</td>
+      <td>usermod -aG docker user</td>
+    </tr>
+    <tr>
+      <td>daemon.json error</td>
+      <td>Invalid config</td>
+      <td>Fix JSON</td>
+    </tr>
+    <tr>
+      <td>Storage driver issue</td>
+      <td>Overlay2 error</td>
+      <td>Reconfigure storage</td>
+    </tr>
+    <tr>
+      <td>Service failed</td>
+      <td>OS update</td>
+      <td>Restart / reinstall docker</td>
+    </tr>
+  </table>
+
+  <h4>🔹 Interview-Ready Answer (Short)</h4>
+
+  <p>
+    First, I check Docker service status using systemctl status docker.
+    Then I review logs with journalctl -u docker.
+    I verify disk space using df -h because disk full is a common issue.
+    I check Docker configuration and daemon logs.
+    Finally, I restart the service and validate with docker ps.
+  </p>
+
+</div>
 
 
-      </div>
+<hr>
 
-      <div>
-        <h3>what do you think you deserve this job        </h3>
-        <p>I believe I deserve this job because I have the right skills and a strong interest in UI development.<br>
-             I know HTML, CSS, Tailwind CSS, JavaScript, Git, GitHub, and JSON, and I enjoy creating clean and user-friendly designs.<br>
-              I’m a quick learner, I work hard, and I’m always ready to take on new challenges. I’m confident that I can do good work <br>
-              and grow with your team.</p></div>
+<h2>4. Systemd</h2>
+<div>
 
-              <div>
-                <h3>what motivates you</h3>
-                <p>I get motivated when I learn new things and see my work helping others. Solving problems and creating clean,<br>
-                     user-friendly designs makes me happy. I also feel motivated when I get good feedback or see a project I worked<br>
-                      on doing well. Working in a team and learning from others also inspires me to do my best.</p>
-              </div>
+  <h3>🔹 What is systemd?</h3>
+
+  <p>
+    systemd is the init system and service manager used in modern Linux distributions.<br>
+    It is responsible for starting, stopping, managing services, handling boot process, logs, and system states.
+  </p>
+
+  <p>👉 It is the first process (PID 1) started by the Linux kernel.</p>
+
+  <h3>🔹 Why systemd is used?</h3>
+
+  <ul>
+    <li>Faster boot (parallel service startup)</li>
+    <li>Better service dependency management</li>
+    <li>Centralized logging</li>
+    <li>Easy service control</li>
+  </ul>
+
+  <h3>🔹 Important systemd Components</h3>
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+      <th>Component</th>
+      <th>Purpose</th>
+    </tr>
+    <tr>
+      <td>systemctl</td>
+      <td>Manage services</td>
+    </tr>
+    <tr>
+      <td>journalctl</td>
+      <td>View logs</td>
+    </tr>
+    <tr>
+      <td>unit files</td>
+      <td>Service definitions</td>
+    </tr>
+    <tr>
+      <td>targets</td>
+      <td>Runlevels replacement</td>
+    </tr>
+  </table>
+
+  <h3>🔹 Common systemd Commands (Very Important)</h3>
+
+  <p>✅ Check service status</p>
+  <pre>systemctl status docker</pre>
+
+  <p>✅ Start / Stop / Restart service</p>
+  <pre>systemctl start nginx</pre>
+  <pre>systemctl stop nginx</pre>
+  <pre>systemctl restart nginx</pre>
+
+  <p>✅ Enable / Disable service at boot</p>
+  <pre>systemctl enable docker</pre>
+  <pre>systemctl disable docker</pre>
+
+  <p>✅ Reload config without restart</p>
+  <pre>systemctl reload nginx</pre>
+
+  <h3>🔹 List Services</h3>
+
+  <p>Running services</p>
+  <pre>systemctl list-units --type=service</pre>
+
+  <p>All services</p>
+  <pre>systemctl list-unit-files</pre>
+
+  <h3>🔹 Targets (Runlevels)</h3>
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+      <th>Runlevel</th>
+      <th>systemd Target</th>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>poweroff.target</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>rescue.target</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>multi-user.target</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>graphical.target</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>reboot.target</td>
+    </tr>
+  </table>
+
+  <p>Check current target:</p>
+  <pre>systemctl get-default</pre>
+
+  <p>Change target:</p>
+  <pre>systemctl set-default multi-user.target</pre>
+
+  <h3>🔹 Logs with journalctl</h3>
+
+  <p>View service logs</p>
+  <pre>journalctl -u docker</pre>
+
+  <p>Live logs</p>
+  <pre>journalctl -u nginx -f</pre>
+
+  <p>Logs since boot</p>
+  <pre>journalctl -b</pre>
+
+  <h3>🔹 systemd Unit File Structure</h3>
+
+  <p>Example: /etc/systemd/system/myapp.service</p>
+
+  <pre>
+[Unit]
+Description=My Application
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/java -jar app.jar
+Restart=always
+User=appuser
+
+[Install]
+WantedBy=multi-user.target
+  </pre>
+
+  <p>Reload after changes:</p>
+  <pre>systemctl daemon-reload</pre>
+
+  <h3>🔹 Real DevOps Use Case</h3>
+
+  <p>👉 Docker not starting:</p>
+  <pre>systemctl status docker</pre>
+  <pre>journalctl -u docker</pre>
+  <pre>systemctl restart docker</pre>
+
+  <p>👉 Create custom service for application startup at boot.</p>
+
+  <h3>🔹 Interview One-Line Answer</h3>
+
+  <p>
+    systemd is the Linux init system that manages services, boot process, logs, and system states efficiently.
+  </p>
+
+</div>
+<hr>
+<div>
+
+  <h3>🔹 Why do we use the systemctl command?</h3>
+
+  <p>
+    We use systemctl to control and manage services in Linux systems that use systemd.
+  </p>
+
+  <p>In simple words:</p>
+  <p>👉 systemctl is used to start, stop, restart, enable, disable, and check the status of services.</p>
+
+  <h3>🔹 What problems does systemctl solve?</h3>
+
+  <p>Before systemd:</p>
+  <ul>
+    <li>Services were slow to start</li>
+    <li>Hard to manage dependencies</li>
+    <li>No centralized control</li>
+  </ul>
+
+  <p>With systemctl:</p>
+  <ul>
+    <li>Faster service startup</li>
+    <li>Easy service management</li>
+    <li>Better dependency handling</li>
+    <li>Unified command for services</li>
+  </ul>
+
+  <h3>🔹 Common Uses of systemctl</h3>
+
+  <p>✅ Check service status</p>
+  <pre>systemctl status docker</pre>
+
+  <p>✅ Start / Stop / Restart service</p>
+  <pre>systemctl start nginx</pre>
+  <pre>systemctl restart docker</pre>
+
+  <p>✅ Enable service at boot</p>
+  <pre>systemctl enable docker</pre>
+
+  <p>✅ Disable service at boot</p>
+  <pre>systemctl disable nginx</pre>
+
+  <h3>🔹 Where is systemctl used? (Real-Time)</h3>
+
+  <ul>
+    <li>Start Docker service</li>
+    <li>Manage Jenkins, Nginx, MySQL</li>
+    <li>Troubleshoot server issues</li>
+    <li>Control services on AWS EC2</li>
+    <li>Manage production applications</li>
+  </ul>
+
+  <h3>🔹 Interview-Ready Answer (Short)</h3>
+
+  <p>
+    We use systemctl to manage and control system services in Linux systems that use systemd, such as starting, stopping, restarting services and enabling them at system boot.
+  </p>
+
+</div>
+
+
+<hr>
+
+<h2>6. Port Numbers</h2>
+<div>
+
+  <h3>🔹 Common Well-Known Port Numbers (0–1023)</h3>
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+      <th>Port</th>
+      <th>Service</th>
+      <th>Use</th>
+    </tr>
+    <tr>
+      <td>20 / 21</td>
+      <td>FTP</td>
+      <td>File transfer</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>SSH</td>
+      <td>Secure remote login</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Telnet</td>
+      <td>Remote login (insecure)</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>SMTP</td>
+      <td>Send emails</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>DNS</td>
+      <td>Domain name resolution</td>
+    </tr>
+    <tr>
+      <td>67 / 68</td>
+      <td>DHCP</td>
+      <td>IP address assignment</td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td>HTTP</td>
+      <td>Web traffic</td>
+    </tr>
+    <tr>
+      <td>110</td>
+      <td>POP3</td>
+      <td>Receive emails</td>
+    </tr>
+    <tr>
+      <td>143</td>
+      <td>IMAP</td>
+      <td>Receive emails</td>
+    </tr>
+    <tr>
+      <td>443</td>
+      <td>HTTPS</td>
+      <td>Secure web traffic</td>
+    </tr>
+  </table>
+
+  <h3>🔹 DevOps / Cloud Important Ports</h3>
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+      <th>Port</th>
+      <th>Service</th>
+    </tr>
+    <tr>
+      <td>3000</td>
+      <td>Node.js app</td>
+    </tr>
+    <tr>
+      <td>4200</td>
+      <td>Angular</td>
+    </tr>
+    <tr>
+      <td>5000</td>
+      <td>Flask</td>
+    </tr>
+    <tr>
+      <td>8080</td>
+      <td>Jenkins / Tomcat</td>
+    </tr>
+    <tr>
+      <td>9000</td>
+      <td>SonarQube</td>
+    </tr>
+    <tr>
+      <td>2375 / 2376</td>
+      <td>Docker daemon</td>
+    </tr>
+    <tr>
+      <td>6443</td>
+      <td>Kubernetes API</td>
+    </tr>
+    <tr>
+      <td>9090</td>
+      <td>Prometheus</td>
+    </tr>
+    <tr>
+      <td>5601</td>
+      <td>Kibana</td>
+    </tr>
+    <tr>
+      <td>9200</td>
+      <td>Elasticsearch</td>
+    </tr>
+  </table>
+
+  <h3>🔹 Database Port Numbers</h3>
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+      <th>Port</th>
+      <th>Database</th>
+    </tr>
+    <tr>
+      <td>3306</td>
+      <td>MySQL</td>
+    </tr>
+    <tr>
+      <td>5432</td>
+      <td>PostgreSQL</td>
+    </tr>
+    <tr>
+      <td>1433</td>
+      <td>MS SQL</td>
+    </tr>
+    <tr>
+      <td>27017</td>
+      <td>MongoDB</td>
+    </tr>
+    <tr>
+      <td>6379</td>
+      <td>Redis</td>
+    </tr>
+    <tr>
+      <td>1521</td>
+      <td>Oracle</td>
+    </tr>
+  </table>
+
+  <h3>🔹 AWS / Monitoring Ports</h3>
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+      <th>Port</th>
+      <th>Service</th>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>EC2 SSH</td>
+    </tr>
+    <tr>
+      <td>3389</td>
+      <td>RDP (Windows EC2)</td>
+    </tr>
+    <tr>
+      <td>9100</td>
+      <td>Node Exporter</td>
+    </tr>
+    <tr>
+      <td>8125</td>
+      <td>StatsD</td>
+    </tr>
+  </table>
+
+  <h3>🔹 Port Range Explanation</h3>
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+      <th>Range</th>
+      <th>Purpose</th>
+    </tr>
+    <tr>
+      <td>0–1023</td>
+      <td>Well-known ports</td>
+    </tr>
+    <tr>
+      <td>1024–49151</td>
+      <td>Registered ports</td>
+    </tr>
+    <tr>
+      <td>49152–65535</td>
+      <td>Dynamic / private ports</td>
+    </tr>
+  </table>
+
+  <h3>🔹 Interview One-Line Answer</h3>
+
+  <p>
+    Port numbers identify specific services on a system to enable network communication.
+  </p>
+
+  <h3>🔹 Quick Tip (Interview Bonus 💡)</h3>
+
+  <pre>netstat -tulnp</pre>
+
+  <p>or</p>
+
+  <pre>ss -tulnp</pre>
+
+</div>
+
+
+<hr>
+
+<h2>7. Difference between Image and Container</h2>
+<p>An image is a template. A container is a running application created from an image.</p>
+
+<hr>
+
+<h2>8. Why Are You Using Docker Compose</h2>
+<div>
+
+  <h3>🔹 Why do we use Docker Compose?</h3>
+
+  <p>
+    We use Docker Compose to define and run multiple containers together as a single application using one configuration file (docker-compose.yml).
+  </p>
+
+  <p>👉 It helps manage multi-container applications easily.</p>
+
+  <h3>🔹 What problem does Docker Compose solve?</h3>
+
+  <p>Without Docker Compose:</p>
+  <ul>
+    <li>Need to run multiple docker run commands</li>
+    <li>Hard to manage networking between containers</li>
+    <li>Manual environment variable setup</li>
+    <li>Difficult to start/stop entire app</li>
+  </ul>
+
+  <p>With Docker Compose:</p>
+  <ul>
+    <li>One command starts everything</li>
+    <li>Built-in container networking</li>
+    <li>Easy environment &amp; volume management</li>
+    <li>Consistent setup across environments</li>
+  </ul>
+
+  <h3>🔹 Real-Time Example</h3>
+
+  <p>👉 A web application needs:</p>
+  <ul>
+    <li>Frontend container</li>
+    <li>Backend container</li>
+    <li>Database container</li>
+  </ul>
+
+  <p>Using Docker Compose:</p>
+  <pre>docker-compose up -d</pre>
+
+  <p>All services start together.</p>
+
+  <h3>🔹 Key Benefits</h3>
+
+  <ul>
+    <li>Single YAML file configuration</li>
+    <li>Easy service dependency handling</li>
+    <li>Automatic network creation</li>
+    <li>Simplifies local development &amp; testing</li>
+    <li>Reduces human error</li>
+  </ul>
+
+  <h3>🔹 Simple Explanation</h3>
+
+  <p>Docker → Runs one container</p>
+
+  <p>Docker Compose → Runs many containers together</p>
+
+</div>
+
+<hr>
+
+<h2>9. Jenkins Stages</h2>
+<div>
+
+  <h3>🔹 What are Jenkins Stages?</h3>
+
+  <p>
+    In Jenkins Pipeline, stages represent different steps of the CI/CD process such as build, test, and deploy.
+    Each stage groups related tasks and helps visualize the pipeline flow.
+  </p>
+
+  <h3>🔹 Common Jenkins Pipeline Stages</h3>
+
+  <h4>1️⃣ Checkout / Source Code</h4>
+
+  <p>Pull code from Git repository</p>
+
+  <pre>
+stage('Checkout') {
+    steps {
+        git 'https://github.com/org/repo.git'
+    }
+}
+  </pre>
+
+  <h4>2️⃣ Build</h4>
+
+  <p>Compile or build application</p>
+
+  <pre>
+stage('Build') {
+    steps {
+        sh 'mvn clean package'
+    }
+}
+  </pre>
+
+  <h4>3️⃣ Test</h4>
+
+  <p>Run unit or integration tests</p>
+
+  <pre>
+stage('Test') {
+    steps {
+        sh 'mvn test'
+    }
+}
+  </pre>
+
+  <h4>4️⃣ Code Quality / Scan</h4>
+
+  <p>SonarQube, SAST, lint checks</p>
+
+  <pre>
+stage('Code Quality') {
+    steps {
+        sh 'sonar-scanner'
+    }
+}
+  </pre>
+
+  <h4>5️⃣ Package / Artifact</h4>
+
+  <p>Create WAR/JAR/Docker image</p>
+
+  <pre>
+stage('Package') {
+    steps {
+        sh 'docker build -t myapp:latest .'
+    }
+}
+  </pre>
+
+  <h4>6️⃣ Push Artifact</h4>
+
+  <p>Push to Nexus / Docker Hub / ECR</p>
+
+  <pre>
+stage('Push Image') {
+    steps {
+        sh 'docker push myapp:latest'
+    }
+}
+  </pre>
+
+  <h4>7️⃣ Deploy</h4>
+
+  <p>Deploy to server / Kubernetes / ECS</p>
+
+  <pre>
+stage('Deploy') {
+    steps {
+        sh 'kubectl apply -f deployment.yaml'
+    }
+}
+  </pre>
+
+  <h3>🔹 Typical Jenkins Pipeline Flow</h3>
+
+  <p>Checkout → Build → Test → Scan → Package → Push → Deploy</p>
+
+  <h3>🔹 Why Stages are Important?</h3>
+
+  <ul>
+    <li>Clear pipeline visualization</li>
+    <li>Easy debugging (know where failure happened)</li>
+    <li>Better control &amp; readability</li>
+    <li>Supports parallel execution</li>
+  </ul>
+
+</div>
+
+<hr>
+
+<h2>10. Docker Hosts</h2>
+<div>
+
+  <h3>🔹 What is a Docker Host?</h3>
+
+  <p>A Docker host is a machine (physical or virtual) that runs:</p>
+
+  <ul>
+    <li>Docker Engine</li>
+    <li>Containers</li>
+    <li>Images</li>
+  </ul>
+
+  <h3>🔹 Common Docker Hosts</h3>
+
+  <h4>1️⃣ Linux Servers (Most Common)</h4>
+
+  <ul>
+    <li>Ubuntu</li>
+    <li>Amazon Linux</li>
+    <li>RHEL / CentOS</li>
+  </ul>
+
+  <p>👉 Used in production &amp; DevOps servers</p>
+
+  <h4>2️⃣ AWS EC2</h4>
+
+  <p>Most popular Docker host in cloud</p>
+  <p>Can attach EBS, use Security Groups</p>
+
+  <p>👉 Example:</p>
+  <p>EC2 + Docker + Jenkins</p>
+
+  <h4>3️⃣ Azure Virtual Machines</h4>
+
+  <p>Similar to EC2</p>
+  <p>Supports Docker Engine</p>
+
+  <h4>4️⃣ Google Compute Engine (GCE)</h4>
+
+  <p>Docker supported</p>
+  <p>Integrates with GKE</p>
+
+  <h4>5️⃣ Docker Desktop</h4>
+
+  <p>Runs on Windows &amp; macOS</p>
+  <p>Uses VM internally</p>
+
+  <p>👉 Mostly for local development</p>
+
+  <h4>6️⃣ Kubernetes Nodes</h4>
+
+  <p>Worker nodes act as Docker hosts</p>
+  <p>Containers run as pods</p>
+
+  <h4>7️⃣ Docker Swarm Nodes</h4>
+
+  <p>Native Docker orchestration</p>
+  <p>Each node is a Docker host</p>
+
+  <h3>🔹 SaaS / Managed Docker Hosts</h3>
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+      <th>Platform</th>
+      <th>Use</th>
+    </tr>
+    <tr>
+      <td>AWS ECS</td>
+      <td>Managed container hosting</td>
+    </tr>
+    <tr>
+      <td>EKS</td>
+      <td>Kubernetes-based hosting</td>
+    </tr>
+    <tr>
+      <td>Google GKE</td>
+      <td>Managed Kubernetes</td>
+    </tr>
+    <tr>
+      <td>Azure AKS</td>
+      <td>Managed Kubernetes</td>
+    </tr>
+  </table>
+
+  <h3>🔹 Interview One-Line Answer</h3>
+
+  <p>
+    A Docker host is a system that runs Docker Engine and hosts Docker containers, such as Linux servers, EC2, or Kubernetes nodes.
+  </p>
+
+  <h3>🔹 Very Short Answer</h3>
+
+  <p>Linux servers, EC2, Azure VM, GCP VM, Docker Desktop.</p>
+
+</div>
+
+<hr>
+
+<h2>11. Docker Image and Container Commands</h2>
+<div>
+
+  <h3>🔹 Docker Image vs Docker Container</h3>
+
+  <table border="1" cellpadding="8" cellspacing="0">
+    <tr>
+      <th>Feature</th>
+      <th>Docker Image</th>
+      <th>Docker Container</th>
+    </tr>
+    <tr>
+      <td>Definition</td>
+      <td>A Docker image is a blueprint/template</td>
+      <td>A container is a running instance of an image</td>
+    </tr>
+    <tr>
+      <td>State</td>
+      <td>Static (read-only)</td>
+      <td>Dynamic (running)</td>
+    </tr>
+    <tr>
+      <td>Purpose</td>
+      <td>Used to create containers</td>
+      <td>Used to run applications</td>
+    </tr>
+    <tr>
+      <td>Changes</td>
+      <td>Cannot change directly</td>
+      <td>Changes are possible at runtime</td>
+    </tr>
+    <tr>
+      <td>Storage</td>
+      <td>Stored on disk</td>
+      <td>Uses memory + disk</td>
+    </tr>
+    <tr>
+      <td>Creation</td>
+      <td>Built using Dockerfile</td>
+      <td>Created using docker run</td>
+    </tr>
+    <tr>
+      <td>Multiple</td>
+      <td>One image → many containers</td>
+      <td>Each container is unique</td>
+    </tr>
+  </table>
+
+  <h3>🔹 Simple Explanation</h3>
+
+  <p>Image 👉 Like a class / template</p>
+
+  <p>Container 👉 Like an object / running app</p>
+
+  <h3>🔹 Real-Life Example 🚗</h3>
+
+  <p>Image → Car design (blueprint)</p>
+
+  <p>Container → Actual car running on road</p>
+
+  <h3>🔹 Docker Commands Example</h3>
+
+  <p>Create image</p>
+  <pre>docker build -t myapp .</pre>
+
+  <p>Run container</p>
+  <pre>docker run -d -p 8080:80 myapp</pre>
+
+  <p>List images</p>
+  <pre>docker images</pre>
+
+  <p>List containers</p>
+  <pre>docker ps -a</pre>
+
+</div>
+</hr>
+<div>
+
+  <h3>🔹 Why do we use Docker Compose?</h3>
+
+  <p>
+    We use Docker Compose to define and run multiple containers together as a single application using one configuration file (docker-compose.yml).
+  </p>
+
+  <p>👉 It helps manage multi-container applications easily.</p>
+
+  <h3>🔹 What problem does Docker Compose solve?</h3>
+
+  <p>Without Docker Compose:</p>
+  <ul>
+    <li>Need to run multiple docker run commands</li>
+    <li>Hard to manage networking between containers</li>
+    <li>Manual environment variable setup</li>
+    <li>Difficult to start/stop entire app</li>
+  </ul>
+
+  <p>With Docker Compose:</p>
+  <ul>
+    <li>One command starts everything</li>
+    <li>Built-in container networking</li>
+    <li>Easy environment &amp; volume management</li>
+    <li>Consistent setup across environments</li>
+  </ul>
+
+  <h3>🔹 Real-Time Example</h3>
+
+  <p>👉 A web application needs:</p>
+  <ul>
+    <li>Frontend container</li>
+    <li>Backend container</li>
+    <li>Database container</li>
+  </ul>
+
+  <p>Using Docker Compose:</p>
+  <pre>docker-compose up -d</pre>
+
+  <p>All services start together.</p>
+
+  <h3>🔹 Key Benefits</h3>
+
+  <ul>
+    <li>Single YAML file configuration</li>
+    <li>Easy service dependency handling</li>
+    <li>Automatic network creation</li>
+    <li>Simplifies local development &amp; testing</li>
+    <li>Reduces human error</li>
+  </ul>
+
+  <h3>🔹 Simple Explanation</h3>
+
+  <p>Docker → Runs one container</p>
+
+  <p>Docker Compose → Runs many containers together</p>
+
+</div>
+
+
+<hr>
+
+<h2>12. Why Are You Using CloudWatch</h2>
+<div class="cloudwatch-content">
+
+  <div class="section">
+    <h3>🔹 What are you using Amazon CloudWatch for?</h3>
+    <p>
+      We use <strong>Amazon CloudWatch</strong> to monitor AWS resources and applications,
+      collect logs, set alarms, and troubleshoot issues in real time.
+    </p>
+    <p>
+      👉 <strong>In simple terms:</strong> CloudWatch tells us what is happening in our AWS environment.
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Key Uses of Amazon CloudWatch</h3>
+  </div>
+
+  <div class="section">
+    <h4>1️⃣ Monitoring AWS Resources</h4>
+    <ul>
+      <li>EC2 CPU utilization</li>
+      <li>Memory & disk usage (using CloudWatch Agent)</li>
+      <li>RDS, ELB, Lambda metrics</li>
+    </ul>
+    <p><strong>Example:</strong> Alert if EC2 CPU &gt; 80%</p>
+  </div>
+
+  <div class="section">
+    <h4>2️⃣ Log Monitoring</h4>
+    <ul>
+      <li>Application logs</li>
+      <li>System logs</li>
+      <li>Docker / ECS / Lambda logs</li>
+    </ul>
+    <p><strong>Example:</strong> /var/log/messages sent to CloudWatch Logs</p>
+  </div>
+
+  <div class="section">
+    <h4>3️⃣ Alerts & Notifications</h4>
+    <ul>
+      <li>Create CloudWatch Alarms</li>
+      <li>Send notifications using SNS (Email/SMS)</li>
+    </ul>
+    <p><strong>Examples:</strong></p>
+    <ul>
+      <li>Disk usage &gt; 90%</li>
+      <li>EC2 instance stopped or unhealthy</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h4>4️⃣ Troubleshooting & Analysis</h4>
+    <ul>
+      <li>Identify performance bottlenecks</li>
+      <li>Detect application or service failures</li>
+      <li>Analyze error logs</li>
+    </ul>
+    <p>👉 Very useful during production issues and outages</p>
+  </div>
+
+  <div class="section">
+    <h4>5️⃣ Auto Scaling</h4>
+    <ul>
+      <li>Integrated with Auto Scaling Groups</li>
+      <li>Scale EC2 instances based on metrics</li>
+    </ul>
+    <p><strong>Example:</strong> CPU &gt; 70% → Automatically launch a new EC2 instance</p>
+  </div>
+
+  <div class="section">
+    <h4>6️⃣ Dashboards</h4>
+    <ul>
+      <li>Create custom dashboards</li>
+      <li>View all important metrics in one place</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Real-Time DevOps Use Case</h3>
+    <p>
+      I use CloudWatch to monitor EC2 CPU, disk usage, and application logs.
+      I configure alarms to trigger notifications when thresholds are crossed
+      and use CloudWatch Logs to troubleshoot production issues.
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Interview-Ready Short Answer</h3>
+    <p>
+      Amazon CloudWatch is used to monitor AWS resources, collect logs,
+      set alarms, enable auto scaling, and troubleshoot performance
+      and availability issues in real time.
+    </p>
+  </div>
+
+</div>
+
+<hr>
+
+<h2>13. Auto Scaling and Load Balancer</h2>
+<div class="autoscaling-lb-content">
+
+  <div class="section">
+    <h3>🔹 How to Use Auto Scaling with Load Balancer (AWS)</h3>
+  </div>
+
+  <div class="section">
+    <h4>🔹 Concept First (Simple)</h4>
+    <p><strong>Load Balancer (ALB/ELB)</strong> distributes incoming traffic.</p>
+    <p><strong>Auto Scaling Group (ASG)</strong> automatically adds or removes EC2 instances.</p>
+    <p><strong>CloudWatch</strong> triggers scaling actions based on metrics.</p>
+    <p>👉 Together, they provide high availability and scalability.</p>
+  </div>
+
+  <div class="section">
+    <h4>🔹 Architecture Flow</h4>
+    <p>User Traffic</p>
+    <p>↓</p>
+    <p>Load Balancer</p>
+    <p>↓</p>
+    <p>Auto Scaling Group</p>
+    <p>↓</p>
+    <p>EC2 Instances</p>
+  </div>
+
+  <div class="section">
+    <h4>🔹 Step-by-Step Setup</h4>
+  </div>
+
+  <div class="section">
+    <h4>1️⃣ Create Launch Template / Launch Configuration</h4>
+    <p>Defines:</p>
+    <ul>
+      <li>AMI</li>
+      <li>Instance type</li>
+      <li>Security Group</li>
+      <li>Key pair</li>
+      <li>User data (application setup)</li>
+    </ul>
+    <p><strong>Example User Data:</strong></p>
+    <pre>
+#!/bin/bash
+yum install nginx -y
+systemctl start nginx
+    </pre>
+  </div>
+
+  <div class="section">
+    <h4>2️⃣ Create Target Group</h4>
+    <p>Used by the Load Balancer to route traffic.</p>
+    <ul>
+      <li>Automatically registers EC2 instances</li>
+      <li>Protocol: HTTP</li>
+      <li>Port: 80</li>
+      <li>Health check path: /</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h4>3️⃣ Create Load Balancer (ALB Recommended)</h4>
+    <ul>
+      <li>Attach Target Group</li>
+      <li>Enable health checks</li>
+      <li>Deploy across multiple Availability Zones</li>
+    </ul>
+    <p>👉 ALB routes traffic only to healthy instances.</p>
+  </div>
+
+  <div class="section">
+    <h4>4️⃣ Create Auto Scaling Group</h4>
+    <p>Attach:</p>
+    <ul>
+      <li>Launch Template</li>
+      <li>Load Balancer Target Group</li>
+      <li>VPC and Subnets (Multi-AZ)</li>
+    </ul>
+    <p>Capacity Settings:</p>
+    <ul>
+      <li>Desired: 2</li>
+      <li>Minimum: 1</li>
+      <li>Maximum: 5</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h4>5️⃣ Configure Scaling Policies</h4>
+
+    <p><strong>🔸 Scale Out (Increase Instances)</strong></p>
+    <ul>
+      <li>Metric: CPU Utilization</li>
+      <li>Condition: CPU &gt; 70%</li>
+      <li>Action: Add 1 EC2 instance</li>
+    </ul>
+
+    <p><strong>🔸 Scale In (Decrease Instances)</strong></p>
+    <ul>
+      <li>Metric: CPU Utilization</li>
+      <li>Condition: CPU &lt; 30%</li>
+      <li>Action: Remove 1 EC2 instance</li>
+    </ul>
+
+    <p>CloudWatch automatically triggers scaling actions.</p>
+  </div>
+
+  <div class="section">
+    <h4>🔹 How It Works in Real Time</h4>
+    <ul>
+      <li>Traffic increases</li>
+      <li>Load Balancer distributes traffic</li>
+      <li>CPU usage increases</li>
+      <li>CloudWatch alarm triggers</li>
+      <li>Auto Scaling launches new EC2</li>
+      <li>EC2 auto-registers with Load Balancer</li>
+      <li>Traffic becomes balanced 🎯</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h4>🔹 Health Check Role</h4>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th>Component</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td>Load Balancer</td>
+        <td>Checks application health</td>
+      </tr>
+      <tr>
+        <td>Auto Scaling</td>
+        <td>Replaces unhealthy instances</td>
+      </tr>
+    </table>
+    <p>👉 If an instance fails, ASG terminates it and launches a new one automatically.</p>
+  </div>
+
+  <div class="section">
+    <h4>🔹 Benefits</h4>
+    <ul>
+      <li>High availability</li>
+      <li>Automatic scaling</li>
+      <li>Fault tolerance</li>
+      <li>No manual intervention</li>
+      <li>Cost optimization</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h4>🔹 Interview-Ready Answer (Short)</h4>
+    <p>
+      We use Auto Scaling with a Load Balancer to automatically scale EC2 instances
+      based on traffic and CloudWatch metrics. The Load Balancer distributes traffic,
+      and Auto Scaling ensures availability and scalability.
+    </p>
+  </div>
+
+</div>
+
+<hr>
+
+<h2>14. Previous Project Roles and Responsibilities</h2>
+<div class="previous-project">
+
+  <div class="section">
+    <h3>🔹 Previous Project – Roles & Responsibilities</h3>
+    <p>
+      In my previous project, I worked as a <strong>DevOps Engineer</strong>,
+      where my main responsibility was to automate, deploy, monitor, and maintain
+      applications and infrastructure.
+    </p>
+  </div>
+
+  <div class="section">
+    <h4>🔸 Key Roles & Responsibilities</h4>
+    <ul>
+      <li>Managed CI/CD pipelines using Jenkins for automated build and deployment</li>
+      <li>Worked with Git/GitHub for source code version control</li>
+      <li>Built and managed Docker images and containers for application deployment</li>
+      <li>Created and maintained Docker Compose files for multi-container applications</li>
+      <li>Deployed applications on AWS EC2 instances</li>
+      <li>Configured Load Balancer and Auto Scaling Groups for high availability</li>
+      <li>Monitored system and application health using AWS CloudWatch</li>
+      <li>Performed server monitoring and troubleshooting (CPU, memory, disk, services)</li>
+      <li>Handled Linux system administration tasks using systemd and shell commands</li>
+      <li>Checked logs and resolved production issues to ensure uptime</li>
+      <li>Collaborated with developers to support smooth deployments</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h4>🔹 Short Version (For Quick Interview)</h4>
+    <p>
+      In my previous project, I worked as a DevOps Engineer. I handled CI/CD using Jenkins,
+      containerization using Docker, deployments on AWS EC2, monitoring with CloudWatch,
+      and server troubleshooting to ensure high availability and smooth deployments.
+    </p>
+  </div>
+
+</div>
+
+
+<hr>
+
+<h2>15. What is IAM</h2>
+<div class="aws-iam">
+
+  <div class="section">
+    <h3>🔹 What is IAM (Identity and Access Management)?</h3>
+    <p>
+      IAM is an AWS service used to manage users, permissions, and access to AWS resources securely.
+    </p>
+    <p>👉 <strong>In simple words:</strong> IAM controls who can access what in AWS.</p>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Why do we use IAM?</h3>
+    <ul>
+      <li>Secure AWS account access</li>
+      <li>Avoid using root account</li>
+      <li>Give least privilege access</li>
+      <li>Control permissions for users & services</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 IAM Components</h3>
+
+    <h4>1️⃣ Users</h4>
+    <p>Individual people</p>
+    <p>Example: Developer, Admin</p>
+
+    <h4>2️⃣ Groups</h4>
+    <p>Collection of users</p>
+    <p>Example: DevOps team</p>
+
+    <h4>3️⃣ Roles (Very Important)</h4>
+    <p>Used by AWS services</p>
+    <p>Temporary permissions</p>
+    <p><strong>Example:</strong></p>
+    <ul>
+      <li>EC2 role to access S3</li>
+      <li>Lambda role to access DynamoDB</li>
+    </ul>
+
+    <h4>4️⃣ Policies</h4>
+    <p>JSON documents defining permissions</p>
+    <p><strong>Example:</strong></p>
+    <pre>
+{
+  "Effect": "Allow",
+  "Action": "s3:ListBucket",
+  "Resource": "*"
+}
+    </pre>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Real-Time Example</h3>
+    <p>👉 EC2 needs access to S3</p>
+    <ul>
+      <li>❌ Don’t use access keys</li>
+      <li>✅ Attach IAM Role to EC2</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 IAM Best Practices</h3>
+    <ul>
+      <li>Never use root account for daily work</li>
+      <li>Enable MFA</li>
+      <li>Use roles instead of access keys</li>
+      <li>Follow least privilege principle</li>
+      <li>Rotate credentials regularly</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Interview-Ready Answer (Short)</h3>
+    <p>
+      IAM is an AWS service used to manage access to AWS resources by defining users, roles, and permissions securely.
+    </p>
+  </div>
+
+</div>
+<hr>
+<div>
+
+  <h3>🐳 Docker Image Commands</h3>
+
+  <p>✅ List images</p>
+  <pre>docker images</pre>
+
+  <p>or</p>
+  <pre>docker image ls</pre>
+
+  <p>✅ Pull image from Docker Hub</p>
+  <pre>docker pull nginx</pre>
+
+  <p>✅ Build image from Dockerfile</p>
+  <pre>docker build -t myapp:1.0 .</pre>
+
+  <p>✅ Remove image</p>
+  <pre>docker rmi nginx</pre>
+
+  <p>Force remove:</p>
+  <pre>docker rmi -f nginx</pre>
+
+  <p>✅ Remove unused images</p>
+  <pre>docker image prune -a</pre>
+
+  <p>✅ Inspect image</p>
+  <pre>docker inspect nginx</pre>
+
+  <h3>🐳 Docker Container Commands</h3>
+
+  <p>✅ Run container</p>
+  <pre>docker run -d -p 8080:80 --name web nginx</pre>
+
+  <p>✅ List running containers</p>
+  <pre>docker ps</pre>
+
+  <p>✅ List all containers</p>
+  <pre>docker ps -a</pre>
+
+  <p>✅ Start / Stop container</p>
+  <pre>docker start web</pre>
+  <pre>docker stop web</pre>
+
+  <p>✅ Restart container</p>
+  <pre>docker restart web</pre>
+
+  <p>✅ Remove container</p>
+  <pre>docker rm web</pre>
+
+  <p>Force remove:</p>
+  <pre>docker rm -f web</pre>
+
+  <p>✅ View container logs</p>
+  <pre>docker logs web</pre>
+
+  <p>Live logs:</p>
+  <pre>docker logs -f web</pre>
+
+  <p>✅ Execute command inside container</p>
+  <pre>docker exec -it web /bin/bash</pre>
+
+  <p>✅ Inspect container</p>
+  <pre>docker inspect web</pre>
+
+  <h3>🔹 Combined / Useful Commands</h3>
+
+  <p>Stop &amp; remove all containers</p>
+  <pre>docker stop $(docker ps -aq)</pre>
+  <pre>docker rm $(docker ps -aq)</pre>
+
+  <p>Remove all images</p>
+  <pre>docker rmi $(docker images -aq)</pre>
+
+  <p>Check Docker disk usage</p>
+  <pre>docker system df</pre>
+
+  <h3>🔹 Interview Quick Summary</h3>
+
+  <p>Images → docker pull, docker build, docker images, docker rmi</p>
+
+  <p>Containers → docker run, docker ps, docker stop, docker rm, docker logs</p>
+
+  <h3>🔹 One-Line Interview Answer</h3>
+
+  <p>
+    Docker images are managed using image commands, and containers are managed using container commands like run, start, stop, and logs.
+  </p>
+
+</div>
+<hr>
+<div class="jenkins-notes">
+
+  <div class="section">
+    <h3>🔹 What is Jenkins?</h3>
+    <p>
+      <strong>Jenkins</strong> is an open-source automation server used to automate tasks in 
+      <strong>software development</strong>, especially <strong>Continuous Integration (CI)</strong> 
+      and <strong>Continuous Deployment/Delivery (CD)</strong>.
+    </p>
+    <ul>
+      <li>It allows developers to <strong>build, test, and deploy</strong> applications automatically.</li>
+      <li>Supports <strong>plugins</strong> to integrate with almost any tool in the DevOps ecosystem (Git, Docker, Kubernetes, Maven, etc.).</li>
+      <li>Provides a <strong>web interface</strong> to manage jobs and visualize pipelines.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Key Features</h3>
+    <ul>
+      <li><strong>Automation of Tasks:</strong> Build, test, deploy automatically.</li>
+      <li><strong>Extensible with Plugins:</strong> Over 1000 plugins available for CI/CD pipelines.</li>
+      <li><strong>Pipeline as Code:</strong> Define CI/CD workflow using <strong>Jenkinsfile</strong>.</li>
+      <li><strong>Distributed Builds:</strong> Can run jobs across multiple machines (agents/slaves).</li>
+      <li><strong>Easy Integration:</strong> Works with Git, SVN, Docker, Kubernetes, Maven, Gradle, and more.</li>
+      <li><strong>Notifications:</strong> Send build notifications via email, Slack, etc.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Real-Time DevOps Use Case</h3>
+    <ul>
+      <li>Developers push code to GitHub.</li>
+      <li>Jenkins automatically detects the change.</li>
+      <li>It triggers a <strong>build and runs unit tests</strong>.</li>
+      <li>If successful, Jenkins <strong>deploys the application</strong> to a staging server or production.</li>
+      <li>Notifications are sent if the build fails.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Jenkins Pipeline Example</h3>
+    <pre>
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/org/repo.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'docker build -t myapp .'
+                sh 'docker run -d -p 8080:80 myapp'
+            }
+        }
+    }
+}
+    </pre>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Interview-Ready Short Answer</h3>
+    <p>
+      Jenkins is an open-source automation server used to implement CI/CD by automating 
+      build, test, and deployment processes.
+    </p>
+  </div>
+
+</div>
+<hr>
+<div class="terraform-notes">
+
+  <div class="section">
+    <h3>🔹 Why are you using Terraform?</h3>
+    <p>
+      <strong>Terraform</strong> is an open-source Infrastructure as Code (IaC) tool used to
+      <strong>provision, manage, and version cloud infrastructure</strong> in a safe and efficient way.
+    </p>
+    <ul>
+      <li>Define infrastructure using configuration files (HCL – HashiCorp Configuration Language)</li>
+      <li>Manage multiple cloud providers like AWS, Azure, GCP, and on-prem resources</li>
+      <li>Track and version infrastructure changes, making deployments predictable and repeatable</li>
+      <li>Automate provisioning, reducing human errors</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Key Benefits of Using Terraform</h3>
+    <ul>
+      <li><strong>Infrastructure as Code (IaC):</strong> Everything is defined in files; no manual setup.</li>
+      <li><strong>Multi-Cloud Support:</strong> AWS, Azure, GCP, and more from one tool.</li>
+      <li><strong>Change Automation:</strong> Automatically updates infrastructure without downtime.</li>
+      <li><strong>Version Control Friendly:</strong> Track changes using Git.</li>
+      <li><strong>Reusable Modules:</strong> Create templates for repeated resources.</li>
+      <li><strong>Predictable & Safe:</strong> Terraform shows a plan before applying changes (<code>terraform plan</code>).</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Real-Time DevOps Use Case</h3>
+    <ul>
+      <li>Provision EC2 instances, RDS, S3 buckets, and VPCs in AWS automatically.</li>
+      <li>Manage Kubernetes clusters on AWS EKS or GCP GKE.</li>
+      <li>Apply the same infrastructure configuration across development, staging, and production.</li>
+      <li>Automate scaling policies, security groups, and network configuration without manual intervention.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Interview-Ready Short Answer</h3>
+    <p>
+      Terraform is used to define, provision, and manage cloud infrastructure as code, enabling automation,
+      version control, and predictable deployments across multi-cloud environments.
+    </p>
+  </div>
+
+</div>
+<hr>
+<div class="docker-vs-k8s">
+
+  <div class="section">
+    <h3>🔹 Difference Between Docker and Kubernetes (K8s)</h3>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th>Feature</th>
+        <th>Docker</th>
+        <th>Kubernetes (K8s)</th>
+      </tr>
+      <tr>
+        <td>Definition</td>
+        <td>Containerization platform to build, ship, and run containers</td>
+        <td>Container orchestration platform to manage and scale containers</td>
+      </tr>
+      <tr>
+        <td>Purpose</td>
+        <td>Runs single containers on a host</td>
+        <td>Manages multiple containers across multiple hosts</td>
+      </tr>
+      <tr>
+        <td>Scope</td>
+        <td>Focus on container creation and execution</td>
+        <td>Focus on deployment, scaling, and management of containers</td>
+      </tr>
+      <tr>
+        <td>Scaling</td>
+        <td>Manual scaling using docker run or scripts</td>
+        <td>Automatic scaling using pods and replication controllers</td>
+      </tr>
+      <tr>
+        <td>Load Balancing</td>
+        <td>Not built-in; requires manual setup</td>
+        <td>Built-in load balancing for services</td>
+      </tr>
+      <tr>
+        <td>Fault Tolerance</td>
+        <td>Minimal fault tolerance</td>
+        <td>High fault tolerance with self-healing</td>
+      </tr>
+      <tr>
+        <td>Networking</td>
+        <td>Container-level networking</td>
+        <td>Cluster-level networking with service discovery</td>
+      </tr>
+      <tr>
+        <td>Storage</td>
+        <td>Volumes and bind mounts</td>
+        <td>Persistent Volumes and dynamic provisioning</td>
+      </tr>
+      <tr>
+        <td>Deployment</td>
+        <td>Manual container deployment</td>
+        <td>Declarative deployment using YAML manifests</td>
+      </tr>
+      <tr>
+        <td>Use Case</td>
+        <td>Running single applications in containers</td>
+        <td>Running complex, multi-container applications at scale</td>
+      </tr>
+      <tr>
+        <td>Example</td>
+        <td>Running a web server in a container</td>
+        <td>Running multiple web servers, databases, and services across nodes</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Simple Explanation</h3>
+    <p><strong>Docker</strong> → Runs containers (like creating single apps).</p>
+    <p><strong>Kubernetes</strong> → Manages containers at scale across multiple machines (like managing an entire app infrastructure).</p>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Real-Life Analogy</h3>
+    <ul>
+      <li><strong>Docker</strong> → A car (container) you drive.</li>
+      <li><strong>Kubernetes</strong> → Traffic control system managing hundreds of cars efficiently on multiple roads.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Interview-Ready Short Answer</h3>
+    <p>
+      Docker is a containerization tool for running individual containers, while Kubernetes is an orchestration platform 
+      that manages, scales, and monitors multiple containers across a cluster.
+    </p>
+  </div>
+
+</div>
+
+<hr>
+<div class="cloudwatch-notes">
+
+  <div class="section">
+    <h3>🔹 Why are you using CloudWatch?</h3>
+    <p>
+      <strong>Amazon CloudWatch</strong> is an AWS monitoring and observability service used to 
+      <strong>collect, monitor, and analyze metrics, logs, and events</strong> from AWS resources and applications.
+    </p>
+    <ul>
+      <li>Monitor system performance in real time</li>
+      <li>Set alarms and notifications for critical thresholds</li>
+      <li>Troubleshoot issues by analyzing logs and metrics</li>
+      <li>Integrates with Auto Scaling and event-driven architectures</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Main Use Cases</h3>
+    <ul>
+      <li><strong>Resource Monitoring:</strong> Track CPU, memory, disk usage of EC2 instances; monitor RDS, ELB, Lambda, S3, etc.</li>
+      <li><strong>Log Collection & Analysis:</strong> Aggregate application, system, and custom logs for troubleshooting.</li>
+      <li><strong>Alarms & Notifications:</strong> Trigger alarms when metrics cross thresholds; send notifications via SNS (email/SMS).</li>
+      <li><strong>Auto Scaling Integration:</strong> Metrics trigger Auto Scaling events to add/remove EC2 instances.</li>
+      <li><strong>Dashboards & Visualization:</strong> Create visual dashboards to track performance and resource health.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Real-Time DevOps Use Case</h3>
+    <ul>
+      <li>Monitor EC2 CPU, disk usage, and application logs.</li>
+      <li>Set alarms to notify teams when thresholds are breached.</li>
+      <li>Use metrics to trigger Auto Scaling for traffic spikes.</li>
+      <li>Analyze logs to troubleshoot production errors quickly.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Interview-Ready Short Answer</h3>
+    <p>
+      CloudWatch is used to monitor AWS resources, collect and analyze logs, set alarms, and automate scaling 
+      and notifications to ensure performance, availability, and reliability.
+    </p>
+  </div>
+
+</div>
+<hr>
+<div class="git-notes">
+
+  <div class="section">
+    <h3>🔹 What is Git?</h3>
+    <p>
+      <strong>Git</strong> is a distributed version control system (VCS) used to 
+      <strong>track changes in source code during software development</strong>.
+    </p>
+    <ul>
+      <li>Allows multiple developers to collaborate on a project simultaneously</li>
+      <li>Keeps a history of all changes, so you can revert or compare versions</li>
+      <li>Supports branching and merging for parallel development</li>
+      <li>Works locally, with optional remote repositories like GitHub, GitLab, or Bitbucket</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Why Use Git?</h3>
+    <ul>
+      <li><strong>Version Control:</strong> Track and manage code changes</li>
+      <li><strong>Collaboration:</strong> Multiple developers work on the same project</li>
+      <li><strong>Branching & Merging:</strong> Experiment without affecting main code</li>
+      <li><strong>Backup:</strong> Remote repositories act as backups</li>
+      <li><strong>History & Auditing:</strong> Know who changed what and when</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 How I Used Git in My Project</h3>
+    <ul>
+      <li>Used Git for version control of project source code</li>
+      <li>Created feature branches for new functionalities</li>
+      <li>Committed changes with meaningful messages:
+        <pre>git add .
+git commit -m "Implemented CI/CD pipeline using Jenkins"</pre>
+      </li>
+      <li>Pushed code to GitHub for collaboration:
+        <pre>git push origin feature-branch</pre>
+      </li>
+      <li>Merged changes to main branch after code review using pull requests</li>
+      <li>Rolled back changes when needed:
+        <pre>git checkout &lt;commit-id&gt;</pre>
+      </li>
+      <li>Integrated Git with Jenkins for automated builds and deployments</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Interview-Ready Short Answer</h3>
+    <p>
+      Git is a distributed version control system used to track code changes, collaborate with teams, 
+      and manage different versions of a project. In my project, I used Git to manage source code, 
+      work on feature branches, collaborate via GitHub, and integrate with Jenkins for CI/CD automation.
+    </p>
+  </div>
+
+</div>
+<hr>
+<div class="server-troubleshooting-notes">
+
+  <div class="section">
+    <h3>🔹 How I Troubleshoot My Server</h3>
+    <p>
+      Server troubleshooting involves <strong>identifying, analyzing, and resolving issues</strong> 
+      affecting system performance, availability, or functionality.
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Step-by-Step Approach</h3>
+    <ul>
+      <li><strong>Check System Health:</strong> CPU <code>top</code>, Memory <code>free -h</code>, Disk <code>df -h</code>, Processes <code>ps -ef</code></li>
+      <li><strong>Check Logs for Errors:</strong> System logs <code>/var/log/messages</code>, Application logs <code>/var/log/nginx/error.log</code>, Docker logs <code>docker logs &lt;container_id&gt;</code>, CloudWatch for AWS resources</li>
+      <li><strong>Check Services Status:</strong> <code>systemctl status nginx</code>, <code>systemctl restart docker</code></li>
+      <li><strong>Identify Network Issues:</strong> <code>ping &lt;server-ip&gt;</code>, <code>netstat -tulnp</code>, <code>ss -tulnp</code>, Firewall <code>iptables -L</code> or <code>ufw status</code></li>
+      <li><strong>Disk & Storage Troubleshooting:</strong> <code>du -sh /var/log/*</code>, <code>docker system prune -af</code></li>
+      <li><strong>Application-Specific Checks:</strong> Docker <code>docker ps -a</code>, Kubernetes <code>kubectl get pods -o wide</code>, Database logs and connectivity</li>
+      <li><strong>Restart Services or Server if Needed:</strong> <code>systemctl restart &lt;service&gt;</code>, <code>reboot</code></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Real-Time DevOps Use Case</h3>
+    <ul>
+      <li>Observed high CPU via <code>top</code></li>
+      <li>Checked Docker container logs: <code>docker logs webapp</code></li>
+      <li>Identified memory leak in application</li>
+      <li>Restarted container: <code>docker restart webapp</code></li>
+      <li>Cleared old logs: <code>rm -rf /var/log/old_logs/*</code></li>
+      <li>Set CloudWatch alarms to monitor CPU and disk usage</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Interview-Ready Short Answer</h3>
+    <p>
+      I troubleshoot servers by monitoring system metrics (CPU, memory, disk), checking logs, 
+      verifying service and network status, identifying issues with applications or containers, 
+      and applying fixes such as restarting services, cleaning disk space, or redeploying containers. 
+      I also use tools like CloudWatch, Docker logs, and monitoring scripts for proactive issue detection.
+    </p>
+  </div>
+
+</div>
+<hr>
+<div class="cloud-service-models">
+
+  <div class="section">
+    <h3>🔹 Cloud Service Models: IaaS, PaaS, SaaS</h3>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th>Model</th>
+        <th>Full Form</th>
+        <th>Definition</th>
+        <th>What You Manage</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>IaaS</td>
+        <td>Infrastructure as a Service</td>
+        <td>Provides virtualized computing resources over the internet</td>
+        <td>You manage apps, data, runtime, middleware, OS; Provider manages virtualization, servers, storage, networking</td>
+        <td>AWS EC2, Google Compute Engine, Azure VM</td>
+      </tr>
+      <tr>
+        <td>PaaS</td>
+        <td>Platform as a Service</td>
+        <td>Provides a platform to build, run, and manage apps without managing infrastructure</td>
+        <td>You manage apps and data; Provider manages runtime, middleware, OS, virtualization, servers, storage, networking</td>
+        <td>Heroku, AWS Elastic Beanstalk, Google App Engine</td>
+      </tr>
+      <tr>
+        <td>SaaS</td>
+        <td>Software as a Service</td>
+        <td>Provides software applications fully managed by the provider over the internet</td>
+        <td>Everything is managed by provider; You just use the software</td>
+        <td>Gmail, Zoom, Salesforce, Office 365</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Simple Explanation</h3>
+    <p><strong>IaaS</strong> → Cloud provides servers, storage, network (like renting virtual machines).</p>
+    <p><strong>PaaS</strong> → Cloud provides platform + runtime (you just deploy your app).</p>
+    <p><strong>SaaS</strong> → Cloud provides ready-to-use software (you just use it).</p>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Real-Life Analogy</h3>
+    <ul>
+      <li><strong>IaaS</strong> → Renting a plot of land (you build your house, maintain it).</li>
+      <li><strong>PaaS</strong> → Renting a fully built house with utilities (you just decorate and live in it).</li>
+      <li><strong>SaaS</strong> → Staying in a hotel room (everything is ready; you just use it).</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Interview-Ready Short Answer</h3>
+    <p>
+      IaaS provides virtualized infrastructure for building apps, PaaS provides a platform to develop and run apps 
+      without managing infrastructure, and SaaS provides ready-to-use software delivered over the cloud.
+    </p>
+  </div>
+
+</div>
+<hr>
+<div class="grep-commands">
+
+  <div class="section">
+    <h3>🔹 Why We Use <code>grep</code> Commands</h3>
+    <p>
+      <strong>grep</strong> is a command-line utility used in Linux/Unix to 
+      <strong>search for specific patterns or text in files or command output</strong>.
+    </p>
+    <ul>
+      <li>Quickly find specific lines, keywords, or errors in large log files</li>
+      <li>Can be combined with other commands (ps, docker logs, cat) to filter information</li>
+      <li>Supports regular expressions for advanced pattern matching</li>
+      <li>Used in monitoring, debugging, and automation tasks</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Common Use Cases</h3>
+    <ul>
+      <li>Search for a keyword in a file:
+        <pre>grep "error" /var/log/nginx/error.log</pre>
+      </li>
+      <li>Case-insensitive search:
+        <pre>grep -i "failed" /var/log/syslog</pre>
+      </li>
+      <li>Recursive search in directories:
+        <pre>grep -r "docker" /home/projects/</pre>
+      </li>
+      <li>Search with line numbers:
+        <pre>grep -n "database" app.log</pre>
+      </li>
+      <li>Combine with other commands:
+        <pre>ps -ef | grep nginx
+docker logs webapp | grep "Exception"</pre>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Real-Time DevOps Use Case</h3>
+    <ul>
+      <li>Filtered Docker container logs: <code>docker logs webapp | grep "ERROR"</code></li>
+      <li>Checked running processes: <code>ps -ef | grep java</code></li>
+      <li>Checked network connections: <code>netstat -tulnp | grep 8080</code></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Interview-Ready Short Answer</h3>
+    <p>
+      We use <code>grep</code> to search and filter specific patterns or keywords in files or command output. 
+      It helps in debugging, log analysis, and monitoring by quickly identifying relevant information.
+    </p>
+  </div>
+
+</div>
+<hr>
+<div class="system-resource-check">
+
+  <div class="section">
+    <h3>🔹 Disk Space</h3>
+    <ul>
+      <li><strong>Check total disk usage:</strong> <code>df -h</code></li>
+      <li><strong>Check directory size:</strong> <code>du -sh /var/log</code></li>
+      <li><strong>Top disk-consuming directories:</strong> <code>du -h / | sort -hr | head -10</code></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Memory (RAM) Usage</h3>
+    <ul>
+      <li><strong>Basic memory check:</strong> <code>free -h</code></li>
+      <li><strong>Detailed memory info:</strong> <code>cat /proc/meminfo</code></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 CPU Usage</h3>
+    <ul>
+      <li><strong>Real-time process monitoring:</strong> <code>top</code></li>
+      <li><strong>Interactive process viewer:</strong> <code>htop</code></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Storage Devices / Partitions</h3>
+    <ul>
+      <li><strong>List all disks and partitions:</strong> <code>lsblk</code></li>
+      <li><strong>Check mounted filesystems:</strong> <code>mount | column -t</code></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Combined Health Check Command</h3>
+    <pre>df -h && free -h && top</pre>
+    <p>This gives a quick snapshot of disk, memory, and CPU usage in one command.</p>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Interview-Ready Short Answer</h3>
+    <p>
+      We check disk space using <code>df -h</code>, folder usage using <code>du -sh</code>, 
+      memory using <code>free -h</code>, and running processes with <code>top</code> or <code>htop</code>. 
+      These commands help monitor system resources and identify bottlenecks or issues proactively.
+    </p>
+  </div>
+
+</div>
+<hr>
+<div class="shell-vs-bash">
+
+  <div class="section">
+    <h3>🔹 Shell Scripting vs Bash Scripting</h3>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th>Feature</th>
+        <th>Shell Scripting</th>
+        <th>Bash Scripting</th>
+      </tr>
+      <tr>
+        <td>Definition</td>
+        <td>Writing scripts for any Unix/Linux shell (sh, csh, ksh, zsh) to automate tasks</td>
+        <td>Writing scripts specifically for the Bash shell (Bourne Again Shell)</td>
+      </tr>
+      <tr>
+        <td>Shell Type</td>
+        <td>Can be for any shell (sh, csh, ksh, zsh)</td>
+        <td>Only for Bash shell</td>
+      </tr>
+      <tr>
+        <td>Portability</td>
+        <td>Scripts may run on different shells if compatible</td>
+        <td>Scripts are specific to Bash features</td>
+      </tr>
+      <tr>
+        <td>Features</td>
+        <td>Basic scripting features: loops, conditions, variables</td>
+        <td>Advanced features: arrays, associative arrays, string manipulation, arithmetic operations</td>
+      </tr>
+      <tr>
+        <td>Default on Linux</td>
+        <td>Depends on the system (sh or dash)</td>
+        <td>Usually installed by default as /bin/bash on most Linux systems</td>
+      </tr>
+      <tr>
+        <td>Syntax Differences</td>
+        <td>Limited syntax support; may differ per shell</td>
+        <td>Bash syntax includes more enhancements and is more flexible</td>
+      </tr>
+      <tr>
+        <td>Example</td>
+        <td>#!/bin/sh</td>
+        <td>#!/bin/bash</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Simple Explanation</h3>
+    <p>Shell scripting → Writing scripts for any shell to automate tasks.</p>
+    <p>Bash scripting → Writing scripts using Bash-specific features, more powerful and widely used.</p>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Real-Time Example</h3>
+    <p><strong>Shell Script (sh):</strong></p>
+    <pre>
+#!/bin/sh
+echo "Hello from shell script"
+    </pre>
+    <p><strong>Bash Script (bash):</strong></p>
+    <pre>
+#!/bin/bash
+echo "Hello from Bash script"
+array=(one two three)
+for i in "${array[@]}"; do
+  echo $i
+done
+    </pre>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Interview-Ready Short Answer</h3>
+    <p>
+      Shell scripting is writing scripts for any Unix/Linux shell to automate tasks, 
+      while Bash scripting is specifically for the Bash shell, offering more advanced features, 
+      better syntax, and wide usage in Linux automation.
+    </p>
+  </div>
+
+</div>
+
+<div class="shell-vs-bash">
+
+  <div class="section">
+    <h3>🔹 Shell Scripting vs Bash Scripting</h3>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th>Feature</th>
+        <th>Shell Scripting</th>
+        <th>Bash Scripting</th>
+      </tr>
+      <tr>
+        <td>Definition</td>
+        <td>Writing scripts for any Unix/Linux shell (sh, csh, ksh, zsh) to automate tasks</td>
+        <td>Writing scripts specifically for the Bash shell (Bourne Again Shell)</td>
+      </tr>
+      <tr>
+        <td>Shell Type</td>
+        <td>Can be for any shell (sh, csh, ksh, zsh)</td>
+        <td>Only for Bash shell</td>
+      </tr>
+      <tr>
+        <td>Portability</td>
+        <td>Scripts may run on different shells if compatible</td>
+        <td>Scripts are specific to Bash features</td>
+      </tr>
+      <tr>
+        <td>Features</td>
+        <td>Basic scripting features: loops, conditions, variables</td>
+        <td>Advanced features: arrays, associative arrays, string manipulation, arithmetic operations</td>
+      </tr>
+      <tr>
+        <td>Default on Linux</td>
+        <td>Depends on the system (sh or dash)</td>
+        <td>Usually installed by default as /bin/bash on most Linux systems</td>
+      </tr>
+      <tr>
+        <td>Syntax Differences</td>
+        <td>Limited syntax support; may differ per shell</td>
+        <td>Bash syntax includes more enhancements and is more flexible</td>
+      </tr>
+      <tr>
+        <td>Example</td>
+        <td>#!/bin/sh</td>
+        <td>#!/bin/bash</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Simple Explanation</h3>
+    <p>Shell scripting → Writing scripts for any shell to automate tasks.</p>
+    <p>Bash scripting → Writing scripts using Bash-specific features, more powerful and widely used.</p>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Real-Time Example</h3>
+    <p><strong>Shell Script (sh):</strong></p>
+    <pre>
+#!/bin/sh
+echo "Hello from shell script"
+    </pre>
+    <p><strong>Bash Script (bash):</strong></p>
+    <pre>
+#!/bin/bash
+echo "Hello from Bash script"
+array=(one two three)
+for i in "${array[@]}"; do
+  echo $i
+done
+    </pre>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Interview-Ready Short Answer</h3>
+    <p>
+      Shell scripting is writing scripts for any Unix/Linux shell to automate tasks, 
+      while Bash scripting is specifically for the Bash shell, offering more advanced features, 
+      better syntax, and wide usage in Linux automation.
+    </p>
+  </div>
+
+</div>
+<hr>
+<div class="load-balancers">
+
+  <div class="section">
+    <h3>🔹 Types of Load Balancers</h3>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Layer</th>
+        <th>Use Case</th>
+        <th>Example</th>
+      </tr>
+      <tr>
+        <td>Application Load Balancer (ALB)</td>
+        <td>Routes traffic based on content (URL, headers, path)</td>
+        <td>Layer 7 (HTTP/HTTPS)</td>
+        <td>Microservices, HTTP apps, API routing</td>
+        <td>AWS ALB, NGINX</td>
+      </tr>
+      <tr>
+        <td>Network Load Balancer (NLB)</td>
+        <td>Routes traffic based on IP protocol data</td>
+        <td>Layer 4 (TCP/UDP)</td>
+        <td>High-performance, low-latency, TCP/UDP apps</td>
+        <td>AWS NLB, HAProxy</td>
+      </tr>
+      <tr>
+        <td>Classic Load Balancer (CLB)</td>
+        <td>Basic load balancer, supports HTTP, HTTPS, TCP</td>
+        <td>Layer 4 & Layer 7</td>
+        <td>Legacy applications</td>
+        <td>AWS ELB (Classic)</td>
+      </tr>
+      <tr>
+        <td>Global Load Balancer</td>
+        <td>Distributes traffic across multiple regions</td>
+        <td>Layer 7</td>
+        <td>Multi-region apps, disaster recovery</td>
+        <td>AWS Global Accelerator, Cloudflare</td>
+      </tr>
+      <tr>
+        <td>Internal / Private Load Balancer</td>
+        <td>Load balances traffic inside VPC/private network</td>
+        <td>Layer 4 or 7</td>
+        <td>Internal microservices</td>
+        <td>AWS ALB internal, NGINX</td>
+      </tr>
+      <tr>
+        <td>Hardware Load Balancer</td>
+        <td>Physical device for traffic distribution</td>
+        <td>Layer 4 & 7</td>
+        <td>Data centers, enterprise apps</td>
+        <td>F5 Big-IP, Citrix ADC</td>
+      </tr>
+      <tr>
+        <td>Software Load Balancer</td>
+        <td>Software-based, can run on VMs or containers</td>
+        <td>Layer 4 & 7</td>
+        <td>Cloud-native apps</td>
+        <td>HAProxy, NGINX, Traefik</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Simple Explanation</h3>
+    <p>Load balancers distribute incoming network traffic across multiple servers to ensure high availability and reliability.</p>
+    <p>ALB → Smart, content-based routing (HTTP/HTTPS).</p>
+    <p>NLB → Fast, TCP/UDP-based, low-latency routing.</p>
+    <p>CLB → Old-style basic balancing.</p>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Real-Time Example</h3>
+    <ul>
+      <li>Your web application has 3 EC2 instances running.</li>
+      <li>User requests come in; ALB distributes requests evenly based on HTTP path.</li>
+      <li>If one instance fails, ALB stops sending traffic to it.</li>
+      <li>NLB can be used for TCP-based apps like game servers or database connections.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔹 Interview-Ready Short Answer</h3>
+    <p>
+      Load balancers distribute incoming traffic across multiple servers to ensure high availability, scalability, and fault tolerance. 
+      Types include Application Load Balancer (Layer 7), Network Load Balancer (Layer 4), Classic Load Balancer, 
+      Global Load Balancer, Internal Load Balancer, and hardware/software load balancers.
+    </p>
+  </div>
+
+</div>
+
+</div><!-- .container -->
 </body>
 </html>
