@@ -4,9 +4,181 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wipro interview</title>
+   <style>
+    :root {
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --border: #e5e7eb;
+      --shadow: 0 10px 20px rgba(0,0,0,0.06);
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      margin: 0;
+      padding: 28px 16px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 20px;
+      box-shadow: var(--shadow);
+    }
+
+    h1 {
+      font-size: 28px;
+      line-height: 1.25;
+      margin: 0 0 8px;
+    }
+
+    h2 {
+      font-size: 20px;
+      line-height: 1.3;
+      margin: 22px 0 10px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid rgba(37, 99, 235, 0.18);
+    }
+
+    h3 {
+      font-size: 17px;
+      line-height: 1.35;
+      margin: 14px 0 8px;
+    }
+
+    p {
+      margin: 10px 0;
+      color: var(--text);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .section {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 16px;
+      margin: 14px 0;
+    }
+
+    .section > h2:first-child {
+      margin-top: 0;
+    }
+
+    .desktop-os {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .os {
+      padding: 12px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fbfdff;
+    }
+
+    .summary p {
+      margin: 6px 0;
+      color: var(--text);
+    }
+
+    .question {
+      background: #eef2ff;
+      border-left: 5px solid var(--accent);
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .answer h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .answer ul {
+      padding-left: 20px;
+    }
+
+    .answer li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    ul {
+      margin: 10px 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.95em;
+    }
+
+    pre {
+      background: #f3f4f6;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      overflow-x: auto;
+    }
+
+    .note {
+      margin-top: 16px;
+      padding: 12px;
+      background: #f0fdf4;
+      border-left: 4px solid #22c55e;
+      border-radius: 6px;
+      color: #065f46;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (min-width: 720px) {
+      body { padding: 40px 24px; }
+      .card { padding: 26px 26px; }
+      h1 { font-size: 32px; }
+      h2 { font-size: 22px; }
+    }
+  </style>
 </head>
 <body>
-  <div class="desktop-os">
+  <div class="container">
+    <div class="card">
+      <h1>Wipro Interview Notes</h1>
+      <p style="margin-top: 0; color: var(--muted);">Clean, readable reference with consistent spacing and font sizes.</p>
+
+      <div class="desktop-os">
 
   <div class="section">
     <h2>Latest Windows OS in the Market</h2>
@@ -22,7 +194,7 @@
       It comes with a new user interface, better performance, improved security,
       and support for modern hardware.
     </p>
-  </div>
+  </div><br>
 
   <div class="section">
     <h2>Most Popular Desktop Operating Systems</h2>
@@ -33,7 +205,7 @@
         Windows 11 is the most popular desktop operating system today.
         It is used in homes, offices, and enterprises.
       </p>
-    </div>
+    </div><br>
 
     <div class="os">
       <h3>2. Windows 10</h3>
@@ -41,7 +213,7 @@
         Windows 10 is still widely used, especially on older computers.
         Many companies continue to use it for compatibility reasons.
       </p>
-    </div>
+    </div><br>
 
     <div class="os">
       <h3>3. macOS</h3>
@@ -49,7 +221,7 @@
         macOS is Apple’s desktop operating system used on Mac computers.
         It is popular among designers, developers, and creative professionals.
       </p>
-    </div>
+    </div><br>
 
     <div class="os">
       <h3>4. Linux</h3>
@@ -57,7 +229,7 @@
         Linux is an open-source operating system.
         It is mostly used by developers, system administrators, and technical users.
       </p>
-    </div>
+    </div><br>
 
     <div class="os">
       <h3>5. Chrome OS</h3>
@@ -65,9 +237,9 @@
         Chrome OS is developed by Google and mainly used on Chromebooks.
         It is popular in schools and for basic internet usage.
       </p>
-    </div>
+    </div><br>
 
-  </div>
+  </div><br>
 
   <div class="section">
     <h2>Desktop OS Popularity Summary</h2>
@@ -77,10 +249,10 @@
       <p><strong>macOS:</strong> Second most popular, used on Apple devices</p>
       <p><strong>Linux:</strong> Used by technical and developer communities</p>
       <p><strong>Chrome OS:</strong> Used mainly in education and budget laptops</p>
-    </div>
-  </div>
+    </div><br>
+  </div><br>
 
-</div>
+      </div><br>
 
   <div>
   <h2>What is a Service Desk?</h2>
@@ -89,7 +261,7 @@
     (employees or customers) and the IT team. Its main job is to help users
     when they face IT problems and support daily IT services.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Purpose of a Service Desk</h2>
@@ -97,7 +269,7 @@
     A Service Desk acts like an IT help center where users can report issues,
     ask for help, or request IT services.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>What Does a Service Desk Do?</h2>
@@ -107,7 +279,7 @@
     <li>Logs and tracks tickets</li>
     <li>Provides solutions or escalates issues to higher teams</li>
   </ul>
-</div>
+</div><br>
 
 <div>
   <h2>Common Service Desk Responsibilities</h2>
@@ -120,7 +292,7 @@
     <li>Printer or hardware issues</li>
     <li>User account creation and deactivation</li>
   </ul>
-</div>
+</div><br>
 
 <div>
   <h2>Tools Used in Service Desk</h2>
@@ -131,7 +303,7 @@
     <li>Zendesk</li>
     <li>BMC Remedy</li>
   </ul>
-</div>
+</div><br>
 
 <div>
   <h2>Service Desk vs Help Desk</h2>
@@ -139,7 +311,7 @@
     <strong>Help Desk:</strong> Focuses mainly on fixing issues.<br>
     <strong>Service Desk:</strong> Handles issues, service requests, and IT communication.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Service Desk Job Roles</h2>
@@ -149,7 +321,7 @@
     <li>Desktop Support Engineer</li>
     <li>L1 / L2 Support Engineer</li>
   </ul>
-</div>
+</div><br>
 
 <div>
   <h2>Why is a Service Desk Important?</h2>
@@ -159,7 +331,7 @@
     <li>Faster issue resolution</li>
     <li>Better communication between IT and users</li>
   </ul>
-</div>
+</div><br>
 
   <div>
   <h2>What is Troubleshooting?</h2>
@@ -167,7 +339,7 @@
     Troubleshooting is a step-by-step process used to identify, analyze,
     and fix problems in systems, software, hardware, or networks.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 1: Identify the Problem</h2>
@@ -175,7 +347,7 @@
     Understand the issue clearly by asking the user about the problem,
     checking error messages, and observing symptoms.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 2: Gather Information</h2>
@@ -183,7 +355,7 @@
     Collect details such as when the issue started, what actions were taken,
     and check logs or alerts related to the problem.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 3: Analyze the Problem</h2>
@@ -191,7 +363,7 @@
     Analyze the collected information to find the possible root cause
     of the issue.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 4: Create a Possible Solution</h2>
@@ -199,7 +371,7 @@
     Decide the best and safest solution to resolve the issue,
     starting with simple fixes.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 5: Implement the Solution</h2>
@@ -207,7 +379,7 @@
     Apply the chosen solution carefully by following IT policies
     and standard procedures.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 6: Test the Solution</h2>
@@ -215,7 +387,7 @@
     Verify whether the issue is resolved and confirm that the system
     is working properly.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 7: Document the Issue</h2>
@@ -223,7 +395,7 @@
     Record the problem, root cause, and solution in the ticketing tool
     for future reference.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 8: Close or Escalate the Ticket</h2>
@@ -231,14 +403,14 @@
     Close the ticket if the issue is resolved, or escalate it to
     higher-level support if needed.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Troubleshooting Process Flow</h2>
   <p>
     Identify → Gather Info → Analyze → Fix → Test → Document → Close/Escalate
   </p>
-</div>
+</div><br>
 
   <div>
   <h2>Printer Not Connecting to System</h2>
@@ -247,7 +419,7 @@
     cable issues, network problems, driver errors, or service issues.
     Follow the below troubleshooting steps to resolve the problem.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 1: Check Physical Connections</h2>
@@ -256,7 +428,7 @@
     using a USB cable or network cable. Check Wi-Fi connectivity for
     wireless printers.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 2: Check Printer Status</h2>
@@ -265,7 +437,7 @@
     status shows Offline. Set the printer as default and change status
     to Online if required.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 3: Restart Printer and System</h2>
@@ -273,7 +445,7 @@
     Turn off the printer and the system. Wait for a few seconds, then
     power on the printer first and the system next to clear temporary issues.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 4: Check Network Connection</h2>
@@ -282,7 +454,7 @@
     to the same network. Verify the printer IP address and test network
     connectivity.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 5: Reinstall or Update Printer Driver</h2>
@@ -290,7 +462,7 @@
     Remove the existing printer driver from Device Manager and install
     the latest driver from the printer manufacturer’s website.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 6: Restart Print Spooler Service</h2>
@@ -298,7 +470,7 @@
     Open services.msc, locate Print Spooler service, restart it, and
     ensure the startup type is set to Automatic.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 7: Add Printer Again</h2>
@@ -306,7 +478,7 @@
     Go to Devices and Printers, click Add Printer, and add the printer
     manually using the correct method or IP address.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 8: Test Printing</h2>
@@ -314,7 +486,7 @@
     Print a test page to confirm the printer is working correctly and
     connected to the system.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 9: Escalate the Issue</h2>
@@ -322,7 +494,7 @@
     If the issue is not resolved, collect error details and escalate the
     ticket to the L2 or hardware support team.
   </p>
-</div>
+</div><br>
 
   <div>
   <h2>How to Resolve a Conflict With a Team Member</h2>
@@ -330,7 +502,7 @@
     When a team member argues or has a conflict, it is important to handle
     the situation professionally to maintain a positive work environment.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 1: Stay Calm and Professional</h2>
@@ -338,7 +510,7 @@
     I stay calm and do not react emotionally. Remaining professional helps
     prevent the situation from getting worse.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 2: Listen to the Team Member</h2>
@@ -346,7 +518,7 @@
     I listen carefully to understand their concern without interrupting.
     This helps identify the real reason behind the argument.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 3: Communicate Clearly</h2>
@@ -354,7 +526,7 @@
     I explain my point of view politely and clearly, focusing on the issue
     rather than personal opinions.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 4: Find a Common Solution</h2>
@@ -362,7 +534,7 @@
     I work together with the team member to find a solution that benefits
     the team and supports project goals.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 5: Involve the Team Lead if Needed</h2>
@@ -370,7 +542,7 @@
     If the issue cannot be resolved mutually, I escalate it to the team lead
     or manager for guidance.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Step 6: Learn and Move Forward</h2>
@@ -378,7 +550,7 @@
     I learn from the experience, maintain professionalism, and ensure a
     positive working relationship going forward.
   </p>
-</div>
+</div><br>
 
   <div>
   <h2>What is Outlook?</h2>
@@ -387,7 +559,7 @@
     application developed by Microsoft. It is used in organizations for
     email communication, calendar management, meetings, contacts, and tasks.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>How to Use Outlook</h2>
@@ -395,7 +567,7 @@
     Outlook can be accessed using the desktop application or through a web
     browser at outlook.office.com by logging in with a company email account.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Sending an Email</h2>
@@ -403,7 +575,7 @@
     Click on New Email, enter the recipient address, subject, and message.
     Attach files if required and click Send.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Receiving and Reading Emails</h2>
@@ -411,7 +583,7 @@
     All incoming emails are received in the Inbox. Users can open emails
     and use Reply, Reply All, or Forward options.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Organizing Emails</h2>
@@ -419,7 +591,7 @@
     Outlook allows users to create folders, move emails, apply categories,
     flags, and rules to organize emails efficiently.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Using Calendar</h2>
@@ -427,7 +599,7 @@
     The calendar feature is used to schedule meetings, send meeting invites,
     set reminders, and view daily, weekly, or monthly schedules.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Managing Contacts</h2>
@@ -435,7 +607,7 @@
     Outlook helps store contact details, create contact groups, and send
     group emails easily.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Creating Tasks</h2>
@@ -443,7 +615,7 @@
     Users can create tasks, set priorities, deadlines, and reminders to
     manage daily work efficiently.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Key Features of Outlook</h2>
@@ -454,7 +626,7 @@
     <li>Task and to-do list management</li>
     <li>Powerful search functionality</li>
   </ul>
-</div>
+</div><br>
 
 <div>
   <h2>Security and Integration</h2>
@@ -462,7 +634,7 @@
     Outlook provides spam and phishing protection, secure email access,
     and integrates with Microsoft Teams, Word, Excel, and OneDrive.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Why Outlook is Used in Organizations</h2>
@@ -470,7 +642,7 @@
     Outlook is reliable, secure, professional, and easy to use, making it
     a preferred email tool in corporate environments.
   </p>
-</div>
+</div><br>
 
   <div>
   <h2>What is Gmail?</h2>
@@ -479,7 +651,7 @@
     sending and receiving emails and managing communication for personal
     and professional purposes.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>How to Use Gmail</h2>
@@ -487,7 +659,7 @@
     Gmail can be accessed through a web browser at gmail.com or using
     the Gmail mobile application by logging in with a Google account.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Sending an Email</h2>
@@ -495,7 +667,7 @@
     Click on Compose, enter the recipient email address, subject, and
     message. Attach files if needed and click Send.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Receiving and Reading Emails</h2>
@@ -503,7 +675,7 @@
     Incoming emails appear in the Inbox. Users can open emails and
     reply, reply all, or forward messages.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Organizing Emails</h2>
@@ -511,7 +683,7 @@
     Gmail allows users to organize emails using labels, folders,
     stars, filters, and categories like Primary, Social, and Promotions.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Search Emails</h2>
@@ -519,7 +691,7 @@
     Gmail provides a powerful search feature to quickly find emails
     using sender name, subject, keywords, or date.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Using Google Calendar</h2>
@@ -527,7 +699,7 @@
     Gmail integrates with Google Calendar to schedule meetings,
     send invites, and set reminders.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Contacts Management</h2>
@@ -535,7 +707,7 @@
     Gmail stores contact details automatically and allows users
     to create and manage contact groups.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Key Features of Gmail</h2>
@@ -546,7 +718,7 @@
     <li>Powerful search functionality</li>
     <li>Spam and phishing protection</li>
   </ul>
-</div>
+</div><br>
 
 <div>
   <h2>Security and Integration</h2>
@@ -555,7 +727,7 @@
     two-factor authentication, and integration with Google Drive,
     Google Meet, and Google Docs.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Why Gmail is Popular</h2>
@@ -563,7 +735,7 @@
     Gmail is easy to use, fast, secure, and accessible from anywhere,
     making it one of the most popular email services worldwide.
   </p>
-</div>
+</div><br>
 
   <div>
   <h2>What is Email?</h2>
@@ -572,7 +744,7 @@
     receive messages over the internet. It is a service or concept, not
     a software application.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>What is Outlook?</h2>
@@ -581,7 +753,7 @@
     to access and manage emails and also provides additional features
     like calendar, meetings, contacts, and tasks.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Simple Explanation</h2>
@@ -589,7 +761,7 @@
     Email is the communication system, while Outlook is the tool used
     to send, receive, and manage emails.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Difference Between Email and Outlook</h2>
@@ -619,7 +791,7 @@
       <td>Supports email, calendar, meetings, and contacts</td>
     </tr>
   </table>
-</div>
+</div><br>
 
 <div>
   <h2>Example</h2>
@@ -627,7 +799,7 @@
     Email is like a letter, and Outlook is like a postbox used to send
     and receive that letter.
   </p>
-</div>
+</div><br>
 
   <div>
   <h2>Microsoft Applications</h2>
@@ -643,7 +815,7 @@
     <li><strong>Microsoft SharePoint</strong> – Used for document sharing and collaboration</li>
     <li><strong>Microsoft Edge</strong> – Web browser developed by Microsoft</li>
   </ul>
-</div>
+</div><br>
 
 <div>
   <h2>Google Applications</h2>
@@ -659,7 +831,7 @@
     <li><strong>Google Forms</strong> – Used to create surveys and forms</li>
     <li><strong>Google Maps</strong> – Navigation and location service</li>
   </ul>
-</div>
+</div><br>
 
   <div>
   <h2>What is a Service Desk?</h2>
@@ -667,7 +839,7 @@
     A Service Desk is an internal IT support team that helps employees
     within an organization to resolve IT-related issues and service requests.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>What is Customer Support?</h2>
@@ -676,7 +848,7 @@
     company’s products or services by resolving their issues and answering
     their queries.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Key Differences Between Service Desk and Customer Support</h2>
@@ -706,7 +878,7 @@
       <td>Focuses on customer satisfaction</td>
     </tr>
   </table>
-</div>
+</div><br>
 
 <div>
   <h2>Example</h2>
@@ -714,7 +886,7 @@
     A Service Desk helps an employee fix system or email issues, while
     Customer Support helps a customer resolve product or service problems.
   </p>
-</div>
+</div><br>
 
   <div>
   <h2>What is an IP Address?</h2>
@@ -723,7 +895,7 @@
     to a device such as a computer, mobile, printer, or server. It helps
     devices identify each other and communicate on a network or the internet.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Why IP Address is Important</h2>
@@ -732,7 +904,7 @@
     troubleshoot network issues, and enable internet and local network
     communication.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>Types of IP Addresses</h2>
@@ -740,7 +912,7 @@
     <li><strong>Private IP Address</strong> – Used within home or office networks (example: 192.168.x.x)</li>
     <li><strong>Public IP Address</strong> – Assigned by Internet Service Providers and used on the internet</li>
   </ul>
-</div>
+</div><br>
 
 <div>
   <h2>How to Check IP Address in Windows</h2>
@@ -748,7 +920,7 @@
     Press Windows + R, type cmd, press Enter, then type <strong>ipconfig</strong>
     and look for the IPv4 Address.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>How to Check IP Address in Linux or macOS</h2>
@@ -756,7 +928,7 @@
     Open the terminal and type <strong>ifconfig</strong> or <strong>ip a</strong>
     to view the IP address.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>How to Check IP Address Using Settings</h2>
@@ -764,7 +936,7 @@
     Open Settings, go to Network & Internet, select Wi-Fi or Ethernet,
     click on the connected network, and view the IP address details.
   </p>
-</div>
+</div><br>
 
 <div>
   <h2>How to Check Public IP Address</h2>
@@ -772,7 +944,7 @@
     Open a web browser and search for “What is my IP”. The public IP address
     will be displayed on the screen.
   </p>
-</div>
+</div><br>
 
   <div>
   <h2>LAN (Local Area Network)</h2>
@@ -780,7 +952,7 @@
   <p><b>Examples:</b> Home network, office network, school computer lab.</p>
   <p><b>Features:</b> High speed, small area coverage, low cost.</p>
   <p><b>Interview Answer:</b> LAN connects devices within a small area.</p>
-</div>
+</div><br>
 
 <div>
   <h2>MAN (Metropolitan Area Network)</h2>
@@ -788,7 +960,7 @@
   <p><b>Examples:</b> Bank branches in a city, university campuses.</p>
   <p><b>Features:</b> City-level coverage, medium speed.</p>
   <p><b>Interview Answer:</b> MAN connects networks across a city.</p>
-</div>
+</div><br>
 
 <div>
   <h2>WAN (Wide Area Network)</h2>
@@ -796,7 +968,7 @@
   <p><b>Examples:</b> Internet, international company networks.</p>
   <p><b>Features:</b> Large coverage, slower than LAN.</p>
   <p><b>Interview Answer:</b> WAN connects networks across countries.</p>
-</div>
+</div><br>
 
 <div>
   <h2>Router</h2>
@@ -804,7 +976,7 @@
   <p><b>Examples:</b> Home Wi-Fi router, office router.</p>
   <p><b>Features:</b> Routes data, assigns IP addresses.</p>
   <p><b>Interview Answer:</b> Router connects networks and controls traffic.</p>
-</div>
+</div><br>
 
 <div>
   <h2>VPN (Virtual Private Network)</h2>
@@ -812,7 +984,7 @@
   <p><b>Examples:</b> Work from home access, secure company login.</p>
   <p><b>Features:</b> Data encryption, privacy, remote access.</p>
   <p><b>Interview Answer:</b> VPN provides secure remote network access.</p>
-</div>
+</div><br>
 
 <div>
   <h2>BitLocker</h2>
@@ -820,7 +992,7 @@
   <p><b>Examples:</b> Company laptops, office systems.</p>
   <p><b>Features:</b> Disk encryption, data protection.</p>
   <p><b>Interview Answer:</b> BitLocker protects data using encryption.</p>
-</div>
+</div><br>
 
 <div>
   <h2>Active Directory</h2>
@@ -828,7 +1000,7 @@
   <p><b>Examples:</b> Office login systems, employee access control.</p>
   <p><b>Features:</b> User authentication, group policies.</p>
   <p><b>Interview Answer:</b> Active Directory manages users and permissions.</p>
-</div>
+</div><br>
 
   <div>
   <h2>System Not Turning ON – Troubleshooting Steps</h2>
@@ -838,57 +1010,57 @@
     <p>Ensure the power cable is properly connected.</p>
     <p>Check if the power socket is working.</p>
     <p>Try a different power cable or socket.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>2. Check Power Button</h3>
     <p>Press the power button correctly.</p>
     <p>Check if the power button is damaged.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>3. Check Monitor</h3>
     <p>Make sure the monitor is turned ON.</p>
     <p>Check HDMI or VGA cable connection.</p>
     <p>Try another monitor if available.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>4. Check Adapter or SMPS</h3>
     <p>Laptop: Check charging light.</p>
     <p>Desktop: Check SMPS fan is running.</p>
     <p>Try another adapter if possible.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>5. Remove External Devices</h3>
     <p>Disconnect USB, printer, or external hard disk.</p>
     <p>Try turning on the system again.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>6. Check Internal Hardware</h3>
     <p>Remove and reinsert RAM.</p>
     <p>Check motherboard cable connections.</p>
     <p>Listen for beep sounds.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>7. Check Battery (Laptop)</h3>
     <p>Remove the battery if possible.</p>
     <p>Connect charger and power ON.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>8. Final Step</h3>
     <p>If system still does not start, raise a support ticket.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>If a system is not turning on, I check power supply, cables, monitor, RAM, and hardware connections.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
   <div>
   <h2>System Not Booting – Troubleshooting</h2>
@@ -901,7 +1073,7 @@
     <li>Run Startup Repair</li>
   </ul>
   <p><b>Interview Answer:</b> If system is not booting, I check BIOS, boot order, and OS issues.</p>
-</div>
+</div><br>
 
 <div>
   <h2>Blue Screen Error (BSOD)</h2>
@@ -914,7 +1086,7 @@
     <li>Check RAM and hard disk</li>
   </ul>
   <p><b>Interview Answer:</b> Blue screen occurs due to driver or hardware issues.</p>
-</div>
+</div><br>
 
 <div>
   <h2>No Display Issue</h2>
@@ -927,7 +1099,7 @@
     <li>Check graphics card</li>
   </ul>
   <p><b>Interview Answer:</b> For no display, I check monitor, cable, RAM, and graphics card.</p>
-</div>
+</div><br>
 
 <div>
   <h2>Printer Troubleshooting</h2>
@@ -940,7 +1112,7 @@
     <li>Check printer queue</li>
   </ul>
   <p><b>Interview Answer:</b> I check connection, driver, and printer status.</p>
-</div>
+</div><br>
 
 <div>
   <h2>Network Troubleshooting</h2>
@@ -953,7 +1125,7 @@
     <li>Ping gateway or Google</li>
   </ul>
   <p><b>Interview Answer:</b> I check IP, connectivity, and network devices.</p>
-</div>
+</div><br>
 
   <div>
   <h2>DNS (Domain Name System)</h2>
@@ -965,14 +1137,14 @@
     <h3>Simple Meaning</h3>
     <p>Humans remember names like google.com, but computers understand IP addresses.</p>
     <p>DNS helps connect the name to the correct IP address.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Example</h3>
     <p>Website name: www.google.com</p>
     <p>IP address: 142.250.195.46</p>
     <p>DNS converts the name to the IP.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Why DNS is Important</h3>
@@ -981,7 +1153,7 @@
       <li>No need to remember IP addresses</li>
       <li>Helps websites load correctly</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Types of DNS</h3>
@@ -989,14 +1161,14 @@
       <li>Public DNS (Google DNS, Cloudflare DNS)</li>
       <li>Private DNS (Company internal DNS)</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>How to Check DNS on Windows</h3>
     <p>Open Command Prompt</p>
     <p>Type: ipconfig /all</p>
     <p>Check DNS Servers section</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Common DNS Issues</h3>
@@ -1005,13 +1177,13 @@
       <li>DNS server not responding</li>
       <li>Wrong DNS configuration</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>DNS converts domain names into IP addresses so computers can find websites.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
   <div>
   <h2>DHCP (Dynamic Host Configuration Protocol)</h2>
@@ -1023,13 +1195,13 @@
     <h3>Simple Meaning</h3>
     <p>When a device connects to a network, DHCP gives it an IP address automatically.</p>
     <p>No need to set IP address manually.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Example</h3>
     <p>You connect your laptop to Wi-Fi.</p>
     <p>DHCP assigns IP address, gateway, and DNS automatically.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Information Provided by DHCP</h3>
@@ -1039,7 +1211,7 @@
       <li>Default Gateway</li>
       <li>DNS Server</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Why DHCP is Important</h3>
@@ -1048,14 +1220,14 @@
       <li>Reduces IP conflicts</li>
       <li>Easy network management</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>How to Check DHCP on Windows</h3>
     <p>Open Command Prompt</p>
     <p>Type: ipconfig /all</p>
     <p>Check "DHCP Enabled : Yes"</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Common DHCP Issues</h3>
@@ -1064,13 +1236,13 @@
       <li>IP address shows 169.254.x.x</li>
       <li>DHCP server not responding</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>DHCP automatically assigns IP address and network details to devices.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
   <div>
   <h2>DHCP Troubleshooting Steps</h2>
@@ -1079,57 +1251,57 @@
     <h3>1. Check Physical Connection</h3>
     <p>Ensure network cable is connected properly or Wi-Fi is enabled.</p>
     <p>Check router or switch power.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>2. Check IP Address</h3>
     <p>Open Command Prompt.</p>
     <p>Type: ipconfig</p>
     <p>If IP starts with 169.254, DHCP is not working.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>3. Renew IP Address</h3>
     <p>Open Command Prompt as Administrator.</p>
     <p>Type: ipconfig /release</p>
     <p>Then type: ipconfig /renew</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>4. Check DHCP Enabled</h3>
     <p>Type: ipconfig /all</p>
     <p>Confirm "DHCP Enabled : Yes"</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>5. Restart Network Devices</h3>
     <p>Restart computer.</p>
     <p>Restart router or DHCP server.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>6. Disable and Enable Network Adapter</h3>
     <p>Go to Network Settings.</p>
     <p>Disable and re-enable network adapter.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>7. Check Firewall or Antivirus</h3>
     <p>Temporarily disable firewall.</p>
     <p>Check if DHCP traffic is blocked.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>8. Check DHCP Server</h3>
     <p>Verify DHCP service is running on server.</p>
     <p>Check available IP address pool.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>If DHCP is not working, I check IP address, renew it, restart devices, and verify DHCP server.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
   <div>
   <h2>RAM (Random Access Memory)</h2>
@@ -1141,12 +1313,12 @@
     <h3>Simple Meaning</h3>
     <p>RAM helps the computer run programs fast.</p>
     <p>More RAM means better performance.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Examples</h3>
     <p>Running browser, MS Word, music player.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Features of RAM</h3>
@@ -1155,13 +1327,13 @@
       <li>Very fast</li>
       <li>Volatile (data lost on power off)</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>RAM is temporary memory used to run applications.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
 <div>
   <h2>ROM (Read Only Memory)</h2>
@@ -1172,12 +1344,12 @@
   <div>
     <h3>Simple Meaning</h3>
     <p>ROM stores startup instructions of the computer.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Examples</h3>
     <p>BIOS / Firmware stored in ROM.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Features of ROM</h3>
@@ -1186,13 +1358,13 @@
       <li>Non-volatile</li>
       <li>Used for booting</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>ROM stores permanent system instructions.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
 <div>
   <h2>Difference Between RAM and ROM</h2>
@@ -1219,7 +1391,7 @@
       <td>Slower</td>
     </tr>
   </table>
-</div>
+</div><br>
 
   <div>
   <h2>Private Network</h2>
@@ -1231,7 +1403,7 @@
     <h3>Simple Meaning</h3>
     <p>Private network is used for internal communication.</p>
     <p>It is more secure and controlled.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Examples of Private Network</h3>
@@ -1241,7 +1413,7 @@
       <li>Company internal servers</li>
       <li>School or college network</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Private IP Address Range</h3>
@@ -1250,13 +1422,13 @@
       <li>172.16.0.0 – 172.31.255.255</li>
       <li>192.168.0.0 – 192.168.255.255</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>A private network is used inside an organization and is not accessible from the internet.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
 <div>
   <h2>Public Network</h2>
@@ -1268,7 +1440,7 @@
     <h3>Simple Meaning</h3>
     <p>Public network allows anyone to connect.</p>
     <p>It is less secure than a private network.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Examples of Public Network</h3>
@@ -1278,19 +1450,19 @@
       <li>Hotel Wi-Fi</li>
       <li>Café or mall Wi-Fi</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Public IP Address</h3>
     <p>Public IP is provided by Internet Service Provider (ISP).</p>
     <p>Used to access internet and websites.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>A public network is accessible by anyone and usually connected to the internet.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
 <div>
   <h2>Difference Between Private Network and Public Network</h2>
@@ -1317,7 +1489,7 @@
       <td>Internet or public Wi-Fi</td>
     </tr>
   </table>
-</div>
+</div><br>
 
   <div>
   <h2>Network Security Basics</h2>
@@ -1327,7 +1499,7 @@
   <div>
     <h3>Simple Meaning</h3>
     <p>Network security keeps computers, data, and networks safe.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Why Network Security is Important</h3>
@@ -1336,7 +1508,7 @@
       <li>Prevents hacking and viruses</li>
       <li>Ensures safe internet usage</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Basic Network Security Methods</h3>
@@ -1347,13 +1519,13 @@
       <li>VPN – secure remote access</li>
       <li>Regular software updates</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>Network security protects networks and data from unauthorized access and attacks.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
 <div>
   <h2>Private IP Address</h2>
@@ -1368,7 +1540,7 @@
       <li>10.0.0.5</li>
       <li>172.16.0.10</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Private IP Range</h3>
@@ -1377,8 +1549,8 @@
       <li>172.16.0.0 – 172.31.255.255</li>
       <li>192.168.0.0 – 192.168.255.255</li>
     </ul>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
 <div>
   <h2>Public IP Address</h2>
@@ -1392,7 +1564,7 @@
       <li>8.8.8.8</li>
       <li>142.250.195.46</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Uses of Public IP</h3>
@@ -1401,8 +1573,8 @@
       <li>Online servers</li>
       <li>Internet communication</li>
     </ul>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
 <div>
   <h2>Difference Between Private IP and Public IP</h2>
@@ -1429,7 +1601,7 @@
       <td>Less secure</td>
     </tr>
   </table>
-</div>
+</div><br>
 
   <div>
   <h2>Inbound Rules</h2>
@@ -1440,7 +1612,7 @@
   <div>
     <h3>Simple Meaning</h3>
     <p>Inbound rules control who can enter your system.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Examples of Inbound Rules</h3>
@@ -1450,7 +1622,7 @@
       <li>Allow SSH (port 22) from specific IP</li>
       <li>Block all other traffic</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Where Inbound Rules Are Used</h3>
@@ -1459,13 +1631,13 @@
       <li>AWS Security Groups</li>
       <li>Windows Defender Firewall</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>Inbound rules control incoming traffic to a system.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
 <div>
   <h2>Outbound Rules</h2>
@@ -1476,7 +1648,7 @@
   <div>
     <h3>Simple Meaning</h3>
     <p>Outbound rules control what leaves your system.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Examples of Outbound Rules</h3>
@@ -1485,7 +1657,7 @@
       <li>Allow DNS (port 53)</li>
       <li>Block access to specific websites</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Where Outbound Rules Are Used</h3>
@@ -1494,13 +1666,13 @@
       <li>Router</li>
       <li>Cloud security settings</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>Outbound rules control outgoing traffic from a system.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
 <div>
   <h2>Difference Between Inbound and Outbound Rules</h2>
@@ -1523,7 +1695,7 @@
       <td>Usually more open</td>
     </tr>
   </table>
-</div>
+</div><br>
 
 <div>
   <h2>IT Service Desk</h2>
@@ -1535,7 +1707,7 @@
     <h3>Simple Meaning</h3>
     <p>IT Service Desk is a help center for computer and IT problems.</p>
     <p>Employees contact the service desk for support.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Common IT Service Desk Tasks</h3>
@@ -1547,7 +1719,7 @@
       <li>Printer issues</li>
       <li>Software installation</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>IT Service Desk Levels</h3>
@@ -1556,7 +1728,7 @@
       <li><b>L2 (Level 2):</b> Technical issue fixing</li>
       <li><b>L3 (Level 3):</b> Advanced and backend support</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Tools Used in IT Service Desk</h3>
@@ -1566,7 +1738,7 @@
       <li>Freshservice</li>
       <li>Zendesk</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Why IT Service Desk is Important</h3>
@@ -1575,13 +1747,13 @@
       <li>Better user support</li>
       <li>Centralized ticket management</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>IT Service Desk is a central support team that handles IT issues and user requests.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
   <div>
   <h2>Service Desk Management</h2>
@@ -1593,7 +1765,7 @@
     <h3>Simple Meaning</h3>
     <p>Service Desk Management helps control how IT support works.</p>
     <p>It focuses on quick problem solving and user satisfaction.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Main Responsibilities</h3>
@@ -1604,7 +1776,7 @@
       <li>Resolving incidents and requests</li>
       <li>Closing tickets after confirmation</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Key Processes in Service Desk Management</h3>
@@ -1614,7 +1786,7 @@
       <li>Problem Management</li>
       <li>Change Management</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Service Desk Levels</h3>
@@ -1623,7 +1795,7 @@
       <li><b>L2:</b> Technical issue resolution</li>
       <li><b>L3:</b> Advanced and infrastructure support</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Tools Used</h3>
@@ -1633,7 +1805,7 @@
       <li>Freshservice</li>
       <li>BMC Remedy</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Benefits of Service Desk Management</h3>
@@ -1643,13 +1815,13 @@
       <li>Better tracking of issues</li>
       <li>Improves user satisfaction</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>Service Desk Management ensures IT issues are logged, tracked, and resolved efficiently.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
   <div>
   <h2>IT Helpdesk</h2>
@@ -1661,7 +1833,7 @@
     <h3>Simple Meaning</h3>
     <p>IT Helpdesk helps employees fix day-to-day IT problems.</p>
     <p>Users contact helpdesk by call, email, or ticket.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Common IT Helpdesk Tasks</h3>
@@ -1673,7 +1845,7 @@
       <li>Printer problems</li>
       <li>Software installation support</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>IT Helpdesk Levels</h3>
@@ -1682,7 +1854,7 @@
       <li><b>Level 2 (L2):</b> Advanced technical support</li>
       <li><b>Level 3 (L3):</b> Expert or backend support</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Tools Used in IT Helpdesk</h3>
@@ -1692,19 +1864,19 @@
       <li>Zendesk</li>
       <li>Jira Service Management</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Difference Between IT Helpdesk and Service Desk</h3>
     <p>IT Helpdesk focuses mainly on fixing problems.</p>
     <p>Service Desk handles problems, requests, and service management.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>IT Helpdesk provides first-level support to resolve user IT issues.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
   <div>
   <h2>Helpdesk</h2>
@@ -1716,7 +1888,7 @@
     <h3>Simple Meaning</h3>
     <p>Helpdesk helps employees when computers, software, or internet do not work.</p>
     <p>Users can contact helpdesk by call, email, or ticket.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Common Helpdesk Issues</h3>
@@ -1728,7 +1900,7 @@
       <li>Printer not working</li>
       <li>Software installation</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Helpdesk Support Levels</h3>
@@ -1737,7 +1909,7 @@
       <li><b>L2:</b> Advanced technical problem solving</li>
       <li><b>L3:</b> Expert or backend support</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Tools Used in Helpdesk</h3>
@@ -1747,7 +1919,7 @@
       <li>Zendesk</li>
       <li>Jira Service Management</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Why Helpdesk is Important</h3>
@@ -1756,13 +1928,13 @@
       <li>Reduces system downtime</li>
       <li>Improves user productivity</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>A Helpdesk provides first-level technical support to users.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
   <div>
   <h2>ServiceNow</h2>
@@ -1774,7 +1946,7 @@
     <h3>Simple Meaning</h3>
     <p>ServiceNow is a tool where users raise tickets for IT issues.</p>
     <p>IT teams use it to track, assign, and resolve problems.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>What ServiceNow Is Used For</h3>
@@ -1785,7 +1957,7 @@
       <li>Change management</li>
       <li>Asset management</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>ServiceNow Ticket Types</h3>
@@ -1795,7 +1967,7 @@
       <li><b>Problem:</b> Repeated issues</li>
       <li><b>Change:</b> Planned system changes</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Who Uses ServiceNow</h3>
@@ -1805,7 +1977,7 @@
       <li>Desktop Support</li>
       <li>IT Managers</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Benefits of ServiceNow</h3>
@@ -1815,13 +1987,13 @@
       <li>Better communication</li>
       <li>Improved user satisfaction</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>ServiceNow is a cloud-based tool used to manage IT service tickets and workflows.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
   <div>
   <h2>IT Support</h2>
@@ -1833,7 +2005,7 @@
     <h3>Simple Meaning</h3>
     <p>IT Support helps employees when technology does not work.</p>
     <p>Support can be given by phone, remote access, or in person.</p>
-  </div>
+  </div><br>
 
   <div>
     <h3>Common IT Support Tasks</h3>
@@ -1845,7 +2017,7 @@
       <li>Printer setup and fixing</li>
       <li>Software installation and updates</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Levels of IT Support</h3>
@@ -1854,7 +2026,7 @@
       <li><b>L2:</b> Advanced technical troubleshooting</li>
       <li><b>L3:</b> Expert and infrastructure support</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Tools Used in IT Support</h3>
@@ -1864,7 +2036,7 @@
       <li>Freshdesk</li>
       <li>Remote Desktop tools</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Why IT Support is Important</h3>
@@ -1873,14 +2045,18 @@
       <li>Improves productivity</li>
       <li>Ensures smooth IT operations</li>
     </ul>
-  </div>
+  </div><br>
 
   <div>
     <h3>Interview Answer</h3>
     <p>IT Support helps users resolve technical issues and keep systems running.</p>
-  </div>
-</div>
+  </div><br>
+</div><br>
 
-  
+      <footer>
+        Last updated: Wipro interview notes
+      </footer>
+    </div><br><!-- /.card -->
+  </div><br><!-- /.container -->
 </body>
 </html>
