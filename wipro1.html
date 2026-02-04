@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NGINX Overview and Default Paths</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        code, pre {
+            background-color: #f9f9f9;
+            padding: 10px;
+            display: block;
+            border-left: 4px solid #3498db;
+            overflow-x: auto;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+  <h3>1. What is a Service Desk?</h3>
+  <p>
+    A Service Desk is the first point of contact for IT support.<br>
+    Users contact the Service Desk when they face technical issues.<br>
+    It helps in logging tickets for user problems.<br>
+    The Service Desk provides basic troubleshooting support.<br>
+    It manages incidents and service requests.<br>
+    It ensures issues are resolved within SLA time.<br>
+    It communicates clearly with users.<br>
+    It tracks ticket status until closure.<br>
+    It escalates issues to higher teams when needed.<br>
+    The Service Desk helps keep IT services running smoothly.
+  </p>
+</div>
+
+<div>
+  <h3>2. What is IT Helpdesk?</h3>
+  <p>
+    IT Helpdesk provides basic technical support to users.<br>
+    It handles common IT issues faced by employees.<br>
+    Examples include password reset and login issues.<br>
+    It supports email and software-related problems.<br>
+    Helpdesk is usually Level 1 support.<br>
+    It answers calls, emails, and chat requests.<br>
+    It creates and updates tickets in tools.<br>
+    It follows standard troubleshooting steps.<br>
+    It improves user satisfaction.<br>
+    It reduces downtime for users.
+  </p>
+</div>
+
+<div>
+  <h3>3. What is IT Support?</h3>
+  <p>
+    IT Support helps users with technical problems.<br>
+    It includes hardware, software, and network support.<br>
+    IT Support ensures systems work properly.<br>
+    It helps resolve system errors quickly.<br>
+    It supports business operations.<br>
+    IT Support can be remote or onsite.<br>
+    It handles desktops, laptops, and servers.<br>
+    It uses tools to track issues.<br>
+    It follows IT policies and procedures.<br>
+    IT Support improves productivity.
+  </p>
+</div>
+
+<div>
+  <h3>4. What is Desktop Support?</h3>
+  <p>
+    Desktop Support focuses on user computers.<br>
+    It supports laptops and desktop systems.<br>
+    It fixes OS and software issues.<br>
+    It handles printer and hardware problems.<br>
+    It installs and updates applications.<br>
+    It troubleshoots system performance issues.<br>
+    It may provide onsite support.<br>
+    It ensures devices are secure.<br>
+    It maintains system health.<br>
+    Desktop Support improves user experience.
+  </p>
+</div>
+
+<div>
+  <h3>5. What is ServiceNow?</h3>
+  <p>
+    ServiceNow is an ITSM tool.<br>
+    It is used for ticket management.<br>
+    It helps log incidents and requests.<br>
+    It tracks ticket status.<br>
+    It manages SLA timelines.<br>
+    It supports escalation processes.<br>
+    It stores user and issue details.<br>
+    It improves workflow automation.<br>
+    It provides reporting features.<br>
+    ServiceNow improves IT service efficiency.
+  </p>
+</div>
+
+<div>
+  <h3>6. What is an Incident?</h3>
+  <p>
+    An incident is an unplanned IT issue.<br>
+    It causes interruption to services.<br>
+    Examples include email not working.<br>
+    System crashes are incidents.<br>
+    Network outage is an incident.<br>
+    Incidents affect productivity.<br>
+    They must be resolved quickly.<br>
+    Incidents are logged as tickets.<br>
+    SLA applies to incidents.<br>
+    Incident management restores service.
+  </p>
+</div>
+
+<div>
+  <h3>7. What is a Service Request?</h3>
+  <p>
+    A service request is a user request.<br>
+    It is not a system failure.<br>
+    Examples include software installation.<br>
+    Password reset is a request.<br>
+    Access request is common.<br>
+    Requests follow approval process.<br>
+    They are logged in ServiceNow.<br>
+    Requests are fulfilled as per policy.<br>
+    SLA applies to requests.<br>
+    Service requests improve user support.
+  </p>
+</div>
+
+<div>
+  <h3>8. What is SLA?</h3>
+  <p>
+    SLA stands for Service Level Agreement.<br>
+    It defines response time.<br>
+    It defines resolution time.<br>
+    SLA is agreed between IT and business.<br>
+    It helps prioritize tickets.<br>
+    Critical issues have strict SLA.<br>
+    SLA ensures quality service.<br>
+    It improves accountability.<br>
+    SLA is tracked in tools.<br>
+    Meeting SLA is very important.
+  </p>
+</div>
+
+<div>
+  <h3>9. What is Ticket Lifecycle?</h3>
+  <p>
+    Ticket lifecycle shows ticket stages.<br>
+    It starts with Open status.<br>
+    Then ticket is Assigned.<br>
+    Work starts in In Progress.<br>
+    Issue gets Resolved.<br>
+    User confirms solution.<br>
+    Ticket moves to Closed.<br>
+    Notes are added properly.<br>
+    SLA is monitored throughout.<br>
+    Lifecycle ensures proper tracking.
+  </p>
+</div>
+
+<div>
+  <h3>10. What is Escalation?</h3>
+  <p>
+    Escalation means forwarding the issue.<br>
+    It is done when L1 cannot solve it.<br>
+    Issue is sent to L2 or L3 team.<br>
+    Proper details are shared.<br>
+    Escalation saves time.<br>
+    It ensures faster resolution.<br>
+    It follows escalation matrix.<br>
+    SLA is still applicable.<br>
+    User is informed about escalation.<br>
+    Escalation improves service quality.
+  </p>
+</div>
+
+<!-- If you want, I can continue remaining 10 questions in same format -->
+<div>
+  <h3>11. What is Active Directory?</h3>
+  <p>
+    Active Directory is a Microsoft service.<br>
+    It is used to manage users and computers.<br>
+    It helps create user accounts.<br>
+    It is used for password reset.<br>
+    It controls user access permissions.<br>
+    It helps manage groups and roles.<br>
+    It improves security in an organization.<br>
+    IT teams use it daily.<br>
+    It works in a centralized way.<br>
+    Active Directory simplifies user management.
+  </p>
+</div>
+
+<div>
+  <h3>12. What is VPN?</h3>
+  <p>
+    VPN stands for Virtual Private Network.<br>
+    It allows secure remote access.<br>
+    Users can work from home using VPN.<br>
+    VPN encrypts network traffic.<br>
+    It protects company data.<br>
+    VPN connects users to internal systems.<br>
+    Login credentials are required.<br>
+    VPN is widely used in IT companies.<br>
+    It reduces security risks.<br>
+    VPN improves remote working.
+  </p>
+</div>
+
+<div>
+  <h3>13. What operating systems do you know?</h3>
+  <p>
+    I have basic knowledge of Windows OS.<br>
+    I can troubleshoot common Windows issues.<br>
+    I know how to install applications.<br>
+    I can manage system settings.<br>
+    I have basic Linux knowledge.<br>
+    I know basic Linux commands.<br>
+    I can check system status.<br>
+    I can handle user-level issues.<br>
+    I understand OS troubleshooting steps.<br>
+    I am eager to learn more.
+  </p>
+</div>
+
+<div>
+  <h3>14. How do you handle a user issue?</h3>
+  <p>
+    First, I listen carefully to the user.<br>
+    I understand the problem clearly.<br>
+    I ask relevant questions.<br>
+    I follow troubleshooting steps.<br>
+    I provide a simple solution.<br>
+    I explain the steps clearly.<br>
+    I confirm issue resolution.<br>
+    I update the ticket properly.<br>
+    I close the ticket after confirmation.<br>
+    I maintain professional communication.
+  </p>
+</div>
+
+<div>
+  <h3>15. What is First Call Resolution?</h3>
+  <p>
+    First Call Resolution means solving issues immediately.<br>
+    The issue is resolved in the first interaction.<br>
+    It reduces ticket backlog.<br>
+    It improves user satisfaction.<br>
+    It saves time for IT teams.<br>
+    It requires good technical knowledge.<br>
+    It requires clear communication.<br>
+    It improves service quality.<br>
+    Companies prefer high FCR rates.<br>
+    FCR is an important performance metric.
+  </p>
+</div>
+
+<div>
+  <h3>16. How do you prioritize tickets?</h3>
+  <p>
+    Tickets are prioritized by urgency.<br>
+    Business impact is considered.<br>
+    Critical issues are handled first.<br>
+    SLA timelines are checked.<br>
+    High priority tickets get quick action.<br>
+    Low priority tickets are scheduled.<br>
+    Proper priority avoids delays.<br>
+    Tools help in prioritization.<br>
+    Users are informed about status.<br>
+    Prioritization improves efficiency.
+  </p>
+</div>
+
+<div>
+  <h3>17. What networking basics do you know?</h3>
+  <p>
+    I know what an IP address is.<br>
+    I understand basic DNS concepts.<br>
+    I know how to use ping command.<br>
+    I can check network connectivity.<br>
+    I understand LAN and WAN basics.<br>
+    I know about VPN connections.<br>
+    I can troubleshoot network issues.<br>
+    I check cables and connections.<br>
+    I follow standard steps.<br>
+    Networking basics help in IT support.
+  </p>
+</div>
+
+<div>
+  <h3>18. What is IT documentation?</h3>
+  <p>
+    IT documentation records technical details.<br>
+    It includes troubleshooting steps.<br>
+    It helps future reference.<br>
+    It improves knowledge sharing.<br>
+    It reduces repeated issues.<br>
+    It is stored in tools or files.<br>
+    Clear documentation saves time.<br>
+    It helps new team members.<br>
+    It supports audit requirements.<br>
+    Documentation is very important.
+  </p>
+</div>
+
+<div>
+  <h3>19. How do you handle a frustrated user?</h3>
+  <p>
+    I stay calm and polite.<br>
+    I listen to the user patiently.<br>
+    I apologize for the inconvenience.<br>
+    I explain the solution clearly.<br>
+    I avoid technical language.<br>
+    I give regular updates.<br>
+    I try to resolve quickly.<br>
+    I show empathy.<br>
+    I maintain professionalism.<br>
+    This improves user trust.
+  </p>
+</div>
+
+<div>
+  <h3>20. Why do you want an IT Support role?</h3>
+  <p>
+    I am interested in technology.<br>
+    I enjoy solving problems.<br>
+    I like helping users.<br>
+    IT Support builds strong basics.<br>
+    It improves technical skills.<br>
+    It improves communication skills.<br>
+    It provides learning opportunities.<br>
+    It supports career growth.<br>
+    I want to grow in IT field.<br>
+    This role matches my career goals.
+  </p>
+</div>
+
+</body>
+</html>
