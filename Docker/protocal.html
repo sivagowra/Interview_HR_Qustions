@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AWS Network Protocols – Full Explanation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #1f2937;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: #fff;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #2563eb;
+            color: #fff;
+        }
+        .section {
+            background: #ffffff;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>AWS Network Protocols – Full Explanation</h1>
+
+<div class="section">
+    <h2>What is a Protocol?</h2>
+    <p>
+        A protocol is a set of rules that defines <b>how data is transmitted</b>
+        between systems over a network. In AWS, protocols control how traffic
+        enters or exits resources like EC2, Load Balancers, RDS, and VPC.
+    </p>
+</div>
+
+<div class="section">
+    <h2>1. TCP (Transmission Control Protocol)</h2>
+    <p>
+        TCP is a <b>connection-oriented</b> and <b>reliable</b> protocol.
+        It ensures data is delivered accurately and in order.
+    </p>
+    <p><b>Purpose:</b> Used for applications where accuracy matters.</p>
+
+    <table>
+        <tr>
+            <th>Port</th>
+            <th>Service</th>
+            <th>Usage</th>
+        </tr>
+        <tr><td>22</td><td>SSH</td><td>Secure Linux login</td></tr>
+        <tr><td>80</td><td>HTTP</td><td>Web traffic</td></tr>
+        <tr><td>443</td><td>HTTPS</td><td>Secure web traffic</td></tr>
+        <tr><td>3306</td><td>MySQL</td><td>Database access</td></tr>
+        <tr><td>5432</td><td>PostgreSQL</td><td>Database access</td></tr>
+        <tr><td>3389</td><td>RDP</td><td>Windows remote login</td></tr>
+    </table>
+
+    <p><b>AWS Usage:</b> EC2, Load Balancer, RDS, ECS</p>
+</div>
+
+<div class="section">
+    <h2>2. UDP (User Datagram Protocol)</h2>
+    <p>
+        UDP is a <b>connectionless</b> and <b>fast</b> protocol.
+        It does not guarantee delivery.
+    </p>
+
+    <p><b>Purpose:</b> Used when speed is more important than reliability.</p>
+
+    <table>
+        <tr>
+            <th>Port</th>
+            <th>Service</th>
+            <th>Usage</th>
+        </tr>
+        <tr><td>53</td><td>DNS</td><td>Name resolution</td></tr>
+        <tr><td>67/68</td><td>DHCP</td><td>IP assignment</td></tr>
+        <tr><td>123</td><td>NTP</td><td>Time synchronization</td></tr>
+        <tr><td>161</td><td>SNMP</td><td>Monitoring</td></tr>
+    </table>
+
+    <p><b>AWS Usage:</b> DNS, VPN, Monitoring tools</p>
+</div>
+
+<div class="section">
+    <h2>3. ICMP (Internet Control Message Protocol)</h2>
+    <p>
+        ICMP is used for <b>network diagnostics</b>.
+        It helps check whether systems are reachable.
+    </p>
+
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Purpose</th>
+        </tr>
+        <tr><td>Echo Request</td><td>Ping</td></tr>
+        <tr><td>Echo Reply</td><td>Ping response</td></tr>
+        <tr><td>Time Exceeded</td><td>Traceroute</td></tr>
+    </table>
+
+    <p><b>AWS Usage:</b> Troubleshooting connectivity issues</p>
+</div>
+
+<div class="section">
+    <h2>4. ICMPv6</h2>
+    <p>
+        ICMPv6 is ICMP for <b>IPv6 networks</b>.
+        It handles routing and neighbor discovery.
+    </p>
+
+    <p><b>AWS Usage:</b> IPv6-enabled VPCs</p>
+</div>
+
+<div class="section">
+    <h2>5. HTTP & HTTPS</h2>
+    <p>
+        HTTP and HTTPS are <b>application-layer</b> protocols used for websites
+        and APIs.
+    </p>
+
+    <table>
+        <tr>
+            <th>Protocol</th>
+            <th>Port</th>
+            <th>Purpose</th>
+        </tr>
+        <tr><td>HTTP</td><td>80</td><td>Normal web traffic</td></tr>
+        <tr><td>HTTPS</td><td>443</td><td>Secure encrypted traffic</td></tr>
+    </table>
+
+    <p><b>AWS Usage:</b> ALB, EC2, CloudFront</p>
+</div>
+
+<div class="section">
+    <h2>6. FTP / SFTP / FTPS</h2>
+    <table>
+        <tr>
+            <th>Protocol</th>
+            <th>Port</th>
+            <th>Purpose</th>
+        </tr>
+        <tr><td>FTP</td><td>21</td><td>File transfer (insecure)</td></tr>
+        <tr><td>SFTP</td><td>22</td><td>Secure file transfer</td></tr>
+        <tr><td>FTPS</td><td>990</td><td>Encrypted FTP</td></tr>
+    </table>
+</div>
+
+<div class="section">
+    <h2>7. Email Protocols</h2>
+    <table>
+        <tr>
+            <th>Protocol</th>
+            <th>Port</th>
+            <th>Purpose</th>
+        </tr>
+        <tr><td>SMTP</td><td>25 / 587</td><td>Send emails</td></tr>
+        <tr><td>POP3</td><td>110</td><td>Receive emails</td></tr>
+        <tr><td>IMAP</td><td>143</td><td>Sync emails</td></tr>
+    </table>
+</div>
+
+<div class="section">
+    <h2>8. VPN & Security Protocols</h2>
+    <table>
+        <tr>
+            <th>Protocol</th>
+            <th>Port / Number</th>
+            <th>Purpose</th>
+        </tr>
+        <tr><td>IPSec</td><td>500 / 4500</td><td>VPN tunnel</td></tr>
+        <tr><td>ESP</td><td>50</td><td>Encrypted traffic</td></tr>
+        <tr><td>AH</td><td>51</td><td>Authentication</td></tr>
+    </table>
+
+    <p><b>AWS Usage:</b> Site-to-Site VPN, Client VPN</p>
+</div>
+
+<div class="section">
+    <h2>9. ALL Traffic</h2>
+    <p>
+        Allows <b>all protocols and ports</b>.
+        This is <b>dangerous</b> and should only be used temporarily.
+    </p>
+</div>
+
+<div class="section">
+    <h2>Final Summary</h2>
+    <p>
+        <b>TCP</b> → Reliable applications<br>
+        <b>UDP</b> → Fast services<br>
+        <b>ICMP</b> → Network health<br>
+        <b>HTTPS</b> → Secure web traffic
+    </p>
+</div>
+
+</body>
+</html>

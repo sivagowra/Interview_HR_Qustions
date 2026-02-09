@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Docker ARG & ENV Examples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    h2 {
+      color: #34495e;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+    pre {
+      background: #1e1e1e;
+      color: #f1f1f1;
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+    code {
+      font-family: Consolas, monospace;
+      font-size: 14px;
+    }
+    .note {
+      background: #e8f4ff;
+      border-left: 5px solid #3498db;
+      padding: 10px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Dockerfile ARG & ENV Examples</h1>
+
+<div class="note">
+  <strong>Key Rule:</strong><br>
+  ARG → Build time<br>
+  ENV → Runtime
+</div>
+
+<!-- JAVA -->
+<h2>1️⃣ Java (Spring Boot)</h2>
+<pre><code>
+FROM eclipse-temurin:17-jdk-alpine
+
+ARG APP_NAME=myapp
+ARG APP_VERSION=1.0.0
+
+ENV APP_NAME=${APP_NAME}
+ENV APP_VERSION=${APP_VERSION}
+ENV SPRING_PROFILES_ACTIVE=prod
+ENV SERVER_PORT=8080
+
+WORKDIR /app
+COPY target/${APP_NAME}.jar app.jar
+
+EXPOSE ${SERVER_PORT}
+
+ENTRYPOINT ["java", "-jar"]
+CMD ["app.jar"]
+</code></pre>
+
+<!-- PYTHON -->
+<h2>2️⃣ Python (Flask)</h2>
+<pre><code>
+FROM python:3.11-slim
+
+ARG APP_ENV=production
+ARG APP_VERSION=1.0
+
+ENV APP_ENV=${APP_ENV}
+ENV APP_VERSION=${APP_VERSION}
+ENV PORT=5000
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+EXPOSE ${PORT}
+
+ENTRYPOINT ["python"]
+CMD ["app.py"]
+</code></pre>
+
+<!-- NODEJS -->
+<h2>3️⃣ Node.js</h2>
+<pre><code>
+FROM node:18-alpine
+
+ARG NODE_ENV=production
+ARG APP_VERSION=1.0
+
+ENV NODE_ENV=${NODE_ENV}
+ENV APP_VERSION=${APP_VERSION}
+ENV PORT=3000
+
+WORKDIR /app
+
+COPY package*.json .
+RUN npm install
+
+COPY . .
+
+EXPOSE ${PORT}
+
+ENTRYPOINT ["node"]
+CMD ["server.js"]
+</code></pre>
+
+<!-- MYSQL -->
+<h2>4️⃣ MySQL (SQL)</h2>
+<pre><code>
+FROM mysql:8.0
+
+ARG DB_NAME=mydb
+ARG DB_USER=appuser
+
+ENV MYSQL_DATABASE=${DB_NAME}
+ENV MYSQL_USER=${DB_USER}
+ENV MYSQL_PASSWORD=app_pass
+ENV MYSQL_ROOT_PASSWORD=root_pass
+
+EXPOSE 3306
+</code></pre>
+
+<div class="note">
+  MySQL reads environment variables automatically at container startup.
+</div>
+
+<!-- PHP -->
+<h2>5️⃣ PHP + Apache</h2>
+<pre><code>
+FROM php:8.2-apache
+
+ARG APP_ENV=production
+ARG APP_VERSION=1.0
+
+ENV APP_ENV=${APP_ENV}
+ENV APP_VERSION=${APP_VERSION}
+
+WORKDIR /var/www/html
+
+COPY . .
+
+RUN docker-php-ext-install mysqli
+
+EXPOSE 80
+
+ENTRYPOINT ["apache2-foreground"]
+</code></pre>
+
+<div class="note">
+  <strong>Standard Pattern Used:</strong><br>
+  ARG VAR<br>
+  ENV VAR=${VAR}
+</div>
+
+</body>
+</html>

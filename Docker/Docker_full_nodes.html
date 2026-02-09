@@ -341,5 +341,586 @@ docker run -d --name website1 -p 8011:80 \
 --mount source=myvolume,destination=/usr/share/nginx/html nginx
 </code></pre>
 </div>
+
+
+<div class="docker-guide">
+
+  <div class="section">
+    <h2>Docker Runtime & Inspection Commands</h2>
+    <p>This guide explains commonly used Docker commands with purpose and real-world usage.</p>
+  </div>
+
+  <div class="section">
+    <h3>1️⃣ docker export</h3>
+    <p><strong>Purpose:</strong> Take a snapshot of a container’s filesystem and save it as a .tar file.</p>
+    <ul>
+      <li>Backup container files</li>
+      <li>Migrate container data</li>
+      <li>Create a clean filesystem snapshot</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <pre>docker export siva -o siva_fs.tar</pre>
+  </div>
+
+  <div class="section">
+    <h3>2️⃣ docker stats</h3>
+    <p><strong>Purpose:</strong> Live monitoring of container resource usage.</p>
+    <ul>
+      <li>CPU usage</li>
+      <li>Memory usage</li>
+      <li>Network I/O</li>
+      <li>Disk I/O</li>
+    </ul>
+    <pre>docker stats</pre>
+  </div>
+
+  <div class="section">
+    <h3>3️⃣ docker top</h3>
+    <p><strong>Purpose:</strong> Show running processes inside a container.</p>
+    <pre>docker top siva</pre>
+    <p>Useful for checking if application processes are running correctly.</p>
+  </div>
+
+  <div class="section">
+    <h3>4️⃣ docker attach</h3>
+    <p><strong>Purpose:</strong> Attach your terminal to a container’s STDOUT/STDIN.</p>
+    <pre>docker attach siva</pre>
+    <p><strong>Warning:</strong> Pressing Ctrl+C will stop the container.</p>
+  </div>
+
+  <div class="section">
+    <h3>5️⃣ docker wait</h3>
+    <p><strong>Purpose:</strong> Wait until a container stops and return its exit code.</p>
+    <pre>docker wait siva</pre>
+    <p>Commonly used in automation and CI/CD pipelines.</p>
+  </div>
+
+  <div class="section">
+    <h2>Comparison Tables</h2>
+  </div>
+
+  <div class="section">
+    <h3>save vs export</h3>
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>docker save</th>
+        <th>docker export</th>
+      </tr>
+      <tr>
+        <td>Exports Docker image</td>
+        <td>Exports running container filesystem</td>
+      </tr>
+      <tr>
+        <td>Preserves image layers & metadata</td>
+        <td>No layers or metadata</td>
+      </tr>
+      <tr>
+        <td>Used for image migration</td>
+        <td>Used for filesystem backup</td>
+      </tr>
+      <tr>
+        <td>Works with images</td>
+        <td>Works with containers</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>attach vs exec</h3>
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>docker attach</th>
+        <th>docker exec</th>
+      </tr>
+      <tr>
+        <td>Connects to main process</td>
+        <td>Runs a new command inside container</td>
+      </tr>
+      <tr>
+        <td>Ctrl+C stops container</td>
+        <td>Ctrl+C does NOT stop container</td>
+      </tr>
+      <tr>
+        <td>Used for debugging output</td>
+        <td>Used for admin/debug tasks</td>
+      </tr>
+      <tr>
+        <td>Risky for production</td>
+        <td>Safe for production</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>Best Practices</h3>
+    <ul>
+      <li>Use <strong>docker logs -f</strong> instead of attach</li>
+      <li>Use <strong>docker exec -it</strong> for shell access</li>
+      <li>Monitor containers using <strong>docker stats</strong></li>
+    </ul>
+  </div>
+
+</div>
+<div class="docker-export-guide">
+
+  <div class="section">
+    <h2>Docker Export File Location</h2>
+    <p>
+      When you run the following command:
+    </p>
+    <pre>docker export siva -o siva_fs.tar</pre>
+    <p>
+      The file <strong>siva_fs.tar</strong> is saved in your <strong>current working directory</strong>.
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>How to check current directory</h3>
+    <pre>pwd</pre>
+    <p>
+      Example output:
+    </p>
+    <pre>/root</pre>
+    <p>
+      File location will be:
+      <br>
+      <strong>/root/siva_fs.tar</strong>
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>Verify the file exists</h3>
+    <pre>ls -lh siva_fs.tar</pre>
+    <pre>ls -lh *.tar</pre>
+  </div>
+
+  <div class="section">
+    <h3>Search file if location is unknown</h3>
+    <pre>find / -name siva_fs.tar 2>/dev/null</pre>
+  </div>
+
+  <div class="section">
+    <h2>How to Open the Exported tar File</h2>
+  </div>
+
+  <div class="section">
+    <h3>View contents without extracting</h3>
+    <pre>tar -tf siva_fs.tar</pre>
+    <pre>tar -tf siva_fs.tar | less</pre>
+  </div>
+
+  <div class="section">
+    <h3>Extract the tar file</h3>
+    <pre>mkdir siva_fs</pre>
+    <pre>tar -xf siva_fs.tar -C siva_fs</pre>
+    <pre>cd siva_fs</pre>
+    <pre>ls</pre>
+  </div>
+
+  <div class="section">
+    <h3>Common nginx website file location</h3>
+    <pre>usr/share/nginx/html/</pre>
+    <pre>cat index.html</pre>
+    <pre>vi index.html</pre>
+  </div>
+
+  <div class="section">
+    <h2>Import tar File as Docker Image</h2>
+    <pre>cat siva_fs.tar | docker import - siva:backup</pre>
+  </div>
+
+  <div class="section">
+    <h3>Error while running container</h3>
+    <pre>docker run -d -p 8081:80 siva:backup</pre>
+    <p><strong>Error:</strong> no command specified</p>
+  </div>
+
+  <div class="section">
+    <h3>Why this error occurs</h3>
+    <p>
+      <strong>docker import</strong> only imports filesystem data.
+      It does NOT include:
+    </p>
+    <ul>
+      <li>CMD</li>
+      <li>ENTRYPOINT</li>
+      <li>EXPOSE</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>Fix – specify command manually</h3>
+    <pre>docker run -d -p 8081:80 siva:backup nginx -g "daemon off;"</pre>
+  </div>
+
+  <div class="section">
+    <h3>Best Fix – add CMD while importing</h3>
+    <pre>
+cat siva_fs.tar | docker import \
+-c 'CMD ["nginx","-g","daemon off;"]' \
+-c 'EXPOSE 80' \
+siva:backup
+    </pre>
+  </div>
+
+  <div class="section">
+    <h3>Verify CMD</h3>
+    <pre>docker inspect siva:backup | grep -A5 Cmd</pre>
+  </div>
+
+  <div class="section">
+    <h2>Key Differences</h2>
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>docker save</th>
+        <th>docker export</th>
+      </tr>
+      <tr>
+        <td>Exports image with metadata</td>
+        <td>Exports container filesystem only</td>
+      </tr>
+      <tr>
+        <td>Preserves CMD & layers</td>
+        <td>No CMD or layers</td>
+      </tr>
+      <tr>
+        <td>Used for image backup</td>
+        <td>Used for filesystem backup</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+<div class="nginx-log-guide">
+
+  <div class="section">
+    <h2>Nginx Log Directory Explanation</h2>
+    <p>
+      You are currently inside the Nginx log directory:
+    </p>
+    <pre>/var/log/nginx/</pre>
+  </div>
+
+  <div class="section">
+    <h3>Files Present in the Directory</h3>
+    <pre>
+access.log
+access.log-20260129
+error.log
+error.log-20260129
+    </pre>
+  </div>
+
+  <div class="section">
+    <h3>access.log</h3>
+    <p>
+      This file records <strong>all incoming requests</strong> to the Nginx server.
+    </p>
+    <ul>
+      <li>Client IP address</li>
+      <li>Requested URL</li>
+      <li>HTTP status code</li>
+      <li>Browser details</li>
+    </ul>
+    <p><strong>Use cases:</strong></p>
+    <ul>
+      <li>Monitor website traffic</li>
+      <li>Debug 404 / 403 issues</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>error.log</h3>
+    <p>
+      This file stores <strong>Nginx errors and warnings</strong>.
+    </p>
+    <p><strong>Common errors logged:</strong></p>
+    <ul>
+      <li>Missing files (404)</li>
+      <li>Permission denied</li>
+      <li>Configuration issues</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>access.log-20260129</h3>
+    <p>
+      This is an <strong>older access log file</strong> created by log rotation.
+    </p>
+    <p>
+      Date indicates when the log was archived.
+    </p>
+  </div>
+
+  <div class="section">
+    <h3>error.log-20260129</h3>
+    <p>
+      This is an <strong>previous error log file</strong> stored for historical reference.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Why Do Date-Based Log Files Exist?</h2>
+    <p>
+      Linux uses a process called <strong>log rotation</strong> to prevent log files from growing too large.
+    </p>
+    <p>
+      New logs go into current files, while old logs are archived with a date suffix.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>How to Read Nginx Logs</h2>
+    <p><strong>View latest access logs:</strong></p>
+    <pre>tail access.log</pre>
+
+    <p><strong>Watch logs live:</strong></p>
+    <pre>tail -f access.log</pre>
+
+    <p><strong>Check error logs:</strong></p>
+    <pre>tail -f error.log</pre>
+  </div>
+
+  <div class="section">
+    <h2>Simple Understanding</h2>
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Log File</th>
+        <th>Meaning</th>
+      </tr>
+      <tr>
+        <td>access.log</td>
+        <td>Visitor entry register</td>
+      </tr>
+      <tr>
+        <td>error.log</td>
+        <td>Problem complaint book</td>
+      </tr>
+      <tr>
+        <td>*-date</td>
+        <td>Old records kept for reference</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Connection with Docker</h2>
+    <p>
+      When Nginx runs inside a Docker container, these logs record container traffic and errors.
+    </p>
+    <p>
+      Missing files like <strong>favicon.ico</strong> are logged in <strong>error.log</strong>.
+    </p>
+  </div>
+
+</div>
+
+<div class="nginx-file-structure-guide">
+
+  <div class="section">
+    <h2>Nginx File & Directory Structure – Complete Explanation</h2>
+    <p>
+      Nginx uses a structured directory layout to manage configuration, websites,
+      logs, and runtime behavior. Each directory has a specific role.
+    </p>
+  </div>
+
+  <!-- nginx.conf -->
+  <div class="section">
+    <h3>/etc/nginx/nginx.conf</h3>
+    <p>
+      This is the <strong>main configuration file</strong> of Nginx.
+      Every Nginx process starts by reading this file.
+    </p>
+
+    <p><strong>Main responsibilities:</strong></p>
+    <ul>
+      <li>Define global settings</li>
+      <li>Control worker processes</li>
+      <li>Include other configuration files</li>
+      <li>Set logging behavior</li>
+    </ul>
+
+    <p><strong>Key sections inside nginx.conf:</strong></p>
+    <ul>
+      <li><strong>events { }</strong> – connection handling</li>
+      <li><strong>http { }</strong> – web server configuration</li>
+      <li><strong>include</strong> – load virtual host configs</li>
+    </ul>
+
+    <pre>
+user nginx;
+worker_processes auto;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include /etc/nginx/mime.types;
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+}
+    </pre>
+
+    <p>
+      ⚠️ You usually do <strong>NOT</strong> put website configs directly here.
+    </p>
+  </div>
+
+  <!-- sites-available -->
+  <div class="section">
+    <h3>/etc/nginx/sites-available/</h3>
+    <p>
+      This directory stores <strong>all website (virtual host) configuration files</strong>.
+    </p>
+
+    <p><strong>Purpose:</strong></p>
+    <ul>
+      <li>Keep website configs safely stored</li>
+      <li>Allow enabling/disabling sites easily</li>
+      <li>Prevent accidental activation</li>
+    </ul>
+
+    <p><strong>Example file:</strong></p>
+    <pre>/etc/nginx/sites-available/example.com</pre>
+
+    <p>
+      Files here are <strong>NOT active</strong> by default.
+    </p>
+  </div>
+
+  <!-- sites-enabled -->
+  <div class="section">
+    <h3>/etc/nginx/sites-enabled/</h3>
+    <p>
+      This directory contains <strong>symbolic links</strong> to files in
+      <code>sites-available</code>.
+    </p>
+
+    <p><strong>Purpose:</strong></p>
+    <ul>
+      <li>Activate websites</li>
+      <li>Control which sites Nginx serves</li>
+    </ul>
+
+    <p><strong>How a site is enabled:</strong></p>
+    <pre>
+ln -s /etc/nginx/sites-available/example.com \
+      /etc/nginx/sites-enabled/example.com
+    </pre>
+
+    <p>
+      When Nginx reloads, it reads only configs present here.
+    </p>
+  </div>
+
+  <!-- var/www/html -->
+  <div class="section">
+    <h3>/var/www/html/</h3>
+    <p>
+      This is the <strong>default web root directory</strong>.
+      Website files live here.
+    </p>
+
+    <p><strong>Contains:</strong></p>
+    <ul>
+      <li>HTML files</li>
+      <li>CSS, JavaScript</li>
+      <li>Images</li>
+      <li>PHP files (with PHP-FPM)</li>
+    </ul>
+
+    <p><strong>Example:</strong></p>
+    <pre>
+/var/www/html/index.html
+/var/www/html/style.css
+    </pre>
+
+    <p>
+      This path is referenced using the <strong>root</strong> directive
+      inside site config.
+    </p>
+
+    <pre>
+root /var/www/html;
+index index.html;
+    </pre>
+  </div>
+
+  <!-- var/log/nginx -->
+  <div class="section">
+    <h3>/var/log/nginx/</h3>
+    <p>
+      This directory stores <strong>Nginx log files</strong>.
+      Logs are critical for debugging and monitoring.
+    </p>
+
+    <p><strong>Main log files:</strong></p>
+    <ul>
+      <li><strong>access.log</strong> – all incoming requests</li>
+      <li><strong>error.log</strong> – errors & warnings</li>
+    </ul>
+
+    <p><strong>Example logs:</strong></p>
+    <pre>
+49.207.216.130 - - "GET / HTTP/1.1" 200
+open() "/usr/share/nginx/html/favicon.ico" failed
+    </pre>
+
+    <p><strong>Log rotation:</strong></p>
+    <ul>
+      <li>Old logs saved with date</li>
+      <li>Prevents disk overflow</li>
+    </ul>
+  </div>
+
+  <!-- Flow -->
+  <div class="section">
+    <h2>How Everything Works Together</h2>
+    <ol>
+      <li>Nginx starts → reads <strong>nginx.conf</strong></li>
+      <li>nginx.conf includes <strong>sites-enabled</strong></li>
+      <li>sites-enabled links configs from <strong>sites-available</strong></li>
+      <li>Config points to files in <strong>/var/www/html</strong></li>
+      <li>Requests & errors logged in <strong>/var/log/nginx</strong></li>
+    </ol>
+  </div>
+
+  <!-- Summary -->
+  <div class="section">
+    <h2>Quick Summary Table</h2>
+    <table border="1" cellpadding="8">
+      <tr>
+        <th>Path</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td>/etc/nginx/nginx.conf</td>
+        <td>Main Nginx configuration</td>
+      </tr>
+      <tr>
+        <td>/etc/nginx/sites-available</td>
+        <td>Stored website configs</td>
+      </tr>
+      <tr>
+        <td>/etc/nginx/sites-enabled</td>
+        <td>Active website configs</td>
+      </tr>
+      <tr>
+        <td>/var/www/html</td>
+        <td>Website files</td>
+      </tr>
+      <tr>
+        <td>/var/log/nginx</td>
+        <td>Access & error logs</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+
+
 </body>
 </html>
