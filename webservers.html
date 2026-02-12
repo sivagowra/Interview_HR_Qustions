@@ -4,42 +4,199 @@
     <meta charset="UTF-8">
     <title>NGINX Overview and Default Paths</title>
     <style>
+        :root {
+            --bg-page: #f1f5f9;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --accent: #0ea5e9;
+            --accent-dark: #0284c7;
+            --border: #e2e8f0;
+            --border-strong: #cbd5e1;
+            --code-bg: #1e293b;
+            --code-text: #e2e8f0;
+            --table-header: #0f172a;
+            --table-stripe: #f8fafc;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 8px;
+            --radius-lg: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.65;
+            margin: 0;
+            padding: 2rem 1rem;
+            color: var(--text-primary);
+            background: var(--bg-page);
+            font-size: 1rem;
         }
-        h1, h2, h3 {
-            color: #2c3e50;
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
         }
+
+        h1 {
+            color: var(--table-header);
+            font-size: 1.85rem;
+            font-weight: 700;
+            margin: 0 0 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--accent);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            color: var(--table-header);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 2.25rem 0 1rem;
+            padding: 0.5rem 0;
+            border-left: 4px solid var(--accent);
+            padding-left: 0.85rem;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            color: var(--text-primary);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.65rem;
+            color: var(--accent-dark);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin: 0.75rem 0;
+            max-width: 72ch;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 15px 0;
+            margin: 1.25rem 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
         }
-        table, th, td {
-            border: 1px solid #ccc;
-        }
+
         th, td {
-            padding: 10px;
+            padding: 0.85rem 1rem;
             text-align: left;
+            border-bottom: 1px solid var(--border);
         }
+
         th {
-            background-color: #f4f4f4;
+            background: var(--table-header);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: none;
+            letter-spacing: 0.01em;
         }
+
+        tbody tr:nth-child(even) {
+            background: var(--table-stripe);
+        }
+
+        tbody tr:hover {
+            background: #f1f5f9;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        td {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        td code {
+            background: #e2e8f0;
+            color: var(--accent-dark);
+            padding: 0.2rem 0.45rem;
+            border-radius: 4px;
+            font-size: 0.88em;
+        }
+
         code, pre {
-            background-color: #f9f9f9;
-            padding: 10px;
-            display: block;
-            border-left: 4px solid #3498db;
-            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
         }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 1.15rem 1.25rem;
+            border-radius: var(--radius);
+            overflow-x: auto;
+            margin: 1rem 0;
+            border: 1px solid #334155;
+            box-shadow: var(--shadow);
+        }
+
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        /* Inline code (not inside pre) */
+        p code, li code {
+            background: #e0f2fe;
+            color: var(--accent-dark);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+            border: 1px solid #bae6fd;
+        }
+
         ul {
-            margin-left: 20px;
+            margin: 0.65rem 0 1rem;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        ul li {
+            margin: 0.35rem 0;
+        }
+
+        ul li strong {
+            color: var(--text-primary);
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, var(--border), var(--border-strong), var(--border));
+            margin: 2rem 0;
+        }
+
+        div {
+            margin: 0;
         }
     </style>
 </head>
 <body>
+<div class="container">
 
 <h2>What is NGINX?</h2>
 <p>
@@ -63,6 +220,152 @@ are provided by <strong>F5, Inc.</strong>
     <li><strong>Security:</strong> SSL/TLS support and API gateway capabilities</li>
     <li><strong>Cloud-Friendly:</strong> Widely used in Docker and Kubernetes environments</li>
 </ul>
+
+<div>
+
+<h2>🚀 Key Features of NGINX (Detailed Explanation)</h2>
+
+<h3>1️⃣ Web Server – High-Performance Static Content Delivery</h3>
+<p>
+NGINX is widely known for its ability to serve <strong>static content</strong>
+(HTML, CSS, JavaScript, images, videos) extremely fast.
+</p>
+<p>
+Unlike traditional web servers that create a new process or thread per request,
+NGINX uses an <strong>event-driven architecture</strong>, allowing it to handle
+thousands of concurrent connections efficiently.
+</p>
+<ul>
+<li>Very low memory consumption</li>
+<li>Handles high traffic smoothly</li>
+<li>Ideal for static websites and frontend builds</li>
+<li>Faster response time compared to many traditional servers</li>
+</ul>
+
+<hr>
+
+<h3>2️⃣ Reverse Proxy – Gateway to Backend Applications</h3>
+<p>
+NGINX works as a <strong>reverse proxy server</strong>, meaning it sits between
+clients and backend servers.
+</p>
+<p>
+Instead of clients directly accessing backend applications (Node.js, Python,
+Java, PHP), requests first go to NGINX, which forwards them to the appropriate backend service.
+</p>
+<ul>
+<li>Hides backend server details</li>
+<li>Improves security</li>
+<li>Enables SSL termination</li>
+<li>Centralized request routing</li>
+</ul>
+
+<p><strong>Example Flow:</strong></p>
+<pre>Client → NGINX → Backend Application</pre>
+
+<hr>
+
+<h3>3️⃣ Load Balancing – Traffic Distribution Across Servers</h3>
+<p>
+NGINX distributes incoming traffic across multiple backend servers
+to ensure high availability and performance.
+</p>
+
+<p><strong>Supported Algorithms:</strong></p>
+<ul>
+<li>Round Robin (default)</li>
+<li>Least Connections</li>
+<li>IP Hash</li>
+<li>Weighted distribution</li>
+</ul>
+
+<ul>
+<li>Prevents server overload</li>
+<li>Increases reliability</li>
+<li>Improves scalability</li>
+<li>Ensures high availability</li>
+</ul>
+
+<hr>
+
+<h3>4️⃣ Caching – Reduces Backend Load</h3>
+<p>
+NGINX can cache responses from backend servers and serve cached content
+directly to clients.
+</p>
+<ul>
+<li>Faster response to repeated requests</li>
+<li>Reduced backend CPU usage</li>
+<li>Improved user experience</li>
+<li>Lower infrastructure cost</li>
+</ul>
+
+<hr>
+
+<h3>5️⃣ Architecture – Event-Driven & Non-Blocking Model</h3>
+<p>
+NGINX uses an <strong>asynchronous, event-driven architecture</strong>.
+Instead of creating one process per request, it uses a small number of worker
+processes that handle multiple connections using non-blocking I/O.
+</p>
+<ul>
+<li>Handles thousands of simultaneous connections</li>
+<li>Low memory usage</li>
+<li>High concurrency</li>
+<li>Ideal for high-traffic applications</li>
+</ul>
+
+<hr>
+
+<h3>6️⃣ Security – SSL/TLS & API Gateway Capabilities</h3>
+<p>
+NGINX provides strong security features including:
+</p>
+<ul>
+<li>SSL/TLS encryption</li>
+<li>HTTP to HTTPS redirection</li>
+<li>Rate limiting</li>
+<li>IP whitelisting/blacklisting</li>
+<li>Basic authentication</li>
+</ul>
+
+<p>
+It is often used as an <strong>SSL termination point</strong> and
+<strong>API Gateway</strong> before backend services.
+</p>
+
+<hr>
+
+<h3>7️⃣ Cloud-Friendly – Perfect for Docker & Kubernetes</h3>
+<p>
+NGINX is highly compatible with modern cloud-native environments.
+</p>
+<ul>
+<li>Works inside Docker containers</li>
+<li>Used as Kubernetes Ingress Controller</li>
+<li>Deployable on AWS, Azure, GCP</li>
+<li>Supports microservices architecture</li>
+</ul>
+
+<hr>
+
+<h2>🔥 Summary</h2>
+<p>
+NGINX is not just a web server. It acts as:
+</p>
+<ul>
+<li>A performance optimizer</li>
+<li>A traffic controller</li>
+<li>A security gateway</li>
+<li>A load balancer</li>
+<li>A caching layer</li>
+<li>A cloud-native infrastructure component</li>
+</ul>
+
+<p><strong>That’s why NGINX is one of the most widely used web technologies in the world.</strong></p>
+
+</div>
+
 
 <h2>Default NGINX Installation Paths (Linux)</h2>
 <p>
@@ -497,6 +800,232 @@ error_log  /var/log/nginx/myapp_error.log;
     <h2>8️⃣ Bonus: Check Log Format</h2>
     <pre>nginx -T | grep log_format</pre>
   </div>
+
+</div>
+<div>
+
+<h2>1️⃣ Main Configuration File</h2>
+
+<p><strong>📁 /etc/nginx/nginx.conf</strong></p>
+
+<p><strong>✅ What is this?</strong></p>
+<p>This is the main control file of NGINX.</p>
+
+<p>It defines:</p>
+<ul>
+<li>Worker processes</li>
+<li>Events</li>
+<li>HTTP settings</li>
+<li>Includes site configurations</li>
+<li>Global logging settings</li>
+</ul>
+
+<h3>🔍 Real-Time Usage</h3>
+
+<p><strong>Check if it exists:</strong></p>
+<pre>ls /etc/nginx/nginx.conf</pre>
+
+<p><strong>Open it:</strong></p>
+<pre>sudo nano /etc/nginx/nginx.conf</pre>
+
+<p>You’ll see something like:</p>
+
+<pre>
+user www-data;
+worker_processes auto;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include /etc/nginx/mime.types;
+    include /etc/nginx/sites-enabled/*;
+}
+</pre>
+
+<p><strong>👉 Important line:</strong></p>
+<pre>include /etc/nginx/sites-enabled/*;</pre>
+
+<p>This means: NGINX loads all enabled website configurations from that folder.</p>
+
+<hr>
+
+<h2>2️⃣ Site Configuration Directories (Debian/Ubuntu)</h2>
+
+<p><strong>📁 /etc/nginx/sites-available/</strong></p>
+<p>This folder contains: All website configuration files (active or not)</p>
+
+<pre>
+ls /etc/nginx/sites-available/
+</pre>
+
+<p>Example output:</p>
+<pre>
+default
+myapp
+example.com
+</pre>
+
+<p>These are just config files — not necessarily active.</p>
+
+<p><strong>📁 /etc/nginx/sites-enabled/</strong></p>
+<p>This folder contains: Only enabled websites (symbolic links)</p>
+
+<pre>
+ls -l /etc/nginx/sites-enabled/
+</pre>
+
+<p>Example:</p>
+<pre>
+default -> /etc/nginx/sites-available/default
+</pre>
+
+<p>This is a symbolic link.</p>
+
+<h3>🚀 Real-Time Example: Hosting a New Website</h3>
+
+<p><strong>Step 1: Create website config</strong></p>
+<pre>sudo nano /etc/nginx/sites-available/myapp</pre>
+
+<p>Example content:</p>
+<pre>
+server {
+    listen 80;
+    server_name mydomain.com;
+
+    root /var/www/myapp;
+    index index.html;
+}
+</pre>
+
+<p><strong>Step 2: Enable it</strong></p>
+<pre>sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/</pre>
+
+<p><strong>Step 3: Test configuration</strong></p>
+<pre>sudo nginx -t</pre>
+
+<p><strong>Step 4: Reload NGINX</strong></p>
+<pre>sudo systemctl reload nginx</pre>
+
+<p>✅ Now site is live.</p>
+
+<hr>
+
+<h2>3️⃣ Default Web Root Directory</h2>
+
+<p><strong>📁 /var/www/html</strong></p>
+<p>This is where your website files are stored.</p>
+
+<pre>ls /var/www/html</pre>
+
+<p>You may see:</p>
+<pre>index.html</pre>
+
+<h3>🔥 Real-Time Example</h3>
+
+<p><strong>Create a test page:</strong></p>
+<pre>sudo nano /var/www/html/index.html</pre>
+
+<p>Add:</p>
+<pre>&lt;h1&gt;My NGINX Server Working&lt;/h1&gt;</pre>
+
+<p>Open browser:</p>
+<pre>http://your-server-ip</pre>
+
+<p>You will see the page.</p>
+
+<hr>
+
+<h2>4️⃣ Default Installation Prefix</h2>
+
+<h3>🟢 If installed via package manager (APT)</h3>
+
+<p>Installed in:</p>
+<ul>
+<li>/etc/nginx</li>
+<li>/var/log/nginx</li>
+<li>/var/www/html</li>
+</ul>
+
+<p><strong>Check version:</strong></p>
+<pre>nginx -v</pre>
+
+<p><strong>Check install type:</strong></p>
+<pre>which nginx</pre>
+
+<p>Usually:</p>
+<pre>/usr/sbin/nginx</pre>
+
+<h3>🟡 If installed via Source Code (Manual Build)</h3>
+
+<p>Default path:</p>
+<pre>/usr/local/nginx</pre>
+
+<p>Check:</p>
+<pre>ls /usr/local/nginx</pre>
+
+<p>You may see:</p>
+<pre>
+conf/
+html/
+logs/
+sbin/
+</pre>
+
+<p>Main config will be:</p>
+<pre>/usr/local/nginx/conf/nginx.conf</pre>
+
+<hr>
+
+<h2>🔥 Real-Time Summary (DevOps View)</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+<tr>
+<th>Component</th>
+<th>Real Purpose</th>
+<th>When You Use It</th>
+</tr>
+<tr>
+<td>nginx.conf</td>
+<td>Global settings</td>
+<td>Tuning performance, logging</td>
+</tr>
+<tr>
+<td>sites-available</td>
+<td>Store all site configs</td>
+<td>When creating new websites</td>
+</tr>
+<tr>
+<td>sites-enabled</td>
+<td>Active websites</td>
+<td>When enabling/disabling sites</td>
+</tr>
+<tr>
+<td>/var/www/html</td>
+<td>Website files</td>
+<td>Deploying frontend/static files</td>
+</tr>
+<tr>
+<td>/usr/local/nginx</td>
+<td>Source install location</td>
+<td>Custom builds</td>
+</tr>
+</table>
+
+<hr>
+
+<h2>💡 Practical Scenario (Production Server)</h2>
+
+<ul>
+<li>You deploy React/Vue frontend build</li>
+<li>You place build files in: <strong>/var/www/myapp</strong></li>
+<li>Create site config in: <strong>/etc/nginx/sites-available/myapp</strong></li>
+<li>Enable it</li>
+<li>Reload NGINX</li>
+</ul>
+
+<p><strong>Now your app is live 🚀</strong></p>
 
 </div>
 
@@ -1040,5 +1569,7 @@ Its standardized approach, powerful dependency management, and strong
 CI/CD integration make it indispensable for scalable and maintainable
 software development.
 </p>
+
+</div>
 </body>
 </html>
