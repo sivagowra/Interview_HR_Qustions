@@ -183,6 +183,496 @@
     <h1>DevOps Interview Questions</h1>
     <p>Technical reference & interview preparation</p>
 </header>
+
+<div class="devops-questions">
+
+  <h2>1. List some commands used in Linux</h2>
+  <p>
+    Linux provides many powerful commands used for file management, system monitoring,
+    user management, networking, and process control.
+  </p>
+  <ul>
+    <li><strong>ls</strong> – Lists files and directories in the current location.</li>
+    <li><strong>cd</strong> – Changes the current directory.</li>
+    <li><strong>pwd</strong> – Displays the present working directory path.</li>
+    <li><strong>mkdir</strong> – Creates a new directory.</li>
+    <li><strong>rm</strong> – Removes files or directories.</li>
+    <li><strong>cp</strong> – Copies files or directories.</li>
+    <li><strong>mv</strong> – Moves or renames files.</li>
+    <li><strong>chmod</strong> – Changes file permissions.</li>
+    <li><strong>chown</strong> – Changes file ownership.</li>
+    <li><strong>top</strong> – Shows real-time system processes and CPU usage.</li>
+    <li><strong>df</strong> – Displays disk space usage.</li>
+    <li><strong>free</strong> – Shows memory (RAM) usage.</li>
+  </ul>
+  <p>
+    These commands are essential for system administrators and DevOps engineers
+    to manage servers efficiently.
+  </p>
+
+  <h2>2. How do you check disk space on an instance?</h2>
+  <p>
+    To check disk space in a Linux server or EC2 instance, use:
+  </p>
+  <pre><code>df -h</code></pre>
+  <p>
+    The <strong>df</strong> command stands for "disk filesystem."
+    The <strong>-h</strong> option displays output in human-readable format
+    (KB, MB, GB).
+  </p>
+  <p>
+    This command shows:
+  </p>
+  <ul>
+    <li>Total disk size</li>
+    <li>Used disk space</li>
+    <li>Available disk space</li>
+    <li>Mounted file system path</li>
+  </ul>
+  <p>
+    It helps monitor storage usage and prevents system crashes due to full disk space.
+  </p>
+
+  <h2>3. How do you check the memory of an instance?</h2>
+  <p>
+    To check memory (RAM) usage in a Linux instance, use:
+  </p>
+  <pre><code>free -h</code></pre>
+  <p>
+    This command displays total memory, used memory, free memory,
+    shared memory, buffer/cache usage, and swap memory.
+  </p>
+  <p>
+    You can also use:
+  </p>
+  <ul>
+    <li><strong>top</strong> – Real-time CPU and memory monitoring.</li>
+    <li><strong>htop</strong> – Interactive and user-friendly monitoring tool.</li>
+  </ul>
+  <p>
+    Monitoring memory is important to avoid performance issues and application crashes.
+  </p>
+
+  <h2>4. Difference between top and htop</h2>
+  <p>
+    Both <strong>top</strong> and <strong>htop</strong> are system monitoring tools.
+  </p>
+  <ul>
+    <li><strong>top:</strong> Default Linux tool, basic interface, shows running processes and resource usage.</li>
+    <li><strong>htop:</strong> Advanced version, colorful interface, supports mouse interaction, easier process management.</li>
+  </ul>
+  <p>
+    <strong>htop</strong> allows you to scroll, search, and kill processes more easily compared to <strong>top</strong>.
+  </p>
+
+  <h2>5. How do you check disk partitions?</h2>
+  <p>
+    To check disk partitions and attached storage devices, use:
+  </p>
+  <pre><code>lsblk</code></pre>
+  <p>
+    This shows block devices in a tree format.
+  </p>
+  <p>
+    You can also use:
+  </p>
+  <pre><code>sudo fdisk -l</code></pre>
+  <p>
+    This displays detailed partition information such as:
+  </p>
+  <ul>
+    <li>Disk size</li>
+    <li>Partition type</li>
+    <li>Filesystem type</li>
+  </ul>
+  <p>
+    This is useful when attaching new EBS volumes or managing storage.
+  </p>
+
+  <h2>6. What is fstab?</h2>
+  <p>
+    <strong>/etc/fstab</strong> (File System Table) is a Linux configuration file
+    that defines how disk partitions and storage devices are mounted automatically
+    when the system boots.
+  </p>
+  <p>
+    It contains details like:
+  </p>
+  <ul>
+    <li>Device name or UUID</li>
+    <li>Mount point</li>
+    <li>Filesystem type</li>
+    <li>Mount options</li>
+  </ul>
+  <p>
+    Example entry:
+  </p>
+  <pre><code>UUID=xxxx-xxxx /data ext4 defaults 0 2</code></pre>
+  <p>
+    Proper configuration ensures persistent storage mounting after reboot.
+  </p>
+
+  <h2>7. How to give only read and write permission to a user for a bash.sh file?</h2>
+  <p>
+    Linux permissions are divided into three categories:
+    <strong>Owner, Group, Others</strong>.
+  </p>
+  <p>
+    To give read and write permission only to the file owner:
+  </p>
+  <pre><code>chmod 600 bash.sh</code></pre>
+  <p>
+    Explanation:
+  </p>
+  <ul>
+    <li>6 = Read (4) + Write (2)</li>
+    <li>0 = No permission for Group</li>
+    <li>0 = No permission for Others</li>
+  </ul>
+  <p>
+    If you want to give read and write access to a specific user,
+    change ownership first:
+  </p>
+  <pre><code>sudo chown username bash.sh</code></pre>
+  <p>
+    Then apply permissions using <strong>chmod</strong>.
+    Proper permission management is critical for system security.
+  </p>
+
+</div>
+
+  <h2>8. How do you execute a bash.sh file every Friday at 10 AM?</h2>
+  <p>
+    In Linux, scheduled tasks are managed using <strong>cron jobs</strong>.
+    The cron service allows you to automate script execution at specific times and dates.
+  </p>
+  <p>
+    To schedule a script:
+  </p>
+  <pre><code>crontab -e</code></pre>
+  <p>
+    Then add the following line:
+  </p>
+  <pre><code>0 10 * * 5 /path/to/bash.sh</code></pre>
+  <p>
+    Explanation of cron format:
+  </p>
+  <ul>
+    <li>0 → Minute</li>
+    <li>10 → Hour (10 AM)</li>
+    <li>* → Every day of month</li>
+    <li>* → Every month</li>
+    <li>5 → Friday</li>
+  </ul>
+  <p>
+    This ensures the script runs automatically every Friday at 10 AM.
+  </p>
+
+  <h2>9. How do you check live logs of an application running on a VM?</h2>
+  <p>
+    To monitor logs in real time, use:
+  </p>
+  <pre><code>tail -f filename.log</code></pre>
+  <p>
+    The <strong>-f</strong> option means “follow,” which continuously displays new log entries.
+  </p>
+  <p>
+    Logs are typically located in:
+  </p>
+  <ul>
+    <li>/var/log/</li>
+    <li>Application-specific log directories</li>
+  </ul>
+  <p>
+    Monitoring logs helps in debugging issues, checking application health,
+    and identifying errors in real time.
+  </p>
+
+  <h2>10. What does -h mean in the command df -h?</h2>
+  <p>
+    The <strong>-h</strong> option stands for <strong>human-readable format</strong>.
+  </p>
+  <p>
+    Instead of displaying disk size in bytes, it shows sizes in:
+  </p>
+  <ul>
+    <li>KB (Kilobytes)</li>
+    <li>MB (Megabytes)</li>
+    <li>GB (Gigabytes)</li>
+  </ul>
+  <p>
+    This makes the output easier to understand and analyze.
+  </p>
+
+  <h2>11. What happens in the background when accessing a domain hosted on an EC2 instance?</h2>
+  <p>
+    When a user enters a domain name (e.g., example.com), several steps happen:
+  </p>
+  <ol>
+    <li>DNS resolves the domain name to a public IP address.</li>
+    <li>The browser sends an HTTP/HTTPS request to that IP.</li>
+    <li>The request reaches the EC2 instance.</li>
+    <li>A web server (NGINX/Apache) processes the request.</li>
+    <li>The server returns the response (HTML, CSS, JS files).</li>
+  </ol>
+  <p>
+    If HTTPS is enabled, SSL/TLS encryption is used before data transfer.
+  </p>
+
+  <h2>12. What happens between a client and a server?</h2>
+  <p>
+    Communication between client and server follows a request-response model.
+  </p>
+  <ul>
+    <li>The client sends a request (HTTP/HTTPS).</li>
+    <li>The server receives and processes the request.</li>
+    <li>The server sends back a response.</li>
+  </ul>
+  <p>
+    The response may include web pages, JSON data, or error messages.
+    This process ensures proper data exchange over the internet.
+  </p>
+
+  <h2>13. How does the TCP handshake work?</h2>
+  <p>
+    TCP uses a <strong>three-way handshake</strong> to establish a reliable connection.
+  </p>
+  <ol>
+    <li><strong>SYN:</strong> Client sends a synchronization request to the server.</li>
+    <li><strong>SYN-ACK:</strong> Server acknowledges and sends its own synchronization.</li>
+    <li><strong>ACK:</strong> Client acknowledges the server response.</li>
+  </ol>
+  <p>
+    After this process, a secure and reliable connection is established,
+    allowing data transmission.
+  </p>
+
+  <h2>14. What will you do as a DevOps engineer if a data breach occurs?</h2>
+  <p>
+    In case of a data breach, immediate action is required:
+  </p>
+  <ol>
+    <li>Isolate affected systems to prevent further damage.</li>
+    <li>Rotate passwords, API keys, and credentials.</li>
+    <li>Analyze logs to identify the source of the breach.</li>
+    <li>Apply security patches and fix vulnerabilities.</li>
+    <li>Notify management and stakeholders.</li>
+    <li>Strengthen monitoring and implement preventive measures.</li>
+  </ol>
+  <p>
+    Preventive strategies include enabling firewalls, encryption, IAM policies,
+    regular audits, and continuous monitoring tools.
+  </p>
+  <h2>15. How do TLS and SSL certification work?</h2>
+  <p>
+    TLS (Transport Layer Security) and SSL (Secure Sockets Layer) are encryption protocols
+    used to secure communication between a client (browser) and a server.
+  </p>
+  <p>
+    When a user accesses a website using HTTPS:
+  </p>
+  <ol>
+    <li>The client sends a request to the server.</li>
+    <li>The server responds with its SSL/TLS certificate.</li>
+    <li>The browser verifies the certificate with a trusted Certificate Authority (CA).</li>
+    <li>A secure encryption key is generated.</li>
+    <li>All data exchanged is encrypted.</li>
+  </ol>
+  <p>
+    This ensures data confidentiality, integrity, and authentication.
+    TLS is the modern and more secure version of SSL.
+  </p>
+
+  <h2>16. What is NGINX reverse proxy and SSL termination?</h2>
+  <p>
+    A reverse proxy is a server that receives client requests and forwards them
+    to backend servers.
+  </p>
+  <ul>
+    <li>Improves security by hiding backend servers.</li>
+    <li>Provides load balancing.</li>
+    <li>Handles caching and compression.</li>
+  </ul>
+  <p>
+    SSL termination means that HTTPS encryption is handled at the NGINX server level.
+    NGINX decrypts incoming traffic and forwards plain HTTP traffic to backend servers.
+    This reduces processing load on application servers.
+  </p>
+
+  <h2>17. What is a VPC?</h2>
+  <p>
+    VPC (Virtual Private Cloud) is a logically isolated network in the cloud
+    where you can launch AWS resources securely.
+  </p>
+  <p>
+    It allows you to define:
+  </p>
+  <ul>
+    <li>IP address range (CIDR block)</li>
+    <li>Subnets (public and private)</li>
+    <li>Route tables</li>
+    <li>Internet Gateway</li>
+    <li>Security Groups and NACLs</li>
+  </ul>
+  <p>
+    A VPC gives full control over networking and security configuration.
+  </p>
+
+  <h2>18. How do you create a VPC that is highly scalable and highly reliable?</h2>
+  <p>
+    To design a highly scalable and reliable VPC:
+  </p>
+  <ul>
+    <li>Create subnets across multiple Availability Zones.</li>
+    <li>Use Auto Scaling Groups for EC2 instances.</li>
+    <li>Deploy an Application Load Balancer.</li>
+    <li>Use NAT Gateway for private subnet internet access.</li>
+    <li>Implement proper Security Groups and NACL rules.</li>
+    <li>Enable monitoring using CloudWatch.</li>
+  </ul>
+  <p>
+    This ensures high availability, fault tolerance, and performance.
+  </p>
+
+  <h2>19. What makes a public subnet public and a private subnet private?</h2>
+  <p>
+    The difference depends on the route table configuration.
+  </p>
+  <ul>
+    <li>
+      <strong>Public Subnet:</strong> Has a route to an Internet Gateway (IGW).
+      Instances can have public IPs and direct internet access.
+    </li>
+    <li>
+      <strong>Private Subnet:</strong> Does not have direct route to IGW.
+      Instances cannot be accessed directly from the internet.
+    </li>
+  </ul>
+  <p>
+    Private subnets typically use a NAT Gateway for outbound internet access.
+  </p>
+
+  <h2>20. You accidentally created a private subnet and want to make it public. What should you do?</h2>
+  <p>
+    To convert a private subnet into a public subnet:
+  </p>
+  <ol>
+    <li>Attach an Internet Gateway (IGW) to the VPC.</li>
+    <li>Update the subnet’s route table to include:
+      <br>0.0.0.0/0 → Internet Gateway
+    </li>
+    <li>Enable auto-assign public IP for instances (if required).</li>
+  </ol>
+  <p>
+    After these steps, the subnet becomes public.
+  </p>
+
+  <h2>21. How do you give internet access to an application in a private subnet?</h2>
+  <p>
+    Instances in a private subnet cannot access the internet directly.
+    To enable outbound internet access:
+  </p>
+  <ol>
+    <li>Create a NAT Gateway in a public subnet.</li>
+    <li>Associate an Elastic IP with the NAT Gateway.</li>
+    <li>Update the private subnet’s route table:
+      <br>0.0.0.0/0 → NAT Gateway
+    </li>
+  </ol>
+  <p>
+    This allows private instances to access the internet securely
+    without exposing them to inbound public traffic.
+  </p>
+  <h2>22. What can be configured in a public subnet?</h2>
+  <p>
+    A public subnet is designed to host resources that need direct internet access.
+    It has a route to an Internet Gateway (IGW).
+  </p>
+  <p>
+    Common resources configured in a public subnet:
+  </p>
+  <ul>
+    <li>Web servers (NGINX, Apache)</li>
+    <li>Bastion host (jump server)</li>
+    <li>Load balancers</li>
+    <li>NAT Gateway</li>
+  </ul>
+  <p>
+    These resources typically require public IP addresses to communicate
+    with external users or services.
+  </p>
+
+  <h2>23. Can applications in different subnets communicate with each other by default?</h2>
+  <p>
+    Yes, if both subnets belong to the same VPC, they can communicate by default.
+  </p>
+  <p>
+    However, communication depends on:
+  </p>
+  <ul>
+    <li>Security Group rules</li>
+    <li>Network ACL (Access Control List) rules</li>
+    <li>Route table configuration</li>
+  </ul>
+  <p>
+    If security settings allow traffic between the instances,
+    they can communicate using private IP addresses.
+  </p>
+
+  <h2>24. How can an EC2 instance access an S3 bucket?</h2>
+  <p>
+    There are two secure ways to allow EC2 to access S3:
+  </p>
+  <ol>
+    <li>
+      <strong>IAM Role:</strong>
+      Attach an IAM role to the EC2 instance with S3 access permissions.
+      This is the recommended and secure method.
+    </li>
+    <li>
+      <strong>VPC Endpoint:</strong>
+      Create an S3 VPC endpoint to allow private communication
+      without using the public internet.
+    </li>
+  </ol>
+  <p>
+    Using IAM roles avoids storing access keys inside the instance.
+  </p>
+
+  <h2>25. What storage does EC2 use?</h2>
+  <p>
+    EC2 instances primarily use:
+  </p>
+  <ul>
+    <li><strong>EBS (Elastic Block Store):</strong> Persistent block storage attached to EC2.</li>
+    <li><strong>Instance Store:</strong> Temporary storage that is lost when the instance stops.</li>
+  </ul>
+  <p>
+    EBS volumes are commonly used for databases, applications, and system disks
+    because data remains even after reboot.
+  </p>
+
+  <h2>26. How can two EC2 instances share storage while running live?</h2>
+  <p>
+    To provide shared storage for multiple EC2 instances simultaneously:
+  </p>
+  <ul>
+    <li><strong>EFS (Elastic File System):</strong>
+      A scalable file storage service that allows multiple instances
+      to mount and access the same storage at the same time.
+    </li>
+  </ul>
+  <p>
+    EFS is useful for shared application data, content management systems,
+    and distributed applications.
+  </p>
+  <p>
+    It supports automatic scaling and high availability across multiple
+    Availability Zones.
+  </p>
+
+</div>
+
 <div>
 
   <h3>🔹 Process vs Thread</h3>

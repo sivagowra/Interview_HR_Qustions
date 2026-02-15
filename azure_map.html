@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Azure DevOps Cheat Sheet</title>
+<style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; background-color: #f4f4f4; }
+    h1, h2, h3 { color: #2c3e50; }
+    code, pre { background-color: #ecf0f1; padding: 5px; border-radius: 4px; display: block; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
+    table, th, td { border: 1px solid #bdc3c7; }
+    th, td { padding: 8px; text-align: left; }
+    th { background-color: #3498db; color: white; }
+    div.section { background-color: white; padding: 15px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);}
+</style>
+</head>
+<body>
+
+<div class="section">
+    <h1>🌟 Azure DevOps Quick Cheat Sheet</h1>
+</div>
+
+<div class="section">
+    <h2>1️⃣ Azure DevOps Services Overview</h2>
+    <table>
+        <tr><th>Service</th><th>Purpose</th></tr>
+        <tr><td>Repos</td><td>Git-based version control</td></tr>
+        <tr><td>Pipelines</td><td>CI/CD automation (YAML-based)</td></tr>
+        <tr><td>Boards</td><td>Agile tracking: user stories, sprints, tasks</td></tr>
+        <tr><td>Artifacts</td><td>Package management (NuGet/NPM/Maven)</td></tr>
+    </table>
+</div>
+
+<div class="section">
+    <h2>2️⃣ CI/CD Pipeline Concepts</h2>
+    <ul>
+        <li><strong>CI (Continuous Integration):</strong> Code → Build → Test</li>
+        <li><strong>CD (Continuous Deployment):</strong> Build → Deploy → Prod</li>
+        <li><strong>Pipeline Steps:</strong> Trigger → Build → Package → Deploy → Monitor</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>3️⃣ Sample YAML Pipeline (Python Project)</h2>
+    <pre><code>trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+
+- script: |
+    pip install -r requirements.txt
+    pytest
+  displayName: 'Run Tests'</code></pre>
+    <p><em>Explain:</em> Triggers on main branch, sets up Python, installs dependencies, runs tests.</p>
+</div>
+
+<div class="section">
+    <h2>4️⃣ Git Branching Strategy</h2>
+    <ul>
+        <li><strong>main/master:</strong> production-ready code</li>
+        <li><strong>dev:</strong> integration branch</li>
+        <li><strong>feature/xyz:</strong> new feature branch</li>
+    </ul>
+    <pre><code>git clone &lt;repo&gt;
+git checkout -b feature/login
+git add .
+git commit -m "Add login feature"
+git push origin feature/login
+git merge dev</code></pre>
+</div>
+
+<div class="section">
+    <h2>5️⃣ Docker Deployment (Java WAR)</h2>
+    <pre><code>FROM tomcat:9.0-jdk17
+RUN rm -rf /usr/local/tomcat/webapps/*
+COPY target/myapp.war /usr/local/tomcat/webapps/ROOT.war
+EXPOSE 8080
+CMD ["catalina.sh", "run"]</code></pre>
+    <pre><code>docker build -t myapp:1.0 .
+docker run -d -p 8080:8080 myapp:1.0</code></pre>
+</div>
+
+<div class="section">
+    <h2>6️⃣ Monitoring & Logging</h2>
+    <ul>
+        <li>Tools: Grafana, Prometheus, CloudWatch, Datadog</li>
+        <li>Access Logs Example:</li>
+        <pre><code>docker exec -it myapp-container tail -f /usr/local/tomcat/logs/localhost_access_log.*</code></pre>
+        <li>Metrics: CPU, memory, response time</li>
+        <li>Alerts: Set thresholds for downtime or errors</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>7️⃣ Automation Scripts</h2>
+    <ul>
+        <li>Bash: deployment scripts, cron jobs</li>
+        <li>Python: cloud resource management, API automation</li>
+        <li>PowerShell: Windows automation</li>
+    </ul>
+    <pre><code>#!/bin/bash
+docker stop myapp-container
+docker rm myapp-container
+docker run -d -p 8080:8080 myapp:1.0</code></pre>
+</div>
+
+<div class="section">
+    <h2>8️⃣ Key Talking Points</h2>
+    <ul>
+        <li>CI/CD understanding even without Azure hands-on experience</li>
+        <li>Docker & WAR deployment experience</li>
+        <li>Scripting experience (Bash/Python)</li>
+        <li>Monitoring & logs troubleshooting</li>
+        <li>Quick learner & willing to get hands-on with Azure DevOps</li>
+    </ul>
+</div>
+
+</body>
+</html>
