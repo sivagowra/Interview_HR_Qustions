@@ -92,6 +92,1816 @@
       <div class="question">
         How can two EC2 instances communicate using private IP addresses without a VPC peering connection?
       </div>
+<div>
+
+<h2>1) How do you check CPU & Memory usage?</h2>
+
+<p>
+In Linux, we can check CPU and memory usage using different commands.
+The most common commands are:
+</p>
+
+<ul>
+<li><b>top</b> – Shows real-time CPU and memory usage.</li>
+<li><b>htop</b> – Advanced version of top with better UI.</li>
+<li><b>free -m</b> – Shows memory usage in MB.</li>
+<li><b>ps aux</b> – Shows running processes.</li>
+<li><b>vmstat</b> – Shows system performance statistics.</li>
+</ul>
+
+<p>
+Example:
+</p>
+
+<pre>
+top
+free -m
+</pre>
+
+<p>
+These commands help us monitor system performance and identify high resource usage.
+</p>
+
+</div>
+
+
+<div>
+
+<h2>2) Difference between top, htop, ps, free</h2>
+
+<h3>top</h3>
+<p>
+Shows real-time running processes.
+Displays CPU usage, memory usage, load average, and running tasks.
+Updates automatically every few seconds.
+</p>
+
+<h3>htop</h3>
+<p>
+Improved version of top.
+Shows colored output.
+Easy to scroll and kill processes.
+More user-friendly.
+</p>
+
+<h3>ps</h3>
+<p>
+Shows snapshot of current running processes.
+It does not update automatically.
+Example:
+</p>
+
+<pre>
+ps aux
+</pre>
+
+<h3>free</h3>
+<p>
+Shows only memory usage.
+Displays total, used, free, shared, buffer, and cached memory.
+Example:
+</p>
+
+<pre>
+free -m
+</pre>
+
+</div>
+
+
+<div>
+
+<h2>3) How to kill a stuck process?</h2>
+
+<p>
+If a process is not responding, we can kill it using the <b>kill</b> command.
+</p>
+
+<p>
+Step 1: Find the process ID (PID)
+</p>
+
+<pre>
+ps aux | grep process_name
+</pre>
+
+<p>
+Step 2: Kill the process
+</p>
+
+<pre>
+kill PID
+</pre>
+
+<p>
+If it does not stop, use force kill:
+</p>
+
+<pre>
+kill -9 PID
+</pre>
+
+<p>
+Signal 9 (SIGKILL) forcefully stops the process.
+</p>
+
+</div>
+
+
+<div>
+
+<h2>4) What is Load Average?</h2>
+
+<p>
+Load average shows how busy the system is.
+It tells how many processes are waiting for CPU.
+</p>
+
+<p>
+You can check load average using:
+</p>
+
+<pre>
+uptime
+top
+</pre>
+
+<p>
+It shows 3 numbers:
+</p>
+
+<ul>
+<li>1 minute load average</li>
+<li>5 minute load average</li>
+<li>15 minute load average</li>
+</ul>
+
+<p>
+If load average is higher than number of CPU cores, system is overloaded.
+Example:
+If system has 2 CPU cores and load average is 4,
+that means system is heavily loaded.
+</p>
+
+</div>
+
+
+<div>
+
+<h2>5) What happens when memory is full?</h2>
+
+<p>
+When memory becomes full:
+</p>
+
+<ul>
+<li>System becomes slow.</li>
+<li>Applications may crash.</li>
+<li>Swap memory will be used.</li>
+<li>CPU usage may increase.</li>
+</ul>
+
+<p>
+If both RAM and Swap are full, Linux may kill processes automatically.
+This is called <b>OOM (Out Of Memory) Killer</b>.
+</p>
+
+<p>
+To check memory usage:
+</p>
+
+<pre>
+free -m
+top
+</pre>
+
+<p>
+To fix memory issue:
+</p>
+
+<ul>
+<li>Restart unnecessary services.</li>
+<li>Kill unused processes.</li>
+<li>Increase RAM.</li>
+<li>Optimize application memory usage.</li>
+</ul>
+
+</div>
+<div>
+
+<h2>1) Difference Between Hard Link and Soft Link</h2>
+
+<h3>Hard Link</h3>
+<ul>
+<li>A hard link is another name for the same file.</li>
+<li>Both original file and hard link share the same inode number.</li>
+<li>If original file is deleted, hard link still works.</li>
+<li>Cannot be created for directories (normally).</li>
+<li>Cannot cross different file systems.</li>
+</ul>
+
+<p><b>Example:</b></p>
+<pre>
+ln original.txt hardlink.txt
+</pre>
+
+<h3>Soft Link (Symbolic Link)</h3>
+<ul>
+<li>A soft link is like a shortcut to another file.</li>
+<li>It has a different inode number.</li>
+<li>If original file is deleted, soft link becomes broken.</li>
+<li>Can link directories.</li>
+<li>Can cross different file systems.</li>
+</ul>
+
+<p><b>Example:</b></p>
+<pre>
+ln -s original.txt softlink.txt
+</pre>
+
+<p>
+In simple words:
+Hard link = same file, different name.
+Soft link = shortcut to file.
+</p>
+
+</div>
+
+
+<div>
+
+<h2>2) How Linux File Permissions Work</h2>
+
+<p>
+Linux file permissions control who can read, write, or execute a file.
+</p>
+
+<p>
+There are 3 types of users:
+</p>
+
+<ul>
+<li><b>Owner</b> – Person who created the file</li>
+<li><b>Group</b> – Users in the same group</li>
+<li><b>Others</b> – Everyone else</li>
+</ul>
+
+<p>
+There are 3 types of permissions:
+</p>
+
+<ul>
+<li><b>r</b> = Read (4)</li>
+<li><b>w</b> = Write (2)</li>
+<li><b>x</b> = Execute (1)</li>
+</ul>
+
+<p>
+Example:
+</p>
+
+<pre>
+-rwxr-xr--
+</pre>
+
+<p>
+Breakdown:
+</p>
+
+<ul>
+<li>Owner: rwx (7)</li>
+<li>Group: r-x (5)</li>
+<li>Others: r-- (4)</li>
+</ul>
+
+<p>
+Numeric permission = 754
+</p>
+
+<p>
+To change permission:
+</p>
+
+<pre>
+chmod 755 file.txt
+</pre>
+
+<p>
+To change owner:
+</p>
+
+<pre>
+chown user:group file.txt
+</pre>
+
+</div>
+
+
+<div>
+
+<h2>3) What is umask?</h2>
+
+<p>
+Umask defines the default permission for new files and directories.
+</p>
+
+<p>
+When a new file is created:
+</p>
+
+<ul>
+<li>Default file permission = 666</li>
+<li>Default directory permission = 777</li>
+</ul>
+
+<p>
+Umask value is subtracted from default permission.
+</p>
+
+<p>
+Example:
+</p>
+
+<pre>
+umask 022
+</pre>
+
+<p>
+For file:
+666 - 022 = 644
+</p>
+
+<p>
+For directory:
+777 - 022 = 755
+</p>
+
+<p>
+To check current umask:
+</p>
+
+<pre>
+umask
+</pre>
+
+<p>
+So, umask controls security by limiting default permissions.
+</p>
+
+</div>
+
+
+<div>
+
+<h2>4) Explain /proc and /var/log</h2>
+
+<h3>/proc</h3>
+
+<ul>
+<li>/proc is a virtual file system.</li>
+<li>It contains real-time system information.</li>
+<li>Shows CPU, memory, processes, and kernel details.</li>
+<li>Files are dynamically generated.</li>
+</ul>
+
+<p><b>Examples:</b></p>
+
+<pre>
+cat /proc/cpuinfo
+cat /proc/meminfo
+</pre>
+
+<p>
+Used for system monitoring and debugging.
+</p>
+
+<h3>/var/log</h3>
+
+<ul>
+<li>/var/log stores system log files.</li>
+<li>Contains logs for system, applications, and services.</li>
+<li>Used for troubleshooting and monitoring.</li>
+</ul>
+
+<p><b>Common log files:</b></p>
+
+<pre>
+/var/log/messages
+/var/log/syslog
+/var/log/auth.log
+</pre>
+
+<p>
+When something fails (service crash, login issue, server error),
+first check /var/log.
+</p>
+
+</div>
+<div>
+
+<h2>1) Difference Between List and Tuple</h2>
+
+<p>
+Both list and tuple are used to store multiple values in Python.
+</p>
+
+<h3>List</h3>
+<ul>
+<li>Mutable (can change values)</li>
+<li>Uses square brackets []</li>
+<li>Slower than tuple</li>
+</ul>
+
+<pre>
+my_list = [1, 2, 3]
+my_list[0] = 10
+</pre>
+
+<h3>Tuple</h3>
+<ul>
+<li>Immutable (cannot change values)</li>
+<li>Uses round brackets ()</li>
+<li>Faster than list</li>
+</ul>
+
+<pre>
+my_tuple = (1, 2, 3)
+</pre>
+
+<p>
+Simple difference:
+List = Changeable  
+Tuple = Not changeable
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>2) What is Virtual Environment?</h2>
+
+<p>
+A virtual environment is an isolated Python environment.
+It allows you to install packages separately for each project.
+</p>
+
+<p>
+Why needed?
+To avoid dependency conflicts between projects.
+</p>
+
+<pre>
+python -m venv myenv
+source myenv/bin/activate   (Linux)
+pip install requests
+</pre>
+
+<p>
+Each project can have different package versions.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>3) How to Read and Write Files?</h2>
+
+<h3>Read File</h3>
+
+<pre>
+with open("file.txt", "r") as f:
+    data = f.read()
+    print(data)
+</pre>
+
+<h3>Write File</h3>
+
+<pre>
+with open("file.txt", "w") as f:
+    f.write("Hello World")
+</pre>
+
+<p>
+"r" = read  
+"w" = write  
+"a" = append
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>4) How to Call Shell Commands from Python?</h2>
+
+<p>
+Use subprocess module.
+</p>
+
+<pre>
+import subprocess
+
+result = subprocess.run(["ls", "-l"], capture_output=True, text=True)
+print(result.stdout)
+</pre>
+
+<p>
+Used in automation scripts for running Linux commands.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>5) Python Script Examples (Automation)</h2>
+
+<h3>A) Parse Log File</h3>
+
+<pre>
+with open("app.log", "r") as file:
+    for line in file:
+        if "ERROR" in line:
+            print(line)
+</pre>
+
+<p>
+This script prints only error lines from log file.
+</p>
+
+<h3>B) Monitor Server Health</h3>
+
+<pre>
+import psutil
+
+cpu = psutil.cpu_percent()
+memory = psutil.virtual_memory().percent
+
+print("CPU Usage:", cpu)
+print("Memory Usage:", memory)
+</pre>
+
+<p>
+Used to monitor system resources.
+</p>
+
+<h3>C) Automate API Call</h3>
+
+<pre>
+import requests
+
+response = requests.get("https://api.github.com")
+print(response.status_code)
+print(response.json())
+</pre>
+
+<p>
+Used to automate API testing or monitoring.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>6) What is Exception Handling?</h2>
+
+<p>
+Exception handling is used to handle errors without crashing program.
+</p>
+
+<pre>
+try:
+    x = 10 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+finally:
+    print("Execution completed")
+</pre>
+
+<p>
+try → risky code  
+except → handle error  
+finally → always runs
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>7) What is Unit Testing in Python?</h2>
+
+<p>
+Unit testing is testing small parts (functions) of code.
+It ensures code works correctly.
+</p>
+
+<pre>
+import unittest
+
+def add(a, b):
+    return a + b
+
+class TestAdd(unittest.TestCase):
+    def test_add(self):
+        self.assertEqual(add(2, 3), 5)
+
+if __name__ == "__main__":
+    unittest.main()
+</pre>
+
+<p>
+It checks whether function output is correct.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>Important Interview Note</h2>
+
+<p>
+They may ask you to write small automation script like:
+</p>
+
+<ul>
+<li>Check if service is running</li>
+<li>Restart service automatically</li>
+<li>Read log file and send alert</li>
+<li>Monitor CPU and send email</li>
+<li>Call API and validate response</li>
+</ul>
+
+<p>
+So practice writing small clean scripts.
+Use:
+- functions
+- proper error handling
+- logging
+- modular code
+</p>
+
+</div>
+<div>
+
+<h2>1) Difference Between Docker Image and Container</h2>
+
+<h3>Docker Image</h3>
+<ul>
+<li>Image is a blueprint or template.</li>
+<li>It contains application code, libraries, and dependencies.</li>
+<li>It is read-only.</li>
+<li>Example: Python image, Nginx image.</li>
+</ul>
+
+<h3>Docker Container</h3>
+<ul>
+<li>Container is a running instance of an image.</li>
+<li>It is lightweight and isolated.</li>
+<li>You can start, stop, delete container.</li>
+</ul>
+
+<p>
+Simple difference:
+Image = Template  
+Container = Running application
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>2) What is Dockerfile?</h2>
+
+<p>
+Dockerfile is a text file that contains instructions to build a Docker image.
+</p>
+
+<p>
+It defines:
+</p>
+
+<ul>
+<li>Base image</li>
+<li>Application files</li>
+<li>Dependencies</li>
+<li>Commands to run</li>
+</ul>
+
+<p>
+Example:
+</p>
+
+<pre>
+FROM python:3.9
+WORKDIR /app
+COPY . .
+RUN pip install -r requirements.txt
+CMD ["python", "app.py"]
+</pre>
+
+<p>
+Build image:
+</p>
+
+<pre>
+docker build -t myapp .
+</pre>
+
+</div>
+
+
+
+<div>
+
+<h2>3) Explain Docker Layers</h2>
+
+<p>
+Each instruction in Dockerfile creates a layer.
+</p>
+
+<ul>
+<li>FROM → Base layer</li>
+<li>RUN → New layer</li>
+<li>COPY → New layer</li>
+<li>CMD → Final layer</li>
+</ul>
+
+<p>
+Layers are cached.
+If one layer changes, only that layer rebuilds.
+This makes Docker build faster.
+</p>
+
+<p>
+Docker uses layered file system for efficiency.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>4) How to Reduce Docker Image Size?</h2>
+
+<ul>
+<li>Use small base image (e.g., python:3.9-slim or alpine).</li>
+<li>Remove unnecessary packages.</li>
+<li>Use multi-stage builds.</li>
+<li>Combine RUN commands.</li>
+<li>Remove cache files.</li>
+</ul>
+
+<p>
+Example:
+</p>
+
+<pre>
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+</pre>
+
+<p>
+Smaller image = Faster deployment + Less storage.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>5) What is Docker Volume?</h2>
+
+<p>
+Volume is used to store persistent data.
+</p>
+
+<p>
+By default, container data is deleted when container is removed.
+Volume saves data outside container.
+</p>
+
+<p>
+Example:
+</p>
+
+<pre>
+docker run -v myvolume:/data nginx
+</pre>
+
+<p>
+Used for:
+- Database storage
+- Logs
+- Upload files
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>6) How to Debug Container Issue?</h2>
+
+<p>
+Common debugging steps:
+</p>
+
+<ul>
+<li>Check running containers:
+<pre>docker ps</pre></li>
+
+<li>Check logs:
+<pre>docker logs container_id</pre></li>
+
+<li>Enter inside container:
+<pre>docker exec -it container_id /bin/bash</pre></li>
+
+<li>Check container details:
+<pre>docker inspect container_id</pre></li>
+</ul>
+
+<p>
+Always check logs first.
+Then verify ports, environment variables, and application errors.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>7) How to Expose Ports?</h2>
+
+<p>
+In Dockerfile:
+</p>
+
+<pre>
+EXPOSE 5000
+</pre>
+
+<p>
+When running container:
+</p>
+
+<pre>
+docker run -p 5000:5000 myapp
+</pre>
+
+<p>
+Format:
+host_port : container_port
+</p>
+
+<p>
+Now application can be accessed from browser:
+http://localhost:5000
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>8) Example: Dockerfile for Python App</h2>
+
+<p>
+Assume simple Flask app.
+</p>
+
+<h3>app.py</h3>
+
+<pre>
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Hello DevOps"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
+</pre>
+
+<h3>requirements.txt</h3>
+
+<pre>
+flask
+</pre>
+
+<h3>Dockerfile</h3>
+
+<pre>
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
+</pre>
+
+<p>
+Build image:
+</p>
+
+<pre>
+docker build -t flaskapp .
+</pre>
+
+<p>
+Run container:
+</p>
+
+<pre>
+docker run -p 5000:5000 flaskapp
+</pre>
+
+</div>
+<div>
+
+<h2>1) Application is Running but Not Accessible</h2>
+
+<p>
+Situation: Application is running but cannot access from browser.
+</p>
+
+<h3>Step-by-Step Troubleshooting</h3>
+
+<ul>
+<li>Step 1: Check if application process is running.
+<pre>ps aux | grep app_name</pre></li>
+
+<li>Step 2: Check listening port.
+<pre>netstat -tulnp | grep 5000</pre></li>
+
+<li>Step 3: Check firewall rules.
+<pre>sudo ufw status</pre></li>
+
+<li>Step 4: Check security groups (if cloud).</li>
+
+<li>Step 5: Check logs.
+<pre>tail -f /var/log/app.log</pre></li>
+
+<li>Step 6: Verify correct IP and port mapping.</li>
+</ul>
+
+<p>
+Always check:
+- Is service running?
+- Is port open?
+- Is firewall blocking?
+- Are there errors in logs?
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>2) CPU Suddenly 100%</h2>
+
+<p>
+Situation: Server CPU usage is very high.
+</p>
+
+<h3>Step-by-Step Troubleshooting</h3>
+
+<ul>
+<li>Step 1: Identify high CPU process.
+<pre>top</pre></li>
+
+<li>Step 2: Check process details.
+<pre>ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head</pre></li>
+
+<li>Step 3: Check logs for errors.</li>
+
+<li>Step 4: Check memory usage.
+<pre>free -m</pre></li>
+
+<li>Step 5: Check if traffic spike happened.</li>
+</ul>
+
+<p>
+Possible reasons:
+- Infinite loop in code
+- High traffic
+- Memory leak
+- Background job stuck
+</p>
+
+<p>
+Solution:
+- Restart service
+- Fix code issue
+- Scale system
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>3) Container Keeps Restarting</h2>
+
+<p>
+Situation: Docker container restarting continuously.
+</p>
+
+<h3>Step-by-Step Troubleshooting</h3>
+
+<ul>
+<li>Step 1: Check container status.
+<pre>docker ps -a</pre></li>
+
+<li>Step 2: Check logs.
+<pre>docker logs container_id</pre></li>
+
+<li>Step 3: Check exit code.
+<pre>docker inspect container_id</pre></li>
+
+<li>Step 4: Enter container (if possible).
+<pre>docker exec -it container_id /bin/bash</pre></li>
+
+<li>Step 5: Verify environment variables and configuration.</li>
+</ul>
+
+<p>
+Common reasons:
+- Application crash
+- Missing environment variable
+- Database connection failure
+- Port conflict
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>4) Git Merge Conflict</h2>
+
+<p>
+Situation: While merging branch, conflict occurs.
+</p>
+
+<h3>Steps to Resolve</h3>
+
+<ul>
+<li>Step 1: Check conflict files.
+<pre>git status</pre></li>
+
+<li>Step 2: Open file and look for:
+<pre>
+<<<<<<< HEAD
+=======
+>>>>>>> branch_name
+</pre></li>
+
+<li>Step 3: Manually edit correct code.</li>
+
+<li>Step 4: Add resolved file.
+<pre>git add file_name</pre></li>
+
+<li>Step 5: Commit changes.
+<pre>git commit</pre></li>
+</ul>
+
+<p>
+Always understand both changes before resolving conflict.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>5) Script Working Locally but Not in Production</h2>
+
+<p>
+This is very common DevOps issue.
+</p>
+
+<h3>Step-by-Step Troubleshooting</h3>
+
+<ul>
+<li>Step 1: Check Python version.
+<pre>python --version</pre></li>
+
+<li>Step 2: Check installed packages.
+<pre>pip list</pre></li>
+
+<li>Step 3: Check environment variables.</li>
+
+<li>Step 4: Check file permissions.</li>
+
+<li>Step 5: Check logs.</li>
+
+<li>Step 6: Compare configuration files.</li>
+</ul>
+
+<p>
+Common reasons:
+- Different Python version
+- Missing dependency
+- Wrong environment variable
+- Permission issue
+- Path issue
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>How to Explain Your Thinking in Interview</h2>
+
+<p>
+Always follow this structure:
+</p>
+
+<ul>
+<li>1) First identify the problem clearly.</li>
+<li>2) Check logs.</li>
+<li>3) Check system resources.</li>
+<li>4) Verify configuration.</li>
+<li>5) Isolate root cause.</li>
+<li>6) Apply fix.</li>
+<li>7) Monitor after fix.</li>
+</ul>
+
+<p>
+Interviewers want to see:
+- Calm approach
+- Logical thinking
+- Step-by-step troubleshooting
+- Not guessing randomly
+</p>
+
+</div>
+<div>
+
+<h2>1) What is Branching Strategy?</h2>
+
+<p>
+Branching strategy means how a team manages branches in Git to organize development work.
+It helps teams work without breaking production code.
+</p>
+
+<h3>Common Branching Strategies:</h3>
+
+<ul>
+<li><b>Main / Master:</b> Production-ready code.</li>
+<li><b>Develop:</b> Integration branch for new features.</li>
+<li><b>Feature Branch:</b> Created for new features.</li>
+<li><b>Release Branch:</b> For preparing release.</li>
+<li><b>Hotfix Branch:</b> For urgent production fixes.</li>
+</ul>
+
+<p>
+Example:
+- Create feature branch from develop
+- Complete work
+- Merge back to develop
+- Finally merge to main
+</p>
+
+<p>
+Popular strategies:
+- Git Flow
+- GitHub Flow
+- Trunk-Based Development
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>2) Rebase vs Merge</h2>
+
+<h3>Merge:</h3>
+
+<p>
+Merge combines two branches and creates a new merge commit.
+It keeps full history.
+</p>
+
+<pre>
+git merge branch_name
+</pre>
+
+<p>
+Result: Extra merge commit is created.
+</p>
+
+<h3>Rebase:</h3>
+
+<p>
+Rebase moves your branch on top of another branch.
+It creates cleaner history.
+</p>
+
+<pre>
+git rebase branch_name
+</pre>
+
+<p>
+Key Difference:
+- Merge keeps original history.
+- Rebase rewrites history.
+</p>
+
+<p>
+Interview Tip:
+Use merge for shared branches.
+Use rebase for clean local history.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>3) How to Resolve Conflict?</h2>
+
+<p>
+Conflict happens when two branches change same lines in a file.
+</p>
+
+<h3>Steps:</h3>
+
+<ul>
+<li>Run <pre>git status</pre></li>
+<li>Open conflicted file</li>
+<li>Look for markers:
+<pre>
+<<<<<<< HEAD
+=======
+>>>>>>> branch_name
+</pre></li>
+<li>Edit manually and choose correct code</li>
+<li>Save file</li>
+<li>Add file:
+<pre>git add file_name</pre></li>
+<li>Commit:
+<pre>git commit</pre></li>
+</ul>
+
+<p>
+Always understand both changes before resolving.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>4) Explain Pull Request Workflow</h2>
+
+<p>
+Pull Request (PR) is used to request merging your code into main branch.
+It allows code review before merging.
+</p>
+
+<h3>Workflow:</h3>
+
+<ol>
+<li>Create feature branch</li>
+<li>Write code</li>
+<li>Commit changes</li>
+<li>Push branch to GitHub</li>
+<li>Create Pull Request</li>
+<li>Team reviews code</li>
+<li>Fix comments if needed</li>
+<li>Merge after approval</li>
+</ol>
+
+<p>
+Benefits:
+- Code review
+- Collaboration
+- Quality improvement
+- CI checks before merge
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>5) What is HEAD?</h2>
+
+<p>
+HEAD is a pointer to the current branch or current commit.
+It tells Git where you are working.
+</p>
+
+<p>
+Example:
+If you are on main branch,
+HEAD → main → latest commit
+</p>
+
+<p>
+Detached HEAD:
+If you checkout a specific commit instead of branch.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>6) How to Revert Commit?</h2>
+
+<h3>Option 1: Revert (Safe Method)</h3>
+
+<p>
+Creates a new commit that undoes changes.
+</p>
+
+<pre>
+git revert commit_id
+</pre>
+
+<p>
+Best for shared branch.
+</p>
+
+<h3>Option 2: Reset</h3>
+
+<p>
+Removes commit from history.
+</p>
+
+<pre>
+git reset --soft HEAD~1
+git reset --hard HEAD~1
+</pre>
+
+<ul>
+<li>--soft: Keeps changes</li>
+<li>--hard: Deletes changes completely</li>
+</ul>
+
+<p>
+Interview Tip:
+Use revert for production.
+Use reset only for local branch.
+</p>
+
+</div>
+<div>
+
+<h2>1) What is SLA, SLO, SLI?</h2>
+
+<h3>SLI (Service Level Indicator)</h3>
+<p>
+SLI is a measurement of system performance.
+It shows how well the service is working.
+</p>
+
+<p>
+Example:
+- Response time
+- Error rate
+- Uptime percentage
+</p>
+
+<hr>
+
+<h3>SLO (Service Level Objective)</h3>
+<p>
+SLO is the target value for an SLI.
+It defines the expected reliability level.
+</p>
+
+<p>
+Example:
+System should have 99.9% uptime.
+</p>
+
+<hr>
+
+<h3>SLA (Service Level Agreement)</h3>
+<p>
+SLA is a contract between company and customer.
+It defines service guarantee and penalties if target is not met.
+</p>
+
+<p>
+Example:
+If uptime drops below 99.9%, customer gets compensation.
+</p>
+
+<hr>
+
+<p>
+Simple Difference:
+SLI = What we measure
+SLO = Target value
+SLA = Business agreement
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>2) What is Incident Management?</h2>
+
+<p>
+Incident management is the process of handling production issues.
+Goal is to restore service as quickly as possible.
+</p>
+
+<h3>Steps:</h3>
+
+<ol>
+<li>Detect issue (Monitoring alert)</li>
+<li>Identify root cause</li>
+<li>Fix or mitigate issue</li>
+<li>Communicate to stakeholders</li>
+<li>Postmortem analysis</li>
+</ol>
+
+<p>
+Example:
+Server down → Alert from Prometheus → Restart service → Fix root cause → Document incident.
+</p>
+
+<p>
+In SRE, we focus on reducing future incidents.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>3) How to Improve Reliability?</h2>
+
+<p>
+Reliability means system works properly without failure.
+</p>
+
+<h3>Ways to Improve Reliability:</h3>
+
+<ul>
+<li>Use Auto Scaling</li>
+<li>High Availability (multiple servers)</li>
+<li>Load Balancer</li>
+<li>Monitoring & Alerts</li>
+<li>Backup and Disaster Recovery</li>
+<li>CI/CD with proper testing</li>
+<li>Reduce manual work using automation</li>
+</ul>
+
+<p>
+SRE focuses on:
+- Error budget
+- Reducing downtime
+- Root cause analysis
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>4) What is Blue-Green Deployment?</h2>
+
+<p>
+Blue-Green deployment is a release strategy to reduce downtime.
+</p>
+
+<h3>How it works:</h3>
+
+<ul>
+<li>Blue = Current running version</li>
+<li>Green = New version</li>
+<li>Deploy new version to Green environment</li>
+<li>Test it</li>
+<li>Switch traffic from Blue to Green</li>
+</ul>
+
+<p>
+If problem happens:
+Switch back to Blue.
+</p>
+
+<p>
+Benefits:
+- Zero downtime
+- Easy rollback
+- Safer deployment
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>5) What is Rolling Update?</h2>
+
+<p>
+Rolling update means updating servers one by one.
+</p>
+
+<h3>How it works:</h3>
+
+<ul>
+<li>Stop one old container</li>
+<li>Start one new container</li>
+<li>Repeat until all updated</li>
+</ul>
+
+<p>
+Users will not see downtime because some instances are always running.
+</p>
+
+<p>
+Example:
+In Kubernetes:
+</p>
+
+<pre>
+kubectl rollout restart deployment app-name
+</pre>
+
+<p>
+Difference:
+Blue-Green = Two separate environments.
+Rolling Update = Update gradually inside same environment.
+</p>
+
+</div>
+<div>
+
+<h2>1) What is SLA, SLO, and SLI?</h2>
+
+<h3>SLI (Service Level Indicator)</h3>
+<p>
+SLI is a measurable value that shows how well a system is performing.
+It is a metric used to check service health.
+</p>
+
+<p><b>Examples:</b></p>
+<ul>
+<li>Request success rate</li>
+<li>Response time</li>
+<li>Error percentage</li>
+<li>System uptime</li>
+</ul>
+
+<p>
+Example:
+If out of 1000 requests, 995 are successful,
+Success rate = 99.5% (This is SLI).
+</p>
+
+<hr>
+
+<h3>SLO (Service Level Objective)</h3>
+<p>
+SLO is the target or goal set for an SLI.
+It defines the expected reliability level.
+</p>
+
+<p><b>Example:</b></p>
+<ul>
+<li>System uptime must be 99.9%</li>
+<li>API response time must be less than 200ms</li>
+</ul>
+
+<p>
+If SLI meets SLO, system is healthy.
+</p>
+
+<hr>
+
+<h3>SLA (Service Level Agreement)</h3>
+<p>
+SLA is a formal agreement between service provider and customer.
+It includes service guarantees and penalties if targets are not met.
+</p>
+
+<p><b>Example:</b></p>
+<ul>
+<li>If uptime falls below 99.9%, customer receives compensation.</li>
+</ul>
+
+<p>
+Simple Difference:
+</p>
+
+<ul>
+<li>SLI = What we measure</li>
+<li>SLO = Target we aim for</li>
+<li>SLA = Business contract</li>
+</ul>
+
+</div>
+
+
+
+<div>
+
+<h2>2) What is Incident Management?</h2>
+
+<p>
+Incident management is the process of handling production problems.
+Goal is to restore service quickly and reduce impact.
+</p>
+
+<h3>Steps in Incident Management:</h3>
+
+<ol>
+<li>Detection – Monitoring tool sends alert</li>
+<li>Identification – Find root cause</li>
+<li>Mitigation – Apply temporary fix</li>
+<li>Resolution – Permanent solution</li>
+<li>Postmortem – Document lessons learned</li>
+</ol>
+
+<p>
+Example:
+Application crashes → Alert from monitoring → Restart service → Fix bug → Document issue.
+</p>
+
+<p>
+In SRE, we focus on preventing repeated incidents.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>3) How to Improve Reliability?</h2>
+
+<p>
+Reliability means system works without failure for long time.
+</p>
+
+<h3>Methods to Improve Reliability:</h3>
+
+<ul>
+<li>High Availability (multiple servers)</li>
+<li>Load Balancers</li>
+<li>Auto Scaling</li>
+<li>Monitoring and Alerting</li>
+<li>Health Checks</li>
+<li>Backup & Disaster Recovery</li>
+<li>Reduce manual steps using automation</li>
+<li>Perform regular testing</li>
+</ul>
+
+<p>
+SRE concept: Error Budget
+If uptime target is 99.9%, small downtime is allowed.
+But if error budget is exhausted, stop new feature releases and fix stability.
+</p>
+
+</div>
+
+
+
+<div>
+
+<h2>4) What is Blue-Green Deployment?</h2>
+
+<p>
+Blue-Green deployment is a release strategy to avoid downtime.
+</p>
+
+<h3>How it Works:</h3>
+
+<ul>
+<li>Blue = Current production version</li>
+<li>Green = New version</li>
+<li>Deploy new version to Green environment</li>
+<li>Test Green environment</li>
+<li>Switch traffic from Blue to Green</li>
+</ul>
+
+<p>
+If something fails:
+Switch traffic back to Blue.
+</p>
+
+<h3>Advantages:</h3>
+<ul>
+<li>No downtime</li>
+<li>Easy rollback</li>
+<li>Safer deployment</li>
+</ul>
+
+</div>
+
+
+
+<div>
+
+<h2>5) What is Rolling Update?</h2>
+
+<p>
+Rolling update means updating application gradually without stopping entire service.
+</p>
+
+<h3>How it Works:</h3>
+
+<ul>
+<li>Stop one old instance</li>
+<li>Start one new instance</li>
+<li>Repeat until all instances updated</li>
+</ul>
+
+<p>
+Users do not see downtime because some instances remain active.
+</p>
+
+<p><b>Example in Kubernetes:</b></p>
+
+<pre>
+kubectl set image deployment/app app=app:v2
+</pre>
+
+<p>
+Difference:
+</p>
+
+<ul>
+<li>Blue-Green → Two environments (Blue & Green)</li>
+<li>Rolling Update → Update gradually in same environment</li>
+</ul>
+
+</div>
+
+
+
+<div>
+
+<h2>How to Answer in Interview (Important)</h2>
+
+<p>
+When answering SRE questions:
+</p>
+
+<ul>
+<li>Explain clearly</li>
+<li>Give real example</li>
+<li>Show production experience</li>
+<li>Mention monitoring & automation</li>
+<li>Focus on reliability and stability</li>
+</ul>
+
+<p>
+Interviewers want to see:
+Logical thinking + real-world understanding.
+</p>
+
+</div>
+
 
       <div class="answer">
         <h2>Answer</h2>
@@ -106,8 +1916,6 @@
         </ul>
       </div>
   </div>
-  <div style="font-family: Arial, sans-serif; background:#f4f6f8; padding:20px;">
-
   <div style="max-width:1200px; margin:auto; background:#ffffff; padding:20px;">
 
     <div>

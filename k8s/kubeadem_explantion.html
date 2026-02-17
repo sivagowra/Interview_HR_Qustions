@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kubernetes Kubeadm Setup - Clear Explanation</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#eef4ff;
+    padding:20px;
+    line-height:1.8;
+}
+
+h1{
+    color:#0d47a1;
+}
+
+h2{
+    color:#1a237e;
+    margin-top:25px;
+}
+
+.section{
+    background:white;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:10px;
+    box-shadow:0 0 8px rgba(0,0,0,0.1);
+}
+
+code{
+    background:#f4f4f4;
+    display:block;
+    padding:8px;
+    border-radius:5px;
+    margin-top:8px;
+    font-family:"Courier New", monospace;
+}
+
+ul{
+    margin-top:10px;
+}
+
+.highlight{
+    color:#c62828;
+    font-weight:bold;
+}
+</style>
+
+</head>
+<body>
+
+<h1>Kubernetes Cluster Setup Using kubeadm – Clear Explanation</h1>
+
+<div class="section">
+<h2>What This Script Does (Simple View)</h2>
+<p>
+This script prepares a Linux server to become:
+</p>
+<ul>
+<li>Control Plane (Master Node)</li>
+<li>OR Worker Node</li>
+</ul>
+
+<p>
+It is called <span class="highlight">Common Setup</span> because it runs on both nodes.
+</p>
+
+<p>
+It prepares the system by:
+</p>
+
+<ul>
+<li>Cleaning and updating system</li>
+<li>Fixing memory settings</li>
+<li>Fixing networking settings</li>
+<li>Installing container runtime</li>
+<li>Installing Kubernetes tools</li>
+</ul>
+
+</div>
+
+
+<div class="section">
+<h2>STEP 1: Update System</h2>
+
+<code>sudo yum update -y</code>
+
+<p>
+Updates all installed packages to latest versions.
+</p>
+
+<ul>
+<li>Fixes security issues</li>
+<li>Removes bugs</li>
+<li>Makes system stable</li>
+</ul>
+
+<p>
+Before building Kubernetes cluster, system must be clean and updated.
+</p>
+
+</div>
+
+
+<div class="section">
+<h2>STEP 2: Disable Swap</h2>
+
+<code>sudo swapoff -a</code>
+<code>sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab</code>
+
+<p><strong>What is Swap?</strong><br>
+Swap is extra memory stored on disk.
+</p>
+
+<p><strong>Why disable swap?</strong></p>
+
+<ul>
+<li>Kubernetes needs exact memory control</li>
+<li>If swap is enabled, kubeadm will fail</li>
+<li>Pods may behave unpredictably</li>
+</ul>
+
+<p>
+First command disables swap immediately.<br>
+Second command disables swap permanently.
+</p>
+
+</div>
+
+
+<div class="section">
+<h2>STEP 3: Disable SELinux</h2>
+
+<code>sudo setenforce 0</code>
+<code>sudo sed -i 's/^SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config</code>
+
+<p>
+SELinux is a Linux security module.
+</p>
+
+<p>
+Strict SELinux rules may block:
+</p>
+
+<ul>
+<li>Container networking</li>
+<li>Kubernetes communication</li>
+</ul>
+
+<p>
+So we set it to permissive mode.
+</p>
+
+</div>
+
+
+<div class="section">
+<h2>STEP 4: Load Kernel Module (br_netfilter)</h2>
+
+<code>sudo modprobe br_netfilter</code>
+
+<p>
+This allows Linux to see container network traffic.
+</p>
+
+<p>
+Without this:
+</p>
+
+<ul>
+<li>Pods cannot communicate</li>
+<li>Services may not work</li>
+</ul>
+
+</div>
+
+
+<div class="section">
+<h2>STEP 5: Configure Network Settings</h2>
+
+<code>
+net.bridge.bridge-nf-call-iptables=1<br>
+net.bridge.bridge-nf-call-ip6tables=1<br>
+net.ipv4.ip_forward=1
+</code>
+
+<p>
+This enables:
+</p>
+
+<ul>
+<li>IP forwarding</li>
+<li>Bridge network filtering</li>
+</ul>
+
+<p>
+Pods use IP addresses to communicate.<br>
+Without IP forwarding, pod networking fails.
+</p>
+
+</div>
+
+
+<div class="section">
+<h2>STEP 6: Install containerd</h2>
+
+<code>sudo yum install -y containerd</code>
+
+<p>
+containerd is the container runtime.
+</p>
+
+<p>
+Kubernetes does not run containers directly.<br>
+It uses container runtime like containerd.
+</p>
+
+</div>
+
+
+<div class="section">
+<h2>STEP 7: Configure containerd</h2>
+
+<code>SystemdCgroup = true</code>
+
+<p>
+Kubelet uses systemd to manage resources.
+</p>
+
+<p>
+If containerd uses different cgroup driver:
+</p>
+
+<ul>
+<li>Cluster may fail</li>
+<li>Node may become NotReady</li>
+</ul>
+
+<p>
+So both must match.
+</p>
+
+</div>
+
+
+<div class="section">
+<h2>STEP 8: Install Kubernetes Components</h2>
+
+<code>sudo yum install -y kubelet kubeadm kubectl</code>
+
+<p>
+Each component:
+</p>
+
+<ul>
+<li><strong>kubeadm</strong> → Initializes cluster</li>
+<li><strong>kubelet</strong> → Runs pods on each node</li>
+<li><strong>kubectl</strong> → Command line tool to control cluster</li>
+</ul>
+
+</div>
+
+
+<div class="section">
+<h2>Final Understanding</h2>
+
+<p>
+After this script runs:
+</p>
+
+<ul>
+<li>System is ready for Kubernetes</li>
+<li>Cluster is NOT created yet</li>
+</ul>
+
+<p>
+Next steps:
+</p>
+
+<ul>
+<li>On Master Node → Run <code>kubeadm init</code></li>
+<li>On Worker Node → Run <code>kubeadm join &lt;token&gt;</code></li>
+</ul>
+
+</div>
+
+
+<div class="section">
+<h2>Simple Example</h2>
+
+<ul>
+<li>kubeadm → Setup tool (Principal)</li>
+<li>kubelet → Node manager (Teacher)</li>
+<li>containerd → Runs containers (Classroom)</li>
+<li>kubectl → Control panel (Office)</li>
+</ul>
+
+</div>
+
+
+<div class="section">
+<h2>In One Line</h2>
+
+<p class="highlight">
+This script prepares a Linux machine to safely run a Kubernetes cluster.
+</p>
+
+</div>
+
+
+
+<h1>Kubernetes Master Node Setup (kubeadm init + Networking)</h1>
+
+<div class="section">
+<h2>STEP 1: Initialize Kubernetes Cluster</h2>
+
+<code>sudo kubeadm init --pod-network-cidr=10.244.0.0/16</code>
+
+<p>
+<span class="highlight">What this does:</span>
+This command initializes the Kubernetes Control Plane (Master Node).
+</p>
+
+<p>
+It performs the following internally:
+</p>
+
+<ul>
+<li>Creates Kubernetes control plane components</li>
+<li>Starts API Server</li>
+<li>Starts Scheduler</li>
+<li>Starts Controller Manager</li>
+<li>Generates cluster certificates</li>
+<li>Creates admin configuration file</li>
+<li>Generates worker join token</li>
+</ul>
+
+<p>
+<span class="highlight">Why --pod-network-cidr=10.244.0.0/16?</span>
+</p>
+
+<ul>
+<li>This defines the IP range for Pods</li>
+<li>Required for Flannel network plugin</li>
+<li>Without this, networking will fail</li>
+</ul>
+
+<p>
+After successful execution:
+</p>
+
+<ul>
+<li>Cluster control plane becomes ready</li>
+<li>You receive kubeadm join command for worker nodes</li>
+</ul>
+
+</div>
+
+
+
+<div class="section">
+<h2>STEP 2: Install Flannel (Pod Network)</h2>
+
+<code>kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml</code>
+
+<p>
+<span class="highlight">What is Flannel?</span>
+Flannel is a CNI (Container Network Interface) plugin.
+</p>
+
+<p>
+Kubernetes does NOT provide networking by default.
+You must install a network plugin.
+</p>
+
+<p>
+Flannel provides:
+</p>
+
+<ul>
+<li>Pod-to-Pod communication</li>
+<li>Overlay network between nodes</li>
+<li>IP allocation for Pods</li>
+</ul>
+
+<p>
+Why required?
+</p>
+
+<ul>
+<li>Without Flannel, Pods cannot communicate</li>
+<li>Nodes will show NotReady status</li>
+</ul>
+
+<p>
+After installation:
+</p>
+
+<ul>
+<li>Node status becomes Ready</li>
+<li>Pod networking starts working</li>
+</ul>
+
+</div>
+
+
+
+<div class="section">
+<h2>STEP 3: Install MetalLB (LoadBalancer Support)</h2>
+
+<code>kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.12/config/manifests/metallb-native.yaml</code>
+
+<p>
+<span class="highlight">What is MetalLB?</span>
+MetalLB provides LoadBalancer service support for bare-metal Kubernetes clusters.
+</p>
+
+<p>
+In cloud environments (AWS, Azure, GCP):
+LoadBalancer is provided automatically.
+</p>
+
+<p>
+But in local or on-premise setup:
+LoadBalancer does not work by default.
+</p>
+
+<p>
+MetalLB solves this by:
+</p>
+
+<ul>
+<li>Assigning external IP addresses</li>
+<li>Managing load balancer IP pools</li>
+<li>Allowing Service type LoadBalancer to work</li>
+</ul>
+
+<p>
+After installing MetalLB:
+</p>
+
+<ul>
+<li>You must configure IP address pool</li>
+<li>Then LoadBalancer services will get external IPs</li>
+</ul>
+
+</div>
+
+
+
+<div class="section">
+<h2>Complete Flow Understanding</h2>
+
+<ul>
+<li>kubeadm init → Creates Control Plane</li>
+<li>Flannel → Enables Pod networking</li>
+<li>MetalLB → Enables LoadBalancer support</li>
+</ul>
+
+<p>
+Now your cluster is fully functional.
+</p>
+
+</div>
+
+
+
+<div class="section">
+<h2>What Happens After These Steps?</h2>
+
+<ul>
+<li>Run kubeadm join on worker nodes</li>
+<li>Deploy applications</li>
+<li>Create services</li>
+<li>Expose services using LoadBalancer</li>
+</ul>
+
+</div>
+
+
+
+<div class="section">
+<h2>In Simple Words</h2>
+
+<ul>
+<li>kubeadm init → Builds the brain (Master)</li>
+<li>Flannel → Connects all Pods</li>
+<li>MetalLB → Gives external access</li>
+</ul>
+
+<p class="highlight">
+Now your Kubernetes cluster is fully operational.
+</p>
+
+</div>
+
+
+</body>
+</html>

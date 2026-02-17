@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KOPS Cluster Detailed Step Explanation</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#eef3ff;
+    padding:20px;
+    line-height:1.8;
+}
+
+h1{
+    color:#0d47a1;
+}
+
+h2{
+    color:#1a237e;
+    margin-top:25px;
+}
+
+.section{
+    background:white;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:10px;
+    box-shadow:0 0 8px rgba(0,0,0,0.1);
+}
+
+code{
+    background:#f4f4f4;
+    display:block;
+    padding:8px;
+    border-radius:5px;
+    margin-top:8px;
+    font-family:"Courier New", monospace;
+}
+
+ul{
+    margin-top:10px;
+}
+
+.highlight{
+    color:#c62828;
+    font-weight:bold;
+}
+</style>
+
+</head>
+<body>
+
+<h1>Complete KOPS Kubernetes Cluster Setup – Detailed Explanation</h1>
+
+<div class="section">
+<h2>Step 1: Install AWS CLI</h2>
+
+<p><span class="highlight">Purpose:</span> AWS CLI allows your EC2 instance to communicate with AWS services like EC2, S3, IAM.</p>
+
+<code>curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"</code>
+<p>This downloads the AWS CLI package.</p>
+
+<code>unzip awscliv2.zip</code>
+<p>This extracts the installation files.</p>
+
+<code>sudo ./aws/install</code>
+<p>This installs AWS CLI into your system.</p>
+
+<code>aws --version</code>
+<p>This verifies successful installation.</p>
+
+<p><b>Why Important?</b> Without AWS CLI, KOPS cannot create AWS infrastructure.</p>
+</div>
+
+
+
+<div class="section">
+<h2>Step 2: Install KOPS</h2>
+
+<p><span class="highlight">Purpose:</span> KOPS (Kubernetes Operations) is used to create and manage Kubernetes clusters on AWS.</p>
+
+<code>curl -Lo kops https://github.com/kubernetes/kops/releases/latest/download/kops-linux-amd64</code>
+<p>Downloads the latest KOPS binary.</p>
+
+<code>chmod +x kops</code>
+<p>Makes the file executable.</p>
+
+<code>sudo mv kops /usr/local/bin/kops</code>
+<p>Moves KOPS into system path so you can run it globally.</p>
+
+<code>kops version</code>
+<p>Checks installed version.</p>
+
+<p><b>What KOPS Does Internally:</b></p>
+<ul>
+<li>Creates VPC</li>
+<li>Creates EC2 instances</li>
+<li>Creates IAM roles</li>
+<li>Creates Security Groups</li>
+<li>Configures Kubernetes components</li>
+</ul>
+</div>
+
+
+
+<div class="section">
+<h2>Step 3: Install Kubectl</h2>
+
+<p><span class="highlight">Purpose:</span> Kubectl is the command-line tool to control Kubernetes cluster.</p>
+
+<code>curl -LO https://dl.k8s.io/release/stable.txt</code>
+<p>Downloads latest kubectl version.</p>
+
+<code>chmod +x kubectl</code>
+<p>Make it executable.</p>
+
+<code>sudo mv kubectl /usr/local/bin</code>
+<p>Move it to system path.</p>
+
+<code>kubectl version</code>
+<p>Verify installation.</p>
+
+<p><b>Why Needed?</b> After cluster creation, you use kubectl to:</p>
+<ul>
+<li>Deploy applications</li>
+<li>Check pods</li>
+<li>Check nodes</li>
+<li>Manage services</li>
+</ul>
+</div>
+
+
+
+<div class="section">
+<h2>Step 4: Create S3 Bucket (State Store)</h2>
+
+<p><span class="highlight">Purpose:</span> KOPS stores cluster configuration inside S3 bucket.</p>
+
+<code>aws s3 mb s3://kops.flm.k8s</code>
+<p>This creates a new S3 bucket.</p>
+
+<code>export KOPS_STATE_STORE=s3://kops.flm.k8s</code>
+<p>This tells KOPS where to store cluster configuration.</p>
+
+<p><b>Important:</b> If S3 bucket is deleted, cluster management becomes difficult.</p>
+</div>
+
+
+
+<div class="section">
+<h2>Step 5: Create Cluster Configuration</h2>
+
+<p>This command defines how your cluster should look.</p>
+
+<code>
+kops create cluster \<br>
+--name kops.flm.k8s.local \<br>
+--zones us-east-1a,us-east-1b \<br>
+--master-size t2.medium \<br>
+--master-count 1 \<br>
+--node-size t2.micro \<br>
+--node-count 1 \<br>
+--master-volume-size 8 \<br>
+--node-volume-size 8
+</code>
+
+<p><b>Explanation of Parameters:</b></p>
+<ul>
+<li><b>--name</b>: Cluster name</li>
+<li><b>--zones</b>: AWS availability zones</li>
+<li><b>--master-size</b>: EC2 type for master</li>
+<li><b>--master-count</b>: Number of master nodes</li>
+<li><b>--node-size</b>: Worker node instance type</li>
+<li><b>--node-count</b>: Number of worker nodes</li>
+<li><b>--volume-size</b>: Storage size in GB</li>
+</ul>
+
+<p><b>Important:</b> This step only creates configuration in S3, not AWS resources yet.</p>
+</div>
+
+
+
+<div class="section">
+<h2>Step 6: Create AWS Infrastructure</h2>
+
+<code>kops update cluster --name kops.flm.k8s.local --yes --admin</code>
+
+<p><b>What Happens Now?</b></p>
+<ul>
+<li>EC2 instances are launched</li>
+<li>VPC is created</li>
+<li>Security groups are created</li>
+<li>IAM roles are created</li>
+<li>Kubernetes control plane starts</li>
+</ul>
+
+<p>This is the step where real infrastructure is created.</p>
+</div>
+
+
+
+<div class="section">
+<h2>Step 7: Verify Cluster</h2>
+
+<code>kubectl get nodes</code>
+
+<p>This command checks whether nodes are ready.</p>
+
+<p>If output shows:</p>
+<ul>
+<li>STATUS: Ready → Cluster is working</li>
+<li>STATUS: NotReady → Cluster still initializing</li>
+</ul>
+</div>
+
+
+
+<div class="section">
+<h2>Step 8: Delete Cluster</h2>
+
+<code>kops delete cluster --name kops.flm.k8s.local --yes</code>
+
+<p>This removes:</p>
+<ul>
+<li>EC2 instances</li>
+<li>VPC</li>
+<li>Security groups</li>
+<li>IAM roles</li>
+</ul>
+
+<p>Always delete cluster if not using to avoid AWS billing.</p>
+</div>
+
+
+
+<div class="section">
+<h2>Cluster Restart</h2>
+
+<p>If you deleted cluster and want to recreate:</p>
+
+<code>export KOPS_STATE_STORE=s3://kops.flm.k8s</code>
+
+<p>Then run create cluster and update cluster commands again.</p>
+
+<p>Make sure S3 bucket still exists.</p>
+</div>
+
+
+
+<div class="section">
+<h2>Simple Architecture Understanding</h2>
+
+<ul>
+<li>AWS CLI → Connects EC2 with AWS</li>
+<li>KOPS → Creates Kubernetes infrastructure</li>
+<li>S3 → Stores cluster configuration</li>
+<li>Master Node → Controls the cluster</li>
+<li>Worker Node → Runs applications (pods)</li>
+<li>Kubectl → Manages the cluster</li>
+</ul>
+
+</div>
+
+</body>
+</html>
