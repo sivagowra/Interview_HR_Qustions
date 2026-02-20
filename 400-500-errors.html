@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTTP Error Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f6f9;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        .section {
+            background: #ffffff;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .error-title {
+            font-weight: bold;
+            font-size: 18px;
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+
+        ul {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #ffffff;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #667eea;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .client {
+            color: #e67e22;
+        }
+
+        .server {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>HTTP Error Codes Documentation</h1>
+
+<div class="section">
+    <h2 class="client">Client Errors (4xx)</h2>
+
+    <div class="error-title">400 – Bad Request</div>
+    <p><strong>Meaning:</strong> Server cannot understand the request.</p>
+    <p><strong>Common Causes:</strong></p>
+    <ul>
+        <li>Invalid JSON</li>
+        <li>Missing required fields</li>
+        <li>Wrong request format</li>
+        <li>Incorrect headers</li>
+    </ul>
+    <p><strong>How to Resolve:</strong></p>
+    <ul>
+        <li>Validate form inputs in frontend</li>
+        <li>Send proper Content-Type (application/json)</li>
+        <li>Check API request body format</li>
+        <li>Add backend validation</li>
+    </ul>
+
+    <div class="error-title">401 – Unauthorized</div>
+    <p><strong>Meaning:</strong> Authentication required.</p>
+    <p><strong>Common Causes:</strong></p>
+    <ul>
+        <li>Missing JWT token</li>
+        <li>Expired session</li>
+        <li>Invalid API key</li>
+    </ul>
+    <p><strong>How to Resolve:</strong></p>
+    <ul>
+        <li>Send valid Authorization header</li>
+        <li>Refresh expired token</li>
+        <li>Implement login flow properly</li>
+    </ul>
+
+    <div class="error-title">402 – Payment Required</div>
+    <p><strong>Meaning:</strong> Reserved for payment systems.</p>
+    <p><strong>Common Causes:</strong></p>
+    <ul>
+        <li>Subscription expired</li>
+        <li>Payment failure</li>
+        <li>API usage limit requiring billing</li>
+    </ul>
+    <p><strong>How to Resolve:</strong></p>
+    <ul>
+        <li>Check payment/subscription status</li>
+        <li>Renew plan</li>
+        <li>Handle billing validation in backend</li>
+    </ul>
+
+    <div class="error-title">403 – Forbidden</div>
+    <p><strong>Meaning:</strong> Authenticated but no permission.</p>
+    <p><strong>Common Causes:</strong></p>
+    <ul>
+        <li>Role-based restriction</li>
+        <li>Accessing admin page without role</li>
+        <li>Blocked IP</li>
+    </ul>
+    <p><strong>How to Resolve:</strong></p>
+    <ul>
+        <li>Check user roles (RBAC)</li>
+        <li>Update permission policies</li>
+        <li>Verify backend access control logic</li>
+    </ul>
+
+    <div class="error-title">404 – Not Found</div>
+    <p><strong>Meaning:</strong> Requested resource does not exist.</p>
+    <p><strong>Common Causes:</strong></p>
+    <ul>
+        <li>Wrong URL</li>
+        <li>API endpoint typo</li>
+        <li>Deleted resource</li>
+    </ul>
+    <p><strong>How to Resolve:</strong></p>
+    <ul>
+        <li>Check route path</li>
+        <li>Verify backend routes</li>
+        <li>Handle 404 page properly in frontend</li>
+    </ul>
+
+    <div class="error-title">405 – Method Not Allowed</div>
+    <p><strong>Common Causes:</strong></p>
+    <ul>
+        <li>Using POST instead of GET</li>
+        <li>Backend route only allows specific method</li>
+    </ul>
+    <p><strong>How to Resolve:</strong></p>
+    <ul>
+        <li>Check allowed HTTP methods</li>
+        <li>Update frontend request type</li>
+        <li>Modify backend route configuration</li>
+    </ul>
+
+    <div class="error-title">408 – Request Timeout</div>
+    <p><strong>Common Causes:</strong></p>
+    <ul>
+        <li>Slow network</li>
+        <li>Large payload</li>
+        <li>Server overload</li>
+    </ul>
+    <p><strong>How to Resolve:</strong></p>
+    <ul>
+        <li>Increase timeout configuration</li>
+        <li>Optimize request payload</li>
+        <li>Improve backend performance</li>
+    </ul>
+
+    <div class="error-title">429 – Too Many Requests</div>
+    <p><strong>Common Causes:</strong></p>
+    <ul>
+        <li>Too many API calls</li>
+        <li>Brute force login attempts</li>
+        <li>Rate limiting enabled</li>
+    </ul>
+    <p><strong>How to Resolve:</strong></p>
+    <ul>
+        <li>Implement request throttling</li>
+        <li>Add retry-after delay</li>
+        <li>Increase rate limit (backend config)</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2 class="server">Server Errors (5xx)</h2>
+
+    <div class="error-title">500 – Internal Server Error</div>
+    <ul>
+        <li>Code crash</li>
+        <li>Unhandled exception</li>
+        <li>Database failure</li>
+    </ul>
+    <p><strong>How to Resolve:</strong></p>
+    <ul>
+        <li>Add try-catch blocks</li>
+        <li>Check server logs</li>
+        <li>Validate inputs before processing</li>
+        <li>Debug backend code</li>
+    </ul>
+
+    <div class="error-title">501 – Not Implemented</div>
+    <ul>
+        <li>API feature not developed</li>
+        <li>Method not implemented</li>
+    </ul>
+    <p><strong>How to Resolve:</strong></p>
+    <ul>
+        <li>Implement missing functionality</li>
+        <li>Update API documentation</li>
+        <li>Remove unsupported request</li>
+    </ul>
+
+    <div class="error-title">502 – Bad Gateway</div>
+    <ul>
+        <li>Backend service down</li>
+        <li>Kubernetes pod crash</li>
+        <li>Reverse proxy issue</li>
+    </ul>
+    <p><strong>How to Resolve:</strong></p>
+    <ul>
+        <li>Restart backend service</li>
+        <li>Check container logs</li>
+        <li>Verify load balancer configuration</li>
+    </ul>
+
+    <div class="error-title">503 – Service Unavailable</div>
+    <ul>
+        <li>High traffic</li>
+        <li>Server scaling issue</li>
+        <li>Maintenance mode</li>
+    </ul>
+    <p><strong>How to Resolve:</strong></p>
+    <ul>
+        <li>Enable Auto Scaling</li>
+        <li>Increase server resources</li>
+        <li>Implement load balancing</li>
+    </ul>
+
+    <div class="error-title">504 – Gateway Timeout</div>
+    <ul>
+        <li>Slow database query</li>
+        <li>API taking too long</li>
+        <li>Network delay</li>
+    </ul>
+    <p><strong>How to Resolve:</strong></p>
+    <ul>
+        <li>Optimize queries</li>
+        <li>Increase timeout settings</li>
+        <li>Improve infrastructure performance</li>
+    </ul>
+</div>
+
+</body>
+</html>
