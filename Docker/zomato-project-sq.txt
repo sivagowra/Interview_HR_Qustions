@@ -1,0 +1,89 @@
+pipeline {
+    agent any
+
+    tools {
+        jdk 'jdk17'
+        nodejs 'Node16'
+    }
+
+    environment {
+        SCANNER_HOME = tool 'mysonar'
+        DOCKER_IMAGE = "sivagowra/zomato:v1"
+    }
+
+    stages {
+
+        stage("Checkout Code") {
+            steps {
+                git 'https://github.com/sivagowra/zomatoApp.git'
+            }
+        }
+
+        stage("SonarQube Analysis") {
+            steps {
+                withSonarQubeEnv('mysonar') {
+                    sh """
+                    ${SCANNER_HOME}/bin/sonar-scanner \
+                      -Dsonar.projectKey=zomato \
+                      -Dsonar.projectName=zomato \
+                      -Dsonar.sources=.
+                    """
+                }
+            }
+        }
+
+        // stage("Quality Gate") {
+        //     steps {
+        //         script {
+        //             waitForQualityGate abortPipeline: true
+        //         }
+        //     }
+        // }
+
+        stage("Install Dependencies") {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage("Build Application") {
+            steps {
+                sh 'npm run build || echo "No build step found"'
+            }
+        }
+
+        stage("Build Docker Image") {
+            steps {
+                sh 'docker build -t ${DOCKER_IMAGE} .'
+            }
+        }
+
+        stage("Push to DockerHub") {
+            steps {
+                script {
+                    withDockerRegistry([credentialsId: 'docker-hub-passwd', url: '']) {
+                        sh 'docker push ${DOCKER_IMAGE}'
+                    }
+                }
+            }
+        }
+
+        stage("Deploy Container") {
+            steps {
+                sh '''
+                docker rm -f cont-1 || true
+                docker run -d --name cont-1 -p 1234:3000 sivagowra/zomato:v1
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Pipeline executed successfully 🚀"
+        }
+        failure {
+            echo "Pipeline failed ❌"
+        }
+    }
+}

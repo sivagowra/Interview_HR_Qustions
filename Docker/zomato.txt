@@ -1,0 +1,61 @@
+pipeline {
+    agent any
+
+    tools {
+        jdk 'jdk17'
+        nodejs 'Node16'
+    }
+
+    environment {
+        SCANNER_HOME = tool 'mysonar'
+        DOCKER_IMAGE = "sivagowra/zomato:v1"
+    }
+
+    stages {
+
+        stage("Clean") {
+            steps {
+                cleanWs()
+            }
+        }
+
+        stage("Code") {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/devops0014/Zomato-Repo.git'
+            }
+        }
+
+        stage("Install dependencies") {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage("Build Docker Image") {
+            steps {
+                sh 'docker build -t image1 .'
+            }
+        }
+
+        stage("Push to DockerHub") {
+            steps {
+                script {
+                    withDockerRegistry([credentialsId: 'docker-hub-passwd', url: '']) {
+                        sh 'docker tag image1 sivagowra/zomato:v1'
+                        sh 'docker push sivagowra/zomato:v1'
+                    }
+                }
+            }
+        }
+
+        stage("Deployment") {
+            steps {
+                sh '''
+                docker rm -f cont-1 || true
+                docker run -d --name cont-1 -p 1234:3000 sivagowra/zomato:v1
+                '''
+            }
+        }
+    }
+}
