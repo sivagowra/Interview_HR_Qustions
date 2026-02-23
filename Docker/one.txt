@@ -1,0 +1,65 @@
+pipeline {
+    agent any
+
+    tools {
+        jdk 'jdk17'
+        maven 'maven3'
+    }
+
+    environment {
+        SCANNER_HOME = tool 'mysonar'
+    }
+
+    stages {
+
+        stage('Checkout Code') {
+            steps {
+                git branch: 'master',
+                    url: 'https://github.com/sivagowra/one.git'
+            }
+        }
+
+        stage('Maven Build') {
+            steps {
+                sh 'mvn clean install -DskipTests'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('mysonar') {
+                    sh """
+                        ${SCANNER_HOME}/bin/sonar-scanner \
+                        -Dsonar.projectKey=local-java \
+                        -Dsonar.projectName=local-java \
+                        -Dsonar.sources=. \
+                        -Dsonar.java.binaries=target
+                    """
+                }
+            }
+        }
+
+        // stage('Quality Gate') {
+        //     steps {
+        //         script {
+        //             waitForQualityGate abortPipeline: true
+        //         }
+        //     }
+        // }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t local-java:latest .'
+            }
+        }
+
+        stage('Deploy Container') {
+            steps {
+                sh '''
+                    docker rm -f local-java1 || true
+                    docker run -d --name local-java1 -p 9999:8080 local-java:latest
+                '''
+            }
+        }
+    }
+}

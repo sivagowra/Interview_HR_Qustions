@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CloudWatch Agent Setup Guide</title>
+<style>
+  body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; background-color: #f9f9f9; color: #0b1726; }
+  h1 { color: #1a73e8; }
+  h2 { color: #0b1726; margin-top: 30px; }
+  pre { background: #e8e8e8; padding: 10px; border-radius: 5px; overflow-x: auto; }
+  .step { margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<h1>Amazon CloudWatch Agent Setup Guide (EC2 + Docker)</h1>
+
+<div class="step">
+  <h2>Step 1: Install CloudWatch Agent</h2>
+  <pre>
+# Download and install the agent
+wget https://s3.amazonaws.com/amazoncloudwatch-agent/amazon_linux/amd64/latest/amazon-cloudwatch-agent.rpm
+sudo rpm -U ./amazon-cloudwatch-agent.rpm
+  </pre>
+</div>
+
+<div class="step">
+  <h2>Step 2: Start CloudWatch Agent Configuration Wizard</h2>
+  <pre>
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
+  </pre>
+</div>
+
+<div class="step">
+  <h2>Step 3: Wizard Options</h2>
+  <ol>
+    <li><strong>Operating System:</strong> Linux (default 1)</li>
+    <li><strong>EC2 or On-Premises:</strong> EC2 (default 1)</li>
+    <li><strong>User to run agent:</strong> cwagent (default 1)</li>
+    <li><strong>StatsD daemon:</strong> No (default 2)</li>
+    <li><strong>CollectD metrics:</strong> No (default 2)</li>
+    <li><strong>Host metrics:</strong> Yes (default 1)</li>
+    <li><strong>Per CPU core metrics:</strong> No (default 2)</li>
+    <li><strong>EC2 dimensions:</strong> Yes (default 1)</li>
+    <li><strong>High resolution metrics:</strong> 60s (default 4)</li>
+    <li><strong>Default metrics config:</strong> Standard (default 2)</li>
+  </ol>
+</div>
+
+<div class="step">
+  <h2>Step 4: Configure Logs</h2>
+  <ol>
+    <li>Do you want to monitor log files? → Yes (1)</li>
+    <li><strong>System log:</strong>
+      <pre>
+Log file path: /var/log/messages
+Log group name: messages
+Log group class: STANDARD (1)
+Log stream name: {instance_id} (default)
+Retention: 7 days (choice 5)
+      </pre>
+    </li>
+    <li>Do you want additional logs? → Yes (1)</li>
+    <li><strong>Docker container logs:</strong>
+      <pre>
+Log file path: /var/lib/docker/containers/*/*.log
+Log group name: docker-logs
+Log group class: STANDARD (1)
+Log stream name: {instance_id} (default)
+Retention: 7 days (choice 5)
+      </pre>
+    </li>
+    <li>Do you want more logs? → No (2)</li>
+  </ol>
+</div>
+
+<div class="step">
+  <h2>Step 5: X-Ray Traces</h2>
+  <pre>
+Do you want CloudWatch agent to retrieve X-Ray traces? → No (2)
+  </pre>
+</div>
+
+<div class="step">
+  <h2>Step 6: Store Configuration in SSM Parameter Store</h2>
+  <pre>
+Do you want to store config in SSM Parameter Store? → Yes (1)
+Parameter name: AmazonCloudWatch-linux (default)
+Region: your EC2 region (e.g., ap-south-1)
+Credential: Use EC2 instance role / SDK (default 1)
+  </pre>
+</div>
+
+<div class="step">
+  <h2>Step 7: Start CloudWatch Agent</h2>
+  <pre>
+sudo systemctl start amazon-cloudwatch-agent
+sudo systemctl enable amazon-cloudwatch-agent
+sudo systemctl status amazon-cloudwatch-agent
+  </pre>
+</div>
+
+<div class="step">
+  <h2>Step 8: Verify in AWS Console</h2>
+  <ul>
+    <li><strong>Metrics:</strong> CloudWatch → Metrics → CWAgent</li>
+    <li><strong>Logs:</strong> CloudWatch → Log groups → messages, docker-logs</li>
+  </ul>
+</div>
+
+</body>
+</html>

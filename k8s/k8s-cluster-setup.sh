@@ -63,3 +63,6 @@ echo ""
 echo "👉 Run MASTER steps only on Control Plane node"
 echo "👉 Run WORKER join command on Worker nodes"
 
+
+nodeport access command
+kubectl port-forward --address 0.0.0.0 svc/my-wordpress 8080:80
