@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven3'
+        
+    }
+
+    stages {
+
+        stage('Checkout Code') {
+            steps {
+                git branch: 'master',
+                    url: 'https://github.com/sivagowra/dockerwebapp.git'
+            }
+        }
+         stage('Build Maven') {
+            steps {
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+
+        stage('Copy WAR to Docker-app') {
+            steps {
+                // Ensure Docker-app folder exists
+                sh 'mkdir -p Docker-app'
+
+                // Copy WAR from target to Docker-app
+                sh 'cp target/*.war Docker-app/'
+            }
+        }
+
+        stage('Run Docker Compose') {
+            steps {
+                // Change directory if docker-compose.yml is in a subfolder
+                dir('dockerwebapp') {
+                    // Stop any running containers from previous builds
+                    sh 'docker-compose down'
+
+                    // Build and start containers
+                    sh 'docker-compose up --build -d'
+                }
+            }
+        }
+    }
+}
