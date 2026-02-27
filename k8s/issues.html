@@ -1,0 +1,99 @@
+<div>
+
+<h2>CrashLoopBackOff</h2>
+<p>
+CrashLoopBackOff is a Kubernetes pod condition that indicates a container is repeatedly crashing after startup and Kubernetes is continuously attempting to restart it with an increasing delay between retries. This situation typically occurs when the application inside the container fails immediately after launching due to configuration errors, missing dependencies, incorrect environment variables, invalid startup commands, or runtime exceptions. Kubernetes applies an exponential backoff strategy to prevent excessive restart attempts that could overload the node. The longer the container keeps failing, the longer Kubernetes waits before restarting it again.
+</p>
+<p>
+Common causes include incorrect database connection strings, unavailable external services, missing ConfigMaps or Secrets, or misconfigured liveness probes that incorrectly mark the container as unhealthy. Troubleshooting involves checking logs using kubectl logs, inspecting events with kubectl describe pod, and verifying configuration settings. Reviewing resource limits is also important because insufficient memory or CPU allocation can indirectly cause application crashes. Best practices to prevent CrashLoopBackOff include validating configurations before deployment, implementing proper error handling in application code, defining correct readiness and liveness probes, and using staging environments for pre-production testing. Monitoring tools can detect early warning signs before repeated failures occur.
+</p>
+
+<h2>ImagePullBackOff</h2>
+<p>
+ImagePullBackOff occurs when Kubernetes fails to pull a container image from a container registry. When a pod is created, the container runtime attempts to download the specified image. If the image name is incorrect, the tag does not exist, the registry is private without proper authentication, or there are network connectivity issues, the image pull operation fails. Kubernetes retries several times and eventually marks the pod status as ImagePullBackOff, applying a delay between attempts.
+</p>
+<p>
+The most frequent reasons include typographical errors in image names, using a non-existent tag, expired registry credentials, or missing imagePullSecrets for private repositories. In cloud environments, improper IAM role configuration may block registry access. Troubleshooting steps include describing the pod to view detailed error messages, manually testing image pulls, and verifying authentication settings. Preventive measures involve using versioned image tags, automating CI/CD pipelines to confirm image availability before deployment, and securely managing registry credentials. Ensuring proper network configuration and monitoring registry health also helps minimize this issue.
+</p>
+
+<h2>OOMKilled</h2>
+<p>
+OOMKilled stands for Out Of Memory Killed and indicates that a container exceeded its memory limit defined in Kubernetes. Unlike CPU limits, which throttle usage, memory limits are strictly enforced. When a container surpasses its memory allocation, the Linux kernel terminates the process to protect node stability. This termination can cause repeated restarts if the underlying memory issue is not resolved.
+</p>
+<p>
+Typical causes include memory leaks, large in-memory data processing, traffic spikes, or insufficient memory limits in the pod configuration. Monitoring memory usage with tools like Prometheus and adjusting resource limits appropriately can prevent unexpected failures. Optimizing application memory usage, configuring garbage collection settings, and performing load testing are essential preventive strategies. Proper resource planning ensures containers run reliably without unexpected OOMKilled events.
+</p>
+
+<h2>502 / 503 Errors</h2>
+<p>
+HTTP 502 and 503 errors indicate backend service communication issues. A 502 Bad Gateway error occurs when a reverse proxy or load balancer receives an invalid response from an upstream server. A 503 Service Unavailable error indicates that the service is temporarily unable to handle the request, often due to overload, maintenance, or application crashes.
+</p>
+<p>
+Common causes include pod failures, incorrect service routing, misconfigured ingress controllers, or high traffic exceeding system capacity. Troubleshooting involves checking application logs, verifying service endpoints, monitoring resource utilization, and confirming load balancer configurations. Scaling applications horizontally, implementing health checks, and configuring auto-scaling policies help prevent these errors.
+</p>
+
+<h2>DNS Failures</h2>
+<p>
+DNS failures in Kubernetes typically occur when services cannot resolve internal or external domain names. Kubernetes relies on CoreDNS for service discovery. If CoreDNS pods are down, misconfigured, or blocked by network policies, DNS resolution will fail.
+</p>
+<p>
+Symptoms include application errors stating host not found or temporary failure in name resolution. Troubleshooting includes verifying CoreDNS pod health, checking service names, ensuring correct namespace usage, and validating network connectivity. Implementing proper cluster networking and monitoring DNS performance improves reliability.
+</p>
+
+<h2>DB Timeouts</h2>
+<p>
+Database timeouts occur when an application cannot establish or maintain a connection to a database within the configured time limit. Causes include network latency, incorrect credentials, exhausted connection pools, database overload, or firewall restrictions.
+</p>
+<p>
+Troubleshooting involves reviewing application logs, checking database performance metrics, validating connection pool configurations, and ensuring proper network routing. Scaling the database, optimizing queries, and implementing retry mechanisms improve resilience against timeouts.
+</p>
+
+<h2>SSL Expired</h2>
+<p>
+SSL expired errors happen when a TLS certificate reaches its expiration date without renewal. This prevents secure HTTPS connections and can cause browsers or APIs to reject requests due to security risks.
+</p>
+<p>
+Regular certificate monitoring, automated renewal using tools like cert-manager, and maintaining proper certificate lifecycle management prevent service disruption. Keeping track of expiration dates and enabling alerts ensures uninterrupted secure communication.
+</p>
+
+<h2>IAM Permission Denied</h2>
+<p>
+IAM permission denied errors occur when a user, service account, or application attempts to access a cloud resource without sufficient privileges. Cloud providers enforce strict role-based access control policies.
+</p>
+<p>
+The issue is resolved by reviewing IAM policies, attaching appropriate roles, and following the principle of least privilege. Logging and audit trails help identify missing permissions and prevent unauthorized access.
+</p>
+
+<h2>Terraform State Lock</h2>
+<p>
+Terraform state lock occurs when multiple users or automation pipelines attempt to modify infrastructure simultaneously. Terraform locks the state file to prevent corruption during execution.
+</p>
+<p>
+Using remote backends like S3 with DynamoDB locking ensures safe concurrent operations. If a lock remains due to interrupted execution, it may need manual removal. Proper collaboration practices reduce conflicts.
+</p>
+
+<h2>Disk Pressure</h2>
+<p>
+Disk pressure in Kubernetes happens when node storage usage exceeds defined thresholds. When disk space runs low, Kubernetes may evict pods to maintain node health.
+</p>
+<p>
+Cleaning unused images, managing log rotation, and increasing storage capacity prevent disk pressure. Monitoring node storage metrics helps detect issues early.
+</p>
+
+<h2>Pods Stuck in Pending</h2>
+<p>
+Pods remain in Pending state when Kubernetes cannot schedule them onto a node. Causes include insufficient CPU or memory, node affinity mismatches, taints without tolerations, or unbound PersistentVolumeClaims.
+</p>
+<p>
+Checking cluster resource availability, validating scheduling rules, and ensuring storage provisioning resolves this issue. Auto-scaling clusters help avoid resource shortages.
+</p>
+
+<h2>Broken Rolling Updates</h2>
+<p>
+Broken rolling updates occur when new application versions fail during deployment, causing partial rollouts or downtime. Misconfigured readiness probes, incompatible changes, or insufficient resources often cause failures.
+</p>
+<p>
+Implementing proper health checks, gradual deployment strategies, and rollback mechanisms ensures safe updates. Testing deployments in staging environments reduces production risk and maintains application stability.
+</p>
+
+</div>
