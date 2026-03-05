@@ -1,3 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AWS vs Azure – Detailed Theory Guide</title>
+</head>
+<body>
+
+    <h1>AWS vs Azure – Detailed Concepts with Theory</h1>
+
+    <h2>1️⃣ Cloud Computing Overview</h2>
+    <p>
+        Cloud computing is the delivery of computing services such as servers, storage, 
+        databases, networking, software, and analytics over the internet. Instead of 
+        owning physical hardware, businesses rent resources on demand and pay only 
+        for what they use.
+    </p>
+
+    <hr>
+
+    <h2>2️⃣ Compute Services (Virtual Machines)</h2>
+
+    <h3>Theory</h3>
+    <p>
+        Compute services allow you to run applications on virtual servers in the cloud.
+        A Virtual Machine (VM) is a software-based computer that runs an operating system
+        and applications just like a physical machine.
+    </p>
+    <p>
+        These services are used to host websites, backend APIs, enterprise applications,
+        and development environments.
+    </p>
+
+    <h3>AWS</h3>
+    <ul>
+        <li>EC2 – Elastic Compute Cloud</li>
+        <li>Auto Scaling – Automatically adjusts server count</li>
+        <li>Elastic Beanstalk – Platform for deploying apps easily</li>
+        <li>Lambda – Serverless computing</li>
+    </ul>
+
+    <h3>Azure</h3>
+    <ul>
+        <li>Azure Virtual Machines</li>
+        <li>VM Scale Sets</li>
+        <li>Azure App Services</li>
+        <li>Azure Functions</li>
+    </ul>
+
+    <hr>
+
+    <h2>3️⃣ Storage Services</h2>
+
+    <h3>Theory</h3>
+    <p>
+        Storage services store data such as images, videos, backups, databases, and logs.
+        Cloud storage is scalable, durable, and accessible from anywhere.
+    </p>
+    <p>
+        There are three main types:
+    </p>
+    <ul>
+        <li><strong>Object Storage</strong> – Stores files (images, backups).</li>
+        <li><strong>Block Storage</strong> – Used for VM disks.</li>
+        <li><strong>File Storage</strong> – Shared file systems.</li>
+    </ul>
+
+    <h3>AWS</h3>
+    <ul>
+        <li>S3 – Object storage</li>
+        <li>EBS – Block storage</li>
+        <li>EFS – File storage</li>
+    </ul>
+
+    <h3>Azure</h3>
+    <ul>
+        <li>Blob Storage – Object storage</li>
+        <li>Disk Storage – Block storage</li>
+        <li>Azure File Storage – File storage</li>
+    </ul>
+
+    <hr>
+
+    <h2>4️⃣ Database Services</h2>
+
+    <h3>Theory</h3>
+    <p>
+        Database services allow applications to store and retrieve structured or 
+        unstructured data. Managed database services reduce operational overhead
+        like backups, patching, and scaling.
+    </p>
+
+    <p>
+        There are two major types:
+    </p>
+    <ul>
+        <li><strong>Relational Databases (SQL)</strong> – Structured data with tables.</li>
+        <li><strong>NoSQL Databases</strong> – Flexible schema, high scalability.</li>
+    </ul>
+
+    <h3>AWS</h3>
+    <ul>
+        <li>RDS – Managed SQL database</li>
+        <li>Aurora – High-performance relational DB</li>
+        <li>DynamoDB – NoSQL database</li>
+    </ul>
+
+    <h3>Azure</h3>
+    <ul>
+        <li>Azure SQL Database</li>
+        <li>Azure Database for MySQL/PostgreSQL</li>
+        <li>Cosmos DB – NoSQL database</li>
+    </ul>
+
+    <hr>
+
+    <h2>5️⃣ Kubernetes Services</h2>
+
+    <h3>Theory</h3>
+    <p>
+        Kubernetes is a container orchestration platform used to deploy, scale,
+        and manage containerized applications automatically.
+    </p>
+    <p>
+        Managed Kubernetes services remove complexity by handling cluster setup,
+        upgrades, and maintenance.
+    </p>
+
+    <h3>AWS</h3>
+    <ul>
+        <li>EKS – Elastic Kubernetes Service</li>
+    </ul>
+
+    <h3>Azure</h3>
+    <ul>
+        <li>AKS – Azure Kubernetes Service</li>
+    </ul>
+
+    <hr>
+
+    <h2>6️⃣ Serverless Computing</h2>
+
+    <h3>Theory</h3>
+    <p>
+        Serverless computing allows developers to run code without managing servers.
+        The cloud provider automatically handles scaling and infrastructure.
+    </p>
+    <p>
+        It is commonly used for APIs, background jobs, automation, and event-driven systems.
+    </p>
+
+    <h3>AWS</h3>
+    <ul>
+        <li>Lambda</li>
+    </ul>
+
+    <h3>Azure</h3>
+    <ul>
+        <li>Azure Functions</li>
+    </ul>
+
+    <hr>
+
+    <h2>7️⃣ Networking & Load Balancing</h2>
+
+    <h3>Theory</h3>
+    <p>
+        Networking services connect cloud resources securely. Load balancers distribute
+        traffic across multiple servers to improve availability and performance.
+    </p>
+
+    <h3>AWS</h3>
+    <ul>
+        <li>VPC – Virtual Private Cloud</li>
+        <li>ELB – Elastic Load Balancer</li>
+        <li>CloudFront – CDN</li>
+    </ul>
+
+    <h3>Azure</h3>
+    <ul>
+        <li>Virtual Network (VNet)</li>
+        <li>Azure Load Balancer</li>
+        <li>Azure CDN</li>
+    </ul>
+
+    <hr>
+
+    <h2>8️⃣ Security & Identity Management</h2>
+
+    <h3>Theory</h3>
+    <p>
+        Identity and Access Management (IAM) controls who can access cloud resources
+        and what actions they can perform. It is critical for security.
+    </p>
+
+    <h3>AWS</h3>
+    <ul>
+        <li>IAM</li>
+        <li>Cognito</li>
+    </ul>
+
+    <h3>Azure</h3>
+    <ul>
+        <li>Azure Active Directory</li>
+        <li>Role-Based Access Control (RBAC)</li>
+    </ul>
+
+    <hr>
+
+    <h2>9️⃣ Monitoring & Logging</h2>
+
+    <h3>Theory</h3>
+    <p>
+        Monitoring services track application performance, server health, 
+        and system logs. They help detect issues and improve reliability.
+    </p>
+
+    <h3>AWS</h3>
+    <ul>
+        <li>CloudWatch</li>
+        <li>CloudTrail</li>
+    </ul>
+
+    <h3>Azure</h3>
+    <ul>
+        <li>Azure Monitor</li>
+        <li>Log Analytics</li>
+    </ul>
+
+    <hr>
+
+    <h2>Conclusion</h2>
+    <p>
+        AWS and Azure provide similar services with different names. 
+        The core cloud concepts remain the same: Compute, Storage, Database,
+        Networking, Security, and Monitoring.
+    </p>
 <div>
 
 <h2>CrashLoopBackOff</h2>
@@ -97,3 +334,5 @@ Implementing proper health checks, gradual deployment strategies, and rollback m
 </p>
 
 </div>
+</body>
+</html>
