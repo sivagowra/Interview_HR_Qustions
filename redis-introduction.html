@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Redis Introduction</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:40px;
+    line-height:1.6;
+    background:#f8f9fb;
+    color:#222;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    background:white;
+    padding:10px;
+    border-radius:8px;
+    box-shadow:0 0 10px rgba(0,0,0,0.08);
+}
+
+h1{
+    text-align:center;
+}
+
+h2{
+    margin-top:35px;
+    border-bottom:2px solid #eee;
+    padding-bottom:5px;
+}
+
+img{
+    width:100%;
+    margin:20px 0;
+}
+
+code{
+    background:#f4f4f4;
+    padding:2px 5px;
+    border-radius:4px;
+}
+
+pre{
+    background:#272822;
+    color:#f8f8f2;
+    padding:15px;
+    border-radius:6px;
+    overflow:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table th, table td{
+    border:1px solid #ccc;
+    padding:10px;
+    text-align:left;
+}
+
+table th{
+    background:#f0f0f0;
+}
+
+.note{
+    background:#fff8dc;
+    padding:12px;
+    border-left:5px solid #f0ad4e;
+    margin-top:15px;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+<img src="redis-working.png" alt="Working of Redis server">
+
+<p>
+Redis (Remote Dictionary Server) is a fast database used for in-memory caching to reduce server load by reducing disk and/or network read and write operations.
+</p>
+
+<h2>Uses of Redis</h2>
+
+<ul>
+<li>Caching frequently accessed data to improve access time.</li>
+<li>Session storage for web applications.</li>
+<li>Real-time analytics and leader boards.</li>
+<li>Managing queues or task lists in background job systems.</li>
+</ul>
+
+
+<h2>How Redis Work?</h2>
+
+<p>
+Redis acts as a caching layer between the database and the client to speed up data access and reduce the load on the main database. 
+When a client asks for data, the API Gateway forwards the request to Redis.
+</p>
+
+<p>
+If Redis has the data (<strong>cache hit</strong>), it returns it quickly through the API Gateway to the client. 
+If the data is missing (<strong>cache miss</strong>), Redis retrieves it from the database, stores it in the cache for future requests, and then passes it back through the API Gateway to the client. 
+This flow speeds up response times and reduces the database load.
+</p>
+
+<p>
+If Redis has the data (cache hit), it returns it quickly through the API Gateway to the client. 
+If the data is missing (cache miss), Redis retrieves it from the database, stores it in the cache for future requests, and then passes it back through the API Gateway to the client. 
+This flow speeds up response times and reduces the database load.
+</p>
+
+<p>
+Before starting to learn Redis we need to install Redis on our system.
+</p>
+
+<p>
+Now let's understand this with the help of example:
+</p>
+
+
+<h2>Python Example</h2>
+
+<pre>
+import redis
+r = redis.Redis(host='localhost', port=6379, db=0)
+
+r.set('name', 'Alia')
+print(r.get('name').decode('utf-8'))  
+
+r.set('name', 'Riya')
+print(r.get('name').decode('utf-8')) 
+
+r.delete('name')
+print(r.get('name'))  
+</pre>
+
+<h3>Output</h3>
+
+<pre>
+code-1
+</pre>
+
+
+<h2>Understand the Above Example</h2>
+
+<p><strong>import redis</strong></p>
+
+<p>
+This line imports the redis Python library, which allows you to talk to a Redis server from your Python code.
+</p>
+
+
+<p><strong>r = redis.Redis(host='localhost', port=6379, db=0)</strong></p>
+
+<p>Here, you are creating a Redis connection:</p>
+
+<ul>
+<li><code>host='localhost'</code>: connects to Redis running on your own computer</li>
+<li><code>port=6379</code>: the default port Redis listens on</li>
+<li><code>db=0</code>: Redis supports multiple logical databases numbered from 0, and you’re using database 0</li>
+</ul>
+
+<p>
+So this <strong>"r"</strong> variable is now your handle to talk to Redis.
+</p>
+
+
+<p><strong>r.set('name', 'Alia')</strong></p>
+
+<p>
+This line stores the key <code>name</code> with the value <code>Alia</code> in Redis.
+</p>
+
+
+<p><strong>print(r.get('name').decode('utf-8'))</strong></p>
+
+<p>
+This retrieves the value stored under the key <code>name</code> (which is Alia) from Redis.
+</p>
+
+<ul>
+<li><code>r.get('name')</code> returns the value in bytes format, e.g. <code>b'Alia'</code></li>
+<li><code>.decode('utf-8')</code> converts those bytes to a normal string, so it prints <strong>Alia</strong>.</li>
+</ul>
+
+
+<div class="note">
+<strong>Note:</strong> In this example, Redis is integrated with Python but Redis can also be implemented in other programming languages like Java, JavaScript (Node.js), Go, Ruby, C# (.NET), PHP, and many more, using their respective Redis client libraries.
+</div>
+
+
+
+<h2>When to Use Redis Server?</h2>
+
+<p>
+Consider you have a MySQL database and you are constantly querying the database which reads the data from the secondary storage, computes the result, and returns the result.
+</p>
+
+<p>
+If the data in the database is not changing much you can just store the results of the query in redis-server and then instead of querying the database which is going to take 100-1000 milliseconds, you can just check whether the result of the query is already available in redis or not and return it result which is going to be much faster as it is already available in the memory.
+</p>
+
+<div class="note">
+<strong>Note:</strong> In a messaging app, Redis can be used to store the last five messages that the user has sent and received using the built-list data structure provided in Redis.
+</div>
+
+
+
+<h2>Why Redis is so Fast?</h2>
+
+<p>
+Redis is fast because it keeps all its data in memory instead of on disk, so it doesn’t waste time reading from a hard drive. 
+It also uses just one thread with an event loop to process commands, which avoids the complexity and delays of managing multiple threads.
+</p>
+
+<p>
+On top of that, Redis uses well-optimized data structures and a simple, lightweight communication protocol called RESP to talk over the network. 
+These design choices mean Redis can handle many requests at once, with very little delay, and respond almost instantly.
+</p>
+
+<p>
+Read more here: Why Redis is so fast and popular?
+</p>
+
+
+
+<h2>Difference Between Redis Vs MongoDB</h2>
+
+<table>
+
+<tr>
+<th>MongoDB</th>
+<th>Redis</th>
+</tr>
+
+<tr>
+<td>Document-based NoSQL database</td>
+<td>In-memory key-value store, NoSQL</td>
+</tr>
+
+<tr>
+<td>Stores data as BSON documents (JSON-like)</td>
+<td>Stores data as key-value pairs, strings, sets, lists, hashes, etc.</td>
+</tr>
+
+<tr>
+<td>Disk-based, persistent storage</td>
+<td>Primarily in-memory, but can persist data to disk (RDB, AOF)</td>
+</tr>
+
+<tr>
+<td>Slower compared to in-memory stores like Redis</td>
+<td>Extremely fast due to in-memory storage</td>
+</tr>
+
+<tr>
+<td>Built-in persistence with automatic backups</td>
+<td>Optional persistence with RDB snapshots or AOF logs</td>
+</tr>
+
+<tr>
+<td>Supports complex querying with rich operators like $gt, $lt, $regex, etc.</td>
+<td>Limited querying capabilities (basic key-value operations)</td>
+</tr>
+
+<tr>
+<td>Ideal for large datasets, complex queries, and rich document structures</td>
+<td>Ideal for caching, real-time analytics, messaging, and high-speed applications</td>
+</tr>
+
+<tr>
+<td>More complex to manage and scale due to its rich features</td>
+<td>Simple to use, mainly for high-speed, low-latency use cases</td>
+</tr>
+
+</table>
+
+
+
+<div class="note">
+<strong>Note:</strong> Redis is much faster than MongoDB, especially for tasks that rely on simple, high-throughput operations. The exact margin can vary, but for basic operations, Redis is often 10x to 100x faster than MongoDB.
+
+
+<p>
+Redis is a fast, in-memory data store ideal for caching, real-time analytics, and messaging. 
+It offers high performance, scalability, and optional persistence, making it perfect for microservices and high-speed applications. 
+Redis outperforms MongoDB in speed, especially for low-latency tasks.
+</p>
+</div>
+
+</div>
+
+</body>
+</html>

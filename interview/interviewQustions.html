@@ -40,8 +40,8 @@
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 28px 24px;
+      border-radius: 5px;
+      padding: 10px 10px;
       box-shadow: 0 20px 45px rgba(15,23,42,0.08);
     }
 
@@ -106,7 +106,7 @@
       margin-bottom: 6px;
     }
 
-    pre {
+    /* pre {
       background: var(--code-bg);
       color: #e5e7eb;
       padding: 12px 14px;
@@ -118,7 +118,7 @@
       line-height: 1.7;
       margin: 10px 0 18px;
       box-shadow: 0 10px 25px rgba(15,23,42,0.35);
-    }
+    } */
 
     code {
       font-family: "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -151,6 +151,27 @@
       color: var(--muted);
       font-size: 13px;
     }
+    .golden-ami-container{
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.golden-ami-header{
+    background:#f4f4f4;
+    padding:10px;
+    border-left:5px solid #ff9900;
+}
+
+.golden-ami-container h3{
+    color:#333;
+    margin-top:20px;
+}
+
+.golden-ami-container ul,
+.golden-ami-container ol{
+    margin-left:20px;
+}
   </style>
 </head>
 
@@ -160,9 +181,123 @@
 
       <h1>AWS Interview Question</h1>
 
-      <div class="question">
+      <div>
     
+<div class="golden-ami-container">
 
+    <div class="golden-ami-header">
+        <h2>Golden AMI in AWS</h2>
+    </div>
+
+    <div class="golden-ami-intro">
+        <p>
+            An <strong>Amazon Machine Image (AMI)</strong> is a pre-configured virtual machine image 
+            used to create instances on <strong>Amazon EC2</strong>.
+        </p>
+
+        <p>
+            A <strong>Golden AMI</strong> is a standardized and pre-configured AMI used as a reference 
+            image to launch multiple EC2 instances. It usually contains:
+        </p>
+
+        <ul>
+            <li>Base Operating System</li>
+            <li>Required software packages</li>
+            <li>Security patches</li>
+            <li>Predefined configurations</li>
+        </ul>
+
+        <p>
+            Golden AMIs help organizations maintain consistency and speed when launching 
+            multiple instances, especially in environments using 
+            <strong>Auto Scaling</strong> or <strong>Load Balancing</strong>.
+        </p>
+    </div>
+
+    <div class="golden-ami-diagram">
+        <h3>Golden AMI Architecture</h3>
+        <img src="golden-ami-diagram.png" alt="Golden AMI Architecture Diagram" style="max-width:100%; height:auto;">
+    </div>
+
+    <div class="golden-ami-concept">
+        <h3>Golden Image Concept</h3>
+
+        <p>
+            A <strong>Golden Image</strong> is a snapshot of a system that contains the desired 
+            operating system, applications, and configurations. This image can be replicated 
+            across multiple devices or environments.
+        </p>
+
+        <p>Examples of Golden Images in other domains include:</p>
+
+        <ul>
+            <li><strong>Raspberry Pi:</strong> Raspberry Pi OS ISO used to flash SD cards.</li>
+            <li><strong>Amazon EC2:</strong> AMIs used to launch EC2 instances.</li>
+            <li><strong>Docker:</strong> Docker images used to start containers.</li>
+            <li><strong>Microcontrollers:</strong> Firmware images like HEX, BIN, or S-record files.</li>
+        </ul>
+    </div>
+
+    <div class="golden-device-process">
+        <h3>Extracting a Golden Image from a Golden Device</h3>
+
+        <p>
+            A Golden Image can be created either by composing it manually or by taking a 
+            snapshot of a <strong>Golden Device</strong> that already represents the desired configuration.
+        </p>
+
+        <p>
+            In <strong>AWS IoT Greengrass</strong>, the recommended approach is to create a 
+            snapshot from a Golden Device.
+        </p>
+
+        <p>
+            The process works as follows:
+        </p>
+
+        <ol>
+            <li>Create and configure a Golden Device.</li>
+            <li>Read the file system of the Golden Device.</li>
+            <li>Create a Golden Image from that snapshot.</li>
+            <li>Deploy the image to multiple devices at scale.</li>
+        </ol>
+    </div>
+
+    <div class="create-golden-ami">
+        <h3>Steps to Create a Golden AMI</h3>
+
+        <ol>
+            <li>Launch an EC2 instance using a base AMI.</li>
+            <li>Install required software and dependencies.</li>
+            <li>Apply configurations and security patches.</li>
+            <li>Stop the instance.</li>
+            <li>Create an AMI from the configured instance.</li>
+            <li>Use this AMI to launch new identical EC2 instances.</li>
+        </ol>
+    </div>
+
+    <div class="automation-section">
+        <h3>Automation Using AWS Systems Manager</h3>
+
+        <p>
+            You can automate the Golden AMI creation process using 
+            <strong>AWS Systems Manager (SSM)</strong>.
+        </p>
+
+        <p>
+            Using the <strong>AWS Resource Group Tagging API</strong>, you can tag EC2 instances 
+            and automate AMI creation workflows.
+        </p>
+
+        <ul>
+            <li>Tag EC2 instances that should be used for Golden AMI creation.</li>
+            <li>Use SSM automation documents to create AMIs.</li>
+            <li>Schedule AMI updates for patching and maintenance.</li>
+        </ul>
+
+    </div>
+
+</div>
 <h2>1) How do you check CPU & Memory usage?</h2>
 
 <p>
@@ -5384,16 +5519,6 @@ done
       <li>NLB can be used for TCP-based apps like game servers or database connections.</li>
     </ul>
   </div>
-
-  <div class="section">
-    <h3>🔹 Interview-Ready Short Answer</h3>
-    <p>
-      Load balancers distribute incoming traffic across multiple servers to ensure high availability, scalability, and fault tolerance. 
-      Types include Application Load Balancer (Layer 7), Network Load Balancer (Layer 4), Classic Load Balancer, 
-      Global Load Balancer, Internal Load Balancer, and hardware/software load balancers.
-    </p>
-  </div>
-
 </div>
 
 </div><!-- .container -->
