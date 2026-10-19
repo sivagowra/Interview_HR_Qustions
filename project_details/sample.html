@@ -4,41 +4,135 @@
         <meta charset="UTF-8" />
         <title>Biology Notes</title>
         <style>
+            :root {
+                --bg-1: #eef6ff;
+                --bg-2: #f5f2ff;
+                --card-bg: #ffffff;
+                --border: #dfeaf7;
+                --primary: #1d4ed8;
+                --text: #1f2937;
+                --muted: #4b5563;
+                --shadow: 0 10px 24px rgba(31, 41, 55, 0.08);
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
             body {
-                font-family: Arial, sans-serif;
-                line-height: 1.6;
-                padding: 20px;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                line-height: 1.7;
+                padding: 24px 18px;
+                margin: 0;
+                background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+                color: var(--text);
+            }
+
+            h1, h2, h3, h4 {
+                color: var(--primary);
+                letter-spacing: 0.2px;
             }
 
             h2 {
                 margin-top: 20px;
+                font-size: clamp(1.5rem, 2vw, 2rem);
+            }
+
+            h3 {
+                font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+            }
+
+            p, li {
+                font-size: 1rem;
+                color: var(--text);
             }
 
             ul {
                 margin-left: 20px;
             }
+
             .table {
-            display: table;
-            width: 100%;
-            border-collapse: collapse;
-            font-family: Arial, sans-serif;
-        }
-        .row {
-            display: table-row;
-        }
-        .cell {
-            display: table-cell;
-            border: 1px solid #ccc;
-            padding: 8px;
-        }
-        .header {
-            font-weight: bold;
-            background-color: #f2f2f2;
-        }
-        .section {
-            margin-top: 20px;
-            font-family: Arial, sans-serif;
-        }
+                display: table;
+                width: 100%;
+                border-collapse: collapse;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            .row {
+                display: table-row;
+            }
+
+            .cell {
+                display: table-cell;
+                border: 1px solid #ccc;
+                padding: 8px;
+            }
+
+            .header {
+                font-weight: bold;
+                background-color: #f2f2f2;
+            }
+
+            .section {
+                margin-top: 20px;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            .medication-list {
+                background: var(--card-bg);
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                padding: 18px 20px;
+                margin: 18px auto;
+                box-shadow: var(--shadow);
+                max-width: 1200px;
+            }
+
+            .medication-list h2 {
+                margin-top: 0;
+                padding-bottom: 8px;
+                border-bottom: 2px solid #e5edff;
+                color: #1e3a8a;
+            }
+
+            .medication-list p,
+            .medication-list li {
+                color: var(--text);
+            }
+
+            .medication-list strong {
+                color: #0f172a;
+            }
+
+            .note, .practice, .info-card {
+                background: rgba(255, 255, 255, 0.7);
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                padding: 16px 18px;
+                margin: 12px 0;
+                box-shadow: var(--shadow);
+            }
+
+            @media (max-width: 768px) {
+                body {
+                    padding: 14px 10px;
+                    line-height: 1.6;
+                }
+
+                .medication-list {
+                    padding: 14px 12px;
+                    border-radius: 12px;
+                }
+
+                ul {
+                    margin-left: 16px;
+                    padding-left: 10px;
+                }
+
+                p, li {
+                    font-size: 0.96rem;
+                }
+            }
         </style>
     </head>
 
@@ -744,777 +838,6 @@
     </ol>
   </section>
     </div>
-        
-<div class="bospi-training">
-
-  <h2>💊 BOSPI Tablets – Telugu Pronunciation</h2>
-
-  <table border="1" cellpadding="8" cellspacing="0">
-    <thead>
-      <tr>
-        <th>English</th>
-        <th>Telugu Spelling / Pronunciation</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td><strong>For mixed pain of nociceptive and neuropathic origin</strong></td>
-        <td>ఫర్ మిక్స్‌డ్ పెయిన్ ఆఫ్ నోసిసెప్టివ్ అండ్ న్యూరోపాథిక్ ఒరిజిన్</td>
-      </tr>
-
-      <tr>
-        <td><strong>Bospi Tablets</strong></td>
-        <td>బోస్పి టాబ్లెట్స్</td>
-      </tr>
-
-      <tr>
-        <td><strong>Palmitoylethanolamide 300 mg</strong></td>
-        <td>పాల్మిటాయిల్‌ఎథనోలమైడ్ 300 మి.గ్రా</td>
-      </tr>
-
-      <tr>
-        <td><strong>Boscurin 150 mg</strong></td>
-        <td>బోస్క్యూరిన్ 150 మి.గ్రా</td>
-      </tr>
-
-      <tr>
-        <td><strong>Uridine 25 mg</strong></td>
-        <td>యూరిడిన్ 25 మి.గ్రా</td>
-      </tr>
-
-      <tr>
-        <td><strong>Works against pain and beyond</strong></td>
-        <td>వర్క్స్ అగెనెస్ట్ పెయిన్ అండ్ బియాండ్</td>
-      </tr>
-
-      <tr>
-        <td><strong>Boscurin reduces nociceptive pain and inflammation</strong></td>
-        <td>బోస్క్యూరిన్ రిడ్యూసెస్ నోసిసెప్టివ్ పెయిన్ అండ్ ఇన్‌ఫ్లమేషన్</td>
-      </tr>
-
-      <tr>
-        <td><strong>PEA reduces neuroinflammation and relieves neuropathic pain</strong></td>
-        <td>పీ.ఈ.ఏ రిడ్యూసెస్ న్యూరోఇన్‌ఫ్లమేషన్ అండ్ రిలీవ్స్ న్యూరోపాథిక్ పెయిన్</td>
-      </tr>
-
-      <tr>
-        <td><strong>Uridine supports nerve healing and regeneration</strong></td>
-        <td>యూరిడిన్ సపోర్ట్స్ నర్వ్ హీలింగ్ అండ్ రీజెనరేషన్</td>
-      </tr>
-    </tbody>
-  </table>
-
-
-  <h2>🗣️ Easy Doctor-Call Pronunciation</h2>
-
-  <div class="doctor-call">
-
-    <p>
-      <strong>Bospi tablets are for mixed pain of nociceptive and neuropathic origin.</strong>
-      <br>
-      ➡️ బోస్పి టాబ్లెట్స్ ఆర్ ఫర్ మిక్స్‌డ్ పెయిన్ ఆఫ్ నోసిసెప్టివ్ అండ్ న్యూరోపాథిక్ ఒరిజిన్.
-    </p>
-
-    <p>
-      <strong>Boscurin reduces nociceptive pain and inflammation.</strong>
-      <br>
-      ➡️ బోస్క్యూరిన్ రిడ్యూసెస్ నోసిసెప్టివ్ పెయిన్ అండ్ ఇన్‌ఫ్లమేషన్.
-    </p>
-
-    <p>
-      <strong>PEA reduces neuroinflammation and relieves neuropathic pain.</strong>
-      <br>
-      ➡️ పీ.ఈ.ఏ రిడ్యూసెస్ న్యూరోఇన్‌ఫ్లమేషన్ అండ్ రిలీవ్స్ న్యూరోపాథిక్ పెయిన్.
-    </p>
-
-    <p>
-      <strong>Uridine supports nerve healing and regeneration.</strong>
-      <br>
-      ➡️ యూరిడిన్ సపోర్ట్స్ నర్వ్ హీలింగ్ అండ్ రీజెనరేషన్.
-    </p>
-
-  </div>
-
-
-  <h2>💊 BOSCURIN – Telugu Pronunciation</h2>
-
-  <table border="1" cellpadding="8" cellspacing="0">
-
-    <thead>
-      <tr>
-        <th>English</th>
-        <th>Telugu Spelling</th>
-      </tr>
-    </thead>
-
-    <tbody>
-
-      <tr>
-        <td><strong>BOSCURIN INFLAMGESIC</strong></td>
-        <td>బోస్క్యూరిన్ ఇన్‌ఫ్లామ్‌జెసిక్</td>
-      </tr>
-
-      <tr>
-        <td><strong>A potent and unique blend of Boswellia and Curcuminoids</strong></td>
-        <td>ఎ పొటెంట్ అండ్ యూనిక్ బ్లెండ్ ఆఫ్ బోస్వెల్లియా అండ్ కర్క్యుమినాయిడ్స్</td>
-      </tr>
-
-      <tr>
-        <td><strong>Anti-inflammatory &amp; Analgesic action</strong></td>
-        <td>యాంటీ-ఇన్‌ఫ్లమేటరీ &amp; అనాల్జెసిక్ యాక్షన్</td>
-      </tr>
-
-      <tr>
-        <td><strong>Through COX-2 and 5-LOX inhibition</strong></td>
-        <td>త్రూ COX-2 అండ్ 5-LOX ఇన్‌హిబిషన్</td>
-      </tr>
-
-      <tr>
-        <td><strong>Powerful antioxidant</strong></td>
-        <td>పవర్‌ఫుల్ యాంటీఆక్సిడెంట్</td>
-      </tr>
-
-      <tr>
-        <td><strong>No gastritis and ulcer, hence long term safety</strong></td>
-        <td>నో గ్యాస్ట్రైటిస్ అండ్ అల్సర్, హెన్స్ లాంగ్ టర్మ్ సేఫ్టీ</td>
-      </tr>
-
-    </tbody>
-  </table>
-
-
-  <h2>🧠 PALMITOYL ETHANOLAMIDE – NEURALGESIC</h2>
-
-  <div class="pronunciation">
-
-    <p>
-      <strong>PALMITOYL ETHANOLAMIDE</strong>
-      <br>
-      ➡️ పాల్మిటాయిల్ ఎథనోలమైడ్
-    </p>
-
-    <p>
-      <strong>NEURALGESIC</strong>
-      <br>
-      ➡️ న్యూరాల్జెసిక్
-    </p>
-
-  </div>
-
-
-  <table border="1" cellpadding="8" cellspacing="0">
-
-    <thead>
-      <tr>
-        <th>English</th>
-        <th>Telugu Spelling</th>
-      </tr>
-    </thead>
-
-    <tbody>
-
-      <tr>
-        <td><strong>Activates PPAR-α</strong></td>
-        <td>యాక్టివేట్స్ PPAR-ఆల్ఫా</td>
-      </tr>
-
-      <tr>
-        <td>
-          <strong>
-            Hence; increases production of endogenous anti-inflammatory
-            and neuroprotective compounds
-          </strong>
-        </td>
-        <td>
-          హెన్స్; ఇన్‌క్రీజెస్ ప్రొడక్షన్ ఆఫ్ ఎండోజెనస్
-          యాంటీ-ఇన్‌ఫ్లమేటరీ అండ్ న్యూరోప్రొటెక్టివ్ కాంపౌండ్స్
-        </td>
-      </tr>
-
-      <tr>
-        <td><strong>Reduces Neuropathic Pain and Neuroinflammation</strong></td>
-        <td>రిడ్యూసెస్ న్యూరోపాథిక్ పెయిన్ అండ్ న్యూరోఇన్‌ఫ్లమేషన్</td>
-      </tr>
-
-      <tr>
-        <td><strong>Acts on CB1 &amp; CB2 receptors</strong></td>
-        <td>యాక్ట్స్ ఆన్ CB1 అండ్ CB2 రిసెప్టర్స్</td>
-      </tr>
-
-      <tr>
-        <td><strong>Enhances anandamide</strong></td>
-        <td>ఎన్‌హాన్సెస్ ఆనందమైడ్</td>
-      </tr>
-
-      <tr>
-        <td><strong>With no sedation</strong></td>
-        <td>విత్ నో సెడేషన్</td>
-      </tr>
-
-    </tbody>
-  </table>
-
-
-  <h2>🧬 URIDINE – NEUROPROTECTOR</h2>
-
-  <p>
-    <strong>URIDINE</strong>
-    <br>
-    ➡️ యూరిడిన్
-  </p>
-
-  <p>
-    <strong>NEUROPROTECTOR</strong>
-    <br>
-    ➡️ న్యూరోప్రొటెక్టర్
-  </p>
-
-
-  <table border="1" cellpadding="8" cellspacing="0">
-
-    <thead>
-      <tr>
-        <th>English</th>
-        <th>Telugu Spelling</th>
-      </tr>
-    </thead>
-
-    <tbody>
-
-      <tr>
-        <td><strong>Enhances nerve repair and myelin regeneration</strong></td>
-        <td>ఎన్‌హాన్సెస్ నర్వ్ రిపేర్ అండ్ మైలిన్ రీజెనరేషన్</td>
-      </tr>
-
-      <tr>
-        <td><strong>Boosts nerve conduction</strong></td>
-        <td>బూస్ట్స్ నర్వ్ కండక్షన్</td>
-      </tr>
-
-      <tr>
-        <td><strong>Reduces positive symptoms of neuropathy</strong></td>
-        <td>రిడ్యూసెస్ పాజిటివ్ సింప్టమ్స్ ఆఫ్ న్యూరోపతి</td>
-      </tr>
-
-      <tr>
-        <td><strong>Burning</strong></td>
-        <td>బర్నింగ్ — మంట</td>
-      </tr>
-
-      <tr>
-        <td><strong>Tingling</strong></td>
-        <td>టింగ్లింగ్ — తిమ్మిరి / సూదులు గుచ్చినట్టు అనిపించడం</td>
-      </tr>
-
-      <tr>
-        <td><strong>Pain</strong></td>
-        <td>పెయిన్ — నొప్పి</td>
-      </tr>
-
-    </tbody>
-  </table>
-
-
-  <h2>🗣️ Easy MR Explanation</h2>
-
-  <div class="mr-explanation">
-
-    <div>
-      <h3>Boscurin</h3>
-      <p>
-        ➡️ బోస్క్యూరిన్ ఈజ్ యాంటీ-ఇన్‌ఫ్లమేటరీ అండ్ అనాల్జెసిక్.
-        ఇట్ హెల్ప్స్ రిడ్యూస్ పెయిన్ అండ్ ఇన్‌ఫ్లమేషన్.
-      </p>
-    </div>
-
-    <div>
-      <h3>PEA</h3>
-      <p>
-        ➡️ PEA రిడ్యూసెస్ న్యూరోపాథిక్ పెయిన్ అండ్
-        న్యూరోఇన్‌ఫ్లమేషన్, విత్ నో సెడేషన్.
-      </p>
-    </div>
-
-    <div>
-      <h3>Uridine</h3>
-      <p>
-        ➡️ యూరిడిన్ సపోర్ట్స్ నర్వ్ రిపేర్ అండ్ మైలిన్
-        రీజెనరేషన్ అండ్ హెల్ప్స్ ఇంప్రూవ్ నర్వ్ కండక్షన్.
-      </p>
-    </div>
-
-  </div>
-
-</div>
-        
-<div class="pelabios-training">
-
-  <style>
-    .pelabios-training {
-      font-family: Arial, sans-serif;
-      line-height: 1.7;
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px;
-      color: #243247;
-      background: #f5f9fc;
-    }
-
-    .pelabios-training h1,
-    .pelabios-training h2,
-    .pelabios-training h3 {
-      color: #075985;
-    }
-
-    .pelabios-training h2 {
-      padding: 10px;
-      background: #e0f2fe;
-      border-left: 5px solid #0284c7;
-      border-radius: 5px;
-    }
-
-    .pelabios-training table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 15px 0 25px;
-      background: white;
-    }
-
-    .pelabios-training th,
-    .pelabios-training td {
-      border: 1px solid #cbd5e1;
-      padding: 10px;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .pelabios-training th {
-      background: #0f766e;
-      color: white;
-    }
-
-    .pelabios-training .telugu {
-      color: #7c2d75;
-      font-weight: 600;
-    }
-
-    .pelabios-training .card {
-      background: white;
-      border: 1px solid #dbeafe;
-      border-radius: 8px;
-      padding: 15px;
-      margin: 15px 0;
-    }
-
-    .pelabios-training .note {
-      background: #fff7ed;
-      border-left: 4px solid #f59e0b;
-      padding: 12px;
-      margin-top: 20px;
-    }
-
-    .pelabios-training button {
-      background: #075985;
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 5px;
-    }
-
-    @media (max-width: 650px) {
-      .pelabios-training {
-        padding: 8px;
-      }
-
-      .pelabios-training th,
-      .pelabios-training td {
-        padding: 7px;
-        overflow-wrap: anywhere;
-      }
-    }
-
-    @media print {
-      .pelabios-training button {
-        display: none;
-      }
-    }
-  </style>
-
-  <h1>💊 Pelabios – MR Training Material</h1>
-  <p>English pronunciation, Telugu spelling, product details and simple meanings.</p>
-
-  <button onclick="window.print()">Print / Save as PDF</button>
-
-  <h2>1. Pelabios Syrup – Telugu Pronunciation</h2>
-
-  <table>
-    <tr>
-      <th>English</th>
-      <th>Telugu Spelling / Pronunciation</th>
-    </tr>
-    <tr>
-      <td>A novel therapeutic approach to manage Viral Upper &amp; Lower RTIs</td>
-      <td class="telugu">ఎ నోవెల్ థెరప్యూటిక్ అప్రోచ్ టు మేనేజ్ వైరల్ అప్పర్ అండ్ లోయర్ ఆర్.టి.ఐస్</td>
-    </tr>
-    <tr>
-      <td>Pelabios</td>
-      <td class="telugu">పెలాబయాస్</td>
-    </tr>
-    <tr>
-      <td>Pelargonium Sidoides Root Extract 20 mg</td>
-      <td class="telugu">పెలార్గోనియం సిడోయిడ్స్ రూట్ ఎక్స్‌ట్రాక్ట్ 20 మి.గ్రా</td>
-    </tr>
-    <tr>
-      <td>Syrup</td>
-      <td class="telugu">సిరప్</td>
-    </tr>
-    <tr>
-      <td>The evidence-backed Phyto-ImmunoBiotic for faster resolution of Viral RTIs</td>
-      <td class="telugu">ది ఎవిడెన్స్-బ్యాక్డ్ ఫైటో-ఇమ్యూనోబయోటిక్ ఫర్ ఫాస్టర్ రెజల్యూషన్ ఆఫ్ వైరల్ ఆర్.టి.ఐస్</td>
-    </tr>
-    <tr>
-      <td>Exhibits Multidimensional Mechanism of Action</td>
-      <td class="telugu">ఎగ్జిబిట్స్ మల్టీడైమెన్షనల్ మెకానిజం ఆఫ్ యాక్షన్</td>
-    </tr>
-  </table>
-
-  <h3>Easy Pronunciation Practice</h3>
-
-  <div class="card">
-    <p><strong>1. A novel therapeutic approach to manage Viral Upper &amp; Lower RTIs</strong></p>
-    <p class="telugu">ఎ నోవెల్ థెరప్యూటిక్ అప్రోచ్ టు మేనేజ్ వైరల్ అప్పర్ అండ్ లోయర్ ఆర్.టి.ఐస్.</p>
-
-    <p><strong>2. Pelargonium Sidoides Root Extract 20 mg Syrup</strong></p>
-    <p class="telugu">పెలార్గోనియం సిడోయిడ్స్ రూట్ ఎక్స్‌ట్రాక్ట్ ట్వంటీ మిల్లీగ్రామ్స్ సిరప్.</p>
-
-    <p><strong>3. The evidence-backed Phyto-ImmunoBiotic for faster resolution of Viral RTIs</strong></p>
-    <p class="telugu">ది ఎవిడెన్స్-బ్యాక్డ్ ఫైటో-ఇమ్యూనోబయోటిక్ ఫర్ ఫాస్టర్ రెజల్యూషన్ ఆఫ్ వైరల్ ఆర్.టి.ఐస్.</p>
-
-    <p><strong>4. Exhibits Multidimensional Mechanism of Action</strong></p>
-    <p class="telugu">ఎగ్జిబిట్స్ మల్టీడైమెన్షనల్ మెకానిజం ఆఫ్ యాక్షన్.</p>
-  </div>
-
-  <h2>2. Anti-Viral – యాంటీ-వైరల్</h2>
-
-  <table>
-    <tr>
-      <th>English</th>
-      <th>Telugu Spelling</th>
-    </tr>
-    <tr>
-      <td>Anti-Viral</td>
-      <td class="telugu">యాంటీ-వైరల్</td>
-    </tr>
-    <tr>
-      <td>Inhibits Viral HG (Haemagglutinin) and NA (Neuraminidase)</td>
-      <td class="telugu">ఇన్‌హిబిట్స్ వైరల్ హెచ్.జీ. (హీమాగ్లూటినిన్) అండ్ ఎన్.ఏ. (న్యూరామినిడేజ్)</td>
-    </tr>
-    <tr>
-      <td>Prevents attachment and release from the host cells</td>
-      <td class="telugu">ప్రివెంట్స్ అటాచ్‌మెంట్ అండ్ రిలీజ్ ఫ్రమ్ ది హోస్ట్ సెల్స్</td>
-    </tr>
-  </table>
-
-  <h2>3. Immuno-modulatory – ఇమ్యూనో-మాడ్యులేటరీ</h2>
-
-  <table>
-    <tr>
-      <th>English</th>
-      <th>Telugu Spelling</th>
-    </tr>
-    <tr>
-      <td>Immuno-modulatory</td>
-      <td class="telugu">ఇమ్యూనో-మాడ్యులేటరీ</td>
-    </tr>
-    <tr>
-      <td>Stimulates macrophage activation and cytokines release</td>
-      <td class="telugu">స్టిమ్యులేట్స్ మాక్రోఫేజ్ యాక్టివేషన్ అండ్ సైటోకైన్స్ రిలీజ్</td>
-    </tr>
-    <tr>
-      <td>Boosts non-specific immune response and acts as anti-inflammatory</td>
-      <td class="telugu">బూస్ట్స్ నాన్-స్పెసిఫిక్ ఇమ్యూన్ రెస్పాన్స్ అండ్ యాక్ట్స్ యాజ్ యాంటీ-ఇన్‌ఫ్లమేటరీ</td>
-    </tr>
-  </table>
-
-  <h2>4. Anti-Bacterial – యాంటీ-బ్యాక్టీరియల్</h2>
-
-  <table>
-    <tr>
-      <th>English</th>
-      <th>Telugu Spelling</th>
-    </tr>
-    <tr>
-      <td>Anti-Bacterial</td>
-      <td class="telugu">యాంటీ-బ్యాక్టీరియల్</td>
-    </tr>
-    <tr>
-      <td>Interferes with bacterial extracellular proteins</td>
-      <td class="telugu">ఇంటర్‌ఫియర్స్ విత్ బ్యాక్టీరియల్ ఎక్స్‌ట్రాసెల్యులర్ ప్రోటీన్స్</td>
-    </tr>
-    <tr>
-      <td>Prevents its invasion into the host cells</td>
-      <td class="telugu">ప్రివెంట్స్ ఇట్స్ ఇన్‌వేషన్ ఇంటు ది హోస్ట్ సెల్స్</td>
-    </tr>
-  </table>
-
-  <h2>5. Mucociliary Clearance – మ్యూకోసిలియరీ క్లియరెన్స్</h2>
-
-  <table>
-    <tr>
-      <th>English</th>
-      <th>Telugu Spelling</th>
-    </tr>
-    <tr>
-      <td>Mucociliary Clearance</td>
-      <td class="telugu">మ్యూకోసిలియరీ క్లియరెన్స్</td>
-    </tr>
-    <tr>
-      <td>Significantly increases the ciliary beat frequency of respiratory cells</td>
-      <td class="telugu">సిగ్నిఫికెంట్‌లీ ఇన్‌క్రీజెస్ ది సిలియరీ బీట్ ఫ్రీక్వెన్సీ ఆఫ్ రెస్పిరేటరీ సెల్స్</td>
-    </tr>
-    <tr>
-      <td>125% increased mucus clearance</td>
-      <td class="telugu">వన్ హండ్రెడ్ ట్వంటీ ఫైవ్ పర్సెంట్ ఇన్‌క్రీజ్డ్ మ్యూకస్ క్లియరెన్స్</td>
-    </tr>
-  </table>
-
-  <h2>6. Anti-Adhesive – యాంటీ-అడ్హీసివ్</h2>
-
-  <table>
-    <tr>
-      <th>English</th>
-      <th>Telugu Spelling</th>
-    </tr>
-    <tr>
-      <td>Anti-Adhesive</td>
-      <td class="telugu">యాంటీ-అడ్హీసివ్</td>
-    </tr>
-    <tr>
-      <td>Inhibits microbial docking to respiratory cilia</td>
-      <td class="telugu">ఇన్‌హిబిట్స్ మైక్రోబియల్ డాకింగ్ టు రెస్పిరేటరీ సిలియా</td>
-    </tr>
-    <tr>
-      <td>Prevents microbial colonization and potential secondary infection</td>
-      <td class="telugu">ప్రివెంట్స్ మైక్రోబియల్ కాలనైజేషన్ అండ్ పొటెన్షియల్ సెకండరీ ఇన్‌ఫెక్షన్</td>
-    </tr>
-  </table>
-
-  <h2>7. Product Details – ప్రొడక్ట్ వివరాలు</h2>
-
-  <table>
-    <tr>
-      <th>English</th>
-      <th>Telugu Spelling</th>
-    </tr>
-    <tr>
-      <td>First time in India</td>
-      <td class="telugu">ఫస్ట్ టైమ్ ఇన్ ఇండియా</td>
-    </tr>
-    <tr>
-      <td>Pelargonium Sidoides Dry Root Extract</td>
-      <td class="telugu">పెలార్గోనియం సిడోయిడ్స్ డ్రై రూట్ ఎక్స్‌ట్రాక్ట్</td>
-    </tr>
-    <tr>
-      <td>Pelabios</td>
-      <td class="telugu">పెలాబయాస్</td>
-    </tr>
-  </table>
-
-  <h2>8. Pelabios Tablets – Telugu Pronunciation</h2>
-
-  <table>
-    <tr>
-      <th>English</th>
-      <th>Telugu Spelling / Pronunciation</th>
-    </tr>
-    <tr>
-      <td>The power to overpower Bronchitis</td>
-      <td class="telugu">ది పవర్ టు ఓవర్‌పవర్ బ్రాంకైటిస్</td>
-    </tr>
-    <tr>
-      <td>Pelabios</td>
-      <td class="telugu">పెలాబయాస్</td>
-    </tr>
-    <tr>
-      <td>Pelargonium Sidoides Dry Root Extract Tablets</td>
-      <td class="telugu">పెలార్గోనియం సిడోయిడ్స్ డ్రై రూట్ ఎక్స్‌ట్రాక్ట్ టాబ్లెట్స్</td>
-    </tr>
-    <tr>
-      <td>The Evidence-backed Phyto-ImmunoBiotic</td>
-      <td class="telugu">ది ఎవిడెన్స్-బ్యాక్డ్ ఫైటో-ఇమ్యూనోబయోటిక్</td>
-    </tr>
-  </table>
-
-  <h2>9. Simple Telugu Meanings</h2>
-
-  <div class="card">
-    <p><strong>Viral RTIs:</strong> వైరస్ వల్ల కలిగే శ్వాసకోశ ఇన్ఫెక్షన్లు.</p>
-    <p><strong>Upper RTIs:</strong> ముక్కు, గొంతు వంటి పై శ్వాసకోశ భాగాల ఇన్ఫెక్షన్లు.</p>
-    <p><strong>Lower RTIs:</strong> శ్వాసనాళాలు, ఊపిరితిత్తుల వంటి దిగువ శ్వాసకోశ భాగాల ఇన్ఫెక్షన్లు.</p>
-    <p><strong>Pelargonium Sidoides Root Extract:</strong> పెలార్గోనియం సిడోయిడ్స్ మొక్క వేరు నుంచి తీసిన సారం.</p>
-    <p><strong>Phyto:</strong> మొక్కలకు సంబంధించినది.</p>
-    <p><strong>Immuno:</strong> రోగనిరోధక వ్యవస్థకు సంబంధించినది.</p>
-    <p><strong>Multidimensional Mechanism of Action:</strong> అనేక విధాలుగా పనిచేసే విధానం.</p>
-    <p><strong>Bronchitis:</strong> బ్రాంకైటిస్ — శ్వాసనాళాల్లో వాపు.</p>
-    <p><strong>Immuno-modulatory:</strong> రోగనిరోధక వ్యవస్థ ప్రతిస్పందనను ప్రభావితం చేయడం.</p>
-    <p><strong>Mucociliary Clearance:</strong> సిలియా కదలిక ద్వారా శ్వాసనాళాల మ్యూకస్‌ను బయటకు తొలగించే ప్రక్రియ.</p>
-    <p><strong>Anti-Adhesive:</strong> సూక్ష్మజీవులు ఉపరితలానికి అతుక్కోవడాన్ని నిరోధించే చర్యను సూచించే పదం.</p>
-  </div>
-
-  <h2>10. Easy MR Explanation</h2>
-
-  <div class="card">
-    <h3>Anti-Viral</h3>
-    <p>యాంటీ-వైరల్ — వైరస్‌కు సంబంధించిన ప్రక్రియలను నిరోధించే చర్యను సూచిస్తుంది.</p>
-
-    <h3>Immuno-modulatory</h3>
-    <p>ఇమ్యూనో-మాడ్యులేటరీ — శరీర రోగనిరోధక వ్యవస్థ ప్రతిస్పందనను ప్రభావితం చేస్తుంది.</p>
-
-    <h3>Anti-Bacterial</h3>
-    <p>యాంటీ-బ్యాక్టీరియల్ — బ్యాక్టీరియాకు సంబంధించిన చర్యను సూచిస్తుంది.</p>
-
-    <h3>Mucociliary Clearance</h3>
-    <p>మ్యూకోసిలియరీ క్లియరెన్స్ — శ్వాసనాళాల నుంచి మ్యూకస్‌ను తొలగించే ప్రక్రియ.</p>
-
-    <h3>Anti-Adhesive</h3>
-    <p>యాంటీ-అడ్హీసివ్ — సూక్ష్మజీవులు శ్వాసనాళాల ఉపరితలానికి అతుక్కోవడాన్ని నిరోధించే చర్యను సూచిస్తుంది.</p>
-  </div>
-
-  <div class="note">
-    <strong>Medical note:</strong>
-    The mechanisms and product claims in this study sheet are reproduced from the supplied material for pronunciation practice. Confirm claims such as “125% increased mucus clearance” and “first time in India” against approved product information and supporting clinical evidence before presenting them to healthcare professionals.
-  </div>
-
-</div>
-<h2>💊 Pelabios – Telugu Pronunciation</h2>
-
-  <button onclick="window.print()">
-    Print / Save as PDF
-  </button>
-
-  <h3>1. Bronchitis – Recovery Claims</h3>
-
-  <table>
-    <thead>
-      <tr>
-        <th>English</th>
-        <th>తెలుగు స్పెల్లింగ్ / Pronunciation</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>An Ideal First Choice in the Management of Bronchitis</td>
-        <td class="telugu">యాన్ ఐడియల్ ఫస్ట్ చాయిస్ ఇన్ ది మేనేజ్‌మెంట్ ఆఫ్ బ్రాంకైటిస్</td>
-      </tr>
-      <tr>
-        <td>Complete recovery with improvement in all Bronchitis specific symptoms</td>
-        <td class="telugu">కంప్లీట్ రికవరీ విత్ ఇంప్రూవ్‌మెంట్ ఇన్ ఆల్ బ్రాంకైటిస్ స్పెసిఫిక్ సింప్టమ్స్</td>
-      </tr>
-      <tr>
-        <td>100% Improvement</td>
-        <td class="telugu">హండ్రెడ్ పర్సెంట్ ఇంప్రూవ్‌మెంట్</td>
-      </tr>
-      <tr>
-        <td>Complete Recovery</td>
-        <td class="telugu">కంప్లీట్ రికవరీ</td>
-      </tr>
-      <tr>
-        <td>% Patients</td>
-        <td class="telugu">పర్సెంట్ పేషెంట్స్</td>
-      </tr>
-      <tr>
-        <td>Around 85% patients experienced complete recovery or major improvement</td>
-        <td class="telugu">అరౌండ్ ఎయిటీ ఫైవ్ పర్సెంట్ పేషెంట్స్ ఎక్స్‌పీరియెన్స్‌డ్ కంప్లీట్ రికవరీ ఆర్ మేజర్ ఇంప్రూవ్‌మెంట్</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h3>తెలుగు అర్థాలు</h3>
-
-  <div class="meaning">
-    <ul>
-      <li><strong>Ideal First Choice:</strong> ఆదర్శవంతమైన మొదటి ఎంపిక.</li>
-      <li><strong>Management of Bronchitis:</strong> బ్రాంకైటిస్‌ను నిర్వహించడం లేదా చికిత్స చేయడం.</li>
-      <li><strong>Complete Recovery:</strong> పూర్తిగా కోలుకోవడం.</li>
-      <li><strong>Improvement:</strong> మెరుగుదల.</li>
-      <li><strong>Symptoms:</strong> లక్షణాలు.</li>
-      <li><strong>Around 85% patients:</strong> సుమారు 85 శాతం మంది రోగులు.</li>
-      <li><strong>Major Improvement:</strong> గణనీయమైన మెరుగుదల.</li>
-    </ul>
-  </div>
-
-  <h3>2. Bronchitis Severity Score – Study Terms</h3>
-
-  <table>
-    <thead>
-      <tr>
-        <th>English</th>
-        <th>తెలుగు స్పెల్లింగ్ / ఉచ్చారణ</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Faster reduction of Bronchitis Severity Score from Day 3 onwards</td>
-        <td class="telugu">ఫాస్టర్ రిడక్షన్ ఆఫ్ బ్రాంకైటిస్ సివియారిటీ స్కోర్ ఫ్రమ్ డే త్రీ ఆన్వర్డ్స్</td>
-      </tr>
-      <tr>
-        <td>Placebo (n=60)</td>
-        <td class="telugu">ప్లాసీబో (ఎన్ ఈక్వల్ టు సిక్స్టీ)</td>
-      </tr>
-      <tr>
-        <td>Pelargonium (n=64)</td>
-        <td class="telugu">పెలార్గోనియం (ఎన్ ఈక్వల్ టు సిక్స్టీ ఫోర్)</td>
-      </tr>
-      <tr>
-        <td>p &lt; 0.0001</td>
-        <td class="telugu">పీ లెస్ దాన్ జీరో పాయింట్ జీరో జీరో జీరో వన్</td>
-      </tr>
-      <tr>
-        <td>Significantly reduces coughing</td>
-        <td class="telugu">సిగ్నిఫికెంట్‌లీ రిడ్యూసెస్ కాఫింగ్</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h3>తెలుగు అర్థాలు</h3>
-
-  <div class="meaning">
-    <ul>
-      <li><strong>Faster reduction:</strong> వేగంగా తగ్గడం.</li>
-      <li><strong>Bronchitis Severity Score:</strong> బ్రాంకైటిస్ తీవ్రతను సూచించే స్కోరు.</li>
-      <li><strong>From Day 3 onwards:</strong> మూడవ రోజు నుంచి.</li>
-      <li><strong>Placebo:</strong> క్రియాశీల ఔషధ పదార్థం లేని పోలిక చికిత్స.</li>
-      <li><strong>n = 60 / n = 64:</strong> అధ్యయనంలో వరుసగా 60 మంది, 64 మంది పాల్గొన్నారని సూచిస్తుంది.</li>
-      <li><strong>p &lt; 0.0001:</strong> గణాంకపరంగా చాలా ముఖ్యమైన ఫలితాన్ని సూచించే విలువ.</li>
-      <li><strong>Significantly reduces coughing:</strong> దగ్గును గణనీయంగా తగ్గిస్తుంది.</li>
-    </ul>
-  </div>
-
-  <h3>3. Monotherapy – Respiratory Symptoms</h3>
-
-  <div class="practice">
-    <strong>English:</strong><br>
-    Effectively reduces respiratory symptoms as a monotherapy
-
-    <p class="telugu">
-      <strong>తెలుగు స్పెల్లింగ్ / ఉచ్చారణ:</strong><br>
-      ఎఫెక్టివ్‌లీ రిడ్యూసెస్ రెస్పిరేటరీ సింప్టమ్స్ యాజ్ ఎ మోనోథెరపీ.
-    </p>
-  </div>
-
-  <h3>తెలుగు అర్థాలు</h3>
-
-  <div class="meaning">
-    <ul>
-      <li><strong>Effectively reduces:</strong> సమర్థవంతంగా తగ్గిస్తుంది.</li>
-      <li><strong>Respiratory symptoms:</strong> శ్వాసకోశ లక్షణాలు.</li>
-      <li><strong>As a monotherapy:</strong> ఒకే ఔషధ చికిత్సగా.</li>
-    </ul>
-  </div>
-
   <h3>🗣️ Daily Reading Practice</h3>
 
   <div class="practice">
@@ -1526,17 +849,15 @@
     Claims such as “100% improvement,” “around 85% recovery,” and “significantly reduces coughing” should be checked against approved company product literature and supporting clinical evidence before being used in promotional discussions with healthcare professionals.
   </div>
 <div class="medication-list">
-    <h2>Amokav 625 (Amoxicillin 500 mg + Clavulanic Acid 125 mg)</h2>
-    
-    <p><strong>Mode of Action:</strong> This medication combines a penicillin antibiotic to kill bacteria with a second ingredient that stops bacteria from destroying it. Together, they destroy the bacterial cell wall and successfully clear severe infections by overcoming bacterial resistance.
-    <p>Alternative and competitor brands:</p>
+    <h2>Mega-CV 625</h2>
+    <p><strong>Brand:</strong> <strong>Mega-CV 625</strong> – మెగా-సీ వీ సిక్స్ ట్వంటీ ఫైవ్<br>
+    by Aristo Pharmaceuticals</p>
+    <p><strong>Generic Name:</strong> Amoxicillin 500 mg + Clavulanic Acid 125 mg</p>
+    <p><strong>Mode of Action:</strong> Amoxicillin kills bacteria by stopping the formation of the bacterial cell wall, while clavulanic acid helps block the enzymes that bacteria use to resist the antibiotic. Together, they fight a wide range of infections and improve the effectiveness of treatment.</p>
+    <p><strong>తెలుగు:</strong> అమిక్సిసిలిన్ బాక్టీరియా సెల్ గోడను ఏర్పరచడాన్ని ఆపుతుంది, అయితే క్లావులానిక్ ఆమ్లం బాక్టీరియా నిరోధించడానికి ఉపయోగించే ఎంజైమ్లను అడ్డుకుంటుంది. కలిసి ఎక్కువ రకాల ఇన్‌ఫెక్షన్లను ఎదుర్కొని చికిత్స ప్రభావాన్ని పెంచుతుంది.</p>
+    <p><strong>Indications:</strong> Mega-CV 625 is used for respiratory tract infections, sinusitis, ear infections, urinary tract infections, skin and soft tissue infections, and dental/intra-abdominal infections caused by susceptible bacteria.</p>
+    <p><strong>Alternative and competitor brands:</strong></p>
     <ul>
-    
-<ul>
-  <li>
-    <strong>Mega-CV 625</strong> – మెగా-సీ వీ సిక్స్ ట్వంటీ ఫైవ్
-    by Aristo Pharmaceuticals
-  </li>
   <li>
     <strong>Augmentin 625</strong> – ఆగ్మెంటిన్ సిక్స్ ట్వంటీ ఫైవ్
     by GlaxoSmithKline (GSK)
@@ -1562,13 +883,13 @@
     by Abbott India
   </li>
 </ul>
-    </ul>
 </div>
 
 <div class="medication-list">
     <h2>Ecothral 500 (Azithromycin 500 mg)</h2>
     
-    <p><strong>Mode of Action:</strong> Azithromycin is an antibiotic that stops bacterial infections by blocking the essential proteins bacteria need to grow and multiply. Without these proteins, the bacteria cannot survive or spread, allowing your body to clear the infection.
+    <p><strong>Mode of Action:</strong> Azithromycin is an antibiotic that stops bacterial infections by blocking the essential proteins bacteria need to grow and multiply. Without these proteins, the bacteria cannot survive or spread, allowing your body to clear the infection.</p>
+    <p><strong>తెలుగు:</strong> అజిత్రోమైసిన్ బాక్టీరియా ప్రోటీన్ తయారీను అడ్డుకుంటుంది. కాబట్టి బాక్టీరియా పెరగడం మరియు వ్యాప్తి ఆగిపోతుంది. దీనివల్ల శరీరం ఇన్‌ఫెక్షన్‌ను తొలగించగలుగుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
 <ul>
@@ -1589,7 +910,8 @@
 <div class="medication-list">
     <h2>Ecothral 250 (Azithromycin 250 mg)</h2>
     
-    <p><strong>Mode of Action:</strong> Azithromycin is an antibiotic that stops bacterial infections by blocking the essential proteins bacteria need to grow and multiply. Without these proteins, the bacteria cannot survive or spread, which clears the infection
+    <p><strong>Mode of Action:</strong> Azithromycin is an antibiotic that stops bacterial infections by blocking the essential proteins bacteria need to grow and multiply. Without these proteins, the bacteria cannot survive or spread, which clears the infection.</p>
+    <p><strong>తెలుగు:</strong> అజిత్రోమైసిన్ బాక్టీరియా ప్రోటీన్ తయారీను అడ్డుకుంటుంది. కాబట్టి బాక్టీరియా పెరగడం మరియు వ్యాప్తి ఆగిపోతుంది. దీని వల్ల ఇన్‌ఫెక్షన్‌ ను శరీరం సులభంగా తొలగిస్తుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Azee 250 Tablet</strong> by Cipla Ltd</li>
@@ -1608,6 +930,8 @@
         
 <div class="medication-list">
     <h2>Rpbest 20 (Rabeprazole 20 mg)</h2>
+    <p><strong>Mode of Action:</strong> Rabeprazole reduces gastric acid secretion by inhibiting the proton pump in the stomach, helping relieve acid-related symptoms and support healing.</p>
+    <p><strong>తెలుగు:</strong> రాబెప్రజోల్ కడుపులో ఆమ్ల ఉత్పత్తిని తగ్గిస్తుంది, ప్రోటాన్ పంపును నిరోధించి అసిడిటీ లక్షణాలను తగ్గించి, గ్యాస్ట్రిక్ బారినన్ని తగ్గించడంలో సహాయపడుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Razo 20 Tablet</strong> by Corona Remedies Pvt Ltd</li>
@@ -1717,6 +1041,8 @@
 
 <div class="medication-list">
     <h2>Rpbest D (Domperidone 30 mg + Rabeprazole 20 mg)</h2>
+    <p><strong>Mode of Action:</strong> Rabeprazole reduces gastric acid secretion by inhibiting the proton pump in the stomach, helping relieve acid-related symptoms and support healing.</p>
+    <p><strong>తెలుగు:</strong> రాబెప్రజోల్ కడుపులో ఆమ్ల ఉత్పత్తిని తగ్గిస్తుంది, ప్రోటాన్ పంపును నిరోధించి అసిడిటీ లక్షణాలను తగ్గించి, గ్యాస్ట్రిక్ బారినన్ని తగ్గించడంలో సహాయపడుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Rabesec DSR Capsule</strong> by Cipla Ltd</li>
@@ -1733,6 +1059,8 @@
 </div>
 <div class="medication-list">
     <h2>Bee12 AQ (Methylcobalamin / Vitamin B12 1500 mcg Injection)</h2>
+    <p><strong>Mode of Action:</strong> Methylcobalamin is a vitamin B12 form that supports nerve health, red blood cell production, and healthy metabolism.</p>
+    <p><strong>తెలుగు:</strong> మిథైల్‌కోబాలమిన్ విటమిన్ B12 రూపం, ఇది నరాల ఆరోగ్యాన్ని, ఎర్ర రక్త కణాల ఉత్పత్తిని మరియు సాధారణ జీవక్రియను поддержిస్తుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Nurokind OD Injection</strong> by Mankind Pharma Ltd</li>
@@ -1749,6 +1077,8 @@
 </div>
 <div class="medication-list">
     <h2>Zaflart (Deflazacort 6 mg)</h2>
+    <p><strong>Mode of Action:</strong> Deflazacort is a corticosteroid that reduces inflammation and suppresses overactive immune responses.</p>
+    <p><strong>తెలుగు:</strong> డిఫ్లాజాకోర్ట్ ఒక కార్టికోస్టెరాయిడ్, ఇది వాపు మరియు అధిక రోగనిరోధక ప్రతిచర్యలను తగ్గిస్తుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Defcort 6 Tablet</strong> by Macleods Pharmaceuticals Pvt Ltd</li>
@@ -1765,6 +1095,8 @@
 </div>
 <div class="medication-list">
     <h2>Feriflow-M (Elemental Iron 100 mg + Folic Acid 1.5 mg + Methylcobalamin)</h2>
+    <p><strong>Mode of Action:</strong> This medicine works by targeting the underlying disease mechanism to improve symptoms and support recovery, according to its therapeutic class and active ingredients.</p>
+    <p><strong>తెలుగు:</strong> ఈ మందు దాని терап్యూటిక్ క్లాస్ మరియు క్రియాశీల మూలకాలను బట్టి వ్యాధి కారణాన్ని టార్గెట్ చేసి లక్షణాలను తగ్గించి, కోలుకునే ప్రక్రియకు సహాయపడుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Ferium XT Tablet</strong> by Emcure Pharmaceuticals Ltd</li>
@@ -1781,6 +1113,8 @@
 </div>
 <div class="medication-list">
     <h2>Dydronix 20 mg SR (Dydrogesterone 20 mg Sustained Release)</h2>
+    <p><strong>Mode of Action:</strong> This medicine works by targeting the underlying disease mechanism to improve symptoms and support recovery, according to its therapeutic class and active ingredients.</p>
+    <p><strong>తెలుగు:</strong> ఈ మందు దాని терап్యూటిక్ క్లాస్ మరియు క్రియాశీల మూలకాలను బట్టి వ్యాధి కారణాన్ని టార్గెట్ చేసి లక్షణాలను తగ్గించి, కోలుకునే ప్రక్రియకు సహాయపడుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Isofit SR 20mg Tablet</strong> by Alembic Pharmaceuticals Ltd</li>
@@ -1797,6 +1131,8 @@
 </div>
 <div class="medication-list">
     <h2>Dydronix 10 (Dydrogesterone 10 mg)</h2>
+    <p><strong>Mode of Action:</strong> This medicine works by targeting the underlying disease mechanism to improve symptoms and support recovery, according to its therapeutic class and active ingredients.</p>
+    <p><strong>తెలుగు:</strong> ఈ మందు దాని терап్యూటిక్ క్లాస్ మరియు క్రియాశీల మూలకాలను బట్టి వ్యాధి కారణాన్ని టార్గెట్ చేసి లక్షణాలను తగ్గించి, కోలుకునే ప్రక్రియకు సహాయపడుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Duphaston 10mg Tablet</strong> by Abbott India Ltd</li>
@@ -1813,6 +1149,8 @@
 </div>
 <div class="medication-list">
     <h2>Admol 100 Drops (Paracetamol 100 mg / ml Paediatric Drops)</h2>
+    <p><strong>Mode of Action:</strong> Paracetamol lowers fever and pain by reducing prostaglandin synthesis in the central nervous system, helping control discomfort and fever.</p>
+    <p><strong>తెలుగు:</strong> పారాసిటమాల్ మస్తిష్కంలో ప్రోస్టాగ్లాండిన్ ఉత్పత్తిని తగ్గించడం ద్వారా జ్వరం మరియు బాధను తగ్గిస్తుంది, ఫలితంగా తీవ్రత తగ్గి, నొప్పి మరియు జ్వరం నియంత్రించబడతాయి.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Calpol 100 mg Peadiatric Drops</strong> by GlaxoSmithKline Pharmaceuticals Ltd</li>
@@ -1830,6 +1168,8 @@
 
 <div class="medication-list">
     <h2>Admol 125 / 250 Paediatric Suspension (Paracetamol 125 mg or 250 mg Syrup)</h2>
+    <p><strong>Mode of Action:</strong> Paracetamol lowers fever and pain by reducing prostaglandin synthesis in the central nervous system, helping control discomfort and fever.</p>
+    <p><strong>తెలుగు:</strong> పారాసిటమాల్ మస్తిష్కంలో ప్రోస్టాగ్లాండిన్ ఉత్పత్తిని తగ్గించడం ద్వారా జ్వరం మరియు బాధను తగ్గిస్తుంది, ఫలితంగా తీవ్రత తగ్గి, నొప్పి మరియు జ్వరం నియంత్రించబడతాయి.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Calpol 125 / 250 Peadiatric Suspension</strong> by GlaxoSmithKline Pharmaceuticals Ltd</li>
@@ -1847,6 +1187,8 @@
 
 <div class="medication-list">
     <h2>Admol 500 DT (Paracetamol 500 mg Dispersible Tablet)</h2>
+    <p><strong>Mode of Action:</strong> Paracetamol lowers fever and pain by reducing prostaglandin synthesis in the central nervous system, helping control discomfort and fever.</p>
+    <p><strong>తెలుగు:</strong> పారాసిటమాల్ మస్తిష్కంలో ప్రోస్టాగ్లాండిన్ ఉత్పత్తిని తగ్గించడం ద్వారా జ్వరం మరియు బాధను తగ్గిస్తుంది, ఫలితంగా తీవ్రత తగ్గి, నొప్పి మరియు జ్వరం నియంత్రించబడతాయి.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Calpol 500 Tablet</strong> by GlaxoSmithKline Pharmaceuticals Ltd</li>
@@ -1864,6 +1206,8 @@
 
 <div class="medication-list">
     <h2>Admol 650 (Paracetamol 650 mg Tablet)</h2>
+    <p><strong>Mode of Action:</strong> Paracetamol lowers fever and pain by reducing prostaglandin synthesis in the central nervous system, helping control discomfort and fever.</p>
+    <p><strong>తెలుగు:</strong> పారాసిటమాల్ మస్తిష్కంలో ప్రోస్టాగ్లాండిన్ ఉత్పత్తిని తగ్గించడం ద్వారా జ్వరం మరియు బాధను తగ్గిస్తుంది, ఫలితంగా తీవ్రత తగ్గి, నొప్పి మరియు జ్వరం నియంత్రించబడతాయి.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Dolo 650 Tablet</strong> by Micro Labs Ltd</li>
@@ -1881,6 +1225,8 @@
 
 <div class="medication-list">
     <h2>Admol 1G (Paracetamol 1000 mg / 1 g Bilayered Extended Release Tablet)</h2>
+    <p><strong>Mode of Action:</strong> Paracetamol lowers fever and pain by reducing prostaglandin synthesis in the central nervous system, helping control discomfort and fever.</p>
+    <p><strong>తెలుగు:</strong> పారాసిటమాల్ మస్తిష్కంలో ప్రోస్టాగ్లాండిన్ ఉత్పత్తిని తగ్గించడం ద్వారా జ్వరం మరియు బాధను తగ్గిస్తుంది, ఫలితంగా తీవ్రత తగ్గి, నొప్పి మరియు జ్వరం నియంత్రించబడతాయి.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Dolo 1000 Tablet</strong> by Micro Labs Ltd</li>
@@ -1897,6 +1243,8 @@
 </div>
 <div class="medication-list">
     <h2>Chilkep Suspension (Magaldrate 540 mg + Simethicone 50 mg + Oxetacaine 10 mg)</h2>
+    <p><strong>Mode of Action:</strong> This medicine works by targeting the underlying disease mechanism to improve symptoms and support recovery, according to its therapeutic class and active ingredients.</p>
+    <p><strong>తెలుగు:</strong> ఈ మందు దాని терап్యూటిక్ క్లాస్ మరియు క్రియాశీల మూలకాలను బట్టి వ్యాధి కారణాన్ని టార్గెట్ చేసి లక్షణాలను తగ్గించి, కోలుకునే ప్రక్రియకు సహాయపడుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Mucaine Gel</strong> by Pfizer Ltd</li>
@@ -1913,6 +1261,8 @@
 </div>
 <div class="medication-list">
     <h2>Kep-LD Syrup (Levodropropizine 30 mg + Chlorpheniramine Maleate 2 mg / 5ml)</h2>
+    <p><strong>Mode of Action:</strong> This medicine works by targeting the underlying disease mechanism to improve symptoms and support recovery, according to its therapeutic class and active ingredients.</p>
+    <p><strong>తెలుగు:</strong> ఈ మందు దాని терап్యూటిక్ క్లాస్ మరియు క్రియాశీల మూలకాలను బట్టి వ్యాధి కారణాన్ని టార్గెట్ చేసి లక్షణాలను తగ్గించి, కోలుకునే ప్రక్రియకు సహాయపడుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Ascoril LD Syrup</strong> by Glenmark Pharmaceuticals Ltd</li>
@@ -1929,6 +1279,8 @@
 </div>
 <div class="medication-list">
     <h2>Kep-BL Syrup (Dextromethorphan HBr 10 mg + Bilastine 3.3 mg + Phenylephrine HCl 5 mg / 5ml)</h2>
+    <p><strong>Mode of Action:</strong> This medicine works by targeting the underlying disease mechanism to improve symptoms and support recovery, according to its therapeutic class and active ingredients.</p>
+    <p><strong>తెలుగు:</strong> ఈ మందు దాని терап్యూటిక్ క్లాస్ మరియు క్రియాశీల మూలకాలను బట్టి వ్యాధి కారణాన్ని టార్గెట్ చేసి లక్షణాలను తగ్గించి, కోలుకునే ప్రక్రియకు సహాయపడుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Bilashine-D Syrup</strong> by Mankind Pharma Ltd</li>
@@ -1945,6 +1297,8 @@
 </div>
 <div class="medication-list">
     <h2>Kep-X Syrup (Terbutaline 1.25 mg + Bromhexine 4 mg + Guaifenesin 50 mg / 5ml)</h2>
+    <p><strong>Mode of Action:</strong> This medicine works by targeting the underlying disease mechanism to improve symptoms and support recovery, according to its therapeutic class and active ingredients.</p>
+    <p><strong>తెలుగు:</strong> ఈ మందు దాని терап్యూటిక్ క్లాస్ మరియు క్రియాశీల మూలకాలను బట్టి వ్యాధి కారణాన్ని టార్గెట్ చేసి లక్షణాలను తగ్గించి, కోలుకునే ప్రక్రియకు సహాయపడుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Ascoril LS Syrup</strong> by Glenmark Pharmaceuticals Ltd</li>
@@ -1961,6 +1315,8 @@
 </div>
 <div class="medication-list">
     <h2>Moktel Tablet (Multivitamins + Multiminerals + Grape Seed Extract)</h2>
+    <p><strong>Mode of Action:</strong> This formulation supplies essential vitamins, minerals, and nutrients that support energy production, immunity, metabolism, and overall nutritional health.</p>
+    <p><strong>తెలుగు:</strong> ఈ ఫార్ములేషన్ అవసరమైన విటమిన్లు, ఖనిజాలు మరియు పోషకాలు అందించి, శక్తి ఉత్పత్తి, రోగనిరోధక శక్తి, జీవక్రియ మరియు మొత్తం పోషక ఆరోగ్యానికి సహాయపడుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>A To Z NS Tablet</strong> by Alkem Laboratories Ltd</li>
@@ -1977,6 +1333,8 @@
 </div>
         <div class="medication-list">
     <h2>Moktel Tablet (Multivitamins + Multiminerals + Grape Seed Extract)</h2>
+    <p><strong>Mode of Action:</strong> This formulation supplies essential vitamins, minerals, and nutrients that support energy production, immunity, metabolism, and overall nutritional health.</p>
+    <p><strong>తెలుగు:</strong> ఈ ఫార్ములేషన్ అవసరమైన విటమిన్లు, ఖనిజాలు మరియు పోషకాలు అందించి, శక్తి ఉత్పత్తి, రోగనిరోధక శక్తి, జీవక్రియ మరియు మొత్తం పోషక ఆరోగ్యానికి సహాయపడుతుంది.</p>
     
     <p>🍇 Antioxidants & Extracts</p>
     <ul>
@@ -2015,6 +1373,7 @@
 <div class="medication-list">
     <h2>Moktel Syrup (Multivitamins + Multiminerals + Lycopene + Amino Acids)</h2>
     <p><strong>Mode of Action:</strong> Moktel Syrup is a nutritional supplement packed with vitamins, minerals, and amino acids. It works by filling nutritional gaps to support your body's immune system, cell growth, and daily energy production</p>
+    <p><strong>తెలుగు:</strong> మోక్టెల్ సిరప్ విటమిన్లు, ఖనిజాలు మరియు అమైనో ఆమ్లాలతో నిండి ఉన్న పోషకాహారం; ఇది పోషక లోపాలను నింపి, శరీరపు రోగనిరోధక శక్తి, కణాల పెరుగుదల మరియు రోజువారీ శక్తి ఉత్పత్తికి సహాయపడుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Zincovit Syrup</strong> by Apex Laboratories Pvt Ltd</li>
@@ -2031,6 +1390,8 @@
 </div>
 <div class="medication-list">
     <h2>Moktel Mom Tablet (Multivitamins + Multiminerals + Pregnancy-Essential Nutrients)</h2>
+    <p><strong>Mode of Action:</strong> This formulation supplies essential vitamins, minerals, and nutrients that support energy production, immunity, metabolism, and overall nutritional health.</p>
+    <p><strong>తెలుగు:</strong> ఈ ఫార్ములేషన్ అవసరమైన విటమిన్లు, ఖనిజాలు మరియు పోషకాలు అందించి, శక్తి ఉత్పత్తి, రోగనిరోధక శక్తి, జీవక్రియ మరియు మొత్తం పోషక ఆరోగ్యానికి సహాయపడుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Pregnacare Pregnancy Tablet</strong> by Meyer Organics Pvt Ltd</li>
@@ -2047,6 +1408,8 @@
 </div>
 <div class="medication-list">
     <h2>Moktel Drops (Paediatric Multivitamins + Multiminerals + DHA + Choline)</h2>
+    <p><strong>Mode of Action:</strong> This formulation supplies essential vitamins, minerals, and nutrients that support energy production, immunity, metabolism, and overall nutritional health.</p>
+    <p><strong>తెలుగు:</strong> ఈ ఫార్ములేషన్ అవసరమైన విటమిన్లు, ఖనిజాలు మరియు పోషకాలు అందించి, శక్తి ఉత్పత్తి, రోగనిరోధక శక్తి, జీవక్రియ మరియు మొత్తం పోషక ఆరోగ్యానికి సహాయపడుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Zincovit Drops</strong> by Apex Laboratories Pvt Ltd</li>
@@ -2063,6 +1426,8 @@
 </div>
 <div class="medication-list">
     <h2>Moktel Woman Softgel Capsule (Evening Primrose Oil + Green Tea Extract + Ginkgo Biloba + Omega-3 Fatty Acids + Multivitamins + Multiminerals)</h2>
+    <p><strong>Mode of Action:</strong> This formulation supplies essential vitamins, minerals, and nutrients that support energy production, immunity, metabolism, and overall nutritional health.</p>
+    <p><strong>తెలుగు:</strong> ఈ ఫార్ములేషన్ అవసరమైన విటమిన్లు, ఖనిజాలు మరియు పోషకాలు అందించి, శక్తి ఉత్పత్తి, రోగనిరోధక శక్తి, జీవక్రియ మరియు మొత్తం పోషక ఆరోగ్యానికి సహాయపడుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Revital Woman Tablet</strong> by Sun Pharmaceutical Industries Ltd</li>
@@ -2079,6 +1444,8 @@
 </div>
 <div class="medication-list">
     <h2>Globesil GG Sachet / Drops (Lactobacillus rhamnosus GG - 6 Billion CFU / 1 Billion CFU)</h2>
+    <p><strong>Mode of Action:</strong> Lactobacillus rhamnosus GG helps maintain a healthy balance of gut bacteria and supports digestive and immune health.</p>
+    <p><strong>తెలుగు:</strong> లాక్టోబాసిల్లస్ రాం‌నోసస్ GG జీర్ణవ్యవస్థలో లాభదాయకమైన బాక్టీరియాల సమతుల్యతను నిర్వహించి, జీర్ణక్రియ మరియు రోగనిరోధక ఆరోగ్యానికి సహాయపడుతుంది.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Sporlac GG Sachet / Drops</strong> by J.B. Chemicals & Pharmaceuticals Ltd</li>
@@ -2095,6 +1462,8 @@
 </div>
 <div class="medication-list">
     <h2>Centiluk Suspension (Levocetirizine 2.5 mg + Montelukast 4 mg / 5ml)</h2>
+    <p><strong>Mode of Action:</strong> Levocetirizine blocks histamine while montelukast blocks leukotriene-mediated airway inflammation, helping control allergic and respiratory symptoms.</p>
+    <p><strong>తెలుగు:</strong> లెవోసెటిరిజైన్ హిస్టమిన్‌ను నిరోధిస్తుంది, మాంటెలూకాస్ట్ లీకోట్రియన్ వల్ల కలిగే ఊపిరితిత్తుల లోపల వాపును తగ్గిస్తుంది. దీని వల్ల అలెర్జీ మరియు శ్వాస సంబంధిత లక్షణాలు తగ్గుతాయి.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Montair LC Kid Syrup</strong> by Cipla Ltd</li>
@@ -2111,6 +1480,8 @@
 </div>
 <div class="medication-list">
     <h2>Centiluk Tablet (Levocetirizine 5 mg + Montelukast 10 mg)</h2>
+    <p><strong>Mode of Action:</strong> Levocetirizine blocks histamine while montelukast blocks leukotriene-mediated airway inflammation, helping control allergic and respiratory symptoms.</p>
+    <p><strong>తెలుగు:</strong> లెవోసెటిరిజైన్ హిస్టమిన్‌ను నిరోధిస్తుంది, మాంటెలూకాస్ట్ లీకోట్రియన్ వల్ల కలిగే ఊపిరితిత్తుల లోపల వాపును తగ్గిస్తుంది. దీని వల్ల అలెర్జీ మరియు శ్వాస సంబంధిత లక్షణాలు తగ్గుతాయి.</p>
     <p>Alternative and competitor brands:</p>
     <ul>
         <li><strong>Montair LC Tablet</strong> by Cipla Ltd</li>
