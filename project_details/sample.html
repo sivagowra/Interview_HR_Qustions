@@ -1494,5 +1494,677 @@
         <li><strong>Teczine M Tablet</strong>  – టిఎసజ్ఇన్ఎ ఎమ్ టాబ్లెట్ by Cipla Ltd</li>
     </ul>
 </div>   
-    </body>
+    <main>
+  <div class="toolbar">
+    <input id="searchInput" type="search" placeholder="Search a word, pronunciation, or meaning…" aria-label="Search terminology">
+    <button type="button" onclick="clearSearch()">Clear search</button>
+    <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+  <p id="searchStatus" class="search-status" aria-live="polite"></p>
+
+  <section class="searchable">
+    <h2>1. Basic MR terminology</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Technical word</th><th>Telugu pronunciation</th><th>Simple meaning</th></tr></thead>
+      <tbody>
+        <tr><td>Medical Representative (MR)</td><td>మెడికల్ రెప్రెజెంటేటివ్</td><td>మందుల వివరాలను డాక్టర్లకు వివరించే వ్యక్తి</td></tr>
+        <tr><td>Doctor Call</td><td>డాక్టర్ కాల్</td><td>డాక్టర్‌ను కలవడం</td></tr>
+        <tr><td>Product Presentation</td><td>ప్రొడక్ట్ ప్రజెంటేషన్</td><td>మందు వివరాలు చెప్పడం</td></tr>
+        <tr><td>Brand Name</td><td>బ్రాండ్ నేమ్</td><td>కంపెనీ పెట్టిన మందు పేరు</td></tr>
+        <tr><td>Generic Name</td><td>జెనరిక్ నేమ్</td><td>మందులోని అసలు ఔషధం పేరు</td></tr>
+        <tr><td>Composition</td><td>కాంపోజిషన్</td><td>మందులో ఉన్న పదార్థాలు</td></tr>
+        <tr><td>Indication</td><td>ఇండికేషన్</td><td>మందు దేనికి ఉపయోగపడుతుంది</td></tr>
+        <tr><td>Dosage</td><td>డోసేజ్</td><td>మందు ఎంత మోతాదులో వాడాలి</td></tr>
+        <tr><td>Contraindication</td><td>కాంట్రా ఇండికేషన్</td><td>మందు వాడకూడని పరిస్థితి</td></tr>
+        <tr><td>Side Effects</td><td>సైడ్ ఎఫెక్ట్స్</td><td>మందు వల్ల కలిగే అవాంఛిత ప్రభావాలు</td></tr>
+        <tr><td>Adverse Drug Reaction (ADR)</td><td>అడ్వర్స్ డ్రగ్ రియాక్షన్</td><td>మందు వల్ల కలిగే హానికరమైన ప్రతిక్రియ</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="searchable">
+    <h2>2. Doctor visit and sales terminology</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Technical word</th><th>Telugu pronunciation</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>MR Call</td><td>ఎం.ఆర్. కాల్</td><td>డాక్టర్‌ను కలవడం</td></tr>
+        <tr><td>Call Average</td><td>కాల్ యావరేజ్</td><td>రోజువారీ డాక్టర్ విజిట్ల సగటు</td></tr>
+        <tr><td>Coverage</td><td>కవరేజ్</td><td>కేటాయించిన డాక్టర్లను కలవడం</td></tr>
+        <tr><td>Frequency</td><td>ఫ్రీక్వెన్సీ</td><td>డాక్టర్‌ను ఎంత తరచుగా కలుస్తారు</td></tr>
+        <tr><td>POB (Product Order Booking)</td><td>పీ.ఓ.బీ.</td><td>ప్రొడక్ట్ ఆర్డర్ బుక్ చేయడం</td></tr>
+        <tr><td>RCPA (Retail Chemist Prescription Audit)</td><td>ఆర్.సీ.పీ.ఏ.</td><td>మెడికల్ షాపులో ప్రిస్క్రిప్షన్, బ్రాండ్ విక్రయాల వివరాలు తెలుసుకోవడం</td></tr>
+        <tr><td>Primary Sales</td><td>ప్రైమరీ సేల్స్</td><td>కంపెనీ నుంచి డిస్ట్రిబ్యూటర్‌కు జరిగే అమ్మకాలు</td></tr>
+        <tr><td>Secondary Sales</td><td>సెకండరీ సేల్స్</td><td>డిస్ట్రిబ్యూటర్ నుంచి రిటైలర్‌కు జరిగే అమ్మకాలు</td></tr>
+        <tr><td>Target</td><td>టార్గెట్</td><td>నిర్ణయించిన అమ్మకాల లక్ష్యం</td></tr>
+        <tr><td>Achievement</td><td>అచీవ్‌మెంట్</td><td>సాధించిన అమ్మకాల లక్ష్యం</td></tr>
+        <tr><td>Territory</td><td>టెరిటరీ</td><td>మీకు కేటాయించిన పని ప్రాంతం</td></tr>
+        <tr><td>HQ (Headquarters)</td><td>హెచ్.క్యూ.</td><td>మీ ప్రధాన పని కేంద్రం</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="searchable">
+    <h2>3. Medical and pharmaceutical terminology</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Technical word</th><th>Telugu pronunciation</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>Pharmacology</td><td>ఫార్మకాలజీ</td><td>మందులు శరీరంపై ఎలా పనిచేస్తాయో తెలిపే శాస్త్రం</td></tr>
+        <tr><td>Pharmacokinetics</td><td>ఫార్మకోకైనెటిక్స్</td><td>శరీరం మందును ఎలా గ్రహించి, పంపిణీ చేసి, తొలగిస్తుందో</td></tr>
+        <tr><td>Pharmacodynamics</td><td>ఫార్మకోడైనమిక్స్</td><td>మందు శరీరంపై ఎలా పనిచేస్తుందో</td></tr>
+        <tr><td>Mechanism of Action (MOA)</td><td>మెకానిజం ఆఫ్ యాక్షన్</td><td>మందు పనిచేసే విధానం</td></tr>
+        <tr><td>Bioavailability</td><td>బయోఅవైలబిలిటీ</td><td>మందు ఎంత భాగం రక్తప్రసరణలోకి చేరుతుంది</td></tr>
+        <tr><td>Half-life</td><td>హాఫ్ లైఫ్</td><td>శరీరంలో మందు పరిమాణం సగానికి తగ్గడానికి పట్టే సమయం</td></tr>
+        <tr><td>Efficacy</td><td>ఎఫికసీ</td><td>మందు ఆశించిన ప్రభావాన్ని కలిగించే సామర్థ్యం</td></tr>
+        <tr><td>Safety Profile</td><td>సేఫ్టీ ప్రొఫైల్</td><td>మందు భద్రతకు సంబంధించిన సమాచారం</td></tr>
+        <tr><td>Clinical Trial</td><td>క్లినికల్ ట్రయల్</td><td>మనుషుల్లో మందును పరిశీలించే పరిశోధన</td></tr>
+        <tr><td>Evidence-Based Medicine</td><td>ఎవిడెన్స్ బేస్డ్ మెడిసిన్</td><td>శాస్త్రీయ ఆధారాలపై ఆధారపడిన వైద్యం</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="searchable">
+    <h2>4. Common medical abbreviations</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Short form</th><th>Full form</th><th>Telugu meaning</th></tr></thead>
+      <tbody>
+        <tr><td>GP</td><td>General Practitioner</td><td>సాధారణ వైద్యుడు</td></tr>
+        <tr><td>MD</td><td>Doctor of Medicine</td><td>వైద్య విద్యలో ఒక ఉన్నత అర్హత</td></tr>
+        <tr><td>OPD</td><td>Outpatient Department</td><td>బయటి రోగుల విభాగం</td></tr>
+        <tr><td>IPD</td><td>Inpatient Department</td><td>ఆసుపత్రిలో చేరిన రోగుల విభాగం</td></tr>
+        <tr><td>BP</td><td>Blood Pressure</td><td>రక్తపోటు</td></tr>
+        <tr><td>DM</td><td>Diabetes Mellitus</td><td>మధుమేహం</td></tr>
+        <tr><td>HTN</td><td>Hypertension</td><td>అధిక రక్తపోటు</td></tr>
+        <tr><td>URI</td><td>Upper Respiratory Infection</td><td>పై శ్వాసనాళ ఇన్ఫెక్షన్</td></tr>
+        <tr><td>BID</td><td>Twice Daily</td><td>రోజుకు రెండుసార్లు</td></tr>
+        <tr><td>TID</td><td>Three Times Daily</td><td>రోజుకు మూడుసార్లు</td></tr>
+        <tr><td>OD</td><td>Once Daily (in some prescriptions)</td><td>రోజుకు ఒకసారి అని ఉపయోగించవచ్చు; సందర్భాన్ని నిర్ధారించాలి</td></tr>
+        <tr><td>SOS</td><td>If needed</td><td>అవసరమైనప్పుడు</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note"><strong>Important:</strong> Prescription abbreviations can be ambiguous. Follow the prescriber's clear instructions and the approved product information. Never guess a dose from an abbreviation.</div>
+  </section>
+
+  <section class="searchable">
+    <h2>5. Doctor call categories</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>Potential Doctor</td><td>మీ ఉత్పత్తిని ఉపయోగించే అవకాశం ఉన్న డాక్టర్</td></tr>
+        <tr><td>High-Potential Doctor</td><td>ఎక్కువ వ్యాపార అవకాశమున్న డాక్టర్</td></tr>
+        <tr><td>Regular Prescriber</td><td>మీ బ్రాండ్‌ను క్రమం తప్పకుండా ప్రిస్క్రైబ్ చేసే డాక్టర్</td></tr>
+        <tr><td>Non-Prescriber</td><td>ప్రస్తుతం మీ బ్రాండ్‌ను ప్రిస్క్రైబ్ చేయని డాక్టర్</td></tr>
+        <tr><td>New Doctor</td><td>కొత్తగా మీ పరిధిలో గుర్తించిన డాక్టర్</td></tr>
+        <tr><td>Follow-up Call</td><td>గత విజిట్ తర్వాత మళ్లీ కలవడం</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="searchable">
+    <h2>6. Product detailing — example</h2>
+    <div class="example">
+      <p>ఒక డాక్టర్‌కు మీ డయాబెటిస్ బ్రాండ్ గురించి వివరించేటప్పుడు ఈ పదాలు ఉపయోగపడతాయి.</p>
+      <ul>
+        <li><strong>Brand Name:</strong> మీ కంపెనీ బ్రాండ్ పేరు.</li>
+        <li><strong>Composition:</strong> మందులోని active ingredients.</li>
+        <li><strong>Indication:</strong> ఏ వ్యాధి లేదా పరిస్థితికి ఉపయోగిస్తారు.</li>
+        <li><strong>MOA:</strong> మందు పనిచేసే విధానం.</li>
+        <li><strong>Dosage:</strong> ఆమోదించిన మోతాదు, వాడే విధానం.</li>
+        <li><strong>Safety:</strong> ముఖ్యమైన జాగ్రత్తలు, దుష్ప్రభావాలు.</li>
+        <li><strong>Clinical Evidence:</strong> మందుకు మద్దతుగా ఉన్న పరిశోధనా ఆధారాలు.</li>
+      </ul>
+      <div class="note">Promote medicines ethically and use only company-approved product information. Do not promise guaranteed results or recommend treatment outside the approved label.</div>
+    </div>
+  </section>
+
+  <div class="content-card searchable">
+    <h2 class="section-title">1. Doctor call and fieldwork terminology</h2>
+    <div class="section-body">
+      <div class="term">
+        <h3>1. Call Average (CA)</h3>
+        <div class="pronunciation">తెలుగు: కాల్ యావరేజ్</div>
+        <p>The average number of doctor visits per working day.</p>
+        <p><strong>Example:</strong> You visit 10 doctors in 5 working days. Your call average is 2 doctors per day.</p>
+      </div>
+      <div class="term">
+        <h3>2. Call Frequency</h3>
+        <div class="pronunciation">తెలుగు: కాల్ ఫ్రీక్వెన్సీ</div>
+        <p>How often you visit a particular doctor.</p>
+        <p><strong>Example:</strong> You plan to meet Dr. Ravi four times per month, according to your company's approved schedule.</p>
+      </div>
+      <div class="term">
+        <h3>3. Doctor Coverage</h3>
+        <div class="pronunciation">తెలుగు: డాక్టర్ కవరేజ్</div>
+        <p>Visiting the doctors assigned to your territory.</p>
+        <p><strong>Example:</strong> You have 100 doctors on your list and visit 80 during the planned period.</p>
+      </div>
+      <div class="term">
+        <h3>4. Call Average vs. Coverage</h3>
+        <div class="pronunciation">తెలుగు: కాల్ యావరేజ్ వర్సెస్ కవరేజ్</div>
+        <p>Call average measures visits per day; coverage measures how many assigned doctors you reach.</p>
+        <p><strong>Example:</strong> You may make 12 calls daily but still have poor coverage if you repeatedly visit the same doctors.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-card searchable">
+    <h2 class="section-title">2. Sales and business terminology</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Technical word</th><th>Telugu pronunciation</th><th>Simple meaning and example</th></tr></thead>
+        <tbody>
+          <tr><td>Primary Sales</td><td>ప్రైమరీ సేల్స్</td><td>Company sells stock to distributor.</td></tr>
+          <tr><td>Secondary Sales</td><td>సెకండరీ సేల్స్</td><td>Distributor sells stock to retailers.</td></tr>
+          <tr><td>Target Achievement</td><td>టార్గెట్ అచీవ్‌మెంట్</td><td>Percentage of sales target achieved.</td></tr>
+          <tr><td>Market Share</td><td>మార్కెట్ షేర్</td><td>Your brand's share of the relevant market.</td></tr>
+          <tr><td>Growth</td><td>గ్రోత్</td><td>Increase in sales compared with a previous period.</td></tr>
+          <tr><td>Stock Availability</td><td>స్టాక్ అవైలబిలిటీ</td><td>Whether your product is available at the pharmacy.</td></tr>
+          <tr><td>Stockist</td><td>స్టాకిస్ట్</td><td>Distributor or wholesaler supplying medicines.</td></tr>
+          <tr><td>POB</td><td>పీ.ఓ.బీ.</td><td>Product order booking; precise usage varies by company.</td></tr>
+          <tr><td>RCPA</td><td>ఆర్.సీ.పీ.ఏ.</td><td>Retail Chemist Prescription Audit; used to understand prescription and brand movement patterns.</td></tr>
+          <tr><td>Conversion</td><td>కన్వర్షన్</td><td>A change in prescribing or purchasing behaviour, assessed ethically and without assuming a guaranteed result.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-body">
+      <p><strong>Practical example:</strong> Your monthly sales target is ₹2,00,000, and you achieve ₹1,60,000.</p>
+      <div class="formula">
+        <strong>Achievement = (Actual Sales ÷ Sales Target) × 100</strong>
+        <p>Achievement = (₹1,60,000 ÷ ₹2,00,000) × 100 = <strong>80%</strong></p>
+        <p>Your target achievement is 80%.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-card searchable">
+    <h2 class="section-title">3. Advanced pharmaceutical terminology</h2>
+    <div class="section-body">
+      <p>These words are especially important when you explain your product to doctors.</p>
+      <div class="term">
+        <h3>1. Composition</h3><div class="pronunciation">తెలుగు: కాంపోజిషన్</div>
+        <p>The active ingredients and their strengths in a medicine.</p>
+        <p><strong>Example:</strong> A tablet contains metformin 500 mg. The composition tells the doctor what ingredient and strength the tablet contains.</p>
+      </div>
+      <div class="term">
+        <h3>2. Indication</h3><div class="pronunciation">తెలుగు: ఇండికేషన్</div>
+        <p>The disease or condition for which a medicine is approved to be used.</p>
+        <p><strong>Example:</strong> Metformin is used in the management of type 2 diabetes.</p>
+      </div>
+      <div class="term">
+        <h3>3. Mechanism of Action (MOA)</h3><div class="pronunciation">తెలుగు: మెకానిజం ఆఫ్ యాక్షన్</div>
+        <p>How a medicine produces its effect in the body.</p>
+        <p><strong>Example:</strong> Metformin reduces glucose production in the liver and improves insulin sensitivity.</p>
+      </div>
+      <div class="term">
+        <h3>4. Efficacy</h3><div class="pronunciation">తెలుగు: ఎఫికసీ</div>
+        <p>How well a medicine produces its intended effect under specified conditions.</p>
+        <p><strong>Example:</strong> Clinical studies may assess how effectively a diabetes medicine lowers HbA1c.</p>
+      </div>
+      <div class="term">
+        <h3>5. Safety Profile</h3><div class="pronunciation">తెలుగు: సేఫ్టీ ప్రొఫైల్</div>
+        <p>Information about side effects, warnings, contraindications, and precautions.</p>
+        <p><strong>Example:</strong> Explain the relevant safety information of a product accurately using its approved prescribing information.</p>
+      </div>
+      <div class="term">
+        <h3>6. Contraindication</h3><div class="pronunciation">తెలుగు: కాంట్రా ఇండికేషన్</div>
+        <p>A situation in which a medicine should not be used.</p>
+        <p><strong>Example:</strong> Certain medicines are contraindicated in specific medical conditions; always check the product information.</p>
+      </div>
+      <div class="term">
+        <h3>7. Drug Interaction</h3><div class="pronunciation">తెలుగు: డ్రగ్ ఇంటరాక్షన్</div>
+        <p>When one medicine affects the action or safety of another medicine.</p>
+        <p><strong>Example:</strong> A doctor or pharmacist checks potential interactions when a patient takes several medicines.</p>
+      </div>
+      <div class="term">
+        <h3>8. Clinical Evidence</h3><div class="pronunciation">తెలుగు: క్లినికల్ ఎవిడెన్స్</div>
+        <p>Scientific information from clinical studies supporting a medicine's effects and safety.</p>
+        <p><strong>Example:</strong> When discussing a product, use relevant, reliable study results rather than unsupported claims.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-card searchable">
+    <h2 class="section-title">4. Advanced terms used during product detailing</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Word</th><th>Telugu pronunciation</th><th>How to use it</th></tr></thead>
+        <tbody>
+          <tr><td>Differentiation</td><td>డిఫరెన్షియేషన్</td><td>Explain evidence-based differences between products.</td></tr>
+          <tr><td>Competitive Advantage</td><td>కంపెటిటివ్ అడ్వాంటేజ్</td><td>A substantiated benefit compared with alternatives.</td></tr>
+          <tr><td>Patient Compliance</td><td>పేషెంట్ కంప్లయన్స్</td><td>How well a patient follows the prescribed treatment.</td></tr>
+          <tr><td>Patient Adherence</td><td>పేషెంట్ అడ్‌హీరెన్స్</td><td>How closely a patient follows the agreed treatment plan.</td></tr>
+          <tr><td>Dosage Regimen</td><td>డోసేజ్ రెజిమెన్</td><td>The prescribed dose, timing, frequency, and duration.</td></tr>
+          <tr><td>Onset of Action</td><td>ఆన్‌సెట్ ఆఫ్ యాక్షన్</td><td>How quickly a medicine begins to produce an effect.</td></tr>
+          <tr><td>Duration of Action</td><td>డ్యూరేషన్ ఆఫ్ యాక్షన్</td><td>How long the medicine's effect lasts.</td></tr>
+          <tr><td>Tolerability</td><td>టాలరబిలిటీ</td><td>How well a patient can tolerate a medicine's adverse effects.</td></tr>
+          <tr><td>Pharmacoeconomics</td><td>ఫార్మాకోఎకనామిక్స్</td><td>Comparing treatment costs and outcomes.</td></tr>
+          <tr><td>Pharmacovigilance</td><td>ఫార్మాకోవిజిలెన్స్</td><td>Monitoring and assessing medicine safety.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="content-card searchable">
+    <h2 class="section-title">5. How to speak to a doctor professionally</h2>
+    <div class="section-body">
+      <p>Practice these sample sentences aloud.</p>
+      <div class="scenario">
+        <h3>SITUATION 1 — INTRODUCING YOUR PRODUCT</h3>
+        <p><span class="label">English:</span> “Good morning, Doctor. May I briefly explain the composition, indication, and mechanism of action of our product?”</p>
+        <p><span class="label">తెలుగు ఉచ్చారణ:</span> గుడ్ మార్నింగ్ డాక్టర్. మే ఐ బ్రీఫ్లీ ఎక్స్‌ప్లెయిన్ ది కాంపోజిషన్, ఇండికేషన్ అండ్ మెకానిజం ఆఫ్ యాక్షన్ ఆఫ్ అవర్ ప్రొడక్ట్?</p>
+      </div>
+      <div class="scenario">
+        <h3>SITUATION 2 — EXPLAINING CLINICAL EVIDENCE</h3>
+        <p><span class="label">English:</span> “Doctor, I would like to share the relevant clinical evidence and safety information for this product.”</p>
+        <p><span class="label">తెలుగు ఉచ్చారణ:</span> డాక్టర్, ఐ వుడ్ లైక్ టు షేర్ ది రెలెవెంట్ క్లినికల్ ఎవిడెన్స్ అండ్ సేఫ్టీ ఇన్ఫర్మేషన్ ఫర్ దిస్ ప్రొడక్ట్.</p>
+      </div>
+      <div class="scenario">
+        <h3>SITUATION 3 — DOCTOR IS BUSY</h3>
+        <p><span class="label">English:</span> “Certainly, Doctor. When would be a convenient time for a brief follow-up visit?”</p>
+        <p><span class="label">తెలుగు ఉచ్చారణ:</span> సర్టన్‌లీ డాక్టర్. వెన్ వుడ్ బీ ఎ కన్వీనియెంట్ టైమ్ ఫర్ ఎ బ్రీఫ్ ఫాలో-అప్ విజిట్?</p>
+      </div>
+      <div class="scenario">
+        <h3>SITUATION 4 — FOLLOW-UP</h3>
+        <p><span class="label">English:</span> “Doctor, during my previous visit, I shared the product details. Today, I would like to clarify any questions you may have.”</p>
+        <p><span class="label">తెలుగు ఉచ్చారణ:</span> డాక్టర్, డ్యూరింగ్ మై ప్రీవియస్ విజిట్, ఐ షేర్డ్ ది ప్రొడక్ట్ డీటెయిల్స్. టుడే, ఐ వుడ్ లైక్ టు క్లారిఫై ఎనీ క్వశ్చన్స్ యూ మే హ్యావ్.</p>
+      </div>
+      <div class="note">Promote medicines ethically and use only company-approved product information. Do not promise guaranteed results or recommend treatment outside the approved label.</div>
+    </div>
+  </div>
+
+  <div class="footer">Advanced MR Terminology — Level 1 • Learning reference</div>
+</div>
+<div class="container">
+
+  <div class="header">
+    <h1>Medical Representative Training</h1>
+    <h2 style="color:white;border:0;">Doctor Call Terminology</h2>
+    <p>English Terms | Telugu Pronunciation | Simple Meanings | Practical Examples</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section">
+    <h2>1. Basic Doctor Call Terminology</h2>
+
+    <div class="term-card">
+      <h3>1. Doctor Call</h3>
+      <div class="telugu">డాక్టర్ కాల్</div>
+      <p>A professional visit to a doctor to discuss approved product information.</p>
+      <div class="example">
+        <strong>Example:</strong> You visit a physician at a clinic and explain your diabetes product.
+      </div>
+    </div>
+
+    <div class="term-card">
+      <h3>2. Call Average</h3>
+      <div class="telugu">కాల్ యావరేజ్</div>
+      <p>Average number of calls made per working day, according to company rules.</p>
+      <div class="example">
+        <strong>Example:</strong> 40 calls over 20 working days = 2 calls per day.
+      </div>
+    </div>
+
+    <div class="term-card">
+      <h3>3. Call Frequency</h3>
+      <div class="telugu">కాల్ ఫ్రీక్వెన్సీ</div>
+      <p>How often you visit a particular doctor.</p>
+      <div class="example">
+        <strong>Example:</strong> Your tour plan schedules four visits to a doctor in a month.
+      </div>
+    </div>
+
+    <div class="term-card">
+      <h3>4. Doctor Coverage</h3>
+      <div class="telugu">డాక్టర్ కవరేజ్</div>
+      <p>The number or proportion of assigned doctors visited during a period.</p>
+      <div class="example">
+        <strong>Example:</strong> Visiting 80 out of 100 assigned doctors means 80% coverage.
+      </div>
+    </div>
+
+    <div class="term-card">
+      <h3>5. Product Detailing</h3>
+      <div class="telugu">ప్రొడక్ట్ డీటెయిలింగ్</div>
+      <p>Explaining a product's composition, approved indication, evidence, benefits and safety.</p>
+      <div class="example">
+        <strong>Example:</strong> You explain the brand's active ingredients and mechanism of action.
+      </div>
+    </div>
+
+    <div class="term-card">
+      <h3>6. Follow-up Call</h3>
+      <div class="telugu">ఫాలో-అప్ కాల్</div>
+      <p>A subsequent visit to continue a professional discussion or answer questions.</p>
+      <div class="example">
+        <strong>Example:</strong> You return next week at a convenient time.
+      </div>
+    </div>
+
+    <div class="term-card">
+      <h3>7. Call Duration</h3>
+      <div class="telugu">కాల్ డ్యూరేషన్</div>
+      <p>The time spent during a doctor visit.</p>
+      <div class="example">
+        <strong>Example:</strong> You have a brief three-minute discussion because the clinic is busy.
+      </div>
+    </div>
+
+    <div class="term-card">
+      <h3>8. Call Objective</h3>
+      <div class="telugu">కాల్ ఆబ్జెక్టివ్</div>
+      <p>The main purpose of a planned visit.</p>
+      <div class="example">
+        <strong>Example:</strong> Your objective is to explain new clinical evidence for a product.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section">
+    <h2>2. Doctor Categories and Potential</h2>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>English Term</th>
+            <th>Telugu Pronunciation</th>
+            <th>Simple Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Potential Doctor</td>
+            <td>పొటెన్షియల్ డాక్టర్</td>
+            <td>A doctor whose speciality and practice may be relevant to your product.</td>
+          </tr>
+          <tr>
+            <td>High-Potential Doctor</td>
+            <td>హై పొటెన్షియల్ డాక్టర్</td>
+            <td>A doctor identified as having greater relevant business potential under company criteria.</td>
+          </tr>
+          <tr>
+            <td>Regular Prescriber</td>
+            <td>రెగ్యులర్ ప్రిస్క్రైబర్</td>
+            <td>A doctor who regularly prescribes a particular brand when clinically appropriate.</td>
+          </tr>
+          <tr>
+            <td>Non-Prescriber</td>
+            <td>నాన్-ప్రిస్క్రైబర్</td>
+            <td>A doctor who is not currently prescribing your brand.</td>
+          </tr>
+          <tr>
+            <td>New Doctor</td>
+            <td>న్యూ డాక్టర్</td>
+            <td>A doctor newly added to your territory or call list.</td>
+          </tr>
+          <tr>
+            <td>Key Opinion Leader (KOL)</td>
+            <td>కీ ఒపీనియన్ లీడర్</td>
+            <td>A recognised expert who influences professional discussion in a medical field.</td>
+          </tr>
+          <tr>
+            <td>Specialist</td>
+            <td>స్పెషలిస్ట్</td>
+            <td>A doctor trained in a particular area of medicine.</td>
+          </tr>
+          <tr>
+            <td>General Practitioner (GP)</td>
+            <td>జనరల్ ప్రాక్టిషనర్</td>
+            <td>A doctor providing general medical care.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <strong>Practical Example:</strong> For a diabetes medicine, an endocrinologist or an appropriate physician may be relevant. Follow the approved indication and your company's ethical promotion policy.
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section">
+    <h2>3. Doctor Call Planning Terminology</h2>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Term</th>
+            <th>Telugu Pronunciation</th>
+            <th>Example / Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tour Plan</td>
+            <td>టూర్ ప్లాన్</td>
+            <td>Your planned doctor visits for the week.</td>
+          </tr>
+          <tr>
+            <td>Beat Plan</td>
+            <td>బీట్ ప్లాన్</td>
+            <td>The sequence of doctors and clinics to visit in an area.</td>
+          </tr>
+          <tr>
+            <td>Territory</td>
+            <td>టెరిటరీ</td>
+            <td>The geographical area assigned to you.</td>
+          </tr>
+          <tr>
+            <td>HQ (Headquarters)</td>
+            <td>హెచ్.క్యూ.</td>
+            <td>Your designated work base.</td>
+          </tr>
+          <tr>
+            <td>Call List</td>
+            <td>కాల్ లిస్ట్</td>
+            <td>The list of doctors assigned for visits.</td>
+          </tr>
+          <tr>
+            <td>Call Plan</td>
+            <td>కాల్ ప్లాన్</td>
+            <td>Your intended visits for a day or period.</td>
+          </tr>
+          <tr>
+            <td>Missed Call</td>
+            <td>మిస్డ్ కాల్</td>
+            <td>A planned doctor visit that did not happen.</td>
+          </tr>
+          <tr>
+            <td>Repeat Call</td>
+            <td>రిపీట్ కాల్</td>
+            <td>Another visit to the same doctor.</td>
+          </tr>
+          <tr>
+            <td>Joint Work</td>
+            <td>జాయింట్ వర్క్</td>
+            <td>Fieldwork with your manager or another colleague.</td>
+          </tr>
+          <tr>
+            <td>Route Planning</td>
+            <td>రూట్ ప్లానింగ్</td>
+            <td>Organising visits to reduce travel time and improve efficiency.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Example: Daily Beat Plan</h3>
+    <div class="term-card">
+      <strong>Morning — Guntur</strong>
+      <p>Visit two physicians and one diabetologist.</p>
+
+      <strong>Afternoon — Clinic Area</strong>
+      <p>Visit two specialists and one pharmacy.</p>
+
+      <strong>Evening — Reporting</strong>
+      <p>Complete your daily call report and plan the next day's route.</p>
+    </div>
+
+    <p><em>Note: This is a sample route. Actual timings depend on clinic availability and your assigned territory.</em></p>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section">
+    <h2>4. Product Detailing Terminology</h2>
+    <p>These terms are important while communicating approved product information to doctors.</p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>English Term</th>
+            <th>Telugu Pronunciation</th>
+            <th>Practical Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Opening Statement</td>
+            <td>ఓపెనింగ్ స్టేట్‌మెంట్</td>
+            <td>Your polite introduction at the start of a call.</td>
+          </tr>
+          <tr>
+            <td>Product Message</td>
+            <td>ప్రొడక్ట్ మెసేజ్</td>
+            <td>The main approved information you want to communicate.</td>
+          </tr>
+          <tr>
+            <td>Key Selling Point (KSP)</td>
+            <td>కీ సెల్లింగ్ పాయింట్</td>
+            <td>An important evidence-supported product feature.</td>
+          </tr>
+          <tr>
+            <td>Composition</td>
+            <td>కాంపోజిషన్</td>
+            <td>Active ingredients and their strengths.</td>
+          </tr>
+          <tr>
+            <td>Indication</td>
+            <td>ఇండికేషన్</td>
+            <td>Approved use of the medicine.</td>
+          </tr>
+          <tr>
+            <td>Mechanism of Action (MOA)</td>
+            <td>మెకానిజం ఆఫ్ యాక్షన్</td>
+            <td>How the medicine works.</td>
+          </tr>
+          <tr>
+            <td>Clinical Evidence</td>
+            <td>క్లినికల్ ఎవిడెన్స్</td>
+            <td>Research evidence supporting a medicine's effects and safety.</td>
+          </tr>
+          <tr>
+            <td>Safety Profile</td>
+            <td>సేఫ్టీ ప్రొఫైల్</td>
+            <td>Relevant adverse effects, warnings and precautions.</td>
+          </tr>
+          <tr>
+            <td>Objection Handling</td>
+            <td>అబ్జెక్షన్ హ్యాండ్లింగ్</td>
+            <td>Responding professionally to a doctor's concern or question.</td>
+          </tr>
+          <tr>
+            <td>Closing Statement</td>
+            <td>క్లోజింగ్ స్టేట్‌మెంట్</td>
+            <td>A polite conclusion to the visit.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section">
+    <h2>5. Four Common Doctor-Call Situations</h2>
+
+    <div class="situation">
+      <h3>Situation 1: The Doctor Is Busy</h3>
+      <p class="english">English: "Good morning, Doctor. I understand you are busy. May I visit at a more convenient time?"</p>
+      <p class="telugu">తెలుగు ఉచ్చారణ: గుడ్ మార్నింగ్ డాక్టర్. ఐ అండర్‌స్టాండ్ యూ ఆర్ బిజీ. మే ఐ విజిట్ అట్ ఎ మోర్ కన్వీనియెంట్ టైమ్?</p>
+    </div>
+
+    <div class="situation">
+      <h3>Situation 2: Introducing a Product</h3>
+      <p class="english">English: "Doctor, may I briefly explain the composition, approved indication, and key clinical evidence of our product?"</p>
+      <p class="telugu">తెలుగు ఉచ్చారణ: డాక్టర్, మే ఐ బ్రీఫ్లీ ఎక్స్‌ప్లెయిన్ ది కాంపోజిషన్, అప్రూవ్డ్ ఇండికేషన్ అండ్ కీ క్లినికల్ ఎవిడెన్స్ ఆఫ్ అవర్ ప్రొడక్ట్?</p>
+    </div>
+
+    <div class="situation">
+      <h3>Situation 3: The Doctor Raises a Concern</h3>
+      <p class="english">English: "Thank you, Doctor. I understand your concern. I will check the approved product information and clarify it accurately."</p>
+      <p class="telugu">తెలుగు ఉచ్చారణ: థ్యాంక్ యూ, డాక్టర్. ఐ అండర్‌స్టాండ్ యువర్ కన్సర్న్. ఐ విల్ చెక్ ది అప్రూవ్డ్ ప్రొడక్ట్ ఇన్ఫర్మేషన్ అండ్ క్లారిఫై ఇట్ అక్యురెట్లీ.</p>
+    </div>
+
+    <div class="situation">
+      <h3>Situation 4: Closing the Call</h3>
+      <p class="english">English: "Thank you for your time, Doctor. I will share the relevant product information and follow up at a convenient time."</p>
+      <p class="telugu">తెలుగు ఉచ్చారణ: థ్యాంక్ యూ ఫర్ యువర్ టైమ్, డాక్టర్. ఐ విల్ షేర్ ది రెలెవెంట్ ప్రొడక్ట్ ఇన్ఫర్మేషన్ అండ్ ఫాలో అప్ అట్ ఎ కన్వీనియెంట్ టైమ్.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="section">
+    <h2>6. Daily Call Report (DCR) Terminology</h2>
+
+    <div class="term-card">
+      <h3>DCR — Daily Call Report</h3>
+      <div class="telugu">డైలీ కాల్ రిపోర్ట్</div>
+      <p>This records your actual field activity according to company requirements.</p>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Doctor Name</td>
+            <td>Dr. Ravi Kumar</td>
+          </tr>
+          <tr>
+            <td>Speciality</td>
+            <td>General Physician</td>
+          </tr>
+          <tr>
+            <td>Area</td>
+            <td>Lakshmipuram</td>
+          </tr>
+          <tr>
+            <td>Call Type</td>
+            <td>Product detailing</td>
+          </tr>
+          <tr>
+            <td>Product Discussed</td>
+            <td>Your assigned brand</td>
+          </tr>
+          <tr>
+            <td>Call Outcome</td>
+            <td>Product information shared</td>
+          </tr>
+          <tr>
+            <td>Follow-up Plan</td>
+            <td>Revisit next week if appropriate</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <strong>MR Reminder:</strong> Record actual visits accurately, respect doctors' time, and communicate only approved and evidence-supported product information.
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Medical Representative Learning Notes | Doctor Call Terminology</p>
+  </div>
+
+</div>
+</main>
+
+</body>
 </html>
