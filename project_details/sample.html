@@ -113,6 +113,59 @@
                 box-shadow: var(--shadow);
             }
 
+            .organ-guide {
+              max-width: 1200px;
+              margin: 36px auto;
+            }
+
+            .organ-guide > h2 {
+              margin-bottom: 6px;
+            }
+
+            .organ-intro {
+              margin: 0 0 20px;
+              color: var(--muted);
+            }
+
+            .organ-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+              gap: 16px;
+            }
+
+            .organ-entry {
+              padding: 18px;
+              background: var(--card-bg);
+              border: 1px solid var(--border);
+              border-top: 3px solid var(--primary);
+              border-radius: 8px;
+              box-shadow: var(--shadow);
+            }
+
+            .organ-entry h3 {
+              margin: 0 0 14px;
+              color: #1e3a8a;
+            }
+
+            .organ-entry h3 span {
+              color: var(--muted);
+              font-size: 0.88em;
+              font-weight: 500;
+            }
+
+            .organ-entry p {
+              margin: 10px 0 0;
+            }
+
+            .organ-entry .language-label {
+              display: block;
+              margin-bottom: 2px;
+              color: var(--primary);
+              font-size: 0.82rem;
+              font-weight: 700;
+              text-transform: uppercase;
+            }
+
             @media (max-width: 768px) {
                 body {
                     padding: 14px 10px;
@@ -122,6 +175,10 @@
                 .medication-list {
                     padding: 14px 12px;
                     border-radius: 12px;
+                }
+
+                .organ-entry {
+                  padding: 15px;
                 }
 
                 ul {
@@ -2165,6 +2222,59 @@
 
 </div>
 </main>
+    <section class="organ-guide" aria-labelledby="organ-guide-title">
+      <h2 id="organ-guide-title">Important Organs and Body Parts</h2>
+      <p class="organ-intro">Learn the names and functions in English and Telugu.</p>
 
+      <div class="organ-grid">
+        <article class="organ-entry">
+          <h3>1. Brain <span lang="te">మెదడు</span> <span>(Medadu)</span></h3>
+          <p><span class="language-label">English</span>The brain is the control centre of the body. It helps you think, learn, feel emotions, and controls all your body movements.</p>
+          <p lang="te"><span class="language-label">తెలుగు</span>మెదడు శరీరానికి నియంత్రణ కేంద్రం. ఇది మీరు ఆలోచించడానికి, నేర్చుకోవడానికి, భావాలను పంచుకోవడానికి మరియు శరీర కదలికలను నియంత్రించడానికి సహాయపడుతుంది.</p>
+        </article>
+
+        <article class="organ-entry">
+          <h3>2. Heart <span lang="te">గుండె</span> <span>(Gunde)</span></h3>
+          <p><span class="language-label">English</span>The heart is a muscular pump that continuously pumps blood throughout your entire body to deliver oxygen and nutrients.</p>
+          <p lang="te"><span class="language-label">తెలుగు</span>గుండె ఒక పంపిణీ అవయవం. ఇది శరీరంలోని అన్ని భాగాలకు ఆక్సిజన్ మరియు పోషకాలను అందించడానికి నిరంతరం రక్తాన్ని పంపుతుంది.</p>
+        </article>
+
+        <article class="organ-entry">
+          <h3>3. Lungs <span lang="te">ఊపిరితిత్తులు</span> <span>(Upiritittulu)</span></h3>
+          <p><span class="language-label">English</span>The lungs help you breathe. They take in oxygen from the air when you inhale and remove carbon dioxide from your body when you exhale.</p>
+          <p lang="te"><span class="language-label">తెలుగు</span>ఊపిరితిత్తులు శ్వాస తీసుకోవడానికి సహాయపడతాయి. మనం గాలి పీల్చినప్పుడు ఆక్సిజన్‌ను లోపలికి తీసుకుని, వదిలినప్పుడు కార్బన్ డయాక్సైడ్‌ను బయటకు పంపుతాయి.</p>
+        </article>
+
+        <article class="organ-entry">
+          <h3>4. Liver <span lang="te">కాలేయం</span> <span>(Kaleyam)</span></h3>
+          <p><span class="language-label">English</span>The liver cleans your blood by removing toxins, helps digest food by producing bile, and stores energy for the body.</p>
+          <p lang="te"><span class="language-label">తెలుగు</span>కాలేయం రక్తంలోని వ్యర్థాలను (టాక్సిన్స్) తొలగించి శుభ్రం చేస్తుంది. ఆహారం అరగడానికి బైల్ (పిత్త రసం)ను తయారు చేస్తుంది మరియు శరీరానికి కావలసిన శక్తిని నిల్వ చేస్తుంది.</p>
+        </article>
+
+        <article class="organ-entry">
+          <h3>5. Kidney <span lang="te">మూత్రపిండము</span> <span>(Mutrapindamu)</span></h3>
+          <p><span class="language-label">English</span>The kidneys filter waste products and extra water out of your blood to form urine, keeping the body's fluids balanced.</p>
+          <p lang="te"><span class="language-label">తెలుగు</span>మూత్రపిండాలు రక్తంలోని వ్యర్థాలను మరియు అదనపు నీటిని వడపోసి మూత్రం రూపంలో బయటకు పంపుతాయి. శరీరంలో ద్రవాల సమతుల్యతను కాపాడతాయి.</p>
+        </article>
+
+        <article class="organ-entry">
+          <h3>6. Bone <span lang="te">ఎముక</span> <span>(Emuka)</span></h3>
+          <p><span class="language-label">English</span>Bones form the skeleton, which gives structure and shape to your body. They protect internal organs and allow you to move.</p>
+          <p lang="te"><span class="language-label">తెలుగు</span>ఎముకలు అస్థిపంజరాన్ని ఏర్పరిచి శరీరానికి ఒక ఆకారాన్ని ఇస్తాయి. ఇవి లోపలి అవయవాలను కాపాడుతాయి మరియు మనం నడవడానికి, కదలడానికి సహాయపడతాయి.</p>
+        </article>
+
+        <article class="organ-entry">
+          <h3>7. Blood <span lang="te">రక్తం</span> <span>(Raktam)</span></h3>
+          <p><span class="language-label">English</span>Blood is a fluid that travels through blood vessels to carry oxygen, nutrients, and hormones to all cells, while taking away waste.</p>
+          <p lang="te"><span class="language-label">తెలుగు</span>రక్తం అనేది ఒక ద్రవం. ఇది శరీరంలోని అన్ని కణాలకు ఆక్సిజన్, పోషకాలు మరియు హార్మోన్లను చేరవేస్తుంది, అలాగే వ్యర్థాలను బయటకు తీసుకువస్తుంది.</p>
+        </article>
+
+        <article class="organ-entry">
+          <h3>8. Skin <span lang="te">చర్మం</span> <span>(Carmam)</span></h3>
+          <p><span class="language-label">English</span>The skin is the outer covering of the body. It protects internal organs from germs, controls body temperature, and allows you to feel touch, heat, and cold.</p>
+          <p lang="te"><span class="language-label">తెలుగు</span>చర్మం శరీరానికి వెలుపలి రక్షణ పొర. ఇది క్రిములు లోపలికి వెళ్లకుండా కాపాడుతుంది, శరీర వేడిని నియంత్రిస్తుంది మరియు స్పర్శ, వేడి, చలిని తెలుసుకునేలా చేస్తుంది.</p>
+        </article>
+      </div>
+    </section>
 </body>
 </html>
